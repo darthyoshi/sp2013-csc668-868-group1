@@ -23,7 +23,7 @@ public class TransactionBuilder {
         items.remove(upc);
     }
 
-    public Transaction complete() {
-        return new Transaction(date, time, items);
-    }
+//    public Transaction complete() {
+//        return new Transaction(date, time, items);
+//    }
 }

@@ -1,5 +1,7 @@
 package csc868.group1.team2.post1.client.controller;
 
+import csc868.group1.team2.post1.server.controller.Store;
+
 /**
  *
  * @author Kay Choi
@@ -17,7 +19,7 @@ public class Post {
         return new TransactionBuilder(date, time);
     }
 
-    public Receipt recordSale(Transaction trans) {
-        return new Receipt(store, trans);
-    }
+//    public Receipt recordSale(Transaction trans) {
+//        return new Receipt(store, trans);
+//    }
 }

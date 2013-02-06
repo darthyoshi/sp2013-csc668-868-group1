@@ -1,5 +1,7 @@
 package csc868.group1.team2.post1.client.controller;
 
+import csc868.group1.team2.post1.server.controller.Store;
+
 /**
  *
  * @author Kay Choi
