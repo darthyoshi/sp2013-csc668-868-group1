@@ -1,69 +1,43 @@
 package post.model;
 
 
-import java.util.*;
-
-
 /**
- * Class LineItem
+ * A LineItem describes the purchase of a specific product, at a specific 
+ * quantity.
+ * 
+ * @author woeltjen
  */
 public class LineItem {
+    private ProductSpecification productSpec;
+    private int quantity;
 
-  //
-  // Fields
-  //
+    /**
+     * Create a new line item. This includes both the product purchased, and the
+     * quantity purchased.
+     *
+     * @param productSpec
+     * @param quantity
+     */
+    public LineItem(ProductSpecification productSpec, int quantity) {
+        this.productSpec = productSpec;
+        this.quantity = quantity;
+    }
+     
+    /**
+     * Get the product involved in this line item.
+     *
+     * @return the specification for the product purchased.
+     */
+    public ProductSpecification getProductSpec() {
+        return productSpec;
+    }
 
-  private ProductSpecification productSpec;
-  private int quantity;
-  
-  //
-  // Constructors
-  //
-  public LineItem () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of productSpec
-   * @param newVar the new value of productSpec
-   */
-  private void setProductSpec ( ProductSpecification newVar ) {
-    productSpec = newVar;
-  }
-
-  /**
-   * Get the value of productSpec
-   * @return the value of productSpec
-   */
-  private ProductSpecification getProductSpec ( ) {
-    return productSpec;
-  }
-
-  /**
-   * Set the value of quantity
-   * @param newVar the new value of quantity
-   */
-  private void setQuantity ( int newVar ) {
-    quantity = newVar;
-  }
-
-  /**
-   * Get the value of quantity
-   * @return the value of quantity
-   */
-  private int getQuantity ( ) {
-    return quantity;
-  }
-
-  //
-  // Other methods
-  //
-
+    /**
+     * Get the quantity of the item purchased.
+     *
+     * @return the quantity of the item purchased
+     */
+    public int getQuantity() {
+        return quantity;
+    }
 }

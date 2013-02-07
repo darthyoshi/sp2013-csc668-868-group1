@@ -1,50 +1,36 @@
 package post.model;
 
-
-
 /**
  * Class CreditPayment
  */
 public class CreditPayment extends Payment {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    private long ccNumber;
 
-  private int ccNumber;
-  
-  //
-  // Constructors
-  //
-  public CreditPayment () { };
-  
-  //
-  // Methods
-  //
+    //
+    // Constructors
+    //
+    public CreditPayment(float amount, long ccNumber) {
+        super(amount);
+        this.ccNumber = ccNumber;
+    }
 
+    /**
+     * Get the value of ccNumber
+     *
+     * @return the value of ccNumber
+     */
+    public long getCcNumber() {
+        return ccNumber;
+    }
 
-  //
-  // Accessor methods
-  //
+    @Override
+    public String toColumnOutput() {
+        return "Paid by Credit Card " + ccNumber;
 
-  /**
-   * Set the value of ccNumber
-   * @param newVar the new value of ccNumber
-   */
-  private void setCcNumber ( int newVar ) {
-    ccNumber = newVar;
-  }
-
-  /**
-   * Get the value of ccNumber
-   * @return the value of ccNumber
-   */
-  private int getCcNumber ( ) {
-    return ccNumber;
-  }
-
-  //
-  // Other methods
-  //
+    }
 
 }

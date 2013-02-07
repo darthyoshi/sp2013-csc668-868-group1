@@ -1,53 +1,37 @@
 package post.model;
 
-
-
 /**
- * Class Payment
+ * A Payment represents monetary value exchanged for products.
+ *
+ * Payment is an abstract class. Specific payment forms are represented as
+ * subclasses.
  */
 public abstract class Payment {
 
-  //
-  // Fields
-  //
+    private float amount;
 
-  private double amount;
-  
-  //
-  // Constructors
-  //
-  public Payment () { };
-  
-  //
-  // Methods
-  //
+    /**
+     * Create a payment for the specified amount due.
+     *
+     * @param amount
+     */
+    public Payment(float amount) {
+        this.amount = amount;
+    }
 
+    /**
+     * Get the amount paid.
+     *
+     * @return the amount paid
+     */
+    public float getAmount() {
+        return amount;
+    }
 
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of amount
-   * @param newVar the new value of amount
-   */
-  protected void setAmount ( double newVar ) {
-    amount = newVar;
-  }
-
-  /**
-   * Get the value of amount
-   * @return the value of amount
-   */
-  public double getAmount ( ) {
-    return amount;
-  }
-
-  //
-  // Other methods
-  //
-
-  public String toColumnOutput() {
-      return "";
-  }
+    /**
+     * Describe this payment in a manner appropriate for display on a
+     * receipt or in a transaction log.
+     * @return 
+     */
+    public abstract String toColumnOutput();
 }

@@ -1,60 +1,35 @@
 package post.client.view;
 
+import java.io.File;
+import java.io.IOException;
 import post.client.controller.POST;
-
-
 
 /**
  * Class FileBasedCashier
  */
 public class FileBasedCashier implements CashierView {
+    private TransactionReader reader;
 
-  //
-  // Fields
-  //
+    /**
+     * Create a new "Cashier" that reads from a file. This no-argument form 
+     * will read from the default file name, "transaction.txt"
+     * @throws IOException 
+     */
+    public FileBasedCashier() throws IOException {
+    }
 
-  private TransactionReader reader;
-  
-  //
-  // Constructors
-  //
-  public FileBasedCashier () { };
-  
-  //
-  // Methods
-  //
+    public FileBasedCashier(File f) throws IOException {
+    }
 
+    public FileBasedCashier(TransactionReader reader) {
+    }
 
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of reader
-   * @param newVar the new value of reader
-   */
-  private void setReader ( TransactionReader newVar ) {
-    reader = newVar;
-  }
-
-  /**
-   * Get the value of reader
-   * @return the value of reader
-   */
-  private TransactionReader getReader ( ) {
-    return reader;
-  }
-
-  //
-  // Other methods
-  //
-
-  /**
-   * @param        post
-   */
-  public void connectTo( POST post )
-  {
-  }
-
-
+    /**
+     * Connect this CashierView to a POST. For file-based cashier, this 
+     * will initiate reading from the transaction file via the transaction 
+     * reader, and delivering results back to the POST.
+     * @param post the POST we are connected to
+     */
+    public void connectTo(POST post) {
+    }
 }

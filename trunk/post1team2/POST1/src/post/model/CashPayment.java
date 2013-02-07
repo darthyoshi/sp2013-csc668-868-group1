@@ -1,50 +1,30 @@
 package post.model;
 
-
-
 /**
- * Class CashPayment
+ * A CashPayment represents payment given by cash, which should equal or 
+ * exceed the amount due.
+ * @auther woeltjen
  */
 public class CashPayment extends Payment {
+    private float fullAmount;
 
-  //
-  // Fields
-  //
+    /**
+     * Create a new cash payment. This includes both the amount offered 
+     * by the customer, and the amount due (the change received is implicitly 
+     * the difference between the two.)
+     * @param tendered
+     * @param due 
+     */
+    public CashPayment(float tendered, float due) {
+        super(due);
+        fullAmount = tendered;
+    }
 
-  private float fullAmount;
-  
-  //
-  // Constructors
-  //
-  public CashPayment () { };
-  
-  //
-  // Methods
-  //
+    @Override
+    public String toColumnOutput() {
+        return "Amount Tendered: " + fullAmount + "\n"
+                + "Amount Returned: " + (fullAmount - getAmount());
 
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of fullAmount
-   * @param newVar the new value of fullAmount
-   */
-  private void setFullAmount ( float newVar ) {
-    fullAmount = newVar;
-  }
-
-  /**
-   * Get the value of fullAmount
-   * @return the value of fullAmount
-   */
-  private float getFullAmount ( ) {
-    return fullAmount;
-  }
-
-  //
-  // Other methods
-  //
+    }
 
 }
