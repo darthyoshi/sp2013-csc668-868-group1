@@ -1,5 +1,11 @@
 package post.server.controller;
 
+import java.io.File;
+import java.io.FileReader;
+import post.model.ProductCatalog;
+import post.model.ProductReader;
+import post.model.StoreDescription;
+
 /**
  * The StoreInitializer is responsible for setting up the Store.
  * 
@@ -10,7 +16,7 @@ package post.server.controller;
  * @author woeltjen
  */
 public class StoreInitializer {
-    private static final String DEFAULT_LOG_NAME = "transaction.txt";
+    private static final String DEFAULT_LOG_NAME = "log.txt";
     private static final String DEFAULT_CATALOG_NAME = "products.txt";
     
     private String logName;
@@ -26,14 +32,21 @@ public class StoreInitializer {
     }
     
     public Store initialize() {
-        //StoreDescription desc = new StoreDescription("test name", "test address");
-        //TransactionLog log = new FileBasedTransactionLog(logName)        
-        //ProductCatalog catalog = new ProductReader(productFileName);
-        //return new StoreImpl(desc, catalog, log);
-        return new StoreImpl(null, null, null);
+        try {
+            StoreDescription desc = new StoreDescription("test name", "test address");
+            TransactionLog log = new TransactionLog(new File(logName));
+            ProductCatalog catalog = new ProductReader(new FileReader(productFileName)).readCatalog();
+        return new StoreImpl(desc, log, catalog);
+        } catch (Exception e) {
+            // TODO: How to log this?
+            return null;
+        }
     }
     
     public static void main(String[] args) {
         Store s = new StoreInitializer().initialize();
+        System.out.println(s.getDescription().getName());
+        System.out.println(s.getCatalog().getProducts().size());
+        
     }
 }

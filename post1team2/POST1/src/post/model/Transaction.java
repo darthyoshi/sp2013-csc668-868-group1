@@ -2,6 +2,8 @@ package post.model;
 
 
 import java.util.*;
+import java.util.Map.Entry;
+import post.server.controller.Store;
 
 
 /**
@@ -23,12 +25,16 @@ public class Transaction {
   //
 
     public Transaction(String customer, long timestamp, Payment payment, 
-            Map<String,Integer> lineItems, StoreDescription store) {
+            Map<String,Integer> lineItems, Store store) {
         this.customer = customer;
         this.timestamp = timestamp;
         this.payment = payment;
-        this.store = store;
-        //TODO line items
+        this.store = store.getDescription();
+        this.lineItems = new ArrayList<LineItem>();
+        
+        for (Entry<String, Integer> entry : lineItems.entrySet()) {
+            this.lineItems.add(new LineItem(store.getCatalog().lookup(entry.getKey()), entry.getValue()));
+        }
     }
   
   
@@ -53,23 +59,16 @@ public class Transaction {
    * Get the value of timestamp
    * @return the value of timestamp
    */
-  private long getTimestamp ( ) {
+  public long getTimestamp ( ) {
     return timestamp;
   }
 
-  /**
-   * Set the value of payment
-   * @param newVar the new value of payment
-   */
-  private void setPayment ( Payment newVar ) {
-    payment = newVar;
-  }
 
   /**
    * Get the value of payment
    * @return the value of payment
    */
-  private Payment getPayment ( ) {
+  public Payment getPayment ( ) {
     return payment;
   }
 
@@ -85,7 +84,7 @@ public class Transaction {
    * Get the value of lineItems
    * @return the value of lineItems
    */
-  private List<LineItem> getLineItems ( ) {
+  public List<LineItem> getLineItems ( ) {
     return lineItems;
   }
 
@@ -101,7 +100,7 @@ public class Transaction {
    * Get the value of store
    * @return the value of store
    */
-  private StoreDescription getStore ( ) {
+  public StoreDescription getStore ( ) {
     return store;
   }
 
@@ -109,4 +108,8 @@ public class Transaction {
   // Other methods
   //
 
+  public String getCustomer() {
+      return customer;
+  }
+  
 }

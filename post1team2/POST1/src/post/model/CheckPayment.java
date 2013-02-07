@@ -1,33 +1,24 @@
 package post.model;
 
-
-
 /**
  * Class CheckPayment
  */
 public class CheckPayment extends Payment {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public CheckPayment(float amount) {
+        super(amount);
+    }
 
-  
-  //
-  // Constructors
-  //
-  public CheckPayment () { };
-  
-  //
-  // Methods
-  //
+    @Override
+    public String toColumnOutput() {
+        return "Paid by check";
 
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
+    }
 
 }
