@@ -1,6 +1,8 @@
 package post.client.controller;
 
 
+import post.model.Receipt;
+import post.model.Transaction;
 import post.server.controller.Store;
 
 
@@ -10,28 +12,16 @@ import post.server.controller.Store;
  */
 public interface POST extends Store {
 
-  //
-  // Fields
-  //
+    /**
+     * @return Receipt
+     * @param transaction
+     */
+    public Receipt recordTransaction(Transaction transaction);
 
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
-  /**
-   * @return       TransactionBuilder
-   */
-  public TransactionBuilder startTransaction(  );
+    /**
+     * @return       TransactionBuilder
+     */
+    public TransactionBuilder startTransaction(  );
 
 
 }
