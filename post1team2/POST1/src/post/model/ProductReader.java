@@ -1,11 +1,16 @@
 package post.model;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class ProductReader
+ * 
+ * @author woeltjen
  */
 public class ProductReader {
     private Reader reader;
@@ -16,6 +21,7 @@ public class ProductReader {
      * @param r 
      */
     public ProductReader(Reader r) {
+            this.reader = r;
     }
 
     /**
@@ -25,7 +31,19 @@ public class ProductReader {
      * @return ProductCatalog
      */
     public ProductCatalog readCatalog() throws IOException {
-        return null;
+        BufferedReader r = new BufferedReader(reader);
+        List<ProductSpecification> products = 
+            new ArrayList<ProductSpecification>();
+
+        String nextLine;
+        while ( (nextLine = r.readLine()) != null) {
+            String upc   = nextLine.substring(0, 4);
+            String desc  = nextLine.substring(9, 29);
+            float  price = Float.parseFloat(nextLine.substring(34));
+            products.add(new ProductSpecification(upc, desc, price));
+        }
+
+        return new ProductCatalog(products);
     }
     
     public static void main (String[] args) {        

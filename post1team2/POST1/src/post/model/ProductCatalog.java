@@ -1,21 +1,25 @@
 package post.model;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
 
 /**
  * Class ProductCatalog
+ * @author woeltjen
  */
 public class ProductCatalog {
+    private Map<String, ProductSpecification> productMap =
+            new HashMap<String, ProductSpecification>();
 
     /**
      * Create a new product catalog for the specified group of products.
      * @param products the products available
      */
     public ProductCatalog(Collection<ProductSpecification> products) {
+        for (ProductSpecification p : products) {
+            productMap.put(p.getUpc(), p);
+        }
     }
 
     /**
@@ -25,7 +29,7 @@ public class ProductCatalog {
      * @param upc
      */
     public ProductSpecification lookup(String upc) {
-        return null;
+        return productMap.get(upc);
     }
 
     /**
@@ -33,6 +37,8 @@ public class ProductCatalog {
      * @return List<ProductSpecification>
      */
     public List<ProductSpecification> getProducts() {
-        return Collections.emptyList();
+        List<ProductSpecification> copy = new ArrayList<ProductSpecification>();
+        copy.addAll(productMap.values());
+        return copy;
     }
 }
