@@ -1,18 +1,18 @@
 package post.model;
 
 /**
- * Class CreditPayment
+ * Represents payment made by credit card.
+ * @author woeltjen
  */
 public class CreditPayment extends Payment {
-
-    //
-    // Fields
-    //
     private long ccNumber;
 
-    //
-    // Constructors
-    //
+    /**
+     * Create a new object representing a payment of
+     * the specified amount, using the specified credit card number.
+     * @param amount
+     * @param ccNumber
+     */
     public CreditPayment(float amount, long ccNumber) {
         super(amount);
         this.ccNumber = ccNumber;
@@ -30,7 +30,5 @@ public class CreditPayment extends Payment {
     @Override
     public String toColumnOutput() {
         return "Paid by Credit Card " + ccNumber;
-
     }
-
 }

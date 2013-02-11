@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package post;
 
 import post.client.controller.POST;
@@ -12,10 +8,11 @@ import post.server.controller.Store;
 import post.server.controller.StoreInitializer;
 
 /**
- *
+ * Main point of entry for POST1. Creates a Store and a POST with default
+ * values, then connects a file-based cashier to the POST.
  * @author woeltjen
  */
-public class Main {
+public class POST1Main {
     public static void main (String[] args) {
         Store store = new StoreInitializer().initialize();
         POST  post  = new POSTInitializer(store).initialize();

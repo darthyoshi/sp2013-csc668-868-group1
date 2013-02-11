@@ -33,13 +33,20 @@ public class StoreInitializer {
         this.logName = logName;
         this.productFileName = productFileName;
     }
-    
+
+    /**
+     * Create and set up new Store, connected to the appropriate log files and
+     * product catalog.
+     * @return
+     */
     public Store initialize() {
         try {
             StoreDescription desc = 
                     new StoreDescription(DEFAULT_STORE_NAME, DEFAULT_ADDRESS);
             TransactionLog log = new TransactionLog(new File(logName));
-            ProductCatalog catalog = new ProductReader(new FileReader(productFileName)).readCatalog();
+            ProductCatalog catalog = 
+                    new ProductReader(new FileReader(productFileName))
+                    .readCatalog();
         return new StoreImpl(desc, log, catalog);
         } catch (Exception e) {
             // TODO: How to log this?
@@ -47,10 +54,10 @@ public class StoreInitializer {
         }
     }
     
-    public static void main(String[] args) {
-        Store s = new StoreInitializer().initialize();
-        System.out.println(s.getDescription().getName());
-        System.out.println(s.getCatalog().getProducts().size());
-        
-    }
+//    public static void main(String[] args) {
+//        // Test method
+//        Store s = new StoreInitializer().initialize();
+//        System.out.println(s.getDescription().getName());
+//        System.out.println(s.getCatalog().getProducts().size());
+//    }
 }

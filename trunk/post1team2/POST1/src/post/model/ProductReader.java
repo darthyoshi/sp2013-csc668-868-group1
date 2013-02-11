@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class ProductReader
+ * Reads in a product catalog from a text stream.
  * 
  * @author woeltjen
  */
@@ -46,16 +46,16 @@ public class ProductReader {
         return new ProductCatalog(products);
     }
     
-    public static void main (String[] args) {        
-        // Test ProductReader
-        Reader r;
-        
-        try {
-            r = new FileReader("products.txt");
-            ProductCatalog cat = new ProductReader(r).readCatalog();
-            System.out.println(cat.lookup("XBHH").getDescription());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main (String[] args) {
+//        // Test ProductReader
+//        Reader r;
+//
+//        try {
+//            r = new FileReader("products.txt");
+//            ProductCatalog cat = new ProductReader(r).readCatalog();
+//            System.out.println(cat.lookup("XBHH").getDescription());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

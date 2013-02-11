@@ -2,10 +2,9 @@ package post.model;
 
 import java.util.*;
 
-
-
 /**
- * Class ProductCatalog
+ * A catalog of all available products within the store. Useful for identifying
+ * products by UPC, or for getting a full listing of products available.
  * @author woeltjen
  */
 public class ProductCatalog {
