@@ -22,9 +22,12 @@ public class CashPayment extends Payment {
 
     @Override
     public String toColumnOutput() {
-        return "Amount Tendered: " + fullAmount + "\n"
-                + "Amount Returned: " + (fullAmount - getAmount());
+        return "Amount Tendered: " + formatPrice(fullAmount) + "\n"
+                + "Amount Returned: " + formatPrice(fullAmount - getAmount());
 
     }
 
+    private String formatPrice(float price) {
+        return String.format("$%.2f", price);
+    }
 }
