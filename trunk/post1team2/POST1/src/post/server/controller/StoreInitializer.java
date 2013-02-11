@@ -16,6 +16,9 @@ import post.model.StoreDescription;
  * @author woeltjen
  */
 public class StoreInitializer {
+    private static final String DEFAULT_STORE_NAME = "STORE NAME";
+    private static final String DEFAULT_ADDRESS    = "123 Address St.";
+
     private static final String DEFAULT_LOG_NAME = "log.txt";
     private static final String DEFAULT_CATALOG_NAME = "products.txt";
     
@@ -33,7 +36,8 @@ public class StoreInitializer {
     
     public Store initialize() {
         try {
-            StoreDescription desc = new StoreDescription("test name", "test address");
+            StoreDescription desc = 
+                    new StoreDescription(DEFAULT_STORE_NAME, DEFAULT_ADDRESS);
             TransactionLog log = new TransactionLog(new File(logName));
             ProductCatalog catalog = new ProductReader(new FileReader(productFileName)).readCatalog();
         return new StoreImpl(desc, log, catalog);
