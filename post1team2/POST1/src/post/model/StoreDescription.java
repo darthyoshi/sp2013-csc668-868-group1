@@ -13,7 +13,7 @@ public class StoreDescription {
     private String address;
     private String name;
 
-    public StoreDescription(String address, String name) {
+    public StoreDescription(String name, String address) {
         this.address = address;
         this.name = name;
     }
