@@ -12,7 +12,7 @@ public class CashierGUI implements CashierView {
 
     @Override
     public void connectTo(POST post) {
-        JFrame frame = new CashierFrame(post);
+        JFrame frame = new CashierFrame(new GUIMediator(post));
         frame.setVisible(true);
         frame.pack();        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
