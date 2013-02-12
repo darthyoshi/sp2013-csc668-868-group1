@@ -1,0 +1,13 @@
+Sam
+A000      3
+A001
+CASH $50.0
+
+John
+A002      10
+CREDIT 1234123412341234
+
+Wilfred
+A001      3
+CHECK $100.0
+
