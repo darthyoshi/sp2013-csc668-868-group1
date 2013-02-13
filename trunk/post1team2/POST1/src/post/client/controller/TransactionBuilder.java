@@ -57,14 +57,14 @@ public class TransactionBuilder {
             if(items.get(upc) != null) {  //UPC previously entered
                 int num = items.get(upc);
                 items.put(upc, num + quantity);
-            } 
+            }
             else {
                 items.put(upc, quantity);
             }
 
             amountDue += quantity * product.getPrice();
             return true;
-        } 
+        }
         else
             return false;
     }
@@ -74,8 +74,10 @@ public class TransactionBuilder {
      * @param upc the UPC of the item
      */
     public void removeLineItem(String upc) {
-        if(items.containsKey(upc))
-            amountDue -= items.remove(upc);
+        if(items.containsKey(upc)) {
+            ProductSpecification product = post.getCatalog().lookup(upc);
+            amountDue -= items.remove(upc) * product.getPrice();
+        }
     }
 
     /**
