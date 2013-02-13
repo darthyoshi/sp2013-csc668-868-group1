@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import post.client.controller.POST;
 import post.client.controller.TransactionBuilder;
+import post.model.LineItem;
 import post.model.ProductSpecification;
 import post.model.Receipt;
 import post.model.Transaction;
@@ -25,6 +26,8 @@ public class GUIMediator {
     public GUIMediator(POST post) {
         this.post = post;
         productArea.setUPCChoices(getUPCs(post.getCatalog().getProducts()));
+        
+        productArea.addActionListener(productAction); 
         paymentArea.addActionListener(payAction);
     }
        
@@ -32,10 +35,15 @@ public class GUIMediator {
         @Override
         public void actionPerformed(ActionEvent ae) {
             TransactionBuilder b = post.startTransaction();
-            b.setCustomer("test");
-            b.addLineItem("A000", 1);
-            Transaction t = b.completeSale(paymentArea.getPayment(100));
-            System.out.println(new Receipt(t).toColumnOutput());
+            b.setCustomer(customerArea.getCustomerName());
+            for (LineItem item : invoiceArea.getLineItems()) {
+                b.addLineItem(item.getProductSpec().getUpc(), 
+                        item.getQuantity());                
+            }
+            Transaction t = b.completeSale(
+                    paymentArea.getPayment(invoiceArea.getAmountDue()));
+            Receipt r = post.recordTransaction(t);
+            // System.out.println(r.toColumnOutput());
         }        
     };
     
@@ -44,6 +52,9 @@ public class GUIMediator {
         public void actionPerformed(ActionEvent ae) {
             String upc = productArea.getUPC();
             int    quantity = productArea.getQuantity();
+            
+            invoiceArea.addLineItem(
+                    new LineItem(post.getCatalog().lookup(upc), quantity));            
         }        
     };
     

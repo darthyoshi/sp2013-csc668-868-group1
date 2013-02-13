@@ -10,9 +10,15 @@ import javax.swing.JTextField;
  * @author woeltjen
  */
 public class CustomerArea extends JPanel {
+    private JTextField customerField = new JTextField(20);
+    
     public CustomerArea() {
         add(new JLabel("Customer: "));
-        add(new JTextField(20));
+        add(customerField);
         setBorder(BorderFactory.createEmptyBorder(32, 32, 32, 32));
+    }
+    
+    public String getCustomerName() {
+        return customerField.getText();
     }
 }
