@@ -14,26 +14,35 @@ public class TransactionThread extends Thread {
 
     private TransactionReceiver receiver;
     private Transaction transaction;
-    private Component dialog;
+    private TransactionCallback callback;
 
     public TransactionThread(TransactionReceiver receiver, Transaction t,
-            Component progressDialog) {
+            TransactionCallback callback) {
         this.receiver = receiver;
         this.transaction = t;
-        this.dialog = progressDialog;
+        this.callback = callback;
     }
 
     @Override
     public void run() {
         final Receipt receipt = receiver.recordTransaction(transaction);
+        // Assume that this callback needs to be on the EDT
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                dialog.setVisible(false);
                 if (receipt != null) {
-                    new ReceiptView(receipt).setVisible(true);
+                    callback.transactionSuccessful(receipt);
+                } else {
+                    callback.transactionFailed();
                 }
             }
         });
+    }
+
+    public static interface TransactionCallback {
+
+        public void transactionSuccessful(Receipt r);
+
+        public void transactionFailed();
     }
 }
