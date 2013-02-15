@@ -1,15 +1,20 @@
 package post.client.view.gui;
 
+import java.awt.Dialog;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import post.client.controller.POST;
 import post.client.controller.TransactionBuilder;
+import post.client.view.gui.TransactionThread.TransactionCallback;
 import post.model.LineItem;
 import post.model.ProductSpecification;
+import post.model.Receipt;
 import post.model.Transaction;
 
 /**
@@ -18,6 +23,7 @@ import post.model.Transaction;
  */
 public class GUIMediator {
     private POST         post;
+    
     private CustomerArea customerArea = new CustomerArea();
     private ProductArea  productArea  = new ProductArea();
     private InvoiceArea  invoiceArea  = new InvoiceArea();
@@ -44,14 +50,7 @@ public class GUIMediator {
             Transaction t = b.completeSale(
                     paymentArea.getPayment(invoiceArea.getAmountDue()));
             
-            // TODO: Move this to a non-GUI thread!
-            JDialog pleaseWait = new JDialog();
-            pleaseWait.setTitle("Please wait...");
-            pleaseWait.getContentPane().add(new JLabel("Sending transaction..."));
-            pleaseWait.pack();
-            pleaseWait.setVisible(true);
-            
-            new TransactionThread(post, t, pleaseWait).start();
+            new TransactionHandler().recordTransaction(t);
             // System.out.println(r.toColumnOutput());
         }        
     };
@@ -66,6 +65,7 @@ public class GUIMediator {
                     new LineItem(post.getCatalog().lookup(upc), quantity));            
         }        
     };
+        
     
     public String getStoreName() {
         return post.getDescription().getName();
@@ -98,5 +98,42 @@ public class GUIMediator {
         }
         Arrays.sort(upcs); // Alphabetize for presentation
         return upcs;
+    }
+    
+    private class TransactionHandler implements TransactionCallback {
+        Window window;
+        JDialog pleaseWait;
+        
+        public void recordTransaction(Transaction t) {
+            // Pop a please wait dialog which blocks the GUI
+            window = SwingUtilities.getWindowAncestor(paymentArea);
+            window.setFocusableWindowState(false);
+            pleaseWait = 
+                    new JDialog(SwingUtilities.getWindowAncestor(paymentArea), 
+                    "Please wait...", 
+                    Dialog.ModalityType.MODELESS);
+            // TODO: Move this to a non-GUI thread!    
+            pleaseWait.setTitle("Please wait...");
+            pleaseWait.getContentPane().add(new JLabel("Sending transaction..."));
+            pleaseWait.pack();
+            pleaseWait.setVisible(true);
+    
+            new TransactionThread(post, t, this).start();            
+        }
+
+        @Override
+        public void transactionFailed() {
+            window.setFocusableWindowState(true);
+            pleaseWait.setVisible(false);
+        }
+
+        @Override
+        public void transactionSuccessful(Receipt r) {
+            window.setFocusableWindowState(true);
+            pleaseWait.setVisible(false);
+            new ReceiptView(r).setVisible(true);
+        }
+        
+        
     }
 }
