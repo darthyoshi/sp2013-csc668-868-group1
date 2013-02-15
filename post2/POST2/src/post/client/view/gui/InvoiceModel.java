@@ -50,6 +50,10 @@ public class InvoiceModel extends AbstractTableModel {
         return lineItems;
     }
     
+    public void clear() {
+        lineItems.clear();
+    }
+    
     private static enum InvoiceColumn {
         ITEM() {
             @Override

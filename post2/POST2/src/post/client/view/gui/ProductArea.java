@@ -42,4 +42,9 @@ public class ProductArea extends JPanel {
     public void addActionListener(ActionListener listener) {
         addButton.addActionListener(listener);
     }
+    
+    public void clear() {
+        upcBox.setSelectedIndex(0);
+        quantitySpinner.setValue(1);
+    }
 }
