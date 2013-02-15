@@ -44,4 +44,10 @@ public class InvoiceArea extends JPanel {
         }
         return due;
     }
+    
+    public void clear() {
+        model.clear();
+        totalLabel.setText("Total ");
+        repaint();
+    }
 }

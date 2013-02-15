@@ -65,7 +65,6 @@ public class GUIMediator {
                     new LineItem(post.getCatalog().lookup(upc), quantity));            
         }        
     };
-        
     
     public String getStoreName() {
         return post.getDescription().getName();
@@ -89,6 +88,13 @@ public class GUIMediator {
 
     public TimeArea getTimeArea() {
         return timeArea;
+    }
+    
+    private void clear() {
+        customerArea.clear();
+        invoiceArea.clear();
+        paymentArea.clear();
+        productArea.clear();        
     }
     
     private static String[] getUPCs (List<ProductSpecification> productSpec) {
@@ -131,6 +137,7 @@ public class GUIMediator {
         public void transactionSuccessful(Receipt r) {
             window.setFocusableWindowState(true);
             pleaseWait.setVisible(false);
+            clear();
             new ReceiptView(r).setVisible(true);
         }
         

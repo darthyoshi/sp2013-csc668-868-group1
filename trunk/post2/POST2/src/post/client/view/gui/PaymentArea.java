@@ -34,6 +34,12 @@ public class PaymentArea extends JPanel {
         return null;
     }
     
+    public void clear() {
+        paymentType.setSelectedIndex(0);
+        detailField.setText("");
+        repaint();
+    }
+    
     public void addActionListener(ActionListener listener) {
         payButton.addActionListener(listener);
     }

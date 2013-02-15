@@ -21,4 +21,8 @@ public class CustomerArea extends JPanel {
     public String getCustomerName() {
         return customerField.getText();
     }
+    
+    public void clear() {
+        customerField.setText("");
+    }
 }
