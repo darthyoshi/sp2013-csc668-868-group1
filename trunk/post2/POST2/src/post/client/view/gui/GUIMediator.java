@@ -4,11 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import post.client.controller.POST;
 import post.client.controller.TransactionBuilder;
 import post.model.LineItem;
 import post.model.ProductSpecification;
-import post.model.Receipt;
 import post.model.Transaction;
 
 /**
@@ -44,8 +45,13 @@ public class GUIMediator {
                     paymentArea.getPayment(invoiceArea.getAmountDue()));
             
             // TODO: Move this to a non-GUI thread!
-            Receipt r = post.recordTransaction(t);
-            new ReceiptView(r).setVisible(true);
+            JDialog pleaseWait = new JDialog();
+            pleaseWait.setTitle("Please wait...");
+            pleaseWait.getContentPane().add(new JLabel("Sending transaction..."));
+            pleaseWait.pack();
+            pleaseWait.setVisible(true);
+            
+            new TransactionThread(post, t, pleaseWait).start();
             // System.out.println(r.toColumnOutput());
         }        
     };
