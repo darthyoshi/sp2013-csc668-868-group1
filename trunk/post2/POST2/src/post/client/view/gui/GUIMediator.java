@@ -42,7 +42,10 @@ public class GUIMediator {
             }
             Transaction t = b.completeSale(
                     paymentArea.getPayment(invoiceArea.getAmountDue()));
+            
+            // TODO: Move this to a non-GUI thread!
             Receipt r = post.recordTransaction(t);
+            new ReceiptView(r).setVisible(true);
             // System.out.println(r.toColumnOutput());
         }        
     };
