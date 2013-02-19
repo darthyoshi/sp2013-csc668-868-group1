@@ -14,6 +14,8 @@ public class PaymentArea extends JPanel {
     private JComboBox  paymentType = new JComboBox(PaymentOption.values());
     private JTextField detailField = new JTextField(16);
     private JButton    payButton   = new JButton("Pay");
+    private boolean    enabled     = true;
+    private float      amountDue   = 0f;    
     
     public PaymentArea() {
         super();
@@ -40,7 +42,23 @@ public class PaymentArea extends JPanel {
         repaint();
     }
     
+    public void setAmountDue(float amount) {
+        this.amountDue = amount;
+        updatePayButton();
+    }
+    
     public void addActionListener(ActionListener listener) {
         payButton.addActionListener(listener);
+    }
+    
+    public void setPayEnabled (boolean enabled) {
+        this.enabled = enabled;
+        updatePayButton();
+    }
+    
+    private void updatePayButton() {
+        boolean amountSufficient = true;
+        payButton.setEnabled(enabled && amountSufficient);
+        payButton.repaint();
     }
 }
