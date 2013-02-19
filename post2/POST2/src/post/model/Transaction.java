@@ -1,5 +1,6 @@
 package post.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import post.server.controller.Store;
  * Represents a completed sale
  * @author woeltjen
  */
-public class Transaction {
+public class Transaction implements Serializable {
 
     private String customer;
     private long timestamp;

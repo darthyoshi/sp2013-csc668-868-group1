@@ -1,5 +1,6 @@
 package post.model;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,7 +12,7 @@ import java.util.GregorianCalendar;
  *
  * @author woeltjen
  */
-public class Receipt {
+public class Receipt implements Serializable {
     private static final DateFormat DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     

@@ -1,5 +1,6 @@
 package post.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -7,7 +8,7 @@ import java.util.*;
  * products by UPC, or for getting a full listing of products available.
  * @author woeltjen
  */
-public class ProductCatalog {
+public class ProductCatalog implements Serializable {
     private Map<String, ProductSpecification> productMap =
             new HashMap<String, ProductSpecification>();
 

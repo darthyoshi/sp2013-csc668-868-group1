@@ -1,10 +1,12 @@
 package post.model;
 
+import java.io.Serializable;
+
 /**
  * Describes relevant information about a specific product in inventory.
  * @author woeltjen
  */
-public class ProductSpecification {
+public class ProductSpecification implements Serializable {
     private String upc;
     private String description;
     private float price;
