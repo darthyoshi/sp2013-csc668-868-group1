@@ -8,7 +8,6 @@ import post.client.view.CashierView;
 import post.client.view.FileBasedCashier;
 import post.remote.RemoteStore;
 import post.remote.RemoteStoreWrapper;
-import post.server.Server;
 import post.server.controller.Store;
 import post.server.controller.StoreInitializer;
 
@@ -23,7 +22,7 @@ public class POST2Main {
         
         
         try {
-            new Server().registerStore(store, "store");
+            //new Server().registerStore(store, "store");
             
             Registry r = LocateRegistry.getRegistry("localhost");
 
