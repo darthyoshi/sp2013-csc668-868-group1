@@ -1,10 +1,12 @@
 package post.model;
 
+import java.io.Serializable;
+
 /**
  * Provides a basic description of a specific store.
  * @author woeltjen
  */
-public class StoreDescription {
+public class StoreDescription implements Serializable {
     private String address;
     private String name;
 

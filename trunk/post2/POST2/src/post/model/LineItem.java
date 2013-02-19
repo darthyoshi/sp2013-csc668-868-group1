@@ -1,5 +1,7 @@
 package post.model;
 
+import java.io.Serializable;
+
 
 /**
  * A LineItem describes the purchase of a specific product, at a specific 
@@ -7,7 +9,7 @@ package post.model;
  * 
  * @author woeltjen
  */
-public class LineItem {
+public class LineItem implements Serializable {
     private ProductSpecification productSpec;
     private int quantity;
 

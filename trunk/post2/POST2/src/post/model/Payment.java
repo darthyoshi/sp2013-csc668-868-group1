@@ -1,12 +1,14 @@
 package post.model;
 
+import java.io.Serializable;
+
 /**
  * A Payment represents monetary value exchanged for products.
  *
  * Payment is an abstract class. Specific payment forms are represented as
  * subclasses.
  */
-public abstract class Payment {
+public abstract class Payment implements Serializable {
 
     private float amount;
 
