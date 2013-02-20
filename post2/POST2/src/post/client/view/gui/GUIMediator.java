@@ -14,7 +14,6 @@ import javax.swing.event.DocumentListener;
 import post.client.controller.POST;
 import post.client.controller.TransactionBuilder;
 import post.client.view.gui.TransactionThread.TransactionCallback;
-import post.model.LineItem;
 import post.model.ProductSpecification;
 import post.model.Receipt;
 import post.model.Transaction;
@@ -25,6 +24,7 @@ import post.model.Transaction;
  */
 public class GUIMediator {
     private POST         post;
+    private TransactionBuilder activeTransaction;
     
     private CustomerArea customerArea = new CustomerArea();
     private ProductArea  productArea  = new ProductArea();
@@ -39,23 +39,30 @@ public class GUIMediator {
         customerArea.addDocumentListener(customerListener);
         productArea.addActionListener(productAction); 
         paymentArea.addActionListener(payAction);
+        
+        activeTransaction = post.startTransaction();
+        
+        transactionUpdated();
     }
     
     private DocumentListener customerListener = new DocumentListener() {
 
         @Override
         public void changedUpdate(DocumentEvent de) {
-            updatePaymentArea();
+            activeTransaction.setCustomer(customerArea.getCustomerName());
+            transactionUpdated();
         }
 
         @Override
         public void insertUpdate(DocumentEvent de) {
-            updatePaymentArea();
+            activeTransaction.setCustomer(customerArea.getCustomerName());
+            transactionUpdated();        
         }
 
         @Override
         public void removeUpdate(DocumentEvent de) {
-            updatePaymentArea();
+            activeTransaction.setCustomer(customerArea.getCustomerName());
+            transactionUpdated();
         }
         
     };
@@ -63,35 +70,26 @@ public class GUIMediator {
     private ActionListener payAction = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            TransactionBuilder b = post.startTransaction();
-            b.setCustomer(customerArea.getCustomerName());
-            for (LineItem item : invoiceArea.getLineItems()) {
-                b.addLineItem(item.getProductSpec().getUpc(), 
-                        item.getQuantity());                
-            }
-            paymentArea.setAmountDue(invoiceArea.getAmountDue());
-            Transaction t = b.completeSale(paymentArea.getPayment());
-            
-            new TransactionHandler().recordTransaction(t);
+            new TransactionHandler().recordTransaction(
+                    activeTransaction.completeSale(paymentArea.getPayment()));
         }        
     };
     
     private ActionListener productAction = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            String upc = productArea.getUPC();
-            int    quantity = productArea.getQuantity();
-            
-            invoiceArea.addLineItem(
-                    new LineItem(post.getCatalog().lookup(upc), quantity));            
-            
-            updatePaymentArea();
+            activeTransaction.addLineItem(productArea.getUPC(), 
+                    productArea.getQuantity());            
+            transactionUpdated();
+            invoiceArea.repaint();
         }        
     };
     
-    private void updatePaymentArea() {
+    private void transactionUpdated() {
+        invoiceArea.setTransactionBuilder(activeTransaction);
         paymentArea.setPayEnabled(!customerArea.getCustomerName().isEmpty());
-        paymentArea.setAmountDue(invoiceArea.getAmountDue());
+        paymentArea.setAmountDue(activeTransaction.getAmountDue());
+        invoiceArea.updateTable();
     }
     
     public String getStoreName() {
@@ -119,8 +117,9 @@ public class GUIMediator {
     }
     
     private void clear() {
+        activeTransaction = post.startTransaction();
+        invoiceArea.setTransactionBuilder(activeTransaction);
         customerArea.clear();
-        invoiceArea.clear();
         paymentArea.clear();
         productArea.clear();        
     }

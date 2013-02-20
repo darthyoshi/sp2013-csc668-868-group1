@@ -1,11 +1,12 @@
 package post.client.view.gui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.table.AbstractTableModel;
+import post.client.controller.TransactionBuilder;
 import post.model.LineItem;
+import post.model.Payment;
 
 /**
  *
@@ -13,7 +14,8 @@ import post.model.LineItem;
  */
 public class InvoiceModel extends AbstractTableModel {
     private Map <String, Integer> upcIndexes = new HashMap<String, Integer>();
-    private List<LineItem> lineItems = new ArrayList<LineItem>();
+    private TransactionBuilder builder;
+    //private List<LineItem> lineItems = new ArrayList<LineItem>();
     
     @Override
     public int getColumnCount() {
@@ -27,8 +29,8 @@ public class InvoiceModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        return row < lineItems.size() ? 
-                InvoiceColumn.values()[column].interpret(lineItems.get(row)) :
+        return row < getLineItems().size() ? 
+                InvoiceColumn.values()[column].interpret(getLineItems().get(row)) :
                 "";
     }
 
@@ -37,21 +39,20 @@ public class InvoiceModel extends AbstractTableModel {
         return InvoiceColumn.values()[column].toString();
     }
     
-    public void addLineItem(LineItem item) {
-        String upc = item.getProductSpec().getUpc();
-        if (upcIndexes.containsKey(upc)) {
-            lineItems.remove((int) upcIndexes.get(upc));
-        }
-        upcIndexes.put(upc, lineItems.size());
-        lineItems.add(item);
+    public void addLineItem(String upc, int quantity) {
+        builder.addLineItem(upc, quantity);
     }
     
-    public List<LineItem> getLineItems() {
-        return lineItems;
+    private List<LineItem> getLineItems() {
+        return builder.completeSale(DUMMY_PAYMENT).getLineItems();
     }
     
-    public void clear() {
-        lineItems.clear();
+    public void setTransactionBuilder(TransactionBuilder b) {
+        builder = b;
+    }
+    
+    public float getAmountDue() {
+        return builder.getAmountDue();
     }
     
     private static enum InvoiceColumn {
@@ -82,4 +83,12 @@ public class InvoiceModel extends AbstractTableModel {
         ;        
         public abstract String interpret(LineItem item);
     }
+    
+    private static final Payment DUMMY_PAYMENT = 
+            new Payment(Float.POSITIVE_INFINITY) {        
+        @Override
+        public String toColumnOutput() {
+            return "";
+        }        
+    };
 }

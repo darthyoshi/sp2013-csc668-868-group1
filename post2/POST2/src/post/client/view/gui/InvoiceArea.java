@@ -6,6 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import post.client.controller.TransactionBuilder;
 import post.model.LineItem;
 
 /**
@@ -25,29 +26,14 @@ public class InvoiceArea extends JPanel {
         add(table, BorderLayout.CENTER);
         add(totalLabel, BorderLayout.SOUTH);
         setBorder(BorderFactory.createTitledBorder("Invoice"));
-    }
+    }    
     
-    public void addLineItem(LineItem item) {
-        model.addLineItem(item);
-        totalLabel.setText("Total: " + getAmountDue());
+    public void updateTable() {
+        totalLabel.setText("Total: " +model.getAmountDue());
         repaint();
     }
     
-    public List<LineItem> getLineItems() {
-        return model.getLineItems();
-    }
-    
-    public float getAmountDue() {
-        float due = 0f;
-        for (LineItem i : model.getLineItems()) {
-            due += i.getQuantity() * i.getProductSpec().getPrice();
-        }
-        return due;
-    }
-    
-    public void clear() {
-        model.clear();
-        totalLabel.setText("Total ");
-        repaint();
+    public void setTransactionBuilder(TransactionBuilder b) {
+        model.setTransactionBuilder(b);
     }
 }
