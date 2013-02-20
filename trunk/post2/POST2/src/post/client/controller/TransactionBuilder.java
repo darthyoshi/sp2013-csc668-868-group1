@@ -69,7 +69,8 @@ public class TransactionBuilder {
     }
 
     /**
-     * Removes an item from the transaction.
+     * Removes an item from the transaction. If the quantity of the designated
+     * item is greater than one, they are all removed.
      * @param upc the UPC of the item
      */
     public void removeLineItem(String upc) {
