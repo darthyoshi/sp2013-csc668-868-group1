@@ -1,10 +1,5 @@
 package post.model;
 
-import post.model.CashPayment;
-import post.model.CheckPayment;
-import post.model.CreditPayment;
-import post.model.Payment;
-
 /**
  * PaymentOption enumerates all known payment types, and provides convenience 
  * methods for creating new payment objects.
