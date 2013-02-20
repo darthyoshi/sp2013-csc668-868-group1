@@ -1,9 +1,7 @@
 package post.client.controller;
 
 import java.util.HashMap;
-import post.model.Payment;
-import post.model.ProductSpecification;
-import post.model.Transaction;
+import post.model.*;
 
 /**
  * Class TransactionBuilder collects transaction data from a customer and uses
@@ -57,14 +55,17 @@ public class TransactionBuilder {
             if(items.get(upc) != null) {  //UPC previously entered
                 int num = items.get(upc);
                 items.put(upc, num + quantity);
-            } else {
+            }
+            else {
                 items.put(upc, quantity);
             }
 
             amountDue += quantity * product.getPrice();
             return true;
-        } else
+        }
+        else {
             return false;
+        }
     }
 
     /**
@@ -72,7 +73,10 @@ public class TransactionBuilder {
      * @param upc the UPC of the item
      */
     public void removeLineItem(String upc) {
-        items.remove(upc);
+        Integer quantity = items.remove(upc);
+        if(quantity != null) {
+            amountDue -= quantity * post.getCatalog().lookup(upc).getPrice();
+        }
     }
 
     /**
@@ -84,10 +88,12 @@ public class TransactionBuilder {
      * @param payment the specific payment for this transaction
      */
     public Transaction completeSale(Payment payment) {
-        if(payment.getAmount() >= amountDue)
+        if(payment.getAmount() >= amountDue) {
             return new Transaction(customer, time, payment, items, post);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
