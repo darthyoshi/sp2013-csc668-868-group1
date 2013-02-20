@@ -10,7 +10,8 @@ import javax.swing.JTextArea;
 import post.model.Receipt;
 
 /**
- *
+ * Provides a window to display a Receipt. This serves as a substitute for 
+ * a receipt printer, which is not present in the system.
  * @author woeltjen
  */
 public class ReceiptView extends JFrame {

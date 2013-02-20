@@ -9,13 +9,11 @@ import post.model.LineItem;
 import post.model.Payment;
 
 /**
- *
+ * The underlying model used by LineItemArea to populate its JTable.
  * @author woeltjen
  */
-public class InvoiceModel extends AbstractTableModel {
-    private Map <String, Integer> upcIndexes = new HashMap<String, Integer>();
+public class LineItemModel extends AbstractTableModel {
     private TransactionBuilder builder;
-    //private List<LineItem> lineItems = new ArrayList<LineItem>();
     
     @Override
     public int getColumnCount() {
@@ -38,20 +36,31 @@ public class InvoiceModel extends AbstractTableModel {
     public String getColumnName(int column) {
         return InvoiceColumn.values()[column].toString();
     }
-    
-    public void addLineItem(String upc, int quantity) {
-        builder.addLineItem(upc, quantity);
-    }
-    
+
+    /**
+     * Get the current list of line items from the builder.
+     * @return all line items present for the current sale
+     */
     private List<LineItem> getLineItems() {
+        // Note: Builder doesn't have an appropriate method for this, so 
+        //       complete a fake sale to get a Transaction object, which does.
         return builder.completeSale(DUMMY_PAYMENT).getLineItems();
     }
     
+    /**
+     * Set the active transaction. This shall be the transaction modeled for 
+     * this table.
+     * @param b the TransactionBuilder object preparing the current transaction
+     */
     public void setTransactionBuilder(TransactionBuilder b) {
         builder = b;
     }
     
-    public float getAmountDue() {
+    /**
+     * Get the amount due, from the active transaction.
+     * @return 
+     */
+    float getAmountDue() {
         return builder.getAmountDue();
     }
     

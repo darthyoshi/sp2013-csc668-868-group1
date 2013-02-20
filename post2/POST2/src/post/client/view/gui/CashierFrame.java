@@ -3,10 +3,13 @@ package post.client.view.gui;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import post.client.controller.POST;
 
 /**
- *
+ * A window displaying elements of the cashier's GUI.
+ * 
+ * Note that this is responsible only for laying out elements and 
+ * displaying the window. Interactions are handled in the mediator.
+ * 
  * @author woeltjen
  */
 public class CashierFrame extends JFrame {

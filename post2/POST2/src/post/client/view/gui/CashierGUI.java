@@ -7,7 +7,10 @@ import post.client.controller.POST;
 import post.client.view.CashierView;
 
 /**
- *
+ * A CashierGUI provides a graphical user interface for interacting with the 
+ * POST. This simply creates and displays an appropriate GUI, connected to 
+ * a POST, when the connectTo(...) method is called. 
+ * 
  * @author woeltjen
  */
 public class CashierGUI implements CashierView {
