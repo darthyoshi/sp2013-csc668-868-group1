@@ -4,6 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -24,5 +25,9 @@ public class CustomerArea extends JPanel {
     
     public void clear() {
         customerField.setText("");
+    }
+    
+    public void addDocumentListener(DocumentListener documentListener) {
+        customerField.getDocument().addDocumentListener(documentListener);
     }
 }
