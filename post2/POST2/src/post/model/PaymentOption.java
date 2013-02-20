@@ -30,7 +30,7 @@ public enum PaymentOption {
         @Override
         public Payment createPayment(float amount, String description) {
             try {
-                if (description.length() != 12) return null;
+                if (description.length() != 16) return null;
                 return new CreditPayment(amount, Long.parseLong(description));
             } catch (Exception e) {
                 return null;
