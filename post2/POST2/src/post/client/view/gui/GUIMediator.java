@@ -1,22 +1,15 @@
 package post.client.view.gui;
 
-import java.awt.Dialog;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import post.client.controller.POST;
 import post.client.controller.TransactionBuilder;
-import post.client.view.gui.TransactionThread.TransactionCallback;
 import post.model.ProductSpecification;
-import post.model.Receipt;
-import post.model.Transaction;
 
 /**
  *
@@ -70,7 +63,8 @@ public class GUIMediator {
     private ActionListener payAction = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            new TransactionHandler().recordTransaction(
+            new TransactionHandler(SwingUtilities.getWindowAncestor(paymentArea), 
+                    GUIMediator.this, post).recordTransaction(
                     activeTransaction.completeSale(paymentArea.getPayment()));
         }        
     };
@@ -116,7 +110,7 @@ public class GUIMediator {
         return timeArea;
     }
     
-    private void clear() {
+    void clear() {
         activeTransaction = post.startTransaction();
         invoiceArea.setTransactionBuilder(activeTransaction);
         customerArea.clear();
@@ -131,41 +125,5 @@ public class GUIMediator {
         }
         Arrays.sort(upcs); // Alphabetize for presentation
         return upcs;
-    }
-    
-    private class TransactionHandler implements TransactionCallback {
-        Window window;
-        JDialog pleaseWait;
-        
-        public void recordTransaction(Transaction t) {
-            // Pop a please wait dialog which blocks the GUI
-            window = SwingUtilities.getWindowAncestor(paymentArea);
-            window.setFocusableWindowState(false);
-            pleaseWait = 
-                    new JDialog(SwingUtilities.getWindowAncestor(paymentArea), 
-                    "Please wait...", 
-                    Dialog.ModalityType.MODELESS);
-            // TODO: Move this to a non-GUI thread!    
-            pleaseWait.setTitle("Please wait...");
-            pleaseWait.getContentPane().add(new JLabel("Sending transaction..."));
-            pleaseWait.pack();
-            pleaseWait.setVisible(true);
-    
-            new TransactionThread(post, t, this).start();            
-        }
-
-        @Override
-        public void transactionFailed() {
-            window.setFocusableWindowState(true);
-            pleaseWait.setVisible(false);
-        }
-
-        @Override
-        public void transactionSuccessful(Receipt r) {
-            window.setFocusableWindowState(true);
-            pleaseWait.setVisible(false);
-            clear();
-            new ReceiptView(r).setVisible(true);
-        }
-    }
+    }    
 }
