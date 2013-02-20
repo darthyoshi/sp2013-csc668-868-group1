@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package post.client;
 
 import java.rmi.registry.*;
@@ -12,14 +8,16 @@ import post.remote.RemoteStore;
 import post.server.controller.Store;
 
 /**
- *
+ * Class Client is an RMI client that connects to the POST server. The class is
+ * the client-side interface between the front-end customer interaction and the
+ * back-end server operations.
  * @author Kay Choi
  */
 public class Client {
 
     /**
-     * Main method. Attempts to initiate a connection to a POST server, and
-     * starts a GUI if successful.
+     * Main method. Attempts to initiate a connection to the server, and starts
+     * a GUI if successful.
      * @param args the set of command line arguments
      */
     public static void main(String args[]) {
@@ -35,6 +33,8 @@ public class Client {
             CashierView view = new CashierGUI();
 
             view.connectTo(post);
+
+            System.out.println("The client has connected to store: " + name);
         }
         catch (Exception e) {
             System.err.println(e.getMessage());

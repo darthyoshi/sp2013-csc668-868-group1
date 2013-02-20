@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package post.server;
 
 import java.rmi.Remote;
@@ -10,13 +6,15 @@ import post.remote.RemoteStoreImpl;
 import post.server.controller.*;
 
 /**
- *
+ * Class Server is an RMI server for POST operations. The class is the server-side
+ * interface between the back-end server operations and the front-end customer
+ * interaction.
  * @author Kay Choi
  */
 public class Server implements Remote {
 
     /**
-     * Main method. Initializes an RMI server for POST operations.
+     * Main method. Initializes the server to listen for connections.
      * @param args the set of command line arguments
      */
     public static void main (String args[]) {
@@ -26,6 +24,8 @@ public class Server implements Remote {
 
             LocateRegistry.createRegistry(1099); // 1099 is default RMI port
             LocateRegistry.getRegistry().bind(name, new RemoteStoreImpl(store));
+
+            System.out.println("Store: " + name + " has been initialized.");
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
