@@ -4,6 +4,7 @@ import java.awt.Dialog;
 import java.awt.Window;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import post.client.view.gui.TransactionThread.TransactionCallback;
 import post.model.Receipt;
 import post.model.Transaction;
@@ -65,6 +66,7 @@ public class TransactionHandler implements TransactionCallback {
     public void transactionFailed() {
         window.setFocusableWindowState(true);
         pleaseWait.setVisible(false);
+        JOptionPane.showMessageDialog(window, "Transaction declined.");
     }
 
     @Override
