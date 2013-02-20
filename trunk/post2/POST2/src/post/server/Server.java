@@ -22,10 +22,10 @@ public class Server implements Remote {
     public static void main (String args[]) {
         try {
             Store store = new StoreInitializer().initialize();
-            LocateRegistry.createRegistry(1099); // 1099 is default RMI port
+            String name = args.length > 0 ? args[0] : "store";
 
-            //args[0] = host name
-            LocateRegistry.getRegistry().bind(args[0], new RemoteStoreImpl(store));
+            LocateRegistry.createRegistry(1099); // 1099 is default RMI port
+            LocateRegistry.getRegistry().bind(name, new RemoteStoreImpl(store));
         }
         catch(Exception e) {
             System.err.println(e.getMessage());

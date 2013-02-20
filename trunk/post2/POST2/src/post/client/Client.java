@@ -29,11 +29,11 @@ public class Client {
 
         try {
             Registry r = LocateRegistry.getRegistry("localhost");
-
-            //args[0] = remote host name
-            Store rs = new StoreProxy((RemoteStore) r.lookup(args[0]));
+            String name = args.length > 0 ? args[0] : "store";
+            Store rs = new StoreProxy((RemoteStore) r.lookup(name));
             POST  post  = new POSTInitializer(rs).initialize();
             CashierView view = new CashierGUI();
+
             view.connectTo(post);
         }
         catch (Exception e) {
