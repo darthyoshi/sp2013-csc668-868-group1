@@ -9,6 +9,8 @@ import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import post.client.controller.POST;
 import post.client.controller.TransactionBuilder;
 import post.client.view.gui.TransactionThread.TransactionCallback;
@@ -34,9 +36,29 @@ public class GUIMediator {
         this.post = post;
         productArea.setUPCChoices(getUPCs(post.getCatalog().getProducts()));
         
+        customerArea.addDocumentListener(customerListener);
         productArea.addActionListener(productAction); 
         paymentArea.addActionListener(payAction);
     }
+    
+    private DocumentListener customerListener = new DocumentListener() {
+
+        @Override
+        public void changedUpdate(DocumentEvent de) {
+            updatePaymentArea();
+        }
+
+        @Override
+        public void insertUpdate(DocumentEvent de) {
+            updatePaymentArea();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent de) {
+            updatePaymentArea();
+        }
+        
+    };
        
     private ActionListener payAction = new ActionListener() {
         @Override
@@ -47,11 +69,10 @@ public class GUIMediator {
                 b.addLineItem(item.getProductSpec().getUpc(), 
                         item.getQuantity());                
             }
-            Transaction t = b.completeSale(
-                    paymentArea.getPayment(invoiceArea.getAmountDue()));
+            paymentArea.setAmountDue(invoiceArea.getAmountDue());
+            Transaction t = b.completeSale(paymentArea.getPayment());
             
             new TransactionHandler().recordTransaction(t);
-            // System.out.println(r.toColumnOutput());
         }        
     };
     
@@ -63,8 +84,15 @@ public class GUIMediator {
             
             invoiceArea.addLineItem(
                     new LineItem(post.getCatalog().lookup(upc), quantity));            
+            
+            updatePaymentArea();
         }        
     };
+    
+    private void updatePaymentArea() {
+        paymentArea.setPayEnabled(!customerArea.getCustomerName().isEmpty());
+        paymentArea.setAmountDue(invoiceArea.getAmountDue());
+    }
     
     public String getStoreName() {
         return post.getDescription().getName();
@@ -140,7 +168,5 @@ public class GUIMediator {
             clear();
             new ReceiptView(r).setVisible(true);
         }
-        
-        
     }
 }

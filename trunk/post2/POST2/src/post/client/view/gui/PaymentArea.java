@@ -1,7 +1,11 @@
 package post.client.view.gui;
 
+import java.awt.event.ActionEvent;
+import post.model.PaymentOption;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import post.model.Payment;
 
 
@@ -25,20 +29,49 @@ public class PaymentArea extends JPanel {
         add (detailField);
         add (payButton);
         setBorder(BorderFactory.createTitledBorder("Payment"));
+        
+        paymentType.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                updatePayButton();
+            }            
+        });
+        
+        detailField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent de) {
+                updatePayButton();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent de) {
+                updatePayButton();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent de) {
+                updatePayButton();
+            }
+            
+        });
+        
+        updatePayButton();
     }    
     
-    public Payment getPayment(float amount) {
+    public Payment getPayment() {
         Object option = paymentType.getSelectedItem();
         if (option instanceof PaymentOption) {
             PaymentOption p = (PaymentOption) option;
-            return p.createPayment(amount, detailField.getText());
+            return p.createPayment(amountDue, detailField.getText());
         }
         return null;
     }
     
     public void clear() {
+        setAmountDue(0);
         paymentType.setSelectedIndex(0);
-        detailField.setText("");
+        detailField.setText("");        
+        updatePayButton();
         repaint();
     }
     
@@ -57,7 +90,7 @@ public class PaymentArea extends JPanel {
     }
     
     private void updatePayButton() {
-        boolean amountSufficient = true;
+        boolean amountSufficient = getPayment() != null && amountDue > 0;
         payButton.setEnabled(enabled && amountSufficient);
         payButton.repaint();
     }
