@@ -11,7 +11,8 @@ import post.model.Payment;
 
 
 /**
- *
+ * Provides an area where payment type can be selected and payment details may 
+ * be entered.
  * @author woeltjen
  */
 public class PaymentArea extends JPanel {
@@ -21,6 +22,9 @@ public class PaymentArea extends JPanel {
     private boolean    enabled     = true;
     private float      amountDue   = 0f;    
     
+    /**
+     * Create a new GUI element to enter payment info.
+     */
     public PaymentArea() {
         super();
         add (new JLabel("Payment type: "));
@@ -29,14 +33,16 @@ public class PaymentArea extends JPanel {
         add (detailField);
         add (payButton);
         setBorder(BorderFactory.createTitledBorder("Payment"));
-        
+                
+        // Changes to payment type should also clear detail field
         paymentType.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                updatePayButton();
+                detailField.setText("");
             }            
         });
         
+        // Payment button needs to disable when detail field is bad, so listen
         detailField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void changedUpdate(DocumentEvent de) {
@@ -58,6 +64,10 @@ public class PaymentArea extends JPanel {
         updatePayButton();
     }    
     
+    /**
+     * Get a payment object, as entered into GUI area.
+     * @return the entered payment
+     */
     public Payment getPayment() {
         Object option = paymentType.getSelectedItem();
         if (option instanceof PaymentOption) {
@@ -67,6 +77,9 @@ public class PaymentArea extends JPanel {
         return null;
     }
     
+    /**
+     * Clear the current payment info.
+     */
     public void clear() {
         setAmountDue(0);
         paymentType.setSelectedIndex(0);
@@ -75,15 +88,34 @@ public class PaymentArea extends JPanel {
         repaint();
     }
     
+    /**
+     * Set the current amount due. This is used to generate appropriate Payment 
+     * objects and to ensure that the Pay button is not available when 
+     * insufficient payment is entered.
+     * @param amount the amount due, in dollars
+     */
     public void setAmountDue(float amount) {
         this.amountDue = amount;
         updatePayButton();
     }
     
+    /**
+     * Add an action listener which shall be notified when the Pay button is 
+     * clicked.
+     * @param listener 
+     */
     public void addActionListener(ActionListener listener) {
         payButton.addActionListener(listener);
     }
     
+    /**
+     * Set whether or not the Pay button should be enabled. This is used 
+     * when some external factor, such as customer name, should be used to 
+     * suppress payment. Note that disabling payment is definitive, but 
+     * enabling is not (the payment area may still choose to suppress payment 
+     * if it cannot construct a valid payment object)
+     * @param enabled true if payment may be enabled, false if it may not
+     */
     public void setPayEnabled (boolean enabled) {
         this.enabled = enabled;
         updatePayButton();

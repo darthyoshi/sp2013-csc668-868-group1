@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
- *
+ * Provides an area that displays the current system time.
  * @author woeltjen
  */
 public class TimeArea extends JPanel {
@@ -24,7 +24,7 @@ public class TimeArea extends JPanel {
         setLayout(new BorderLayout());
         add(timeLabel, BorderLayout.SOUTH);
         timeUpdater.actionPerformed(null);
-        new Timer(1000, timeUpdater).start();
+        new Timer(1000, timeUpdater).start(); // Update every second
         setBorder(BorderFactory.createEmptyBorder(32, 32, 32, 32));
     }    
     
