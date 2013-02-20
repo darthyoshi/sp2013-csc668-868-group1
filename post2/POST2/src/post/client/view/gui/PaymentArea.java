@@ -48,6 +48,7 @@ public class PaymentArea extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 detailField.setText("");
                 updateDetailField();
+                updatePayButton();
             }
         });
 
