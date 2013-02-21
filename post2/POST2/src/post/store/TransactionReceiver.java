@@ -1,4 +1,4 @@
-package post.server.controller;
+package post.store;
 
 import post.model.Receipt;
 import post.model.Transaction;
