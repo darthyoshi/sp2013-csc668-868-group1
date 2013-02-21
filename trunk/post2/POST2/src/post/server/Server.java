@@ -1,10 +1,10 @@
 package post.server;
 
-import post.store.Store;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import post.remote.RemoteStoreImpl;
 import post.server.controller.*;
+import post.store.Store;
 
 /**
  * Class Server is an RMI server for POST operations. The class is the server-side
@@ -29,7 +29,7 @@ public class Server implements Remote {
             System.out.println("Store: " + name + " has been initialized.");
         }
         catch(Exception e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();
         }
 
     }

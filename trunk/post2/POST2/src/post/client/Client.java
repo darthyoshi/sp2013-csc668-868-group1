@@ -21,7 +21,6 @@ public class Client {
      * @param args the set of command line arguments
      */
     public static void main(String args[]) {
-
         try {
             Registry r = LocateRegistry.getRegistry("localhost");
             String name = args.length > 0 ? args[0] : "store";
@@ -35,7 +34,6 @@ public class Client {
         }
         catch (Exception e) {
             e.printStackTrace();
-            System.err.println(e.getMessage());
         }
     }
 }
