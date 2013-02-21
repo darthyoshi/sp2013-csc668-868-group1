@@ -1,0 +1,38 @@
+<project name = "POST2" default = "clean-build">
+    <property name = "src.dir" value="src" />
+    <property name = "build.dir" value="bin" />
+  
+
+    <target name = "clean">
+        <delete dir = "${build.dir}" />
+        <delete>
+            <fileset dir = "." includes = "${ant.project.name}-*.jar" />
+        </delete>
+    </target>
+
+    <target name = "compile">
+        <!-- no need to compile client & server separately -->
+        <mkdir dir = "${build.dir}" />
+        <javac srcdir="${src.dir}" destdir="${build.dir}" />
+    </target>
+
+    <target name = "package" depends = "compile">
+        <jar destfile = "${ant.project.name}-client.jar"
+             basedir  = "${build.dir}" 
+             excludes = "**/server/**/*" >
+            <manifest>
+                <attribute name = "Main-Class" value = "post.client.Client" />
+            </manifest>
+        </jar>
+
+        <jar destfile = "${ant.project.name}-server.jar"
+             basedir  = "${build.dir}"
+             excludes = "**/client/**/*" >
+            <manifest>
+                <attribute name = "Main-Class" value = "post.server.Server" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name = "clean-build" depends = "clean,package" />
+</project>
