@@ -1,17 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package post.client.controller;
 
 import java.rmi.RemoteException;
+import java.util.LinkedList;
 import java.util.Queue;
 import post.model.ProductCatalog;
 import post.model.Receipt;
 import post.model.StoreDescription;
 import post.model.Transaction;
 import post.remote.RemoteStore;
-import post.server.controller.Store;
+import post.store.Store;
 
 /**
  *
@@ -19,7 +16,7 @@ import post.server.controller.Store;
  */
 public class StoreProxy implements Store {
     ProductCatalog productcatalog;
-    Queue transactionQue;
+    Queue transactionQue = new LinkedList();
     RemoteStore remoteStore;
     StoreDescription storeDescri;
 
@@ -34,27 +31,26 @@ public class StoreProxy implements Store {
 
     @Override
     public Receipt recordTransaction(Transaction transaction){
-        Transaction trans;
-        trans = transaction;
-        //record the new transaction
-        transactionQue.add(trans);
-
-        while(!transactionQue.isEmpty()){
-            System.out.print("Retrieving last transaction");
-           // retrieve and remove from the transaction queue
-            trans =(Transaction) transactionQue.poll();
-
-            try{
-                Receipt receipt = remoteStore.recordTransaction(trans);
-                return receipt;
-            }catch(RemoteException recordTransErr){
-                //if connection is lost , put the trans (back) into the transaction queue
-                System.err.printf("Lost Connectin CANNOT retrieve RECEIPT, PLEASE TRY AGAIN");
-                transactionQue.add(trans);
-
+        // First, flush any pending transactions
+        while (!transactionQue.isEmpty()) {
+            Transaction t = (Transaction) transactionQue.peek();
+            try {
+                remoteStore.recordTransaction(t);
+                transactionQue.poll(); // Remove from queue
+            } catch (RemoteException re) {
+                break; // Don't keep trying if disconnected
             }
         }
-        return new Receipt(trans);
+        
+        // Submit the current transaction
+        try {
+            return remoteStore.recordTransaction(transaction);
+        } catch (RemoteException re) { 
+            // Something went wrong - queue for later
+            transactionQue.add(transaction);
+            // ...but report back as though the transaction has succeeded
+            return new Receipt(transaction);
+        }
     }
 
     public StoreDescription getDescription(){
@@ -62,7 +58,6 @@ public class StoreProxy implements Store {
             storeDescri = remoteStore.getDescription();
             return storeDescri;
         }catch(RemoteException descriptionErr){
-            System.err.printf("Lost Connectin, CANNOT retrieve STORE DESCRIPTION, PLEASE TRY AGAIN");
             return storeDescri ;
         }
 
@@ -74,7 +69,6 @@ public class StoreProxy implements Store {
             productcatalog = remoteStore.getCatalog();
             return productcatalog;
         }catch(RemoteException productcatalogErr){
-            System.err.printf("Lost Connectin, CANNOT retrieve PRODUCTCATALOG, PLEASE TRY AGAIN");
             return productcatalog;
         }
 

@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import post.client.view.gui.TransactionThread.TransactionCallback;
 import post.model.Receipt;
 import post.model.Transaction;
-import post.server.controller.TransactionReceiver;
+import post.store.TransactionReceiver;
 
 /**
  * A TransactionHandler is responsible for initiating the issue of transactions

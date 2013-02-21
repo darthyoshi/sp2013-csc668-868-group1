@@ -1,7 +1,7 @@
 package post.client.controller;
 
 
-import post.server.controller.Store;
+import post.store.Store;
 
 
 /**

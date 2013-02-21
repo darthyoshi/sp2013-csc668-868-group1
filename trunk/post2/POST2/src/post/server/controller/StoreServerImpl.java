@@ -1,5 +1,7 @@
 package post.server.controller;
 
+import post.store.TransactionReceiver;
+import post.store.Store;
 import post.model.ProductCatalog;
 import post.model.Receipt;
 import post.model.StoreDescription;
@@ -26,7 +28,8 @@ public class StoreServerImpl implements TransactionReceiver, Store {
      * @param catalog a catalog of products available through the store.
      * @param paymentProcessor returns a receipt object or null if the payment is incorrect or declined
      */
-    public StoreServerImpl(StoreDescription storeDescription, SalesLog salesLog, ProductCatalog catalog, PaymentProcessor paymentProcessor) {
+    public StoreServerImpl(StoreDescription storeDescription, SalesLog salesLog, 
+            ProductCatalog catalog, PaymentProcessor paymentProcessor) {
         this.storeDescription = storeDescription;
         this.salesLog = salesLog;
         this.catalog = catalog;
@@ -44,8 +47,11 @@ public class StoreServerImpl implements TransactionReceiver, Store {
     }
 
     @Override
-    public Receipt recordTransaction(Transaction transaction) {
-        
-        return salesLog.recordTransaction(transaction);
+    public Receipt recordTransaction(Transaction transaction) {        
+        Receipt r = paymentProcessor.recordTransaction(transaction);
+        if (r != null) {
+            salesLog.recordSale(r);
+        }
+        return r;
     }
 }

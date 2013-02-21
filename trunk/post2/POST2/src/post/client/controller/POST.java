@@ -1,6 +1,6 @@
 package post.client.controller;
 
-import post.server.controller.Store;
+import post.store.Store;
 
 /**
  * A Point of Sale Terminal. Acts as a Store, but additionally allows

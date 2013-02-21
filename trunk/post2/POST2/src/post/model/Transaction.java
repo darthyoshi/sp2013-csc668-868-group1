@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import post.server.controller.Store;
+import post.store.Store;
 
 /**
  * Represents a completed sale

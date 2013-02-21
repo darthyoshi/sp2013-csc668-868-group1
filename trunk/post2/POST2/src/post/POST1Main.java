@@ -4,7 +4,7 @@ import post.client.controller.POST;
 import post.client.controller.POSTInitializer;
 import post.client.view.CashierView;
 import post.client.view.FileBasedCashier;
-import post.server.controller.Store;
+import post.store.Store;
 import post.server.controller.StoreInitializer;
 
 /**

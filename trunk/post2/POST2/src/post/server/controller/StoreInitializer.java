@@ -1,5 +1,6 @@
 package post.server.controller;
 
+import post.store.Store;
 import java.io.File;
 import java.io.FileReader;
 import post.model.ProductCatalog;
@@ -43,11 +44,12 @@ public class StoreInitializer {
         try {
             StoreDescription desc = 
                     new StoreDescription(DEFAULT_STORE_NAME, DEFAULT_ADDRESS);
-            TransactionLog log = new TransactionLog(new File(logName));
+            SalesLog log = new SalesLog(new File(logName));
             ProductCatalog catalog = 
                     new ProductReader(new FileReader(productFileName))
                     .readCatalog();
-        return new StoreImpl(desc, log, catalog);
+            PaymentProcessor proc = new PaymentProcessor();
+            return new StoreServerImpl(desc, log, catalog, proc);
         } catch (Exception e) {
             // TODO: How to log this?
             return null;

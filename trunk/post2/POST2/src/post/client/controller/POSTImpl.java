@@ -4,7 +4,7 @@ import post.model.ProductCatalog;
 import post.model.Receipt;
 import post.model.StoreDescription;
 import post.model.Transaction;
-import post.server.controller.Store;
+import post.store.Store;
 
 /**
  * Class POSTImpl implements the POST interface to instantiate

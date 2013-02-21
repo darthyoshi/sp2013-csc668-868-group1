@@ -6,7 +6,7 @@ import post.model.ProductCatalog;
 import post.model.Receipt;
 import post.model.StoreDescription;
 import post.model.Transaction;
-import post.server.controller.Store;
+import post.store.Store;
 
 /**
  * Provides an RMI-ready implementation of RemoteStore. This simply wraps 

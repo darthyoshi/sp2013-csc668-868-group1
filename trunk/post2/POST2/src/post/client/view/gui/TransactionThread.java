@@ -3,7 +3,7 @@ package post.client.view.gui;
 import javax.swing.SwingUtilities;
 import post.model.Receipt;
 import post.model.Transaction;
-import post.server.controller.TransactionReceiver;
+import post.store.TransactionReceiver;
 
 /**
  * Submits transactions on a separate thread from the caller. This allows 

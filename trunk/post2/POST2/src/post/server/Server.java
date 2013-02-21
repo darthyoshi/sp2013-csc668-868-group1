@@ -1,5 +1,6 @@
 package post.server;
 
+import post.store.Store;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import post.remote.RemoteStoreImpl;

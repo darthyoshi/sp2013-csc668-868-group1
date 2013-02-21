@@ -4,11 +4,12 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import post.client.controller.POST;
 import post.client.controller.POSTInitializer;
+import post.client.controller.StoreProxy;
 import post.client.view.CashierView;
-import post.client.view.FileBasedCashier;
+import post.client.view.gui.CashierGUI;
 import post.remote.RemoteStore;
-import post.remote.RemoteStoreWrapper;
-import post.server.controller.Store;
+import post.remote.RemoteStoreImpl;
+import post.store.Store;
 import post.server.controller.StoreInitializer;
 
 /**
@@ -18,17 +19,19 @@ import post.server.controller.StoreInitializer;
  */
 public class POST2Main {
     public static void main (String[] args) {
-        Store store = new StoreInitializer().initialize();
-        
-        
-        try {
-            //new Server().registerStore(store, "store");
-            
-            Registry r = LocateRegistry.getRegistry("localhost");
+        try {   
+            // Server stuff
+            Store store = new StoreInitializer().initialize();
+            LocateRegistry.createRegistry(1099); // 1099 is default RMI port
+            LocateRegistry.getRegistry().bind("store", new RemoteStoreImpl(store));
 
-            Store rs = new RemoteStoreWrapper((RemoteStore) r.lookup("store"));
+            // Client stuff.
+            // NOTE: Should use StoreProxy instead of RemoteStoreWrapper,
+            //       and CashierGUI instead of FileBasedCashier
+            Registry r = LocateRegistry.getRegistry("localhost");
+            Store rs = new StoreProxy((RemoteStore) r.lookup("store"));
             POST  post  = new POSTInitializer(rs).initialize();
-            CashierView view = new FileBasedCashier();
+            CashierView view = new CashierGUI();
             view.connectTo(post);
         } catch (Exception e) {
             e.printStackTrace();

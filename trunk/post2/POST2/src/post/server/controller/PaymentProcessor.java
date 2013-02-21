@@ -1,5 +1,6 @@
 package post.server.controller;
 
+import post.store.TransactionReceiver;
 import java.util.List;
 import post.model.LineItem;
 import post.model.Payment;

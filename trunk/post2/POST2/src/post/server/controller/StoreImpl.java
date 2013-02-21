@@ -1,5 +1,7 @@
 package post.server.controller;
 
+import post.store.TransactionReceiver;
+import post.store.Store;
 import post.model.ProductCatalog;
 import post.model.Receipt;
 import post.model.StoreDescription;

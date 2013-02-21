@@ -1,5 +1,6 @@
 package post.server.controller;
 
+import post.store.TransactionReceiver;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -5,7 +5,7 @@ import post.client.controller.*;
 import post.client.view.*;
 import post.client.view.gui.CashierGUI;
 import post.remote.RemoteStore;
-import post.server.controller.Store;
+import post.store.Store;
 
 /**
  * Class Client is an RMI client that connects to the POST server. The class is
@@ -21,9 +21,6 @@ public class Client {
      * @param args the set of command line arguments
      */
     public static void main(String args[]) {
-        if(System.getSecurityManager() == null) {
-            System.setSecurityManager(new SecurityManager());
-        }
 
         try {
             Registry r = LocateRegistry.getRegistry("localhost");
@@ -37,6 +34,7 @@ public class Client {
             System.out.println("The client has connected to store: " + name);
         }
         catch (Exception e) {
+            e.printStackTrace();
             System.err.println(e.getMessage());
         }
     }
