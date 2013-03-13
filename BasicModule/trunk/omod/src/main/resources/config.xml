@@ -31,6 +31,10 @@
     </extension>
     <extension>
         <point>org.openmrs.patientDashboardTab</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.VitalsPatientDashboardTab</class>
+    </extension>
+    <extension>
+        <point>org.openmrs.patientDashboardTab</point>
         <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.PatientNotesDashboardTabExt</class>
     </extension>
     <extension>
@@ -91,6 +95,12 @@
 		
     <dwr>
         <allow>
+            <create creator="new" javascript="DWRVitalsService">
+                <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRVitalsService"/>
+                <include method="getPatientEncounters"/>
+            </create> 
+
+            
             <create creator="new" javascript="DWRMyNotesService">
                 <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRMyNotesService"/>
                 <include method="getNotesForPatient"/>
@@ -103,6 +113,15 @@
             <convert converter="bean" match="org.openmrs.module.basicmodule.Note">
                 <param name="exclude" value="patient"/>
             </convert>
+
+            <convert converter="bean" match="org.openmrs.Encounter" />
+            <convert converter="bean" match="org.openmrs.Obs">
+                <param name="include" value="concept,valueNumeric" />
+            </convert>
+            <convert converter="bean" match="org.openmrs.Concept">
+                <param name="include" value="conceptId,displayString" />
+            </convert>
+           
                         
             <create creator="new" javascript="DWRFindPatientBL">
                 <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRFindPatientBL"/>
