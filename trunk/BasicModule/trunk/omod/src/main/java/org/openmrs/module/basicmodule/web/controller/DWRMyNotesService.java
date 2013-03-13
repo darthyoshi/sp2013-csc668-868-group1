@@ -14,7 +14,7 @@ import org.openmrs.module.basicmodule.NoteService;
 public class DWRMyNotesService {
     private Collection<Patient> patients;
     private Collection<Note> notes;
-    
+      
     public Collection<Note> getNotesForPatient(String patientName) {
         System.out.println("My DWR called - notes for: " + patientName);
         ArrayList<Note> nots = new ArrayList<Note>();
