@@ -14,32 +14,32 @@ import org.openmrs.api.context.Context;
  * @author woeltjen
  */
 public class DWRVitalsService {
-    public Collection<Encounter> getPatientEncounters(String patientName, int count) {
+    public Collection<Encounter> getPatientEncounters(String patientID, int count) {
         Collection<Encounter> encounters = new ArrayList<Encounter>();
-        
+
         EncounterService encounterService = Context.getEncounterService();
-        
+
         if (encounterService != null) {
             // TODO: Can we get a smaller list in the initial request?
-            List<Encounter> allEncounters = 
-                    encounterService.getEncountersByPatient(patientName);
+            List<Encounter> allEncounters =
+                    encounterService.getEncountersByPatientId(Integer.valueOf(patientID));
             Collections.sort(allEncounters, RECENT_ENCOUNTER_COMPARATOR);
             for (int i = 0; i < Math.min(allEncounters.size(), count); i++) {
                 encounters.add(allEncounters.get(i));
             }
         }
-        
+
         return encounters;
     }
-    
+
     /**
-     * Comparator to sort encounters. Most recent encounters should appear at 
+     * Comparator to sort encounters. Most recent encounters should appear at
      * the front of the list.
      */
-    private static final Comparator<Encounter> RECENT_ENCOUNTER_COMPARATOR = 
+    private static final Comparator<Encounter> RECENT_ENCOUNTER_COMPARATOR =
             new Comparator<Encounter>() {
         public int compare(Encounter a, Encounter b) {
             return b.getEncounterDatetime().compareTo(a.getEncounterDatetime());
-        }                
+        }
     };
 }

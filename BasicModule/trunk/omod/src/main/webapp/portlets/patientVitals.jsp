@@ -14,72 +14,92 @@
 
 
 <script>
-DWRVitalsService.getPatientEncounters("John", 2, encountersFound);
+function $_GET(q,s) {
+    s = (s) ? s : window.location.search;
+    var re = new RegExp('&amp;'+q+'=([^&amp;]*)','i');
+    return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
+}
+var patientID = $_GET("patientId");
+
+DWRVitalsService.getPatientEncounters(patientID, 2, encountersFound);
 function encountersFound(encounters) {
     console.log("Found " + encounters.length + "encounters");
-    for (var i = 0; i < encounters.length; i++) {        
+    var z = 0;
+    //iterate through encounters
+    for (var i = 0; i < encounters.length; i++) {
         console.log("Visiting encounter " + i + ", obs count " + encounters[i].obs.length);
         var r = 0;
+
+        //iterate through observations
         for (var j = 0; j < encounters[i].obs.length; j++) {
             console.log("Visiting obs " + j);
             var obs = encounters[i].obs[j];
             // Is this an observation of vitals?
             if (obs.concept.conceptId >= 5085 &&
                 obs.concept.conceptId <= 5089) {
-                var prefix = "e" + i + "r" + r;
+                var prefix = "e" + i + obs.concept.conceptId;
                 document.getElementById(prefix + "c0").innerHTML=obs.concept.displayString;
                 document.getElementById(prefix + "c1").innerHTML=obs.valueNumeric;
                 console.log(obs.concept.displayString + "=" + obs.valueNumeric);
                 r++;
             }
         }
+
+        //TODO: replace %encounter_date% with proper variable
+        if (r > 0) {
+            document.getElementById("date" + z).innerHTML = %encounter_date%;
+            z++;
+        }
     }
 }
 // 5089 WEIGHT
-// 5085
-// 5086
-// 5088
+// 5085 systolic pressure
+// 5086 diastolic pressure
+// 5088 WHO stage
 </script>
 
 <table id = "encounter0">
     <tr>
-        <td id ="e0r0c0"></td>
-        <td id ="e0r0c1"></td>
+        <td id = "date0"></td>
     </tr>
     <tr>
-        <td id ="e0r1c0"></td>
-        <td id ="e0r1c1"></td>
+        <td id ="e05089c0"></td>
+        <td id ="e05089c1"></td>
     </tr>
     <tr>
-        <td id ="e0r2c0"></td>
-        <td id ="e0r2c1"></td>
+        <td id ="e05085c0"></td>
+        <td id ="e05085c1"></td>
     </tr>
     <tr>
-        <td id ="e0r3c0"></td>
-        <td id ="e0r3c1"></td>
-    </tr>    
+        <td id ="e05086c0"></td>
+        <td id ="e05086c1"></td>
+    </tr>
+    <tr>
+        <td id ="e05088c0"></td>
+        <td id ="e05088c1"></td>
+    </tr>
 </table>
+
+<br>
 
 <table id = "encounter1">
     <tr>
-        <td id ="e1r0c0"></td>
-        <td id ="e1r0c1"></td>
+        <td id = "date1"></td>
     </tr>
     <tr>
-        <td id ="e1r1c0"></td>
-        <td id ="e1r1c1"></td>
+        <td id ="e15089c0"></td>
+        <td id ="e15089c1"></td>
     </tr>
     <tr>
-        <td id ="e1r2c0"></td>
-        <td id ="e1r2c1"></td>
+        <td id ="e15085c0"></td>
+        <td id ="e15085c1"></td>
     </tr>
     <tr>
-        <td id ="e1r3c0"></td>
-        <td id ="e1r3c1"></td>
-    </tr>    
+        <td id ="e15086c0"></td>
+        <td id ="e15086c1"></td>
+    </tr>
+    <tr>
+        <td id ="e15088c0"></td>
+        <td id ="e15088c1"></td>
+    </tr>
 </table>
-
-
-<br> <br>
-
-
