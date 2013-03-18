@@ -1,0 +1,27 @@
+program
+// THIS IS A COMMENT
+function a(b,c) {alert(screen,"Alert! Please Repeat Cd4!")}
+{
+     cd4Counts := read (patientId,cd4Count)
+    lastCd4Count := recentTimeItem(cd4Counts)
+    if (daysAfter(lastCd4Count,182) < currenttime() ) then
+             {x := alert(screen,"Alert! Please Repeat Cd4!")}
+     elsif a< b then {} elsif c<d then{} elsif b then {}
+     else {}
+
+        if (daysAfter(lastCd4Count,182) < currenttime() ) then
+             {x := alert(screen,"Alert! Please Repeat Cd4!")}
+     else {    patientId := {argument,3,a||b+c*d==4**2**1} }
+ x := Object(b,c,d)
+ 
+ z := new x
+u := z.b  
+x.c := y.a
+a := b < d.f
+while (b.c) {for i in {1,2,3} {} 
+              for jj in x { a:=b**2}
+}
+if a<b then {a:=c} elsif b<c then {b:=d} elsif c<d then {a:=r} else {c:=d}
+if a<b then {a:=c}  else {c:=d}
+if a<b then {a:=c} elsif b<c then {b:=d} elsif c<d then {a:=r} 
+}
