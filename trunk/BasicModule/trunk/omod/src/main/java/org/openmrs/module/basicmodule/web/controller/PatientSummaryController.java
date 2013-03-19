@@ -4,7 +4,9 @@
  */
 package org.openmrs.module.basicmodule.web.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.openmrs.Patient;
 import org.openmrs.api.context.Context;
 import org.openmrs.Encounter;
-import org.openmrs.Person;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "module/basicmodule/patientsummarylink.form")
@@ -26,10 +29,19 @@ public class PatientSummaryController {
 	private final String SUCCESS_FORM_VIEW = "/module/basicmodule/patientsummary";
 
     @RequestMapping(method = RequestMethod.GET)
-	public String showForm() {
+    public ModelAndView showForm(@RequestParam("patientId") int patientId) {
         System.out.println("PatientSummaryController showForm method***************");
-		return SUCCESS_FORM_VIEW;
-	}
+        return new ModelAndView(SUCCESS_FORM_VIEW, getModel(patientId));
+    }
+    
+    public Map<String,String> getModel(int patientId) {
+        Map<String,String> model = new HashMap<String,String>();
+        
+        Patient p = Context.getPatientService().getPatient(patientId);
+        model.put("patientName", p.getPersonName().getFullName());
+        
+        return model;
+    }
     
     public String getHTML(String patientID) {
         Patient p = Context.getPatientService().getPatient(Integer.parseInt(patientID));
