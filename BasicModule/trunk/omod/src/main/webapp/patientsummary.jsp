@@ -31,7 +31,7 @@ var patientID = $_GET("patientId");
 <td colspan=2><font color="white">Patient Information</font></td>
 </tr>
 <tr>
-<td width=30% ><b>NAME:</b> %patientName%</td>
+<td width=30% ><b>NAME:</b> ${patientName}</td>
 <td width=70% align="right"><b>Clinic Location:</b> %patientCity%</td>
 </tr>
 <tr>
