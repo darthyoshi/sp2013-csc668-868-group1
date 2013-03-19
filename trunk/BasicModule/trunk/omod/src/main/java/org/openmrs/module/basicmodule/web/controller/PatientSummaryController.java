@@ -23,7 +23,7 @@ public class PatientSummaryController {
 	protected final Log log = LogFactory.getLog(getClass());
 
 	/** Success form view name */
-	private final String SUCCESS_FORM_VIEW = "/module/basicmodule/patientsummarylink";
+	private final String SUCCESS_FORM_VIEW = "/module/basicmodule/patientsummary";
 
     @RequestMapping(method = RequestMethod.GET)
 	public String showForm() {
