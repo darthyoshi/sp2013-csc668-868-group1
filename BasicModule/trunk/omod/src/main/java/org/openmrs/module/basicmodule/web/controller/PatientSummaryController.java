@@ -34,6 +34,7 @@ public class PatientSummaryController {
     public String getHTML(String patientID) {
         Patient p = PatientService.getPatient(method.valueOf("patientId"));
         List<Encounter> encounters = Context.getEncounterService().getEncountersByPatient(p);
+        Person person = p.getPerson();
         
         String html = "<table width=100%>\n"+
                 "    <tr bgcolor='4D9999'>\n"+
@@ -65,11 +66,11 @@ public class PatientSummaryController {
                 "        <td width=70% ><b>Current art regimen drugs:</b> </td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td width=30% ><b>TB Status:</b> %patientWHOStage%</td>\n"+
+                "        <td width=30% ><b>TB Status:</b> %TBStatus%</td>\n"+
                 "        <td width=70% rowspan='2'><b>%ARTRegimen%</b> </td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td width=30% ><b>Allergies:</b> %patientWHOStage%</td>\n"+
+                "        <td width=30% ><b>Allergies:</b> %patientAllergies%</td>\n"+
                 "    </tr>\n"+
                 "</table>\n"+
                 "\n"+
@@ -121,7 +122,30 @@ public class PatientSummaryController {
                 "        <td >%LabViral%</td>\n"+
                 "    </tr>\n"+
                 "</table>\n";
-                
+                                
+        html = html.replaceFirst("%patientName%", person.getPersonName().getFullName());
+        html = html.replaceFirst("%patientCity%", );
+        html = html.replaceFirst("%patientGender%", person.getGender());
+        html = html.replaceFirst("%patientAge%", person.getAge());
+        html = html.replaceFirst("%patientAddress%", );
+        html = html.replaceFirst("%LastSeen%", );
+        html = html.replaceFirst("%patientWHOStage%", );
+        html = html.replaceFirst("%TBStatus%", );
+        html = html.replaceFirst("%ARTRegimen%", );
+        html = html.replaceFirst("%patientAllergies%", );
+        html = html.replaceFirst("%enroll%", );
+        html = html.replaceFirst("%enrollWt%", );
+        html = html.replaceFirst("%enrollTemp%", );
+        html = html.replaceFirst("%enrollBP%", );
+        html = html.replaceFirst("%enrollKS%", );
+        html = html.replaceFirst("%lastVisit%", );
+        html = html.replaceFirst("%lastVisitWt%", );
+        html = html.replaceFirst("%lastVisitTemp%", );
+        html = html.replaceFirst("%lastVisitBP%", );
+        html = html.replaceFirst("%lastVisitKS%", );
+        html = html.replaceFirst("%LabCD4%", );
+        html = html.replaceFirst("%LabHemoglobin%", );
+        html = html.replaceFirst("%LabViral%", );
         return html;
     }
 }
