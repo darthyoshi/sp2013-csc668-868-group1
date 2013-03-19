@@ -17,10 +17,10 @@ public class PatientSummaryExtension extends Extension {
 
     	@Override
 	public String getOverrideContent(final String bodyContent) {
-            //return " &nbsp;<a href='module/basicmodule/patientsummarylink.form?patientId=" + patientId + "' target='_blank'>View Summary</a> ";
-            return "<b>OUTPUT ALERTS HERE FOR PATIENT ID: &nbsp;" + patientId + " <i>&nbsp;&nbsp;      CHECK IN URL FOR PATIENT NUMBER</i> </b>";
+            return " &nbsp;<a href='module/basicmodule/patientsummarylink.form?patientId=" + patientId + "' target='_blank'>View Summary</a> ";
+            //return "<b>OUTPUT ALERTS HERE FOR PATIENT ID: &nbsp;" + patientId + " <i>&nbsp;&nbsp;      CHECK IN URL FOR PATIENT NUMBER</i> </b>";
 	}
-        
+
     	@Override
 	public void initialize(final Map<String, String> parameters) {
 		patientId = parameters.get("patientId");
