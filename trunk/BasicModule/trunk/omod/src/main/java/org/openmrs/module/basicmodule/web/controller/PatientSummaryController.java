@@ -41,17 +41,17 @@ public class PatientSummaryController {
                 "        <td colspan=2><font color='white'>Patient Information</font></td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td width=30% ><b>Name:</b> %patientName%</td>\n"+
-                "        <td width=70% align='right'><b>Clinic Location:</b> %patientCity%</td>\n"+
+                "        <td width=30% ><b>Name:</b> "+person.getPersonName().getFullName()+"</td>\n"+
+                "        <td width=70% align='right'><b>Clinic Location:</b> "+%patientCity%+"</td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td>%patientGender%, %patientAge% yrs<td>\n"+
+                "        <td>"+person.getGender()+", "+person.getAge()+" yrs<td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td colspan=2><center><b>Address:</b> %patientAddress%</center>\n"+
+                "        <td colspan=2><center><b>Address:</b> "+%patientAddress%+"</center>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td colspan=2><center><b>Last seen on:</b> %LastSeen%</center>\n"+
+                "        <td colspan=2><center><b>Last seen on:</b> "+%LastSeen%+"</center>\n"+
                 "    </tr>\n"+
                 "</table>\n"+
                 "\n"+
@@ -62,15 +62,15 @@ public class PatientSummaryController {
                 "        <td colspan=2><font color='white'>Patient Summary</font></td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td width=30% ><b>WHO stage:</b> %patientWHOStage%</td>\n"+
+                "        <td width=30% ><b>WHO stage:</b> "+%patientWHOStage%+"</td>\n"+
                 "        <td width=70% ><b>Current art regimen drugs:</b> </td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td width=30% ><b>TB Status:</b> %TBStatus%</td>\n"+
-                "        <td width=70% rowspan='2'><b>%ARTRegimen%</b> </td>\n"+
+                "        <td width=30% ><b>TB Status:</b> "+%TBStatus%+"</td>\n"+
+                "        <td width=70% rowspan='2'><b>"+%ARTRegimen%+"</b> </td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td width=30% ><b>Allergies:</b> %patientAllergies%</td>\n"+
+                "        <td width=30% ><b>Allergies:</b> "+%patientAllergies%+"</td>\n"+
                 "    </tr>\n"+
                 "</table>\n"+
                 "\n"+
@@ -89,18 +89,18 @@ public class PatientSummaryController {
                 "        <td ><b>Karnofsky Score</b></td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td >Enrollment: %enroll%</td>\n"+
-                "        <td >%enrollWt%</td>\n"+
-                "        <td >%enrollTemp%</td>\n"+
-                "        <td >%enrollBP%</td>\n"+
-                "        <td >%enrollKS%</td>\n"+
+                "        <td >Enrollment: "+%enroll%+"</td>\n"+
+                "        <td >"+%enrollWt%+"</td>\n"+
+                "        <td >"+%enrollTemp%+"</td>\n"+
+                "        <td >"+%enrollBP%+"</td>\n"+
+                "        <td >"+%enrollKS%+"</td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td >Last Visit: %lastVisit%</td>\n"+
-                "        <td >%lastVisitWt%</td>\n"+
-                "        <td >%lastVisitTemp%</td>\n"+
-                "        <td >%lastVisitBP%</td>\n"+
-                "        <td >%lastVisitKS%</td>\n"+
+                "        <td >Last Visit: "+%lastVisit%+"</td>\n"+
+                "        <td >"+%lastVisitWt%+"</td>\n"+
+                "        <td >"+%lastVisitTemp%+"</td>\n"+
+                "        <td >"+%lastVisitBP%+"</td>\n"+
+                "        <td >"+%lastVisitKS%+"</td>\n"+
                 "    </tr>\n"+
                 "</table>\n"+
                 "\n"+
@@ -117,35 +117,12 @@ public class PatientSummaryController {
                 "        <td ><b>Viral Load</b></td>\n"+
                 "    </tr>\n"+
                 "    <tr>\n"+
-                "        <td >%LabCD4%</td>\n"+
-                "        <td >%LabHemoglobin%</td>\n"+
-                "        <td >%LabViral%</td>\n"+
+                "        <td >"+%LabCD4%+"</td>\n"+
+                "        <td >"+%LabHemoglobin%+"</td>\n"+
+                "        <td >"+%LabViral%+"</td>\n"+
                 "    </tr>\n"+
                 "</table>\n";
-                                
-        html = html.replaceFirst("%patientName%", person.getPersonName().getFullName());
-        html = html.replaceFirst("%patientCity%", );
-        html = html.replaceFirst("%patientGender%", person.getGender());
-        html = html.replaceFirst("%patientAge%", person.getAge());
-        html = html.replaceFirst("%patientAddress%", );
-        html = html.replaceFirst("%LastSeen%", );
-        html = html.replaceFirst("%patientWHOStage%", );
-        html = html.replaceFirst("%TBStatus%", );
-        html = html.replaceFirst("%ARTRegimen%", );
-        html = html.replaceFirst("%patientAllergies%", );
-        html = html.replaceFirst("%enroll%", );
-        html = html.replaceFirst("%enrollWt%", );
-        html = html.replaceFirst("%enrollTemp%", );
-        html = html.replaceFirst("%enrollBP%", );
-        html = html.replaceFirst("%enrollKS%", );
-        html = html.replaceFirst("%lastVisit%", );
-        html = html.replaceFirst("%lastVisitWt%", );
-        html = html.replaceFirst("%lastVisitTemp%", );
-        html = html.replaceFirst("%lastVisitBP%", );
-        html = html.replaceFirst("%lastVisitKS%", );
-        html = html.replaceFirst("%LabCD4%", );
-        html = html.replaceFirst("%LabHemoglobin%", );
-        html = html.replaceFirst("%LabViral%", );
+
         return html;
     }
 }
