@@ -43,6 +43,7 @@
         <bean id="myPatientRegimensPortletController" class="org.openmrs.module.basicmodule.web.controller.PatientRegimensPortletController" />
         <!-- I added the following bean -->
         <bean id="MyPatientNotesPortletController" class="org.openmrs.module.basicmodule.web.controller.PatientNotesPortletController" />
+
  
 	<!-- Annotation based controllers -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
