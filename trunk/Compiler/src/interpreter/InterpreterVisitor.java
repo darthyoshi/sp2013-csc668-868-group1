@@ -1,5 +1,6 @@
 package interpreter;
 
+import interpreter.node.*;
 import ast.*;
 import visitor.ASTVisitor;
 
@@ -13,24 +14,24 @@ public class InterpreterVisitor extends ASTVisitor {
     // TODO: These should be assigned to concrete implementations, once 
     //       those have been defined.
     private ASTInterpreter<ActualArgsTree> actualArgsInterpreter;
-    private ASTInterpreter<AssignTree> assignInterpreter;
-    private ASTInterpreter<BlockTree> blockInterpreter;
-    private ASTInterpreter<CallTree> callInterpreter;
-    private ASTInterpreter<ElsifTree> elsifInterpreter;
-    private ASTInterpreter<FieldRefTree> fieldRefInterpreter;
-    private ASTInterpreter<ForTree> forInterpreter;
-    private ASTInterpreter<FormalsTree> formalsInterpreter;
-    private ASTInterpreter<FunctionDeclTree> functionDeclInterpreter;
-    private ASTInterpreter<IdTree> idInterpreter;
-    private ASTInterpreter<IfTree> ifInterpreter;
-    private ASTInterpreter<ListTree> listInterpreter;
-    private ASTInterpreter<LiteralTree> literalInterpreter;
-    private ASTInterpreter<ObjectDeclTree> objectDeclInterpreter;
-    private ASTInterpreter<ObjectTree> objectInterpreter;
-    private ASTInterpreter<OpTree> opInterpreter;
-    private ASTInterpreter<ProgramTree> programInterpreter;
-    private ASTInterpreter<ReturnTree> returnInterpreter;
-    private ASTInterpreter<WhileTree> whileInterpreter;
+    private ASTInterpreter<AssignTree> assignInterpreter = new AssignInterpreter();
+    private ASTInterpreter<BlockTree> blockInterpreter = new BlockInterpreter();
+    private ASTInterpreter<CallTree> callInterpreter = new CallInterpreter();
+    private ASTInterpreter<AST> elsifInterpreter = new IfInterpreter();
+    private ASTInterpreter<FieldRefTree> fieldRefInterpreter = new FieldRefInterpreter();
+    private ASTInterpreter<ForTree> forInterpreter = new ForInterpreter();
+    private ASTInterpreter<FormalsTree> formalsInterpreter = new FormalsInterpreter();
+    private ASTInterpreter<FunctionDeclTree> functionDeclInterpreter = new FunctionDeclInterpreter();
+    private ASTInterpreter<IdTree> idInterpreter = new IdInterpreter();
+    private ASTInterpreter<AST> ifInterpreter = new IfInterpreter();
+    private ASTInterpreter<ListTree> listInterpreter = new ListInterpreter();
+    private ASTInterpreter<LiteralTree> literalInterpreter = new LiteralInterpreter();
+    private ASTInterpreter<ObjectDeclTree> objectDeclInterpreter = new ObjectDeclInterpreter();
+    private ASTInterpreter<ObjectTree> objectInterpreter = new ObjectInterpreter();
+    private ASTInterpreter<OpTree> opInterpreter = new OpInterpreter();
+    private ASTInterpreter<ProgramTree> programInterpreter = new ProgramInterpreter();
+    private ASTInterpreter<ReturnTree> returnInterpreter = new ReturnInterpreter();
+    private ASTInterpreter<WhileTree> whileInterpreter = new WhileInterpreter();
   
     public InterpreterVisitor(ExecutionContext context) {
         this.context = context;
