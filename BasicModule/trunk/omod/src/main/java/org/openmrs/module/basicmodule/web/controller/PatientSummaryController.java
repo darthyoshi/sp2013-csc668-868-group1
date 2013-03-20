@@ -58,8 +58,6 @@ public class PatientSummaryController {
         model.put("LabViral", "N/A");
         model.put("alert", "");
 
-        Date enrollDate = null, lastDate = null;
-
         Map<Integer, String> allergies = new HashMap<Integer, String>();
         allergies.put(6011, "PENICILLIN");
         allergies.put(6012, "SULFA");
@@ -68,22 +66,21 @@ public class PatientSummaryController {
         Map<Integer, String> code = new HashMap<Integer, String>();
         code.put(6048, "whoStage");
         code.put(5475,"tbStatus");
-  /*    code.put("","enrollWt");
-        code.put("","enrollTemp");
-        code.put("","enrollBP");
-        code.put("","enrollKS");*/
-        code.put(5089,"lastVisitWt");
-        code.put(5088,"lastVisitTemp");
-        code.put(5283,"lastVisitKS");
         code.put(5497,"LabCD4");
         code.put(1017,"LabHemo");
         code.put(856,"LabViral");
+        
+        Map<Integer, String> vitals = new HashMap<Integer, String>();
+        code.put(5089,"Wt");
+        code.put(5088,"Temp");
+        code.put(5283,"KS");        
 
+        Date enrollDate = null, lastDate = null;
         Iterator<Encounter> encIter = allEncounters.iterator();
-        Iterator<Obs> obsIter;
-        Set<Obs> obs;
-        Obs ob;
         Encounter enc;
+        Set<Obs> obs;
+        Iterator<Obs> obsIter;
+        Obs ob;
         StringBuffer meds;
         Boolean isAlert = false;
         int conceptID, encUpdate;
@@ -94,7 +91,7 @@ public class PatientSummaryController {
             enc = encIter.next();
 
             //set dates for enrollment and most recent visits
-            if (lastDate == null) {
+            if (lastDate == null || lastDate.before(enc.getEncounterDatetime())) {
                 enrollDate = enc.getEncounterDatetime();
                 lastDate = enc.getEncounterDatetime();
                 model.put("lastVisit", lastDate.toString().split(" ")[0]);
@@ -116,7 +113,8 @@ public class PatientSummaryController {
 
                 //System.out.println(String.valueOf(conceptID) + ' ' + ob.getValueAsString(Locale.ENGLISH));
 
-                //TODO: handle enrollment and most recent visit vitals updates
+                //TODO: need to generate lab result alert
+                //TODO: ensure that only latest lab results are displayed?
                 if (conceptID == 1088){
                     meds = new StringBuffer(ob.getValueAsString(Locale.ENGLISH));
                     if (!model.get("ARTRegimen").equals("N/A")) {
@@ -124,7 +122,8 @@ public class PatientSummaryController {
                     }
                     model.put("ARTRegimen", meds.toString());
                 }
-                else if (conceptID == 5475){
+                else if (conceptID == 5475) {
+                    //assumption: TB skin test result > 5mm is positive
                     if (Integer.parseInt(ob.getValueAsString(Locale.ENGLISH)) > 5) {
                         model.put("tbStatus", "positive");
                     }
@@ -132,24 +131,39 @@ public class PatientSummaryController {
                         model.put("tbStatus", "negative");
                     }
                 }
-                else if (allergies.get(conceptID) != null){
+                else if (conceptID == 5085) {
+                    systolic = ob.getValueAsString(Locale.ENGLISH);
+                }
+                else if (conceptID == 5086) {
+                    diastolic =  ob.getValueAsString(Locale.ENGLISH);
+                }
+                else if (allergies.get(conceptID) != null) {
                     meds = new StringBuffer(allergies.get(conceptID));
                     if (!model.get("allergies").equals("N/A")) {
                         meds.append(", ").append(model.get("allergies"));
                     }
                     model.put("allergies", meds.toString());
                 }
-                else if (conceptID == 5085) {
-                    systolic = ob.getValueAsString(Locale.ENGLISH);
-                }
-                else if(conceptID == 5086) {
-                    diastolic =  ob.getValueAsString(Locale.ENGLISH);
+                else if (vitals.get(conceptID) != null) {
+                    if (encUpdate < 0) {
+                        model.put("lastVisit" + vitals.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
+                    }
+                    else if (encUpdate > 0) {
+                        model.put("enroll" + vitals.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
+                    }
                 }
                 else {
                     model.put(code.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
                 }
 
-                model.put("lastVisitBP", systolic + " / " + diastolic);
+                if (systolic != null && diastolic != null) {
+                    if (encUpdate < 0) {
+                        model.put("lastVisitBP", systolic + " / " + diastolic);
+                    }
+                    else if (encUpdate > 0) {
+                        model.put("enrollBP", systolic + " / " + diastolic);
+                    }
+                }
             }
         }
 
