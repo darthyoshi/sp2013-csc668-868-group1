@@ -32,48 +32,48 @@ public class PatientSummaryController {
     }
 
     public Map<String,String> getModel(int patientId) {
-        Map<String,String> model = new HashMap<String,String>();
         List<Encounter> allEncounters = Context.getEncounterService().getEncountersByPatientId(patientId);
         Patient p = Context.getPatientService().getPatient(patientId);
 
-        model.put("patientName", p.getPersonName().getFullName());
-        model.put("patientGender", p.getGender());
-        model.put("patientAge", p.getAge().toString());
+        Map<String, String> model = new HashMap<String, String>();
+        model.put("patientName",    p.getPersonName().getFullName());
+        model.put("patientGender",  p.getGender());
+        model.put("patientAge",     p.getAge().toString());
         model.put("patientAddress", p.getPersonAddress().getAddress1());
         model.put("clinicLocation", Context.getLocationService().getDefaultLocation().getCityVillage());
-        model.put("tbStatus", "N/A");
-        model.put("ARTRegimen", "N/A");
-        model.put("allergies", "N/A");
-        model.put("whoStage", "N/A");
-        model.put("enrollWt", "N/A");
-        model.put("enrollTemp", "N/A");
-        model.put("enrollBP", "N/A");
-        model.put("enrollKS", "N/A");
-        model.put("lastVisitWt", "N/A");
-        model.put("lastVisitTemp", "N/A");
-        model.put("lastVisitBP", "N/A");
-        model.put("lastVisitKS", "N/A");
-        model.put("LabCD4", "N/A");
-        model.put("LabHemo", "N/A");
-        model.put("LabViral", "N/A");
-        model.put("alert", "");
+        model.put("tbStatus",       "N/A");
+        model.put("ARTRegimen",     "N/A");
+        model.put("allergies",      "N/A");
+        model.put("whoStage",       "N/A");
+        model.put("enrollWt",       "N/A");
+        model.put("enrollTemp",     "N/A");
+        model.put("enrollBP",       "N/A / N/A");
+        model.put("enrollKS",       "N/A");
+        model.put("lastVisitWt",    "N/A");
+        model.put("lastVisitTemp",  "N/A");
+        model.put("lastVisitBP",    "N/A / N/A");
+        model.put("lastVisitKS",    "N/A");
+        model.put("LabCD4",         "N/A");
+        model.put("LabHemo",        "N/A");
+        model.put("LabViral",       "N/A");
+        model.put("alert",          "");
 
-        Map<Integer, String> allergies = new HashMap<Integer, String>();
-        allergies.put(6011, "PENICILLIN");
-        allergies.put(6012, "SULFA");
-        allergies.put(1083, "OTHER");
+        Map<Integer, String> allergyMap = new HashMap<Integer, String>();
+        allergyMap.put(6011, "PENICILLIN");
+        allergyMap.put(6012, "SULFA");
+        allergyMap.put(1083, "OTHER");
 
-        Map<Integer, String> code = new HashMap<Integer, String>();
-        code.put(6048, "whoStage");
-        code.put(5475,"tbStatus");
-        code.put(5497,"LabCD4");
-        code.put(1017,"LabHemo");
-        code.put(856,"LabViral");
-        
-        Map<Integer, String> vitals = new HashMap<Integer, String>();
-        code.put(5089,"Wt");
-        code.put(5088,"Temp");
-        code.put(5283,"KS");        
+        Map<Integer, String> vitalsMap = new HashMap<Integer, String>();
+        vitalsMap.put(5089, "Wt");
+        vitalsMap.put(5088, "Temp");
+        vitalsMap.put(5283, "KS");
+
+        Map<Integer, String> labResultMap = new HashMap<Integer, String>();
+        labResultMap.put(6048, "whoStage");
+        labResultMap.put(5475, "tbStatus");
+        labResultMap.put(5497, "LabCD4");
+        labResultMap.put(1017, "LabHemo");
+        labResultMap.put(856,  "LabViral");
 
         Date enrollDate = null, lastDate = null;
         Iterator<Encounter> encIter = allEncounters.iterator();
@@ -114,7 +114,6 @@ public class PatientSummaryController {
                 //System.out.println(String.valueOf(conceptID) + ' ' + ob.getValueAsString(Locale.ENGLISH));
 
                 //TODO: need to generate lab result alert
-                //TODO: ensure that only latest lab results are displayed?
                 if (conceptID == 1088){
                     meds = new StringBuffer(ob.getValueAsString(Locale.ENGLISH));
                     if (!model.get("ARTRegimen").equals("N/A")) {
@@ -122,45 +121,49 @@ public class PatientSummaryController {
                     }
                     model.put("ARTRegimen", meds.toString());
                 }
-                else if (conceptID == 5475) {
-                    //assumption: TB skin test result > 5mm is positive
-                    if (Integer.parseInt(ob.getValueAsString(Locale.ENGLISH)) > 5) {
-                        model.put("tbStatus", "positive");
-                    }
-                    else {
-                        model.put("tbStatus", "negative");
-                    }
-                }
                 else if (conceptID == 5085) {
                     systolic = ob.getValueAsString(Locale.ENGLISH);
                 }
                 else if (conceptID == 5086) {
                     diastolic =  ob.getValueAsString(Locale.ENGLISH);
                 }
-                else if (allergies.get(conceptID) != null) {
-                    meds = new StringBuffer(allergies.get(conceptID));
+                else if (allergyMap.get(conceptID) != null) {
+                    meds = new StringBuffer(allergyMap.get(conceptID));
                     if (!model.get("allergies").equals("N/A")) {
                         meds.append(", ").append(model.get("allergies"));
                     }
                     model.put("allergies", meds.toString());
                 }
-                else if (vitals.get(conceptID) != null) {
+                else if (vitalsMap.get(conceptID) != null) {
                     if (encUpdate < 0) {
-                        model.put("lastVisit" + vitals.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
+                        model.put("lastVisit" + vitalsMap.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
                     }
                     else if (encUpdate > 0) {
-                        model.put("enroll" + vitals.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
+                        model.put("enroll" + vitalsMap.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
                     }
                 }
-                else {
-                    model.put(code.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
+                else if (labResultMap.get(conceptID) != null){
+                    if (encUpdate < 0 || model.get(labResultMap.get(conceptID)).equals("N/A")) {
+                        if (conceptID == 5475) {
+                            //assumption: TB skin test result > 5mm is positive
+                            if (Integer.parseInt(ob.getValueAsString(Locale.ENGLISH)) > 5) {
+                                model.put("tbStatus", "positive");
+                            }
+                            else {
+                                model.put("tbStatus", "negative");
+                            }
+                        }
+                        else {
+                            model.put(labResultMap.get(conceptID), ob.getValueAsString(Locale.ENGLISH));
+                        }
+                    }
                 }
 
                 if (systolic != null && diastolic != null) {
                     if (encUpdate < 0) {
                         model.put("lastVisitBP", systolic + " / " + diastolic);
                     }
-                    else if (encUpdate > 0) {
+                    if (encUpdate > 0 || model.get("enrollBP").equals("N/A / N/A")) {
                         model.put("enrollBP", systolic + " / " + diastolic);
                     }
                 }
