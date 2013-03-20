@@ -30,6 +30,7 @@ public class AssignInterpreter implements ASTInterpreter<AssignTree> {
         } else if (leftKid instanceof FieldRefTree) {
             DSSValue result = (DSSValue) leftKid.getKid(1).accept(visitor);
             targetContext = context.getEvaluator().castTo(NamingContext.class, result);
+            id = (IdTree) (leftKid.getKid(2));
         }
         
         if (targetContext != null && id != null) {

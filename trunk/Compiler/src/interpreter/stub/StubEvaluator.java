@@ -28,6 +28,9 @@ public class StubEvaluator implements Evaluator {
                 return type.cast(Boolean.FALSE);
             }
         }
+        if (type.isAssignableFrom(Long.class) && value instanceof StubInteger) {
+            return type.cast(Long.valueOf(((StubInteger) value).value));
+        }
         return null;
     }
 
