@@ -9,5 +9,5 @@ import visitor.ASTVisitor;
  * @author woeltjen
  */
 public interface DSSFunction {
-    public DSSValue call(ASTVisitor v, ExecutionContext context, DSSValue... args);
+    public DSSValue call(DSSValue... args);
 }

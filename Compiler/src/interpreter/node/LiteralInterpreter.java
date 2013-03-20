@@ -12,7 +12,7 @@ import visitor.ASTVisitor;
 public class LiteralInterpreter implements ASTInterpreter<LiteralTree> {
 
     public Object interpret(LiteralTree tree, ExecutionContext context, ASTVisitor visitor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return context.getEvaluator().evaluateLiteral(tree.getSymbol().toString());
     }
     
 }

@@ -648,7 +648,7 @@ public class Parser {
     private void scan() {
         currentToken = lex.nextToken();
         if (currentToken != null) {
-            currentToken.print();   // debug printout
+            //currentToken.print();   // debug printout
         }
         return;
     }

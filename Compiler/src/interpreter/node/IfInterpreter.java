@@ -14,16 +14,17 @@ import visitor.ASTVisitor;
  */
 public class IfInterpreter implements ASTInterpreter<AST> {
     public Object interpret(AST tree, ExecutionContext context, ASTVisitor visitor) {
-        AST branch = evaluate(tree.getKid(0), visitor) ? tree.getKid(1) : tree.getKid(2);
+        AST branch = evaluate(tree.getKid(1), context, visitor) ? 
+                tree.getKid(2) : tree.getKid(3);
         if (branch != null) {
             branch.accept(visitor);
         }
         return null;
     }   
-    private boolean evaluate(AST t, ASTVisitor v) {
+    private boolean evaluate(AST t, ExecutionContext context, ASTVisitor v) {
         Object result = t.accept(v);
         if (result instanceof DSSValue) {
-            return ((DSSValue)result).asBoolean(); 
+            return context.getEvaluator().castTo(Boolean.class, (DSSValue)result);
         }
         return false;
     }
