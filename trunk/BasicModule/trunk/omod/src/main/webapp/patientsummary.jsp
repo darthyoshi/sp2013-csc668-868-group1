@@ -109,7 +109,7 @@ var patientID = $_GET("patientId");
     </tr>
 </table>
 
-${alert}
+<font color="red"><b>${alert}</b></font>
 
 </body>
 </html>
