@@ -1,5 +1,5 @@
 <%--
-    Document   : patientsummarylink
+    Document   : patientsummary
     Created on : Mar 18, 2013, 10:39:06 PM
     Author     : Kay Choi
 --%>
@@ -33,7 +33,7 @@ var patientID = $_GET("patientId");
     </tr>
     <tr>
         <td width=30% ><b>NAME:</b> ${patientName}</td>
-        <td width=70% align="right"><b>Clinic Location:</b> %patientCity%</td>
+        <td width=70% align="right"><b>Clinic Location:</b> ${clinicLocation}</td>
     </tr>
     <tr>
         <td>${patientGender}, ${patientAge} yrs<td>
@@ -42,7 +42,7 @@ var patientID = $_GET("patientId");
         <td colspan=2><center><b>Address:</b> ${patientAddress}</center>
     </tr>
     <tr>
-        <td colspan=2><center><b>Last seen on:</b> ${patientLastSeen}</center>
+        <td colspan=2><center><b>Last seen on:</b> ${lastVisit}</center>
     </tr>
 </table>
 <p>
@@ -52,11 +52,11 @@ var patientID = $_GET("patientId");
     </tr>
     <tr>
         <td width=30% ><b>WHO stage:</b> ${whoStage}</td>
-        <td width=70% ><b>Current art regimen drugs:</b> </td>
+        <td width=70% ><b>Current ART regimen drugs:</b> </td>
     </tr>
     <tr>
         <td width=30% ><b>TB Status:</b> ${tbStatus}</td>
-        <td width=70% rowspan="2"><b>${ARTRegimen}</b> </td>
+        <td width=70% rowspan="2">${ARTRegimen} </td>
     </tr>
     <tr>
         <td width=30% ><b>Allergies:</b> ${allergies}</td>
@@ -66,7 +66,7 @@ var patientID = $_GET("patientId");
 <br><br>
 <table width="100%" >
     <tr bgcolor="4D9999">
-        <td colspan="5" width="100%" style='border:solid black 1.0pt'><font color="white">Patient Vitals</font></td>
+        <td colspan="5" width="100%"><font color="white">Patient Vitals</font></td>
     </tr>
     <tr>
         <td ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
@@ -76,7 +76,7 @@ var patientID = $_GET("patientId");
         <td ><b>Karnofsky Score</b></td>
     </tr>
     <tr>
-        <td >Enrollment: ${enrollment}</td>
+        <td >Enrollment: ${enroll}</td>
         <td >${enrollWt}</td>
         <td >${enrollTemp}</td>
         <td >${enrollBP}</td>
@@ -108,6 +108,8 @@ var patientID = $_GET("patientId");
         <td >${LabViral}</td>
     </tr>
 </table>
+
+${alert}
 
 </body>
 </html>
