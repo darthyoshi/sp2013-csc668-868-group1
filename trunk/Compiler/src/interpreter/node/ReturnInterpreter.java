@@ -12,7 +12,7 @@ import visitor.ASTVisitor;
  */
 public class ReturnInterpreter implements ASTInterpreter<ReturnTree> {    
     public Object interpret(ReturnTree tree, ExecutionContext context, ASTVisitor visitor) {
-        Object result = tree.getKid(0).accept(visitor);
+        Object result = tree.getKid(1).accept(visitor);
         if (result instanceof DSSValue) {
             context.setReturnValue((DSSValue)result);
         }

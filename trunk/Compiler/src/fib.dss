@@ -1,0 +1,13 @@
+program
+// FIBONACCI SEQUENCE
+function fib(x) {
+    if x<2 then {
+        return x
+    }
+    return fib(x-2) + fib(x-1)
+}
+
+// MAIN BLOCK
+{
+    alert(fib(11))
+}

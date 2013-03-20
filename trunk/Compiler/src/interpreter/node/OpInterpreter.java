@@ -1,7 +1,9 @@
 package interpreter.node;
 
+import ast.AST;
 import ast.OpTree;
 import interpreter.ASTInterpreter;
+import interpreter.DSSValue;
 import interpreter.ExecutionContext;
 import visitor.ASTVisitor;
 
@@ -11,11 +13,13 @@ import visitor.ASTVisitor;
  */
 public class OpInterpreter implements ASTInterpreter<OpTree> {
 
-    public OpInterpreter() {
-    }
-
     public Object interpret(OpTree tree, ExecutionContext context, ASTVisitor visitor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        AST leftKid = tree.getKid(1);
+        AST rightKid = tree.getKid(2);
+        return context.getEvaluator().evaluate( 
+                (leftKid != null) ? ((DSSValue) leftKid.accept(visitor)) : null,
+                tree.getSymbol().toString(),
+                (rightKid != null) ? ((DSSValue) rightKid.accept(visitor)) : null);
     }
     
 }

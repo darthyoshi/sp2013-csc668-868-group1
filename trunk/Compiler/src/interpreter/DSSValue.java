@@ -1,5 +1,5 @@
 package interpreter;
 
 public abstract class DSSValue {
-    public abstract boolean asBoolean();
+    //public abstract boolean asBoolean();
 }
