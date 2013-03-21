@@ -24,7 +24,7 @@ public class CallInterpreter implements ASTInterpreter<CallTree> {
         DSSValue args[] = new DSSValue[tree.kidCount() - 1];
         for (int i = 0 ; i < args.length ; i++) {
             AST kid = tree.getKid(i+2);
-            if (func.passAsIdentifier(i)) {
+            if (func.passAsIdentifier(i) && kid instanceof IdTree) {
                 args[i] = context.getEvaluator().evaluateLiteral(((IdTree)kid).getSymbol().toString());
             } else {
                 args[i] = (DSSValue) kid.accept(visitor);
