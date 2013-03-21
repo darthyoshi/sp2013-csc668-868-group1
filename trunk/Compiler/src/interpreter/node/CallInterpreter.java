@@ -1,5 +1,6 @@
 package interpreter.node;
 
+import ast.AST;
 import ast.CallTree;
 import ast.IdTree;
 import interpreter.ASTInterpreter;
@@ -22,7 +23,12 @@ public class CallInterpreter implements ASTInterpreter<CallTree> {
         DSSFunction func = context.getFunction(id.getSymbol().toString());
         DSSValue args[] = new DSSValue[tree.kidCount() - 1];
         for (int i = 0 ; i < args.length ; i++) {
-            args[i] = (DSSValue) tree.getKid(i+2).accept(visitor);
+            AST kid = tree.getKid(i+2);
+            if (func.passAsIdentifier(i)) {
+                args[i] = context.getEvaluator().evaluateLiteral(((IdTree)kid).getSymbol().toString());
+            } else {
+                args[i] = (DSSValue) kid.accept(visitor);
+            }
         }        
         return func.call(args);        
     }
