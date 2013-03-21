@@ -55,7 +55,7 @@ public class StubEvaluator implements Evaluator {
         try {
             return new StubInteger(Long.parseLong(literal));
         } catch (Exception e) {
-            return new StubInteger(0);
+            return new StubString(literal);//new StubInteger(0);
         }
     }
 
@@ -78,6 +78,18 @@ public class StubEvaluator implements Evaluator {
         
         public String toString() {
             return "" + value;
+        }
+    }
+    
+    public static class StubString extends StubValue {
+        private String value;
+        
+        public StubString(String value) {
+            this.value = value;
+        }
+        
+        public String toString() {
+            return value;
         }
     }
     

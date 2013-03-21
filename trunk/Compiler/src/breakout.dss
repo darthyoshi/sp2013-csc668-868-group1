@@ -17,6 +17,9 @@ function collide(ball, block) {
 
 // MAIN BLOCK
 {
+    echo(thisIsAnIdentifier)
+    echo(1+1)
+
     // Create structures for game objects
     block := Object(x,y,w,h)
     paddle := new block

@@ -27,6 +27,8 @@ public class StubVisualInterpreter {
         context.setFunction("paint", paint);
         context.setFunction("swap", swap);
         context.setFunction("poll", joy);
+        
+        context.setFunction("echo", echo);
     }
     
     public void interpret (AST ast) {
@@ -109,6 +111,25 @@ public class StubVisualInterpreter {
             }
             return new StubInteger(dir);
         }
+        
+    };
+    
+    private DSSFunction echo = new DSSFunction() {
+
+        @Override
+        public DSSValue call(DSSValue... args) {
+            for (DSSValue arg : args) {
+                System.out.println(arg);
+            }
+            return null;
+        }
+
+        @Override
+        public boolean passAsIdentifier(int argumentIndex) {
+            return true;
+        }
+        
+        
         
     };
 }

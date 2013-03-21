@@ -20,6 +20,14 @@ public interface Evaluator {
      */
     public <T> T castTo(Class<T> type, DSSValue value);
     
+    /**
+     * Evaluate this literal and convert it to an appropriate DSSValue. 
+     * Note that this is also where raw identifiers are handled (such as 
+     * in a read(patientId, cd4counts)) so this method needs to recognize 
+     * those as well.
+     * @param literal
+     * @return 
+     */
     public DSSValue evaluateLiteral(String literal);
     
     public DSSValue newAllocation(String... fields);
