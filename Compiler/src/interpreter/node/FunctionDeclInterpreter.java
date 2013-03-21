@@ -27,7 +27,7 @@ public class FunctionDeclInterpreter implements ASTInterpreter<FunctionDeclTree>
         return null;
     }
     
-    private static class DeclaredFunction implements DSSFunction {
+    private static class DeclaredFunction extends DSSFunction {
         private FormalsTree formals;
         private BlockTree   block;
         private ExecutionContext context;
