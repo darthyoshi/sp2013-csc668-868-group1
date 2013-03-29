@@ -29,6 +29,15 @@ public interface Evaluator {
      * @return 
      */
     public DSSValue evaluateLiteral(String literal);
-    
+
+    /**
+     * Allocate a new object (probably DSSObject) containing the 
+     * specified fields.
+     * @param fields
+     * @return 
+     */
     public DSSValue newAllocation(String... fields);
+    
+    
+    public DSSValue toDSSValue(Object javaObject);
 }

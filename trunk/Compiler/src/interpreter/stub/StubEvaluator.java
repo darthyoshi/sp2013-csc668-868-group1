@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package interpreter.stub;
 
 import interpreter.DSSValue;
@@ -32,7 +28,7 @@ public class StubEvaluator implements Evaluator {
             return type.cast(Long.valueOf(((StubInteger) value).value));
         }
         return null;
-    }
+    }    
 
     public DSSValue evaluate(DSSValue leftOperand, String operator, DSSValue rightOperand) {
         if (leftOperand instanceof StubInteger && rightOperand instanceof StubInteger) {
@@ -66,6 +62,12 @@ public class StubEvaluator implements Evaluator {
         }
         return o;
     }
+
+    public DSSValue toDSSValue(Object javaObject) {
+        return null;
+    }
+    
+    
     
     private abstract static class StubValue extends DSSValue {}
     
