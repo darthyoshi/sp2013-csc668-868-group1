@@ -23,54 +23,8 @@ public class StubContext extends ExecutionContext {
     private DSSValue returnValue = null;
     private Stack<Map<String, DSSValue>> scopes = 
             new Stack<Map<String, DSSValue>>();
-    
-    
-    @Override
-    public void beginScope(boolean hideVariables) {
-        scopes.push(variables);
-        variables = new HashMap<String, DSSValue>();
-    }
-    
-    @Override
-    public void endScope() {
-        variables = scopes.pop();
-    }
 
-    @Override
-    public Evaluator getEvaluator() {
-        return evaluator;
+    public StubContext() {
+        super(new StubEvaluator());
     }
-
-    @Override
-    public DSSFunction getFunction(String name) {
-        return functions.get(name);
-    }
-
-    @Override
-    public DSSValue getReturnValue() {
-        return returnValue;
-    }
-
-    @Override
-    public void setFunction(String name, DSSFunction f) {
-        functions.put(name, f);
-    }
-
-    @Override
-    public void setReturnValue(DSSValue v) {
-        returnValue = v;
-    }
-
-    public DSSValue get(String name) {
-        return variables.get(name);
-    }
-
-    public String[] names() {
-        return variables.keySet().toArray(new String[variables.keySet().size()]);
-    }
-
-    public void set(String name, DSSValue value) {
-        variables.put(name, value);
-    }
-    
 }

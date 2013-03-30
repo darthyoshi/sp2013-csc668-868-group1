@@ -1,5 +1,7 @@
 package interpreter;
 
+import lexer.Symbol;
+
 /**
  * Responsible for evaluating simple expressions; the fine-grained semantics 
  * of the language.
@@ -28,7 +30,7 @@ public interface Evaluator {
      * @param literal
      * @return 
      */
-    public DSSValue evaluateLiteral(String literal);
+    public DSSValue evaluateLiteral(Symbol literal);
 
     /**
      * Allocate a new object (probably DSSObject) containing the 

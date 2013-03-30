@@ -1,5 +1,106 @@
 package interpreter;
 
-public abstract class DSSValue {
-    //public abstract boolean asBoolean();
+import interpreter.value.DSSBoolean;
+import interpreter.value.DSSFloat;
+
+public abstract class DSSValue<T>  {
+    private T javaObject;
+    private Long timeStamp;
+    
+    public DSSValue(T javaObject) {
+        this.javaObject = javaObject;
+        this.timeStamp = null;
+    }
+    
+    public DSSValue(T javaObject, long timeStamp) {
+        this(javaObject);
+        this.timeStamp = timeStamp;
+    }
+    
+    public T getJavaObject() {
+        return javaObject;
+    }
+    
+    public DSSValue<?> getTime() {
+        return this; // TODO: check if null
+    }
+    
+    public DSSValue<?> promoteOther(DSSValue<?> value) {
+        return value.complexity() >= complexity() ? value : value.promoteTo(complexity());
+    }
+    
+    public DSSValue<?> promoteTo(int complexity) {
+        DSSValue<?> v = this;
+        while ( v.complexity() < complexity) {
+            DSSValue<?> next = v.promote();
+            if (next == null || next == v) {
+                break;
+            }
+            v = next;
+        }
+        return v;
+    }
+    
+    public DSSValue<?> not() {
+        return DSS_NULL;
+    }
+    public DSSValue<?> add(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> sub(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> mul(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> div(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> exp(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> and(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> or(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> lessThan(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> lessThanOrEqual(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    public DSSValue<?> concat(DSSValue<?> v) {
+        return DSS_NULL;
+    }
+    
+    public DSSValue<?> notEqual(DSSValue<?> v) {
+        return equal(v).not();
+    }
+    public DSSValue<?> equal(DSSValue<?> v) {
+        return getJavaObject().equals(v.getJavaObject()) ? 
+                DSSBoolean.TRUE : DSSBoolean.FALSE;  
+    }
+    
+    
+    public abstract DSSValue<?> promote();    
+    public abstract int complexity();
+    
+    @Override
+    public String toString() {
+        return javaObject != null ? javaObject.toString() : "null";
+    }
+    
+    public static final DSSValue<Object> DSS_NULL = new DSSValue<Object>(null) {
+        @Override
+        public int complexity() {
+            return 0;
+        }
+
+        @Override
+        public DSSValue<?> promote() {
+            return DSS_NULL;
+        }
+    };
 }

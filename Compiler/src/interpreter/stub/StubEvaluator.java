@@ -5,6 +5,7 @@ import interpreter.Evaluator;
 import interpreter.NamingContext;
 import java.util.HashMap;
 import java.util.Map;
+import lexer.Symbol;
 
 /**
  *
@@ -47,7 +48,8 @@ public class StubEvaluator implements Evaluator {
         return new StubInteger(0);
     }
 
-    public DSSValue evaluateLiteral(String literal) {
+    public DSSValue evaluateLiteral(Symbol s) {
+        String literal = s.toString();
         try {
             return new StubInteger(Long.parseLong(literal));
         } catch (Exception e) {
@@ -66,10 +68,30 @@ public class StubEvaluator implements Evaluator {
     public DSSValue toDSSValue(Object javaObject) {
         return null;
     }
+
+    public StubEvaluator() {
+    }
     
     
     
-    private abstract static class StubValue extends DSSValue {}
+    private abstract static class StubValue extends DSSValue {
+
+        public StubValue() {
+            super(null);
+        }
+    
+        
+
+        @Override
+        public int complexity() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public DSSValue promote() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
     
     public static class StubInteger extends StubValue {
         private long value;
@@ -81,6 +103,7 @@ public class StubEvaluator implements Evaluator {
         public String toString() {
             return "" + value;
         }
+        
     }
     
     public static class StubString extends StubValue {

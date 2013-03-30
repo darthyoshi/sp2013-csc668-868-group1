@@ -1,0 +1,40 @@
+program
+// FIBONACCI SEQUENCE
+function fib(x) {
+    if x<2 then {
+        return x
+    }
+    return fib(x-2) + fib(x-1)
+}
+
+function newInstance(obj) {
+    return new obj
+}
+
+// MAIN BLOCK
+{
+    alert(44.5)
+    alert(true)
+    alert(true & false)
+    alert(true | false)
+
+    alert("hello")
+
+    alert(0)
+    alert(55 + 22)
+    alert(55 + 22.5)    
+
+    alert("Temperature is " + 98.6)
+    
+    o := Object(x,y)
+    o.x := 10
+    o.y := "Words"
+
+    alert(o)
+    alert(newInstance(o))
+
+    alert (44 < 44.1)
+
+    alert (2  ** 2)
+    alert (16 ** 0.5)
+}
