@@ -48,7 +48,7 @@ public class FunctionDeclInterpreter implements ASTInterpreter<FunctionDeclTree>
                 throw new IllegalArgumentException("Mismatched arguments in function call");
             }            
             
-            context.beginScope(true);
+            context.beginScope();
             for (int i = 0; i < formalIds.size(); i++) {
                 context.set(((IdTree)formalIds.get(i)).getSymbol().toString(), args[i]);
             }
