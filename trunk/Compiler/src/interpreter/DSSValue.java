@@ -1,7 +1,7 @@
 package interpreter;
 
 import interpreter.value.DSSBoolean;
-import interpreter.value.DSSFloat;
+import interpreter.value.DSSNull;
 
 public abstract class DSSValue<T>  {
     private T javaObject;
@@ -80,11 +80,5 @@ public abstract class DSSValue<T>  {
         return javaObject != null ? javaObject.toString() : "null";
     }
     
-    public static final DSSValue<Object> DSS_NULL = new DSSValue<Object>(null) {
-        @Override
-        public int complexity() {
-            return 0;
-        }
-
-    };
+    public static final DSSNull DSS_NULL = DSSNull.VALUE;
 }
