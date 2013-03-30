@@ -26,9 +26,5 @@ public class DSSTime extends DSSValue<Date> {
         return 4;
     }
 
-    @Override
-    public DSSValue<?> promote() {
-        return new DSSString(getJavaObject().toString());
-    }
     
 }

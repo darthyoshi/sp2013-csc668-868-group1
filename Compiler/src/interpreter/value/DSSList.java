@@ -29,11 +29,6 @@ public class DSSList extends DSSValue<List<DSSValue<?>>> {
     }
 
     @Override
-    public DSSValue<?> promote() {
-        return new DSSString(this.toString());
-    }
-
-    @Override
     public String toString() {
         StringBuilder b = new StringBuilder();
         

@@ -22,11 +22,6 @@ public class DSSBoolean extends DSSValue<Boolean> {
     }
 
     @Override
-    public DSSValue<?> promote() {
-        return this;
-    }
-
-    @Override
     public DSSValue<?> add(DSSValue<?> v) {
         return and(v);
     }

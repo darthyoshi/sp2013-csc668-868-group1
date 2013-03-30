@@ -26,20 +26,10 @@ public abstract class DSSValue<T>  {
     }
     
     public DSSValue<?> promoteOther(DSSValue<?> value) {
-        return value.complexity() >= complexity() ? value : value.promoteTo(complexity());
+        return (getClass().isAssignableFrom(value.getClass())) ?
+                value : DSSValue.DSS_NULL;
     }
     
-    public DSSValue<?> promoteTo(int complexity) {
-        DSSValue<?> v = this;
-        while ( v.complexity() < complexity) {
-            DSSValue<?> next = v.promote();
-            if (next == null || next == v) {
-                break;
-            }
-            v = next;
-        }
-        return v;
-    }
     
     public DSSValue<?> not() {
         return DSS_NULL;
@@ -82,9 +72,7 @@ public abstract class DSSValue<T>  {
         return getJavaObject().equals(v.getJavaObject()) ? 
                 DSSBoolean.TRUE : DSSBoolean.FALSE;  
     }
-    
-    
-    public abstract DSSValue<?> promote();    
+
     public abstract int complexity();
     
     @Override
@@ -98,9 +86,5 @@ public abstract class DSSValue<T>  {
             return 0;
         }
 
-        @Override
-        public DSSValue<?> promote() {
-            return DSS_NULL;
-        }
     };
 }

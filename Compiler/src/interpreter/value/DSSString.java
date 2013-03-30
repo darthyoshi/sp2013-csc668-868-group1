@@ -22,11 +22,6 @@ public class DSSString extends DSSValue<String> {
     }
 
     @Override
-    public DSSValue<?> promote() {
-        return this;
-    }
-
-    @Override
     public DSSValue<?> promoteOther(DSSValue<?> value) {
         return new DSSString(value.toString());
     }

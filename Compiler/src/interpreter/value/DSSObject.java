@@ -28,11 +28,6 @@ public class DSSObject extends DSSValue<Map<String, DSSValue<?>>> implements Nam
         return 5;
     }
 
-    @Override
-    public DSSValue<?> promote() {        
-        return new DSSString(toString());
-    }
-
     public DSSValue get(String name) {
         return getJavaObject().get(name);
     }
