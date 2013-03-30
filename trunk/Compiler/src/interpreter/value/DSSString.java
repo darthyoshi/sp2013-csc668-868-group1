@@ -22,7 +22,7 @@ public class DSSString extends DSSValue<String> {
     }
 
     @Override
-    public DSSValue<?> promoteOther(DSSValue<?> value) {
+    public DSSValue<?> cast(DSSValue<?> value) {
         return new DSSString(value.toString());
     }
     

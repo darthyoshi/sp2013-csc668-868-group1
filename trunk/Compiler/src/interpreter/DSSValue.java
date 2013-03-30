@@ -25,7 +25,7 @@ public abstract class DSSValue<T>  {
         return this; // TODO: check if null
     }
     
-    public DSSValue<?> promoteOther(DSSValue<?> value) {
+    public DSSValue<?> cast(DSSValue<?> value) {
         return (getClass().isAssignableFrom(value.getClass())) ?
                 value : DSSValue.DSS_NULL;
     }

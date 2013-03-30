@@ -77,11 +77,11 @@ public class DSSFloat extends DSSValue<Double> {
     }
 
     @Override
-    public DSSValue<?> promoteOther(DSSValue<?> value) {
+    public DSSValue<?> cast(DSSValue<?> value) {
         if (value instanceof DSSInteger) {
             return new DSSFloat(((DSSInteger)value).getJavaObject().doubleValue());
         } else {
-            return super.promoteOther(value);
+            return super.cast(value);
         }
     }
     

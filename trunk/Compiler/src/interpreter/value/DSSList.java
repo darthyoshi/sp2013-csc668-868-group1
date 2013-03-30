@@ -46,7 +46,7 @@ public class DSSList extends DSSValue<List<DSSValue<?>>> {
     }
 
     @Override
-    public DSSValue<?> promoteOther(DSSValue<?> value) {
+    public DSSValue<?> cast(DSSValue<?> value) {
         if (value instanceof DSSList) {
             return value;
         } else {
