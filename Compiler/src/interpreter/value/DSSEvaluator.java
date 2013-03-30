@@ -53,9 +53,9 @@ public class DSSEvaluator implements Evaluator {
         }
         
         if (leftOperand.complexity() < rightOperand.complexity()) {
-            leftOperand = rightOperand.promoteOther(leftOperand);
+            leftOperand = rightOperand.cast(leftOperand);
         } else if (rightOperand.complexity() < leftOperand.complexity()) {
-            rightOperand = leftOperand.promoteOther(rightOperand);
+            rightOperand = leftOperand.cast(rightOperand);
         }
         
         return op.apply(leftOperand, rightOperand);
