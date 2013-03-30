@@ -27,11 +27,6 @@ public class DSSFloat extends DSSValue<Double> {
     }
 
     @Override
-    public DSSValue<?> promote() {
-        return new DSSTime(new Date(getJavaObject().longValue()));
-    }
-
-    @Override
     public DSSValue<?> add(DSSValue<?> v) {
         return v instanceof DSSFloat ?
                 new DSSFloat(getJavaObject() + ((DSSFloat)v).getJavaObject()) :
@@ -79,6 +74,15 @@ public class DSSFloat extends DSSValue<Double> {
         return v instanceof DSSFloat ?
                 new DSSFloat(getJavaObject() - ((DSSFloat)v).getJavaObject()) :
                 DSS_NULL;    
+    }
+
+    @Override
+    public DSSValue<?> promoteOther(DSSValue<?> value) {
+        if (value instanceof DSSInteger) {
+            return new DSSFloat(((DSSInteger)value).getJavaObject().doubleValue());
+        } else {
+            return super.promoteOther(value);
+        }
     }
     
     

@@ -22,11 +22,6 @@ public class DSSInteger extends DSSValue<Long> {
     }
 
     @Override
-    public DSSValue<?> promote() {
-        return new DSSFloat(getJavaObject().doubleValue());
-    }
-
-        @Override
     public DSSValue<?> add(DSSValue<?> v) {
         return v instanceof DSSInteger ?
                 new DSSInteger(getJavaObject() + ((DSSInteger)v).getJavaObject()) :

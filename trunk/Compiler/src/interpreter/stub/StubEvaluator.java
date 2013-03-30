@@ -86,11 +86,6 @@ public class StubEvaluator implements Evaluator {
         public int complexity() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
-
-        @Override
-        public DSSValue promote() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
     }
     
     public static class StubInteger extends StubValue {
