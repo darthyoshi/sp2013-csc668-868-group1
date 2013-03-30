@@ -1,6 +1,7 @@
 package interpreter;
 
 import ast.AST;
+import interpreter.instrinsics.DSSAlert;
 import interpreter.value.DSSEvaluator;
 import parser.Parser;
 
@@ -14,15 +15,7 @@ public class Interpreter {
     private ExecutionContext context = new ExecutionContext(new DSSEvaluator());    
     
     public Interpreter() {
-        context.setFunction("alert", new DSSFunction() {
-            @Override
-            public DSSValue call(DSSValue... args) {
-                for (DSSValue arg : args) {
-                    System.out.println(arg.toString());
-                }
-                return DSSValue.DSS_NULL;
-            }            
-        });
+        context.setFunction("alert", new DSSAlert());
     }
     
     public void interpret(AST ast) {
