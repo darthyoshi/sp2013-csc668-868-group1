@@ -17,4 +17,9 @@ public class DSSNull extends DSSValue<Object> {
     public int complexity() {
         return 0;
     }
+    
+    @Override
+    public String toString() {
+        return "null";
+    }
 }
