@@ -25,6 +25,10 @@
         <point>org.openmrs.admin.list</point>
         <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.AdminList</class>
     </extension>
+        <extension>
+        <point>org.openmrs.admin.list</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.AdminDSS</class>
+    </extension>
     <extension>
         <point>org.openmrs.patientDashboardTab</point>
         <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.ExamplePatientDashboardTab</class>
