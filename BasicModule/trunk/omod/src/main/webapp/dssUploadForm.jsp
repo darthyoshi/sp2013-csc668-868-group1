@@ -8,10 +8,10 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 <%@ include file="/WEB-INF/template/header.jsp"%>
 
-<form action="DSSUpload" method="post" enctype="multipart/form-data">
+<form action="dssUpload.form" method="post" enctype="multipart/form-data">
     Upload a File: <br/>
     <input type="file" name="fileName"><br/>
-    <input type="submit" name="button" value="DSSUpload">
+    <input type="submit" name="button" value="Upload">
 </form>
 
 <%@ include file="/WEB-INF/template/footer.jsp"%>
