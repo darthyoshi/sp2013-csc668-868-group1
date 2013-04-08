@@ -9,7 +9,7 @@ import org.openmrs.module.basicmodule.dsscompiler.visitor.*;
  *  The Compiler class contains the main program for compiling
  *  a source program to bytecodes
 */
-public class Compiler {
+public class DSSCompiler {
 
 /**
  * The Compiler class reads and compiles a source program
@@ -17,11 +17,11 @@ public class Compiler {
 	
 	String sourceFile;
 	
-    public Compiler(String sourceFile) {
+    public DSSCompiler(String sourceFile) {
     	this.sourceFile = sourceFile;
     }
     
-    void compileProgram() {
+    public void compileProgram() {
         try {
             Parser parser = new Parser(sourceFile);
             AST t = parser.execute();
@@ -38,6 +38,6 @@ public class Compiler {
             System.out.println("***Incorrect usage, try: java compiler.Compiler <file>");
             System.exit(1);
         }
-        (new Compiler(args[0])).compileProgram();
+        (new DSSCompiler(args[0])).compileProgram();
     }
 }

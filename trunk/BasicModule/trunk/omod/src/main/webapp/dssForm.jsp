@@ -7,11 +7,12 @@
 <%@ include file="/WEB-INF/template/header.jsp"%>
 
 
-<form method="post" action="saveDSSFile.form">
-        File Name: <input type="text" name="filename"/><br/>
+<form method="post" action="dssLink.form" enctype="multipart/form-data">
+        File Name: (.dss extension)
+        <input type="text" name="filename"/><br/>
         DSS Code: <br/>
-        <textarea type ="text" id="dss_code" style="white-space:pre-wrap; height:500px;width:600px"></textarea><br/>
-        <input type="submit" value="Save File"/>
+        <textarea type ="text" name="dss_code" style="white-space:pre-wrap; height:500px;width:600px"></textarea><br/>
+        <input type="submit" value="Save & Compile File"/>
 </form>
 
 <%@ include file="/WEB-INF/template/footer.jsp"%>
