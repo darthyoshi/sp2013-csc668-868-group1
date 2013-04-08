@@ -7,14 +7,10 @@ package org.openmrs.module.basicmodule.web.controller;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSCompiler;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,5 +32,28 @@ public class DSSController
     public String showForm(){
         System.out.println("GET method DSSController***************");
 	return SUCCESS_FORM_VIEW;
+    }
+    
+    @RequestMapping(method = RequestMethod.POST)   
+    public String handleRequest(@RequestParam("filename") String fileName, 
+                                @RequestParam("dss_code") String code) 
+    {
+        System.out.println("handleRequest method DSSController*************");
+        try
+        {
+            File file = new File(System.getProperty("user.home")
+                        + System.getProperty("file.separator")
+                        + fileName);
+            file.setWritable(true);
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter writer = new BufferedWriter(fw);
+            writer.write(code);
+            writer.close();
+            
+            (new DSSCompiler(file.getPath())).compileProgram(); 
+        }
+        catch(Exception e) { System.out.println(e.getMessage());}
+        
+        return SUCCESS_FORM_VIEW;
     }
 }
