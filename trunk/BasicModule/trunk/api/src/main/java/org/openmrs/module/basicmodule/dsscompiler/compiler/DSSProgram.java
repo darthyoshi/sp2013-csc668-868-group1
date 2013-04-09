@@ -6,22 +6,22 @@ import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 import org.openmrs.module.basicmodule.dsscompiler.visitor.*;
 
 /**
- *  The Compiler class contains the main program for compiling
- *  a source program to bytecodes
+ *  The DSSProgram class contains the main program for compiling
+ *  and executing a DSS1 program
 */
-public class DSSCompiler {
+public class DSSProgram {
 
 /**
- * The Compiler class reads and compiles a source program
+ * The DSSProgram class reads and compiles a source program
 */
 	
-	String sourceFile;
+    String sourceFile;
 	
-    public DSSCompiler(String sourceFile) {
+    public DSSProgram(String sourceFile) {
     	this.sourceFile = sourceFile;
     }
     
-    public void compileProgram() {
+    public void compileAndExecute() {
         try {
             Parser parser = new Parser(sourceFile);
             AST t = parser.execute();
@@ -38,6 +38,6 @@ public class DSSCompiler {
             System.out.println("***Incorrect usage, try: java compiler.Compiler <file>");
             System.exit(1);
         }
-        (new DSSCompiler(args[0])).compileProgram();
+        (new DSSProgram(args[0])).compileAndExecute();
     }
 }
