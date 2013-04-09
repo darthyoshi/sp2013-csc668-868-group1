@@ -1,8 +1,9 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 
+import java.util.Map;
 import java.util.Map.Entry;
 import org.openmrs.module.basicmodule.dsscompiler.ast.AST;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.DSSAlert;
+import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSAlert;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 
 /**
@@ -14,8 +15,11 @@ public class Interpreter {
     
     private ExecutionContext context = new ExecutionContext(new DSSEvaluator());    
     
-    public Interpreter() {
+    public Interpreter(DSSLibrary... libraries) {
         context.setFunction("alert", new DSSAlert());
+        for (DSSLibrary library : libraries) {
+            install(library);
+        }
     }
     
     /**
@@ -33,7 +37,19 @@ public class Interpreter {
      * @param library 
      */
     public void install(DSSLibrary library) {
-        for (Entry<String, DSSFunction> entry : library.getFunctions(context).entrySet()) {
+        install(library.getFunctions(context));
+    }
+    
+    /**
+     * Install the provided library of functions into this interpreter's 
+     * execution context. This allows users of the interpreter to pre-define 
+     * or override certain functions, as appropriate to usage.
+     * Functions are delivered in a map, where keys give the name of the 
+     * function, and the value gives the DSSFunction object itself.
+     * @param library map of names to functions
+     */
+    public void install(Map<String, DSSFunction> library) {
+        for (Entry<String, DSSFunction> entry : library.entrySet()) {
             install(entry.getKey(), entry.getValue());
         }
     }

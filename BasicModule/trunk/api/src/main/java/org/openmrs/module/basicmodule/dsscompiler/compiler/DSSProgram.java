@@ -1,16 +1,22 @@
 package org.openmrs.module.basicmodule.dsscompiler.compiler;
 
 import org.openmrs.module.basicmodule.dsscompiler.ast.*;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
+import org.openmrs.module.basicmodule.dsscompiler.intrinsics.IsLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
-import org.openmrs.module.basicmodule.dsscompiler.visitor.*;
 
 /**
  *  The DSSProgram class contains the main program for compiling
  *  and executing a DSS1 program
 */
 public class DSSProgram {
-
+    private static final DSSLibrary[] INTRINSICS = {
+            new IsLibrary()
+            // Other libraries go here!
+    };
+    
+    
 /**
  * The DSSProgram class reads and compiles a source program
 */
@@ -27,17 +33,17 @@ public class DSSProgram {
             AST t = parser.execute();
             //PrintVisitor pv = new PrintVisitor();
             //t.accept(pv);
-            new Interpreter().interpret(t);
+            new Interpreter(INTRINSICS).interpret(t);
         }catch (Exception e) {
             System.out.println("********exception*******"+e.toString());
          };
     }
     
     public static void main(String args[]) {
-        if (args.length == 0) {
-            System.out.println("***Incorrect usage, try: java compiler.Compiler <file>");
-            System.exit(1);
+        String file = "/home/woeltjen/School/csc868/is.dss";
+        if (args.length > 0) {
+            file = args[0];
         }
-        (new DSSProgram(args[0])).compileAndExecute();
+        (new DSSProgram(file)).compileAndExecute();
     }
 }
