@@ -1,5 +1,6 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import org.openmrs.module.basicmodule.dsscompiler.lexer.Symbol;
 
 /**

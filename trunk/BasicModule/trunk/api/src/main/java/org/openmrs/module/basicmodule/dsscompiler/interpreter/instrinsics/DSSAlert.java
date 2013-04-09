@@ -1,7 +1,7 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics;
 
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 
 /**
  *
@@ -13,6 +13,6 @@ public class DSSAlert extends DSSFunction {
         for (DSSValue v : args) {
             System.out.println(v.toString());
         }
-        return DSSValue.DSS_NULL;
+        return null; //DSSValue.DSS_NULL;
     }    
 }

@@ -3,7 +3,7 @@ package org.openmrs.module.basicmodule.dsscompiler.interpreter.node;
 import org.openmrs.module.basicmodule.dsscompiler.ast.FieldRefTree;
 import org.openmrs.module.basicmodule.dsscompiler.ast.IdTree;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.ASTInterpreter;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.ExecutionContext;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.NamingContext;
 import org.openmrs.module.basicmodule.dsscompiler.visitor.ASTVisitor;

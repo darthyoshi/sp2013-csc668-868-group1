@@ -1,6 +1,6 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.stub.StubEvaluator;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;

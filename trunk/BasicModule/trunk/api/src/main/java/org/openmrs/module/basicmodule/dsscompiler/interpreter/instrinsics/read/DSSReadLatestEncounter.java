@@ -1,7 +1,7 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.read;
 
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 
 /**
  *  @author Kay Choi
