@@ -5,7 +5,7 @@ import org.openmrs.module.basicmodule.dsscompiler.ast.CallTree;
 import org.openmrs.module.basicmodule.dsscompiler.ast.IdTree;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.ASTInterpreter;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.ExecutionContext;
 import org.openmrs.module.basicmodule.dsscompiler.visitor.ASTVisitor;
 

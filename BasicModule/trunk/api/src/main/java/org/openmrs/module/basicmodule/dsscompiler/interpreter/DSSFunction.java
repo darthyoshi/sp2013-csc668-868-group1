@@ -1,5 +1,7 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
+
 /**
  * Represents a callable function in DSS. This may be either an intrinsic, or 
  * one defined in the source code.

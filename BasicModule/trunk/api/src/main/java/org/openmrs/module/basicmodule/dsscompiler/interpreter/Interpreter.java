@@ -3,7 +3,6 @@ package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 import java.util.Map.Entry;
 import org.openmrs.module.basicmodule.dsscompiler.ast.AST;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.DSSAlert;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.value.DSSEvaluator;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 
 /**
@@ -11,7 +10,7 @@ import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
  * @author woeltjen
  */
 public class Interpreter {
-    private static final String DEFAULT_DSS_FILE = "fib.dss";
+    private static final String DEFAULT_DSS_FILE = "/home/woeltjen/School/csc868/sp2013-csc668-868-group1/Compiler/src/fib.dss";
     
     private ExecutionContext context = new ExecutionContext(new DSSEvaluator());    
     
