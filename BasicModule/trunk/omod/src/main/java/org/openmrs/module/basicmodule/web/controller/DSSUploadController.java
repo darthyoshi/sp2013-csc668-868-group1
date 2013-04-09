@@ -19,7 +19,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSCompiler;
+import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSProgram;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,7 +59,7 @@ public class DSSUploadController
                         + fileItem.getName());
                 uploadFile.setWritable(true);
                 fileItem.write(uploadFile);
-                (new DSSCompiler(uploadFile.getPath())).compileProgram();  
+                (new DSSProgram(uploadFile.getPath())).compileAndExecute();  
             }
             catch(Exception e){System.out.println("!!!!! EXCEPTION THROWN !!!!" + e.getMessage());}
             
