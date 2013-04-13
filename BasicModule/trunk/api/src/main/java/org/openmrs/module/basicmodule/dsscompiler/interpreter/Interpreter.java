@@ -1,5 +1,6 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.openmrs.module.basicmodule.dsscompiler.ast.AST;
@@ -15,11 +16,19 @@ public class Interpreter {
     private static final String DEFAULT_DSS_FILE = "/home/woeltjen/School/csc868/sp2013-csc668-868-group1/Compiler/src/fib.dss";
     
     private DSSExecutionContext context = new DSSExecutionContext(new DSSEvaluator());    
-    
+
     public Interpreter(DSSLibrary... libraries) {
+        this(new HashMap<String, DSSValue>(), libraries);
+    }
+
+    
+    public Interpreter(Map<String, DSSValue> constants, DSSLibrary... libraries) {
         context.setFunction("alert", new DSSAlert());
         for (DSSLibrary library : libraries) {
             install(library);
+        }
+        for (Entry<String, DSSValue> constant : constants.entrySet()) {
+            defineConstant(constant.getKey(), constant.getValue());
         }
     }
     
