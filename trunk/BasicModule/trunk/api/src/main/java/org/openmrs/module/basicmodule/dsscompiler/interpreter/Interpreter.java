@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 import org.openmrs.module.basicmodule.dsscompiler.ast.AST;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSAlert;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 
 /**
  * An interpreter is responsible for running parsed DSS1 programs.
@@ -13,7 +14,7 @@ import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 public class Interpreter {
     private static final String DEFAULT_DSS_FILE = "/home/woeltjen/School/csc868/sp2013-csc668-868-group1/Compiler/src/fib.dss";
     
-    private ExecutionContext context = new ExecutionContext(new DSSEvaluator());    
+    private DSSExecutionContext context = new DSSExecutionContext(new DSSEvaluator());    
     
     public Interpreter(DSSLibrary... libraries) {
         context.setFunction("alert", new DSSAlert());
@@ -61,7 +62,17 @@ public class Interpreter {
      * @param func 
      */
     public void install(String name, DSSFunction func) {
-        context.setFunction(name, func);
+        context.setIntrinsic(name, func);
+    }
+    
+    /**
+     * Associate a constant value with the specified name. This is used to 
+     * define constants such as patient id
+     * @param name
+     * @param value 
+     */
+    public void defineConstant(String name, DSSValue value) {
+        context.setConstant(name, value);
     }
     
     public static void main(String[] args) {
