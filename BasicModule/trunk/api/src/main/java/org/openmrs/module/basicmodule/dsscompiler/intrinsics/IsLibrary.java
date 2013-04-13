@@ -46,7 +46,6 @@ public class IsLibrary implements DSSLibrary {
             boolean is = args.length > 0 && 
                     isClass.isAssignableFrom(args[0].getClass());
             return DSSValueFactory.getDSSValue(is);
-        }
-        
+        }        
     }
 }
