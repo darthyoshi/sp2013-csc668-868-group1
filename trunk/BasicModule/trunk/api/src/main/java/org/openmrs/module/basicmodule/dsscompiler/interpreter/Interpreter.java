@@ -1,12 +1,11 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.openmrs.module.basicmodule.dsscompiler.ast.AST;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSAlert;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
-import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 
 /**
  * An interpreter is responsible for running parsed DSS1 programs.
@@ -17,17 +16,26 @@ public class Interpreter {
     
     private DSSExecutionContext context = new DSSExecutionContext(new DSSEvaluator());    
 
-    public Interpreter(DSSLibrary... libraries) {
-        this(new HashMap<String, DSSValue>(), libraries);
+    public Interpreter(DSSLibrary... libraries) {        
+        this(Collections.<String,Object>emptyMap(), libraries);
     }
 
-    
-    public Interpreter(Map<String, DSSValue> constants, DSSLibrary... libraries) {
+    /**
+     * Create a new Interpreter with the supplied elements pre-defined. 
+     * Values in the constants maps will be converted from their original 
+     * Java types to DSSValues if necessary, and supplied to the running DSS 
+     * program as pre-defined variables
+     * Libraries will be installed as intrinsics.
+     * 
+     * @param constants a map of variable names to constant values
+     * @param libraries a list of libraries of functions to install
+     */
+    public Interpreter(Map<String, Object> constants, DSSLibrary... libraries) {
         context.setFunction("alert", new DSSAlert());
         for (DSSLibrary library : libraries) {
             install(library);
         }
-        for (Entry<String, DSSValue> constant : constants.entrySet()) {
+        for (Entry<String, Object> constant : constants.entrySet()) {
             defineConstant(constant.getKey(), constant.getValue());
         }
     }
@@ -77,11 +85,14 @@ public class Interpreter {
     /**
      * Associate a constant value with the specified name. This is used to 
      * define constants such as patient id
+     * Supplied values may be common Java objects (including Long, Double, 
+     * String) and will be converted where possible to appropriate types 
+     * for usage in the DSS subsystem.
      * @param name
      * @param value 
      */
-    public void defineConstant(String name, DSSValue value) {
-        context.setConstant(name, value);
+    public void defineConstant(String name, Object value) {
+        context.setConstant(name, context.getEvaluator().toDSSValue(value));
     }
     
     public static void main(String[] args) {
