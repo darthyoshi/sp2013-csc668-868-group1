@@ -64,6 +64,7 @@ public class DemoLibrary extends AnnotatedDSSLibrary {
             Parser p = new Parser("libdemo.dss");
             Interpreter i = new Interpreter();
             i.install(new DemoLibrary());
+            i.defineConstant("pi", 3.14159);
             i.interpret(p.execute());
         } catch (Exception e) {
             e.printStackTrace();
