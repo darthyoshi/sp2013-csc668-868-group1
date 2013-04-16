@@ -1,0 +1,14 @@
+program
+// FIBONACCI SEQUENCE
+function fib(x) {
+    if x<2 then { return x } else { return fib(x-2) + fib(x-1) }
+}
+
+// MAIN BLOCK
+{
+    log(patientSummary,   fib(5))
+    log(patientSummary,   "sin of pi/2 is " + sin(3.14159/2))
+
+    log(patientDashboard, "max of 1 and 2 is " + max(1,2))
+    log(patientDashboard, "min of 1 and 2 is " + min(1,2))
+}
