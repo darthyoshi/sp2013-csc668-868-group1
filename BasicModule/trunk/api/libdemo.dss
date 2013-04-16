@@ -7,7 +7,7 @@ function fib(x) {
 // MAIN BLOCK
 {
     log(patientSummary,   fib(5))
-    log(patientSummary,   "sin of pi/2 is " + sin(3.14159/2))
+    log(patientSummary,   "sin of pi/4 is " + sin(pi/4))
 
     log(patientDashboard, "max of 1 and 2 is " + max(1,2))
     log(patientDashboard, "min of 1 and 2 is " + min(1,2))
