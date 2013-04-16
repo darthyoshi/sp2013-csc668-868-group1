@@ -1,5 +1,6 @@
 package org.openmrs.module.basicmodule.dsscompiler.interpreter;
 
+import java.util.List;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import org.openmrs.module.basicmodule.dsscompiler.lexer.Symbol;
 
@@ -39,8 +40,7 @@ public interface Evaluator {
      * @param fields
      * @return 
      */
-    public DSSValue newAllocation(String... fields);
-    
+    public DSSValue newAllocation(String... fields);    
     
     public DSSValue toDSSValue(Object javaObject);
 }

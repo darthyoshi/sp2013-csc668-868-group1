@@ -30,11 +30,20 @@ public class DSSEvaluator implements Evaluator {
     
     
     public <T> T castTo(Class<T> type, DSSValue value) {
-        if (type.isAssignableFrom(value.getClass())) {
-            return type.cast(value);
-        }
-        if (type.isAssignableFrom(Boolean.class)) {
-            return (T) (Boolean.valueOf(TRUE.equal(value)));
+        if (value != null) {
+            if (type.isAssignableFrom(value.getClass())) {
+                return type.cast(value);
+            } else if (type.isAssignableFrom(Boolean.class)) {
+                return type.cast(Boolean.valueOf(TRUE.equal(value)));
+            } else if (type.isAssignableFrom(String.class)) {
+                return type.cast(value.toString());
+            } else if (type.isAssignableFrom(Integer.class) ||
+                    type.isAssignableFrom((Long.class))) {
+                return type.cast(value.toInt());
+            } else if (type.isAssignableFrom(Double.class) ||
+                    type.isAssignableFrom((Float.class))) {
+                return type.cast(value.toFloat());
+            }
         }
         return null;
     }
@@ -75,12 +84,18 @@ public class DSSEvaluator implements Evaluator {
     }
 
     public DSSValue newAllocation(String... fields) {
-        throw new UnsupportedOperationException("Not supported yet.");
+//        Map<String, DSSValue> map = new HashMap<String, DSSValue>();
+//        for (String field : fields) {
+//            map.put(field, DSSValueFactory.getDSSNull());
+//        }
+//        return DSSValueFactory.getDSSValue(map);
+        return DSSValueFactory.getDSSValue(false);
     }
 
     public DSSValue toDSSValue(Object javaObject) {
         if (javaObject == null) {
-            return null; // TODO getDSSNullValue?
+            //return DSSValueFactory.getDSSNull();
+            return null;
         }
         
         if (javaObject instanceof DSSValue) {
@@ -95,8 +110,16 @@ public class DSSEvaluator implements Evaluator {
             }
         }
         
+        // Handle arrays and lists
         if (javaObject instanceof Object[]) {
-            // List
+            javaObject = Arrays.asList((Object[]) javaObject);
+        }        
+        if (javaObject instanceof List) {
+            List<DSSValue> dssValues = new ArrayList<DSSValue>();
+            for (Object obj : ((List)javaObject)) {
+                dssValues.add(toDSSValue(obj));
+            }
+            //return DSSValueFactory.getDSSValue(dssValues);
         }
         
         if (javaObject instanceof Boolean) {
