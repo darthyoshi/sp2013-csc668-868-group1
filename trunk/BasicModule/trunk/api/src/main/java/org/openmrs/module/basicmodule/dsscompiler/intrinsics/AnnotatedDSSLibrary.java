@@ -13,15 +13,36 @@ import org.openmrs.module.basicmodule.dsscompiler.interpreter.ExecutionContext;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 
 /**
- *
+ * An AnnotatedDSSLibrary will use reflection to examine its own methods and 
+ * generate DSSFunctions if they are annotated as @DSSIntrinsic. See DemoLibrary 
+ * for an example of this use. Arguments and return types will be converted 
+ * to/from the corresponding DSS data types where necessary (although you 
+ * can also use DSSValue or more specific types when desired.)
+ * 
+ * The following conversions should be supported (meaning that methods should 
+ * generally restrict arguments/return values to the types on the right hand 
+ * side.)
+ * 
+ * DSS Type     Java type
+ * -------------------------------------------
+ * integer  <-> long
+ * float    <-> double
+ * boolean  <-> boolean
+ * date     <-> java.util.Date
+ * string   <-> java.lang.String
+ * list     <-> java.util.List<DSSValue>
+ * object   <-> java.util.Map<String, DSSValue>
+ *     
  * @author woeltjen
  */
 public abstract class AnnotatedDSSLibrary implements DSSLibrary {
     private static Map<Class<?>, Class<?>> PRIMITIVE_MAP = makePrimitiveMap();
 
+    @Override
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
         Map<String, DSSFunction> functions = new HashMap<String, DSSFunction>();
         
+        // Ferret out any intrinsic methods defined in this class
         for (Method m : getClass().getDeclaredMethods()) {
             DSSIntrinsic annotation = m.getAnnotation(DSSIntrinsic.class);
             if (annotation != null) {
@@ -84,8 +105,6 @@ public abstract class AnnotatedDSSLibrary implements DSSLibrary {
                         suppliedArgs);
                 return evaluator.toDSSValue(returnValue);
             } catch (Exception e) {
-                System.out.println("ERROR FOR " + method.getName());
-                e.printStackTrace();
                 return null; // TODO: DSSNull
             }
         }
