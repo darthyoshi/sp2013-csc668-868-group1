@@ -4,6 +4,8 @@
  */
 package org.openmrs.module.basicmodule.dsscompiler.value;
 import java.util.Date;
+import java.util.Vector;
+
 
 
 /**
@@ -34,5 +36,13 @@ public class DSSValueFactory {
  //   }
     public static DSSValue getDSSValue (Date x) {
         return(new DSSValueDate (x));
+    }
+    
+    public static DSSValue getDSSValue (Vector x) {
+        return(new DSSValueList (x));
+    }
+    
+    public static DSSValue getDSSValue () {
+        return(new DSSValueNull ());
     }
 }

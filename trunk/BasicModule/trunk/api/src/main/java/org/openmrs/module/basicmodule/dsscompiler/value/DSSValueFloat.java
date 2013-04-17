@@ -88,16 +88,16 @@ public class DSSValueFloat extends DSSValueNumeric {
 
     @Override
     public DSSValue power(DSSValue b) {
-        throw new UnsupportedOperationException("Not supported for Float.");
+        return DSSValueFactory.getDSSValue();
     }
 
     @Override
     public DSSValue and(DSSValue b) {
-        throw new UnsupportedOperationException("Not supported for Float.");
+        return DSSValueFactory.getDSSValue();
     }
 
     @Override
     public DSSValue or(DSSValue b) {
-        throw new UnsupportedOperationException("Not supported for Float."); 
+        return DSSValueFactory.getDSSValue(); 
     }
 }
