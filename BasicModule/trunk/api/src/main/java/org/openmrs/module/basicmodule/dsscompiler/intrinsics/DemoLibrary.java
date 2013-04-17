@@ -3,6 +3,7 @@ package org.openmrs.module.basicmodule.dsscompiler.intrinsics;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueList;
 
 /**
  * Demonstrates the use of AnnotatedDSSLibrary to semi-automatically 
@@ -53,7 +54,21 @@ public class DemoLibrary extends AnnotatedDSSLibrary {
     public void log(@DSSIdentifier String level, String message) {
         System.out.println(level + "\t" + message);
     }
-    
+
+    /*
+     * Specific DSSValue subclasses can also be specified in arguments. If 
+     * an inappropriate type is supplied, it will simply show up as a null.
+     */
+    @DSSIntrinsic
+    public float sum(DSSValueList list) {
+        float sum = 0;
+        if (list != null) {
+            for (int i = 0; i < list.length(); i++) {
+                sum += list.get(i).toFloat();
+            }
+        }
+        return sum;
+    }
     
     /*
      * This main method serves to test and demonstrate the behavior of 
@@ -72,8 +87,8 @@ public class DemoLibrary extends AnnotatedDSSLibrary {
     }
 }
 
-/** SOURCE OF libdemo.dss
- * 
+/* SOURCE OF libdemo.dss
+ 
 program
 // FIBONACCI SEQUENCE
 function fib(x) {
@@ -83,9 +98,13 @@ function fib(x) {
 // MAIN BLOCK
 {
     log(patientSummary,   fib(5))
-    log(patientSummary,   "sin of pi/2 is " + sin(3.14159/2))
+    log(patientSummary,   "sin of pi/4 is " + sin(pi/4))
+
+    log(patientSummary,   "sum of 1,2,3 is " + sum({1,2,3}))
+    log(patientSummary,   "sum given a non-list returns " + sum("ignored"))
 
     log(patientDashboard, "max of 1 and 2 is " + max(1,2))
     log(patientDashboard, "min of 1 and 2 is " + min(1,2))
 }
+
  */
