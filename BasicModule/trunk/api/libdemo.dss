@@ -9,6 +9,9 @@ function fib(x) {
     log(patientSummary,   fib(5))
     log(patientSummary,   "sin of pi/4 is " + sin(pi/4))
 
+    log(patientSummary,   "sum of 1-4 is " + sum(seq(1,4)))
+    log(patientSummary,   "sum given a non-list returns " + sum("ignored"))
+
     log(patientDashboard, "max of 1 and 2 is " + max(1,2))
     log(patientDashboard, "min of 1 and 2 is " + min(1,2))
 }
