@@ -27,8 +27,9 @@ public class IsLibrary implements DSSLibrary {
             MAP.put("isFloat", new IsFunction(DSSValueFloat.class));
             MAP.put("isBoolean", new IsFunction(DSSValueBool.class));
             MAP.put("isDate", new IsFunction(DSSValueDate.class));
+            MAP.put("isList", new IsFunction(DSSValueList.class));            
             //MAP.put("isObject", new IsFunction(DSSValueObject.class));
-            //MAP.put("isNull", new IsFunction(DSSValueList.class));
+            //MAP.put("isNull", new IsFunction(DSSValueNull.class));
         }
         return MAP;
     }
