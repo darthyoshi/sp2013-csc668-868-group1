@@ -1,0 +1,11 @@
+program
+// FIBONACCI SEQUENCE
+function fib(x) {
+    if x<2 then { return x } else { return fib(x-2) + fib(x-1) }
+}
+
+// MAIN BLOCK
+{
+    list := { 1 , 2 , 3*3 }
+    log(patientSummary,   list )
+}
