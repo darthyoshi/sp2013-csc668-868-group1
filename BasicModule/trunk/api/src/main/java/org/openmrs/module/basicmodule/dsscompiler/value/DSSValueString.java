@@ -105,6 +105,11 @@ public class DSSValueString extends DSSValue {
     }
 
     @Override
+    public String toString() {
+        return value;
+    }
+
+    @Override
     public long toLong() {
          return Long.parseLong(value);
    }

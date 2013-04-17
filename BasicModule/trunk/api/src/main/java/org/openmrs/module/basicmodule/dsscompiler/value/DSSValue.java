@@ -1,5 +1,4 @@
 package org.openmrs.module.basicmodule.dsscompiler.value;
-
 import java.util.Date;
 
 /**
@@ -13,7 +12,7 @@ public abstract class DSSValue extends Object {
         timestamp = d;
     }
     
-    public void setTimeStamp (long d) {    
+    public void setTimeStamp (Long d) {    
         timestamp.setTime(d);
     }
     
@@ -26,42 +25,46 @@ public abstract class DSSValue extends Object {
     }
     
     public DSSValue getDSSValueTimeStamp () {
+        if (timestamp == null) {
+            return DSSValueFactory.getDSSValue();
+        }
+        
         return DSSValueFactory.getDSSValue(timestamp);
     }
     
     public DSSValue not (DSSValue b){return null;}
     
     public  DSSValue power (DSSValue b) {
-        throw new UnsupportedOperationException("Power function not supported by this DSSValue class.");
+        return DSSValueFactory.getDSSValue();
     }
 
     public  DSSValue mult (DSSValue b) {
-        throw new UnsupportedOperationException("Multiply (mult) function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue();
     }
 
 
     public DSSValue div (DSSValue b) {
-        throw new UnsupportedOperationException("Division (div) function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue();
     }
 
 
     public DSSValue and (DSSValue b) {
-        throw new UnsupportedOperationException("And function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue();
     }
 
 
     public DSSValue add (DSSValue b) {
-        throw new UnsupportedOperationException("Add function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue();
     }
 
 
     public DSSValue sub (DSSValue b) {
-        throw new UnsupportedOperationException("Subtraction (sub) function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue();
     }
 
 
     public DSSValue or (DSSValue b) {
-        throw new UnsupportedOperationException("Or function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue();
     }
 
     public abstract boolean lessthan (DSSValue b);
@@ -72,7 +75,7 @@ public abstract class DSSValue extends Object {
     public abstract boolean equal (DSSValue b);
     
     public DSSValue concat (DSSValue b) {
-        throw new UnsupportedOperationException("Concatenate (concat) function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue();
     }
 
     //public abstract DSSValue ref (DSSValue b);
@@ -86,7 +89,8 @@ public abstract class DSSValue extends Object {
     public boolean isDate() {return false;}
     public boolean isObject() {return false;}
     public boolean isList() {return false;}
-    public boolean isNumeric() {return false;}  
+    public boolean isNumeric() {return false;} 
+    public boolean isNull() {return false;}
     public int length() {return 0;}
 
 }

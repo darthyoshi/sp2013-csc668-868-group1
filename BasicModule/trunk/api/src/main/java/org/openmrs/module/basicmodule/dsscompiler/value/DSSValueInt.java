@@ -110,7 +110,7 @@ public class DSSValueInt extends DSSValueNumeric {
             return( DSSValueFactory.getDSSValue(value & ((DSSValueInt)b).value));
         }
         else
-            throw new UnsupportedOperationException("Bitwise AND only on Int class."); //To change body of generated methods, choose Tools | Templates.
+            return DSSValueFactory.getDSSValue();
     }
 
     @Override
@@ -119,6 +119,6 @@ public class DSSValueInt extends DSSValueNumeric {
             return( DSSValueFactory.getDSSValue(value | ((DSSValueInt)b).value));
         }
         else
-            throw new UnsupportedOperationException("Bitwise OR only on Int class."); //To change body of generated methods, choose Tools | Templates.
+            return DSSValueFactory.getDSSValue();
     }
 }
