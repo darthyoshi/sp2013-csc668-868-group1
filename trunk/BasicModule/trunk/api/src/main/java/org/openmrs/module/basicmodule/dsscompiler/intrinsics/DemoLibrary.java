@@ -1,8 +1,10 @@
 package org.openmrs.module.basicmodule.dsscompiler.intrinsics;
 
+import java.util.Vector;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueFactory;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueList;
 
 /**
@@ -71,6 +73,19 @@ public class DemoLibrary extends AnnotatedDSSLibrary {
     }
     
     /*
+     * If you wish to return a DSSValue based on Java types use DSSValueFactory.
+     * This function returns a DSS list of integers from start to end.
+     */
+    @DSSIntrinsic
+    public DSSValue seq(int start, int end) {
+        Vector seq = new Vector();
+        for (int i = start; i <= end; i++) {
+            seq.add(DSSValueFactory.getDSSValue(i));
+        }
+        return DSSValueFactory.getDSSValue(seq);
+    }
+    
+    /*
      * This main method serves to test and demonstrate the behavior of 
      * the AnnotatedDSSLibrary
      */
@@ -100,7 +115,7 @@ function fib(x) {
     log(patientSummary,   fib(5))
     log(patientSummary,   "sin of pi/4 is " + sin(pi/4))
 
-    log(patientSummary,   "sum of 1,2,3 is " + sum({1,2,3}))
+    log(patientSummary,   "sum of 1-4 is " + sum(seq(1,4)))
     log(patientSummary,   "sum given a non-list returns " + sum("ignored"))
 
     log(patientDashboard, "max of 1 and 2 is " + max(1,2))
