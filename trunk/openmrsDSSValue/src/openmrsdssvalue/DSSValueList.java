@@ -76,23 +76,23 @@ public class DSSValueList extends DSSValue {
         s= "{";
         for (i=0; i < sz; i++) {
             s = s + (value.get(i)).toString();
-            if ( i < sz) {
+            if ( i < (sz-1)) {
                 s = s + ", ";
             }
-        s = s + "}";
         }
+        s = s + "}";
         return s;
     }
     
     @Override
     public DSSValue sub (DSSValue b) {
-        throw new UnsupportedOperationException("Subtraction (sub) function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue(); 
     }
 
     
     @Override
     public DSSValue concat (DSSValue b) {
-        throw new UnsupportedOperationException("Concatenate (concat) function not supported by this DSSValue class."); 
+        return DSSValueFactory.getDSSValue(); 
     }
 
     //public abstract DSSValue ref (DSSValue b);
@@ -104,17 +104,17 @@ public class DSSValueList extends DSSValue {
 
     @Override
     public int toInt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
 
     @Override
     public long toLong() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
 
     @Override
     public double toFloat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return( Double.NaN);
     }
 
 }

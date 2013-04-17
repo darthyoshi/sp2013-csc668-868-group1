@@ -33,7 +33,7 @@ public class DSSValueDate extends DSSValue {
             
         }
         
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return( DSSValueFactory.getDSSValue());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class DSSValueDate extends DSSValue {
             x = new Date(value.getTime() - b.toLong());
             return( DSSValueFactory.getDSSValue(x));
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return( DSSValueFactory.getDSSValue());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class DSSValueDate extends DSSValue {
             return (value.compareTo(((DSSValueDate)b).value) < 0);
         }
         else {
-            throw new UnsupportedOperationException("Date Comparision must be between date objects.");
+            return( false );
         }
     }
 
@@ -62,7 +62,7 @@ public class DSSValueDate extends DSSValue {
             return (value.compareTo(((DSSValueDate)b).value) <= 0);
         }
         else {
-            throw new UnsupportedOperationException("Date Comparision must be between date objects.");
+            return (false);
         }
     }
 
@@ -72,7 +72,7 @@ public class DSSValueDate extends DSSValue {
             return (value.compareTo(((DSSValueDate)b).value) > 0);
         }
         else {
-            throw new UnsupportedOperationException("Date Comparision must be between date objects.");
+            return (false);
         }
     }
 
@@ -82,7 +82,7 @@ public class DSSValueDate extends DSSValue {
             return (value.compareTo(((DSSValueDate)b).value) >= 0);
         }
         else {
-            throw new UnsupportedOperationException("Date Comparision must be between date objects.");
+            return (false);
         }
     }
 
@@ -92,7 +92,7 @@ public class DSSValueDate extends DSSValue {
             return (value.compareTo(((DSSValueDate)b).value) != 0);
         }
         else {
-            throw new UnsupportedOperationException("Date Comparision must be between date objects.");
+            return (false);
         }
     }
 
@@ -102,7 +102,7 @@ public class DSSValueDate extends DSSValue {
             return (value.compareTo(((DSSValueDate)b).value) == 0);
         }
         else {
-            throw new UnsupportedOperationException("Date Comparision must be between date objects.");
+            return (false);
         }
     }
 
@@ -120,7 +120,7 @@ public class DSSValueDate extends DSSValue {
 
     @Override
     public double toFloat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return( Double.NaN);
     }
     
     @Override

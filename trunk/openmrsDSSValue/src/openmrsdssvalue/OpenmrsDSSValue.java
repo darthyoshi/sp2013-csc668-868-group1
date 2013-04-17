@@ -4,6 +4,7 @@
  */
 package openmrsdssvalue;
 import java.util.Date;
+import java.util.Vector;
 
 /**
  *
@@ -19,6 +20,8 @@ public class OpenmrsDSSValue {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Vector lv = new Vector();
+        
         DSSValue a = DSSValueFactory.getDSSValue (4);
         DSSValue b = DSSValueFactory.getDSSValue (7);
         DSSValue c = DSSValueFactory.getDSSValue (21.5);
@@ -28,18 +31,22 @@ public class OpenmrsDSSValue {
         DSSValue f = a.add(e);
         DSSValue g = c.div(e);
         DSSValue h = d.sub(b);
+        DSSValue l = DSSValueFactory.getDSSValue (lv);
+        l.add(a);
+        l.add(b);
         
         Date x = new Date((long)((365.25*43 + 31+28+31)*24*60*60*1000));
         Date y = new Date((long)((365.25*44 + 31+28+31)*24*60*60*1000));
         DSSValue i = DSSValueFactory.getDSSValue (x);
         DSSValue j = DSSValueFactory.getDSSValue (y);
         
+        l.add(j);
         DSSValue k = j.add(DSSValueFactory.getDSSValue ((long)365*24*60*60*1000));
         
         System.out.println(a.toString() + " + " + e.toString() + " = " + f.toString());
         System.out.println(c.toString() + " / " + e.toString() + " = " + g.toString());
         System.out.println(d.toString() + " - " + b.toString() + " = " + h.toString());
         System.out.println(i.toString() + " ;" + j.toString() + " + 365 = " + k.toString());
-        
+        System.out.println(l.toString());
     }
 }
