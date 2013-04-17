@@ -19,6 +19,13 @@ import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
  * to/from the corresponding DSS data types where necessary (although you 
  * can also use DSSValue or more specific types when desired.)
  * 
+ * Short synopsis of usage:
+ *  - Create a class that extends AnnotatedDSSLibrary
+ *  - Annotate methods which should be exposed as intrinsics with @DSSIntrinsic
+ *  - Annotate arguments which use identifier syntax with @DSSIdentifier
+ *  - Install the class in an interpreter (see DSSProgram.INTRINSICS)
+ * 
+ * 
  * The following conversions should be supported (meaning that methods should 
  * generally restrict arguments/return values to the types on the right hand 
  * side.)
