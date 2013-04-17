@@ -5,6 +5,7 @@ import java.util.*;
 import org.openmrs.module.basicmodule.dsscompiler.lexer.Symbol;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueFactory;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueList;
 
 /**
  *
@@ -28,7 +29,14 @@ public class DSSEvaluator implements Evaluator {
         operators.put("<=", new BooleanMethodLookup("lessthanequal"));        
     }
     
-    
+    /**
+     * Convert a DSSValue to another Java type. May return null (Java null) 
+     * if the conversion does not make sense.
+     * @param <T>
+     * @param type
+     * @param value
+     * @return 
+     */
     public <T> T castTo(Class<T> type, DSSValue value) {
         if (value != null) {
             if (type.isAssignableFrom(value.getClass())) {
@@ -43,6 +51,20 @@ public class DSSEvaluator implements Evaluator {
             } else if (type.isAssignableFrom(Double.class) ||
                     type.isAssignableFrom((Float.class))) {
                 return type.cast(value.toFloat());
+            } else if (type.isAssignableFrom(List.class)) {
+                List<DSSValue> list = new ArrayList<DSSValue>();
+                if (value instanceof DSSValueList) {
+                    for (int i = 0; i < value.length(); i++) {
+                        list.add(((DSSValueList)value).get(i));
+                    }                    
+                } else {
+                    list.add(value);
+                }
+                return type.cast(list);
+            } else if (type.isAssignableFrom(Map.class)) {
+                Map<String, DSSValue> map = new HashMap<String, DSSValue>();
+                // Todo - DSSValueObject
+                return type.cast(map);
             }
         }
         return null;
@@ -89,13 +111,12 @@ public class DSSEvaluator implements Evaluator {
 //            map.put(field, DSSValueFactory.getDSSNull());
 //        }
 //        return DSSValueFactory.getDSSValue(map);
-        return DSSValueFactory.getDSSValue(false);
+        return DSSValueFactory.getDSSValue();
     }
 
     public DSSValue toDSSValue(Object javaObject) {
         if (javaObject == null) {
-            //return DSSValueFactory.getDSSNull();
-            return null;
+            return DSSValueFactory.getDSSValue();
         }
         
         if (javaObject instanceof DSSValue) {
@@ -114,12 +135,12 @@ public class DSSEvaluator implements Evaluator {
         if (javaObject instanceof Object[]) {
             javaObject = Arrays.asList((Object[]) javaObject);
         }        
-        if (javaObject instanceof List) {
-            List<DSSValue> dssValues = new ArrayList<DSSValue>();
-            for (Object obj : ((List)javaObject)) {
+        if (javaObject instanceof Collection) {
+            Vector<DSSValue> dssValues = new Vector<DSSValue>();
+            for (Object obj : (Collection)javaObject) {
                 dssValues.add(toDSSValue(obj));
             }
-            //return DSSValueFactory.getDSSValue(dssValues);
+            return DSSValueFactory.getDSSValue(dssValues);
         }
         
         if (javaObject instanceof Boolean) {
