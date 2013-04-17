@@ -4,56 +4,68 @@ package org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.read;
  *  @author Kay Choi
  */
 
+import java.util.*;
+import org.openmrs.*;
+import org.openmrs.api.context.Context;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
-import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.*;
 
 public class DSSReadInitialEncounter extends DSSFunction {
     /**
      * Call this function. The arguments provided are as observed by the
-     * interpreter. Note that the actual number of arguments may not match
-     * the number of parameters expected; it is ultimately the function's
-     * responsibility to handle this situation.
+     * interpreter.
      * @param args the arguments to the function
-     * @return the return value of the represented function
+     * @return a list containing all observations for a given concept
+     *   belonging to the first encounter associated with a patient
+     * @return DSSNullValue for argument mismatch
      */
     public DSSValue call(DSSValue... args) {
-        //DSSValue result = new DSSValue();
-        
-//        //TODO: parse args and retrieve patientId, conceptName
-//        String patientID;
-//        String conceptName;
-//
-//        List<Encounter> allEncounters = Context.getEncounterService().getEncountersByPatientId(Integer.parseInt(patientId));
-//        Iterator<Encounter> encIter = allEncounters.iterator();
-//        Encounter enc, initEnc;
-//        Set<Obs> obs;
-//        Iterator<Obs> obsIter;
-//        Obs ob;
-//        Set<Obs> validObs = new Set<Obs>();
-//        Date initDate = null;
-//        
-//        while (encIter.hasNext()) {
-//            enc = encIter.next();
-//            
-//            if (initDate == null || !initDate.before(enc.getEncounterDatetime())) {
-//                initDate = enc.getEncounterDatetime();
-//            
-//                obs = enc.getAllObs();
-//
-//                obsIter = obs.iterator();
-//                while (obsIter.hasNext()) {
-//                    ob = obsIter.next();
-//                    
-//                    if (!ob.isVoided() && ob.getConcept.getName().getName().equals(conceptName)) {
-//                        validObs.add(ob);
-//                    }
-//                }
-//            }
-//        }
-        
-        //TODO: convert Set to DSSValue
-        
-        //return result;
-        return null;
+        //check number of arguments
+  /*      if(args.length != 2){
+            return null;
+        }
+        else {
+            List<Obs> validObs = null;
+
+            try {
+                //parse arguments
+                int patientId = args[0].toInt();
+                String conceptName = args[1].toString();
+
+                List<Encounter> allEncounters = Context.getEncounterService().getEncountersByPatientId(patientId);
+                Iterator<Encounter> encIter = allEncounters.iterator();
+                Encounter enc;
+                Set<Obs> obs;
+                Iterator<Obs> obsIter;
+                Obs ob;
+                validObs = new ArrayList<Obs>();
+                Date initDate = null;
+
+                while (encIter.hasNext()) {
+                    enc = encIter.next();
+
+                    //runs during first iteration and if an earlier encounter is found
+                    if (initDate == null || !initDate.before(enc.getEncounterDatetime())) {
+                        validObs.clear();
+                        initDate = enc.getEncounterDatetime();
+
+                        obs = enc.getAllObs();
+
+                        obsIter = obs.iterator();
+                        while (obsIter.hasNext()) {
+                            ob = obsIter.next();
+
+                            if (!ob.isVoided() && ob.getConcept().getName().getName().equals(conceptName)) {
+                                validObs.add(ob);
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception e) { }
+*/
+            return null;
+            //return DSSValueFactory.getDSSValue(validObs);
+   //     }
     }
 }
