@@ -11,6 +11,7 @@ import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Evaluator;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.ExecutionContext;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueFactory;
 
 /**
  * An AnnotatedDSSLibrary will use reflection to examine its own methods and 
@@ -112,7 +113,7 @@ public abstract class AnnotatedDSSLibrary implements DSSLibrary {
                         suppliedArgs);
                 return evaluator.toDSSValue(returnValue);
             } catch (Exception e) {
-                return null; // TODO: DSSNull
+                return DSSValueFactory.getDSSValue(); // TODO: DSSNull
             }
         }
 
