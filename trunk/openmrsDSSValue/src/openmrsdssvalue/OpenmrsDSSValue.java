@@ -20,8 +20,6 @@ public class OpenmrsDSSValue {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Vector<DSSValue> lv;
-        lv = new Vector<DSSValue>();
         
         DSSValue a = DSSValueFactory.getDSSValue (4);
         a.setTimeStamp(3000L);
@@ -34,7 +32,7 @@ public class OpenmrsDSSValue {
         DSSValue f = a.add(e);
         DSSValue g = c.div(e);
         DSSValue h = d.sub(b);
-        DSSValue l = DSSValueFactory.getDSSValue (lv);
+        DSSValue l = DSSValueFactory.getDSSValueList ();
         l.add(a);
         l.add(b);
         

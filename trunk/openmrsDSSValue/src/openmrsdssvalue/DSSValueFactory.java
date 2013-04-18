@@ -38,7 +38,12 @@ public class DSSValueFactory {
         return(new DSSValueDate (x));
     }
     
-    public static DSSValue getDSSValue (Vector x) {
+    public static DSSValue getDSSValue (Vector<DSSValue> x) {
+        return(new DSSValueList (x));
+    }
+    
+    public static DSSValue getDSSValueList () {
+        Vector<DSSValue> x = new Vector<DSSValue>();
         return(new DSSValueList (x));
     }
     
