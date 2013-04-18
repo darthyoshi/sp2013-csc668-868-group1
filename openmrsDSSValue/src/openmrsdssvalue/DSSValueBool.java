@@ -115,5 +115,5 @@ public class DSSValueBool extends DSSValue {
     public double toFloat() {
         return (double) toInt();
     }
-    
+
 }

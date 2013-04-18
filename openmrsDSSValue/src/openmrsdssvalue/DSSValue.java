@@ -1,11 +1,13 @@
 package openmrsdssvalue;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
  *
  * @author bierman
  */
-public abstract class DSSValue extends Object {
+public abstract class DSSValue extends Object implements Comparator<DSSValue>, Comparable<DSSValue>{
     Date timestamp = null;
     
     public void setTimeStamp (Date d) {
@@ -13,6 +15,9 @@ public abstract class DSSValue extends Object {
     }
     
     public void setTimeStamp (Long d) {    
+        if (timestamp == null)
+            timestamp = new Date();
+        
         timestamp.setTime(d);
     }
     
@@ -93,4 +98,20 @@ public abstract class DSSValue extends Object {
     public boolean isNull() {return false;}
     public int length() {return 0;}
 
+    @Override
+    public int compare(DSSValue t, DSSValue t1) {
+        return(t.timestamp.compareTo(t1.timestamp));
+        
+    }
+
+    @Override
+    public int compareTo(DSSValue t) {
+        return(timestamp.compareTo(t.timestamp));
+    }
+    public DSSValue sort() {
+        return DSSValueFactory.getDSSValue(); //NULL Value
+    }
+
+    
+    
 }

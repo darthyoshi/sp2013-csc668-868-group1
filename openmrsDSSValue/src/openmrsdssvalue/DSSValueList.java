@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package openmrsdssvalue;
+import java.util.Collections;
 import java.util.Vector;
 
 /**
@@ -115,6 +116,12 @@ public class DSSValueList extends DSSValue {
     @Override
     public double toFloat() {
         return( Double.NaN);
+    }
+    
+    @Override
+    public DSSValue sort() {
+        Collections.sort(value);
+        return DSSValueFactory.getDSSValue(true);
     }
 
 }
