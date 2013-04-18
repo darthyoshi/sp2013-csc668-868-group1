@@ -21,12 +21,7 @@ public class DSSRead extends DSSFunction {
      */
     public DSSValue call(DSSValue... args) {
         //check number of arguments
-    /*    if(args.length != 2) {
-            return null;
-        }
-        else {
-            List<Obs> validObs = null;
-
+        if(args.length == 2) {
             try {
                 //parse arguments
                 int patientId = args[0].toInt();
@@ -38,7 +33,8 @@ public class DSSRead extends DSSFunction {
                 Set<Obs> obs;
                 Iterator<Obs> obsIter;
                 Obs ob;
-                validObs = new ArrayList<Obs>();
+                List<DSSValue> validObs = new ArrayList<DSSValue>();
+                DSSValue val;
 
                 while (encIter.hasNext()) {
                     enc = encIter.next();
@@ -49,15 +45,21 @@ public class DSSRead extends DSSFunction {
                         ob = obsIter.next();
 
                         if (!ob.isVoided() && ob.getConcept().getName().getName().equals(conceptName)) {
+                            val = DSSValueFactory.getDSSValue(conceptName); //TODO: use different value
+                            val.setTimeStamp(enc.getEncounterDateTime());
                             validObs.add(ob);
                         }
                     }
                 }
+
+                return DSSValueFactory.getDSSValue(validObs);
             }
-            catch(Exception e) { }
-*/
-            return null;
-            //return DSSValueFactory.getDSSValue(validObs);
-    //    }
+            catch(Exception e) {
+                return DSSValueFactory.getDSSValue();
+            }
+        }
+        else {
+            return DSSValueFactory.getDSSValue();
+        }
     }
 }
