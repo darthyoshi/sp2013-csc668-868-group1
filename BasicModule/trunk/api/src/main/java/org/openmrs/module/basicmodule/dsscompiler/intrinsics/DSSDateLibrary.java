@@ -7,7 +7,15 @@ package org.openmrs.module.basicmodule.dsscompiler.intrinsics;
 import java.util.HashMap;
 import java.util.Map;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.ExecutionContext;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date.DSSAddDays;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date.DSSAddMonths;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date.DSSBefore;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date.DSSCurrentTime;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date.DSSOldestTimeItem;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date.DSSRecentTimeItem;
+import org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date.DSSTime;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueBool;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueDate;
@@ -21,37 +29,24 @@ import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueString;
  *
  * @author kent
  */
-public class DSSDateLibrary extends AnnotatedDSSLibrary{
+public class DSSDateLibrary implements DSSLibrary{
         private static final Map<String, DSSFunction> MAP = 
             new HashMap<String, DSSFunction>();
     
-    @Override
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
         // Initialize lazily
         if (MAP.isEmpty()) {
-            MAP.put("DSSAddDays", new DSSDateLibrary.DateFunction());
-            MAP.put("DSSAddMonths", new DSSDateLibrary.DateFunction());
-            MAP.put("DSSBefore", new DSSDateLibrary.DateFunction());
-            MAP.put("DSSCurrentTime", new DSSDateLibrary.DateFunction());
-            MAP.put("DSSOldestTimeItem", new DSSDateLibrary.DateFunction());
-            MAP.put("DSSRecentTimeItem", new DSSDateLibrary.DateFunction());
-            MAP.put("DSSTime", new DSSDateLibrary.DateFunction());  
+            MAP.put("AddDays", new DSSAddDays());
+            MAP.put("AddMonths", new DSSAddMonths());
+            MAP.put("Before", new DSSBefore());
+            MAP.put("CurrentTime", new DSSCurrentTime());
+            MAP.put("OldestTimeItem", new DSSOldestTimeItem());
+            MAP.put("RecentTimeItem", new DSSRecentTimeItem());
+            MAP.put("Time", new DSSTime());  
             //MAP.put("isObject", new IsFunction(DSSValueObject.class));
             //MAP.put("isNull", new IsFunction(DSSValueNull.class));
         }
         return MAP;
-    }
-    
-    
-    private static class DateFunction extends DSSFunction {
-        private Class isClass;
-        
-        @Override
-        public DSSValue call(DSSValue... args) {
-            boolean is = args.length > 0 && 
-                    isClass.isAssignableFrom(args[0].getClass());
-            return DSSValueFactory.getDSSValue(is);
-        }        
     }
     
     
