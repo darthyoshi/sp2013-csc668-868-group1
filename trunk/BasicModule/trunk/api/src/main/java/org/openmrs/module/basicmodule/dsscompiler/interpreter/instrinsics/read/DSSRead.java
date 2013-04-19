@@ -33,8 +33,7 @@ public class DSSRead extends DSSFunction {
                 Set<Obs> obs;
                 Iterator<Obs> obsIter;
                 Obs ob;
-                List<DSSValue> validObs = new ArrayList<DSSValue>();
-                DSSValue val;
+                Stack<DSSValue> validObs = new Stack<DSSValue>();
 
                 while (encIter.hasNext()) {
                     enc = encIter.next();
@@ -45,21 +44,45 @@ public class DSSRead extends DSSFunction {
                         ob = obsIter.next();
 
                         if (!ob.isVoided() && ob.getConcept().getName().getName().equals(conceptName)) {
-                            val = DSSValueFactory.getDSSValue(conceptName); //TODO: use different value
-                            val.setTimeStamp(enc.getEncounterDateTime());
-                            validObs.add(ob);
+                            validObs.add(getVal(ob));
                         }
                     }
                 }
 
                 return DSSValueFactory.getDSSValue(validObs);
             }
-            catch(Exception e) {
-                return DSSValueFactory.getDSSValue();
-            }
+            catch(Exception e) { }
+        }
+
+        return DSSValueFactory.getDSSValue();
+    }
+
+    /**
+     * Creates a DSSValue from an observation. The value of the DSSValue shall
+     * be the value of observation itself, and the DSSValue time stamp shall be
+     * the date and time of the observation.
+     * @param ob observation to convert
+     * @return DSSValue equivalent of ob
+     */
+    protected DSSValue getVal(Obs ob) {
+        DSSValue val;
+        ConceptDatatype type = ob.getConcept().getDatatype();
+
+        if(type.isBoolean()) {
+            val = DSSValueFactory.getDSSValue(ob.getValueBoolean());
+        }
+        else if(type.isDate() || type.isDateTime() || type.isTime()) {
+            val = DSSValueFactory.getDSSValue(ob.getValueDatetime());
+        }
+        else if(type.isNumeric()) {
+            val = DSSValueFactory.getDSSValue(ob.getValueNumeric());
         }
         else {
-            return DSSValueFactory.getDSSValue();
+            val = DSSValueFactory.getDSSValue(ob.getValueAsString(Locale.ENGLISH));
         }
+
+        val.setTimeStamp(ob.getObsDatetime());
+
+        return val;
     }
 }

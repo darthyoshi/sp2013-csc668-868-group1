@@ -7,10 +7,9 @@ package org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.read;
 import java.util.*;
 import org.openmrs.*;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
 import org.openmrs.module.basicmodule.dsscompiler.value.*;
 
-public class DSSReadLatestEncounter extends DSSFunction {
+public class DSSReadLatestEncounter extends DSSRead {
     /**
      * Call this function. The arguments provided are as observed by the
      * interpreter.
@@ -19,14 +18,10 @@ public class DSSReadLatestEncounter extends DSSFunction {
      *   belonging to the last encounter associated with a patient
      * @return DSSNullValue for argument mismatch
      */
+    @Override
     public DSSValue call(DSSValue... args) {
         //check number of arguments
- /*       if(args.length != 2) {
-            return null;
-        }
-        else {
-            List<Obs> validObs = null;
-
+        if(args.length == 2) {
             try {
                 //parse arguments
                 int patientId = args[0].toInt();
@@ -38,7 +33,7 @@ public class DSSReadLatestEncounter extends DSSFunction {
                 Set<Obs> obs;
                 Iterator<Obs> obsIter;
                 Obs ob;
-                validObs = new ArrayList<Obs>();
+                Stack<DSSValue> validObs = new Stack<DSSValue>();
                 Date lastDate = null;
 
                 while (encIter.hasNext()) {
@@ -56,16 +51,17 @@ public class DSSReadLatestEncounter extends DSSFunction {
                             ob = obsIter.next();
 
                             if (!ob.isVoided() && ob.getConcept().getName().getName().equals(conceptName)) {
-                                validObs.add(ob);
+                                validObs.add(getVal(ob));
                             }
                         }
                     }
                 }
+
+                return DSSValueFactory.getDSSValue(validObs);
             }
             catch(Exception e) { }
-*/
-            return null;
-            //return DSSValueFactory.getDSSValue(validObs);
-      //  }
+        }
+
+        return DSSValueFactory.getDSSValue();
     }
 }
