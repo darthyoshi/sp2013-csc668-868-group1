@@ -4,8 +4,11 @@
  */
 package org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date;
 
+import java.util.Calendar;
+import java.util.Date;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueFactory;
 
 /**
  * addDays(time,numDays) - return a new time based on numDays
@@ -28,7 +31,14 @@ public class DSSAddDays extends DSSFunction{
      * @return DSSValueDate
      */
      public DSSValue call(DSSValue... args){
-        args[0].add(args[1]);
-        return args[0];
+        //args[0].add(args[1]);
+        Date date = new Date(args[0].toLong());
+        int days = args[1].toInt();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, days);
+        
+        Date newDate = cal.getTime();
+       return DSSValueFactory.getDSSValue(newDate);
     }
 }

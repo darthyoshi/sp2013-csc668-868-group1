@@ -4,10 +4,12 @@
  */
 package org.openmrs.module.basicmodule.dsscompiler.interpreter.instrinsics.date;
 
+import java.util.Calendar;
 import java.util.Date;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueDate;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueFactory;
 
 /**
  * addMonths(time,numMonths) - return a new time based on numMonths
@@ -33,7 +35,15 @@ public class DSSAddMonths extends DSSFunction{
     public DSSValue call(DSSValue... args){
       
         //month_in_millisec = args[1]*
-        args[0].add(args[1]);
-        return args[0];
+       Date date = new Date(args[0].toLong());
+       int month = args[1].toInt();
+        //Construct a Calendar object and do the calculatoin
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, month);
+        
+        //Convert it back to Date Ojbect and retunr it as DSSValue
+        Date newDate = cal.getTime();
+       return DSSValueFactory.getDSSValue(newDate);
     }
 }
