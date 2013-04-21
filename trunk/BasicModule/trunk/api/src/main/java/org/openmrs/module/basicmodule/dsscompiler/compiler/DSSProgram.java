@@ -4,6 +4,7 @@ import org.openmrs.module.basicmodule.dsscompiler.ast.*;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.IsLibrary;
+import org.openmrs.module.basicmodule.dsscompiler.intrinsics.ReadLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 
 /**
@@ -12,21 +13,22 @@ import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 */
 public class DSSProgram {
     private static final DSSLibrary[] INTRINSICS = {
-            new IsLibrary()
+            new IsLibrary(),
+            new ReadLibrary()
             // Other libraries go here!
     };
-    
-    
+
+
 /**
  * The DSSProgram class reads and compiles a source program
 */
-	
+
     String sourceFile;
-	
+
     public DSSProgram(String sourceFile) {
     	this.sourceFile = sourceFile;
     }
-    
+
     public void compileAndExecute() {
         try {
             Parser parser = new Parser(sourceFile);
@@ -38,7 +40,7 @@ public class DSSProgram {
             System.out.println("********exception*******"+e.toString());
          };
     }
-    
+
     public static void main(String args[]) {
         String file = "/home/woeltjen/School/csc868/is.dss";
         if (args.length > 0) {
