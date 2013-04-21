@@ -4,19 +4,10 @@
  */
 package org.openmrs.module.basicmodule.web.controller;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSProgram;
@@ -28,7 +19,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
+ * Controller class for dssUpload.form page which allows the user
+ * to upload a .dss file from their machine. The file is automatically
+ * compiled.
+ * 
  * @author bia
  */
 
@@ -44,11 +38,22 @@ public class DSSUploadController
     public String showForm(){
         System.out.println("GET method DSSUploadController***************");
 	return SUCCESS_FORM_VIEW;
+        //return new ModelAndView(SUCCESS_FORM_VIEW, setModel("false", ""));
     }
     
+    /**
+     * Method is called when the submit button is hit. The uploaded file
+     * is copied on to the server (saved at user's home directory). If the
+     * file already exists, it will be overwritten.
+     * File is automatically compiled and any errors reported back to webpage.
+     * Errors 
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.POST)   
-    public String handleRequest(@RequestParam("fileName") CommonsMultipartFile file) 
+    public ModelAndView handleRequest(@RequestParam("fileName") CommonsMultipartFile file) 
     {
+        //Map<String, String> model = new HashMap<String, String>();
+        Map <String, String> model = new HashMap<String, String>();
         System.out.println("handleRequest method DSSUploaderController*************");
         if (!file.isEmpty())
         {   
@@ -61,12 +66,29 @@ public class DSSUploadController
                 fileItem.write(uploadFile);
                 (new DSSProgram(uploadFile.getPath())).compileAndExecute();  
             }
-            catch(Exception e){System.out.println("!!!!! EXCEPTION THROWN !!!!" + e.getMessage());}
-            
+            catch(Exception e)
+            {
+                System.out.println("********* Exception occured in DSSUploadController handleRequest" 
+                        + e.getMessage());
+                model = getModel("err", e.getMessage());
+                return new ModelAndView(SUCCESS_FORM_VIEW, model);
+            }
         }
         else
-            System.out.println("File is Empty");
-                
-        return SUCCESS_FORM_VIEW;
+        {       
+                model = getModel("err", "Empty file.");
+                return new ModelAndView(SUCCESS_FORM_VIEW, model);
+        }
+        
+        model = getModel("s", "Succesfully uploaded file");
+        return new ModelAndView(SUCCESS_FORM_VIEW, model);
+    }
+    
+    private Map getModel(String status, String message)
+    {
+        Map <String, String> model = new HashMap<String, String>();
+        model.put("status", status);
+        model.put("message", message);
+        return model;
     }
 }

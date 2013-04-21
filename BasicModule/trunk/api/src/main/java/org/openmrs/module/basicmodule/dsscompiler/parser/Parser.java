@@ -683,6 +683,12 @@ class SyntaxError extends Exception {
                 + "  Found: " + tokenFound);
         return;
     }
+    
+    @Override
+    public String getMessage()
+    {
+        return "Expected: " + kindExpected + "  Found: " + tokenFound;
+    }
 }
 
 class FatalSyntaxError extends SyntaxError {
@@ -693,7 +699,13 @@ class FatalSyntaxError extends SyntaxError {
 
     void print() {
         System.out.println("UNRECOVERABLE SYNTAX ERROR");
-        System.exit(1);
+        //System.exit(1);
         return;
+    }
+    
+    @Override
+    public String getMessage()
+    {
+        return "UNRECOVERABLE SYNTAX ERROR";
     }
 }
