@@ -1,5 +1,7 @@
 package org.openmrs.module.basicmodule.dsscompiler.compiler;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.openmrs.module.basicmodule.dsscompiler.ast.*;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
@@ -14,7 +16,8 @@ import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 public class DSSProgram {
     private static final DSSLibrary[] INTRINSICS = {
             new IsLibrary(),
-            new ReadLibrary()
+            new ReadLibrary(),
+	    new DSSDateLibrary()
             // Other libraries go here!
     };
 
@@ -29,7 +32,7 @@ public class DSSProgram {
     	this.sourceFile = sourceFile;
     }
 
-    public void compileAndExecute() {
+    public void compileAndExecute() throws Exception{
         try {
             Parser parser = new Parser(sourceFile);
             AST t = parser.execute();
@@ -38,14 +41,17 @@ public class DSSProgram {
             new Interpreter(INTRINSICS).interpret(t);
         }catch (Exception e) {
             System.out.println("********exception*******"+e.toString());
+            throw e;
          };
     }
 
     public static void main(String args[]) {
-        String file = "/home/woeltjen/School/csc868/is.dss";
-        if (args.length > 0) {
-            file = args[0];
-        }
-        (new DSSProgram(file)).compileAndExecute();
+        try {
+            String file = "/home/woeltjen/School/csc868/is.dss";
+            if (args.length > 0) {
+                file = args[0];
+            }
+            (new DSSProgram(file)).compileAndExecute();
+        } catch (Exception ex) {}
     }
 }
