@@ -1,10 +1,9 @@
 package org.openmrs.module.basicmodule.dsscompiler.compiler;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.openmrs.module.basicmodule.dsscompiler.ast.*;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
+import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSDateLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.IsLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.ReadLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
@@ -14,7 +13,7 @@ import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
  *  and executing a DSS1 program
 */
 public class DSSProgram {
-    private static final DSSLibrary[] INTRINSICS = {
+    public static final DSSLibrary[] INTRINSICS = {
             new IsLibrary(),
             new ReadLibrary(),
 	    new DSSDateLibrary()
