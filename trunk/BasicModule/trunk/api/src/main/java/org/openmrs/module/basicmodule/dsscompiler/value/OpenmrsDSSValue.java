@@ -20,10 +20,11 @@ public class OpenmrsDSSValue {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Vector lv = new Vector();
         
         DSSValue a = DSSValueFactory.getDSSValue (4);
+        a.setTimeStamp(3000L);
         DSSValue b = DSSValueFactory.getDSSValue (7);
+        b.setTimeStamp(102000L);
         DSSValue c = DSSValueFactory.getDSSValue (21.5);
         DSSValue d = DSSValueFactory.getDSSValue (87);
         DSSValue e = DSSValueFactory.getDSSValue (3);
@@ -31,7 +32,7 @@ public class OpenmrsDSSValue {
         DSSValue f = a.add(e);
         DSSValue g = c.div(e);
         DSSValue h = d.sub(b);
-        DSSValue l = DSSValueFactory.getDSSValue (lv);
+        DSSValue l = DSSValueFactory.getDSSValueList ();
         l.add(a);
         l.add(b);
         
@@ -39,7 +40,7 @@ public class OpenmrsDSSValue {
         Date y = new Date((long)((365.25*44 + 31+28+31)*24*60*60*1000));
         DSSValue i = DSSValueFactory.getDSSValue (x);
         DSSValue j = DSSValueFactory.getDSSValue (y);
-        
+        j.setTimeStamp(9000L);
         l.add(j);
         DSSValue k = j.add(DSSValueFactory.getDSSValue ((long)365*24*60*60*1000));
         
@@ -48,5 +49,9 @@ public class OpenmrsDSSValue {
         System.out.println(d.toString() + " - " + b.toString() + " = " + h.toString());
         System.out.println(i.toString() + " ;" + j.toString() + " + 365 = " + k.toString());
         System.out.println(l.toString());
+        
+        l.sort();
+        System.out.println(l.toString());
+        
     }
 }
