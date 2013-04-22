@@ -1,6 +1,9 @@
 package org.openmrs.module.basicmodule.dsscompiler.xml;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -27,6 +30,15 @@ public class XMLBuilder {
     public static final String VALUE_ATTR = "value";
     
     private Document document;
+    
+    public XMLBuilder(File file) throws Exception {
+        document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+    }
+    
+    public XMLBuilder(AST tree) throws ParserConfigurationException {
+        this();
+        addTree(tree);
+    }
     
     public XMLBuilder() throws ParserConfigurationException {
         document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
@@ -56,6 +68,12 @@ public class XMLBuilder {
         for (AST kid : tree.getKids()) {
             addTree(kid, treeElement);
         }
+    }
+    
+    public void write(File outputFile) throws Exception {
+        OutputStream stream = new FileOutputStream(outputFile);
+        write(stream);
+        stream.close();
     }
     
     public void write(OutputStream output) throws Exception {
