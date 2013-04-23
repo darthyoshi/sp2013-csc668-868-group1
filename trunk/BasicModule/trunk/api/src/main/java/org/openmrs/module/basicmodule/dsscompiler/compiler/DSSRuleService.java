@@ -47,7 +47,7 @@ public class DSSRuleService {
      * Get an instance of the DSSRuleService
      * @return 
      */
-    public DSSRuleService getRuleService() {
+    public static DSSRuleService getRuleService() {
         if (INSTANCE == null) {
             INSTANCE = new DSSRuleService();
         }
