@@ -39,6 +39,10 @@
     </extension>
     <extension>
         <point>org.openmrs.patientDashboardTab</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.RulesPatientDashboardTab</class>
+    </extension>
+    <extension>
+        <point>org.openmrs.patientDashboardTab</point>
         <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.PatientNotesDashboardTabExt</class>
     </extension>
     <extension>
@@ -99,6 +103,11 @@
 		
     <dwr>
         <allow>
+            <create creator="new" javascript="DWRRuleService">
+                <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRRuleService"/>
+                <include method="runRules"/>
+            </create>
+            
             <create creator="new" javascript="DWRVitalsService">
                 <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRVitalsService"/>
                 <include method="getPatientEncounters"/>

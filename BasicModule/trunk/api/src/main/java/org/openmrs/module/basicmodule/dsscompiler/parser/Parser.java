@@ -89,6 +89,7 @@ public class Parser {
             lex = new Lexer(sourceProgram);
             scan();
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("********exception*******" + e.toString());
             throw e;
         };

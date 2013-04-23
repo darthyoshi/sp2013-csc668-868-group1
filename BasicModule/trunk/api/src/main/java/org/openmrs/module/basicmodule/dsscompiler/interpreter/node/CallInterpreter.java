@@ -21,6 +21,10 @@ public class CallInterpreter implements ASTInterpreter<CallTree> {
     public Object interpret(CallTree tree, ExecutionContext context, ASTVisitor visitor) {
         IdTree id = (IdTree) tree.getKid(1);        
         DSSFunction func = context.getFunction(id.getSymbol().toString());
+        if (func == null) {
+            System.err.println("DSS invoked missing function " + id.getSymbol().toString());
+            return context.getEvaluator().toDSSValue(null);
+        }
         DSSValue args[] = new DSSValue[tree.kidCount() - 1];
         for (int i = 0 ; i < args.length ; i++) {
             AST kid = tree.getKid(i+2);

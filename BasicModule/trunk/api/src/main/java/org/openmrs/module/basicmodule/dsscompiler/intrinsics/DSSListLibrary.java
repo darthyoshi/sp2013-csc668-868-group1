@@ -9,11 +9,8 @@ import java.util.Map;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSFunction;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.ExecutionContext;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.intrinsics.list.DSSListGetLast;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.intrinsics.list.DSSListGetFirst;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.intrinsics.list.DSSListSortData;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.intrinsics.list.DSSListSortTime;
-import org.openmrs.module.basicmodule.dsscompiler.interpreter.intrinsics.list.DSSListMerge;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValue;
+import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueFactory;
 
 /**
  *

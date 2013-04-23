@@ -47,7 +47,7 @@ function encountersFound(encounters) {
 
         //TODO: replace %encounter_date% with proper variable
         if (r > 0) {
-            document.getElementById("date" + z).innerHTML = %encounter_date%;
+//            document.getElementById("date" + z).innerHTML = %encounter_date%;
             z++;
         }
     }

@@ -4,14 +4,10 @@
  */
 package org.openmrs.module.basicmodule.web.controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSProgram;
 import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSRuleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +21,12 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-@RequestMapping(value = "module/basicmodule/dssLink.form")
-public class DSSController
+@RequestMapping(value = "module/basicmodule/dssRules.form")
+public class DSSRuleController
 {
     protected final Log log = LogFactory.getLog(getClass());
     
-    private final String SUCCESS_FORM_VIEW = "/module/basicmodule/dssForm";
+    private final String SUCCESS_FORM_VIEW = "/module/basicmodule/dssRuleForm";
 	
     @RequestMapping(method = RequestMethod.GET)
     public String showForm(){
@@ -46,24 +42,16 @@ public class DSSController
      * 
      */
     @RequestMapping(method = RequestMethod.POST)   
-    public ModelAndView handleRequest(@RequestParam("filename") String fileName, 
+    public ModelAndView handleRequest(@RequestParam("rule_name") String ruleName, 
                                 @RequestParam("dss_code") String code) 
     {
         Map model;
         
-        System.out.println("handleRequest method DSSController*************");
+        System.out.println("handleRequest method DSSRuleController*************");
         try
         {
-            File file = new File(System.getProperty("user.home")
-                        + System.getProperty("file.separator")
-                        + fileName);
-            file.setWritable(true);
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter writer = new BufferedWriter(fw);
-            writer.write(code);
-            writer.close();
-            DSSRuleService.getRuleService().store(fileName, code);
-            (new DSSProgram(file.getPath())).compileAndExecute(); 
+            DSSRuleService ruleService = DSSRuleService.getRuleService();
+            ruleService.store(ruleName, code);
         }
         catch(Exception e) { 
                 model = getModel("err", e.getMessage());
