@@ -31,16 +31,16 @@ public class DSSRecentTimeItem extends DSSFunction {
         DSSValue recentItem = new DSSValueDate(date);
         DSSValueList dssDateList = (DSSValueList) args[0];
 
-        int i = 0;
+        int i =0;
+        //the first item gets assigned to recentItem 
         recentItem = dssDateList.get(0);
         int max = dssDateList.length();
-        // get(i) return a DSSValue from the DSSValuDate list
-        // getTimeStamp return a Date type of the item
-        // Compare each DSSValueDate as Date type to find the oldest
+       
+        // Starting counter 1, Compare each DSSValueDate as Date type to find the recent item
         // If it is greater than and equal to 0, recentItem is the same as current item 
-        // otherwise, it gets assgined to next item
+        // otherwise, recentItem doesn't change it
         
-        for (i = 0; i < max; i++) {
+        for (i = 1; i < max; i++) {
             if (recentItem.getTimeStamp().compareTo(dssDateList.get(i).getTimeStamp()) >= 0) {
                 recentItem = dssDateList.get(i);
             } 

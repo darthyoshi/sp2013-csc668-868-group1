@@ -35,20 +35,19 @@ public class DSSOldestTimeItem extends DSSFunction {
         //dssDateList will hold all DSSValue Date 
         DSSValueList dssDateList = (DSSValueList) args[0];
 
-        int i;
+        int i = 0;
         int max = dssDateList.length();
+        // the first item gets assigned to oldestItem 
         oldestItem = dssDateList.get(0);
-        for (i = 0; i < max; i++) {
-            // get(i) return a DSSValue from the DSSValuDate list
-            // getTimeStamp return a Date type of the item
-            // Compare each DSSValueDate as Date type to find the oldest
+        for (i = 1; i < max; i++) {
+            
+            // Starting from 1, Compare each DSSValueDate as Date type to find the oldest
             // If it is less than and equal to 0, oldestItem is the same as current item 
             // otherwise, it gets assgined to next item
             
             if (oldestItem.getTimeStamp().compareTo(dssDateList.get(i).getTimeStamp()) <= 0) {
                 oldestItem = dssDateList.get(i);
             } 
-            i++;
         }
 
 
