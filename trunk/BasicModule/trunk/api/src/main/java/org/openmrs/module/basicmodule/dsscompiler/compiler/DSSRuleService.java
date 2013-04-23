@@ -40,7 +40,11 @@ public class DSSRuleService {
      * getRuleService() if you need an instance.
      */
     private DSSRuleService() {
-        loadRules();
+        try {
+            loadRules();
+        } catch (Exception e) {
+            System.err.println("DSS rule service failed to initialize");
+        }
     }
 
     /**
@@ -170,7 +174,7 @@ public class DSSRuleService {
     }
     
     private String toFileName(String ruleName) {
-        return ruleName.replaceAll("\\w", "");
+        return ruleName.replaceAll("\\W", "");
     }
 
     private void loadRules() {
@@ -218,5 +222,11 @@ public class DSSRuleService {
         public Map<String, List<String>> results() {
             return alerts;
         }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Testing DSSRuleService");
+        DSSRuleService s = DSSRuleService.getRuleService();        
+        System.out.println(s.toFileName("file name"));
     }
 }
