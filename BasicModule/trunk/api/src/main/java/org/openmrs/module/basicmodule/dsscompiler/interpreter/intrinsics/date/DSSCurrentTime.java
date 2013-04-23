@@ -11,7 +11,7 @@ import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueFactory;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueString;
 
 /**
- * currenttime() ?return current time; e.g., Tue Nov 06 10:33:56 PST 2012
+ * currenttime() – return current time; e.g., Tue Nov 06 10:33:56 PST 2012
  * DSSCurrentTime class extends DSSFunction and return the current time in
  * specific format. The display format I used will match the system format.
  * Default format yyyy-MM-dd hh:mm:ss  
@@ -23,6 +23,9 @@ import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueString;
  * @author kent
  */
 public class DSSCurrentTime extends DSSFunction{
+    public DSSCurrentTime(){
+        
+    }
     
     /**
      * Construct a DSSValueDate object and return it.
@@ -30,9 +33,10 @@ public class DSSCurrentTime extends DSSFunction{
      * @return DSSValueDate: a new data represents the current time
      */
     public DSSValue call(DSSValue... args){
-        //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //String s = "2011-01-18 00:00:00";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        System.out.print("current time = " +date );
+        System.out.print("current time = " +dateFormat.format(date) +"\n");
         return DSSValueFactory.getDSSValue(date); 
     }
     
