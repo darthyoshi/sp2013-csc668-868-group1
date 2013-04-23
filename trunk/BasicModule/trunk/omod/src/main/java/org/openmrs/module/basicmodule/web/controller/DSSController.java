@@ -12,6 +12,7 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSProgram;
+import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSRuleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,7 +62,7 @@ public class DSSController
             BufferedWriter writer = new BufferedWriter(fw);
             writer.write(code);
             writer.close();
-            
+            DSSRuleService.getRuleService().store(fileName, code);
             (new DSSProgram(file.getPath())).compileAndExecute(); 
         }
         catch(Exception e) { 

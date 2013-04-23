@@ -113,6 +113,8 @@ public abstract class AnnotatedDSSLibrary implements DSSLibrary {
                         suppliedArgs);
                 return evaluator.toDSSValue(returnValue);
             } catch (Exception e) {
+                System.err.println("Error executing intrinsic " + method.getName());
+                e.printStackTrace();
                 return DSSValueFactory.getDSSValue(); // TODO: DSSNull
             }
         }

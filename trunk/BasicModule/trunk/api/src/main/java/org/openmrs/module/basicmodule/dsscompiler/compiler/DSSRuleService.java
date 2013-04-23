@@ -2,12 +2,14 @@ package org.openmrs.module.basicmodule.dsscompiler.compiler;
 
 import java.io.*;
 import java.util.*;
+import java.util.Map.Entry;
 import org.openmrs.module.basicmodule.dsscompiler.ast.AST;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.AnnotatedDSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSIdentifier;
 import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSIntrinsic;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
+import org.openmrs.module.basicmodule.dsscompiler.visitor.PrintVisitor;
 import org.openmrs.module.basicmodule.dsscompiler.xml.XMLBuilder;
 import org.openmrs.util.OpenmrsUtil;
 
@@ -142,6 +144,12 @@ public class DSSRuleService {
         return rules.keySet(); 
     }
     
+    public List<String> runRules(int patientId, String target) {
+        Map<String, List<String>> results = runRules(patientId);
+        return results.containsKey(target) ? 
+                results.get(target) : Collections.<String>emptyList();
+    }
+    
     /**
      * Run all known rules for the given patient
      * @param patientId the patient's numeric id, for encounter look ups
@@ -152,12 +160,14 @@ public class DSSRuleService {
         DSSAlertMap alerts = new DSSAlertMap();
 
         // Run all rules; alerts go into AlertMap
-        for (AST rule : rules.values()) {
+        for (Entry<String, AST> entry : rules.entrySet()) {//AST rule : rules.values()) {            
+            AST rule = entry.getValue();            
             Interpreter i = new Interpreter(DSSProgram.INTRINSICS);
             i.install(alerts);
             i.defineConstant("patientId", patientId);
             i.interpret(rule);
         }
+       
         
         // Return all alerts
         return alerts.results();
@@ -200,19 +210,23 @@ public class DSSRuleService {
             try {
                 sourceFiles.put(ruleName, srcFile);                
                 rules.put(ruleName, new XMLBuilder(xmlFile).getAST().get(0));
+                rules.get(ruleName).accept(new PrintVisitor());
             } catch (Exception e) {
                 System.err.println("Expected but did not find source & xml "
                         + "files for " + ruleName);
+                e.printStackTrace();
             }
         }
     }    
     
-    private class DSSAlertMap extends AnnotatedDSSLibrary {
+    public class DSSAlertMap extends AnnotatedDSSLibrary {
         private Map<String, List<String>> alerts = 
                 new HashMap<String,List<String>>();
         
         @DSSIntrinsic
         public void alert (@DSSIdentifier String target, String alertText) {
+            System.out.print("Alert invoked for ");
+            System.out.println(target + ":" + alertText);
             if (!alerts.containsKey(target)) {
                 alerts.put(target, new ArrayList<String>());
             }

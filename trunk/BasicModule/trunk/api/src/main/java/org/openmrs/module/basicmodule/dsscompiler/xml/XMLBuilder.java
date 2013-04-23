@@ -3,7 +3,6 @@ package org.openmrs.module.basicmodule.dsscompiler.xml;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class XMLBuilder {
     
     private Document document;
     
-    public XMLBuilder(File file) throws Exception {
+    public XMLBuilder(File file) throws Exception {        
         document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
     }
     
@@ -91,23 +90,28 @@ public class XMLBuilder {
         NodeList list = parent.getChildNodes();
         for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);
-            Class<?> astClass = Class.forName(node.getNodeName());
-            NamedNodeMap attrs = node.getAttributes();
-            AST ast = null;
             try {
-                String kind = attrs.getNamedItem(KIND_ATTR).getNodeValue();
-                String value = attrs.getNamedItem(VALUE_ATTR).getNodeValue();
-                ast = (AST) astClass.getConstructor(Token.class).newInstance(
-                        new Token(0,0,Symbol.symbol(value, Tokens.valueOf(kind))));
-            } catch (Exception e) {
-                ast = (AST) astClass.newInstance();
-            }
-            if (ast != null) {
-                List<AST> children = getAST(node);
-                for (AST child : children) {
-                    ast.addKid(child);
+                Class<?> astClass = Class.forName(node.getNodeName());
+                NamedNodeMap attrs = node.getAttributes();
+                AST ast = null;
+                try {
+                    String kind = attrs.getNamedItem(KIND_ATTR).getNodeValue();
+                    String value = attrs.getNamedItem(VALUE_ATTR).getNodeValue();
+                    ast = (AST) astClass.getConstructor(Token.class).newInstance(
+                            new Token(0,0,Symbol.symbol(value, Tokens.valueOf(kind))));
+                } catch (Exception e) {
+                    ast = (AST) astClass.newInstance();
                 }
-                asts.add(ast);
+                if (ast != null) {
+                    List<AST> children = getAST(node);
+                    for (AST child : children) {
+                        ast.addKid(child);
+                    }
+                    asts.add(ast);
+                }
+            } catch (ClassNotFoundException cnfe) {
+                System.err.println("XMLBuilder Skipping node due to exception " + 
+                        cnfe.getMessage());
             }
         }
         return asts;
