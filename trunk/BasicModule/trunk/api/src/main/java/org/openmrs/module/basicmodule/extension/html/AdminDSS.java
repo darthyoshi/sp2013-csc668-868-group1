@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openmrs.module.basicmodule.extension.html;
 
 import java.util.HashMap;
@@ -37,7 +33,7 @@ public class AdminDSS extends AdministrationSectionExt
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		map.put("module/basicmodule/dssLink.form", "Create DSS File");
+		map.put("module/basicmodule/dssRules.form", "Create DSS File");
                 map.put("module/basicmodule/dssUpload.form", "Upload a DSS File");
                 
                 

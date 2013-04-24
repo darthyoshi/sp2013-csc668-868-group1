@@ -1,16 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openmrs.module.basicmodule.web.controller;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSProgram;
+import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSRuleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,19 +47,14 @@ public class DSSUploadController
     @RequestMapping(method = RequestMethod.POST)   
     public ModelAndView handleRequest(@RequestParam("fileName") CommonsMultipartFile file) 
     {
-        //Map<String, String> model = new HashMap<String, String>();
-        Map <String, String> model = new HashMap<String, String>();
+        Map model;
         System.out.println("handleRequest method DSSUploaderController*************");
         if (!file.isEmpty())
         {   
             try{
+                DSSRuleService service = DSSRuleService.getRuleService();
                 FileItem fileItem = file.getFileItem();
-                File uploadFile = new File(System.getProperty("user.home")
-                        + System.getProperty("file.separator")
-                        + fileItem.getName());
-                uploadFile.setWritable(true);
-                fileItem.write(uploadFile);
-                (new DSSProgram(uploadFile.getPath())).compileAndExecute();  
+                service.store(fileItem.getName(), fileItem.getString());
             }
             catch(Exception e)
             {

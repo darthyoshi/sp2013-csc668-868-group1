@@ -24,11 +24,11 @@
 
 
 <form method="post" action="dssRules.form" enctype="multipart/form-data">
-        Rule Name: (.dss extension)
-        <input type="text" name="filename"/><br/>
+        Rule Name: 
+        <input type="text" name="rule_name"/><br/>
         DSS Code: <br/>
         <textarea type ="text" name="dss_code" style="white-space:pre-wrap; height:500px;width:600px"></textarea><br/>
-        <input type="submit" value="Save & Compile Rule"/>
+        <input type="submit" value="Save"/>
 </form>
 
 <%@ include file="/WEB-INF/template/footer.jsp"%>
