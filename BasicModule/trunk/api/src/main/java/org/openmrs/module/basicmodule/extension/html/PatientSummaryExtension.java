@@ -4,6 +4,8 @@
  */
 package org.openmrs.module.basicmodule.extension.html;
 
+import java.util.*;
+import org.openmrs.module.basicmodule.dsscompiler.compiler.DSSRuleService;
 import java.util.Map;
 import org.openmrs.module.Extension;
 
@@ -17,9 +19,17 @@ public class PatientSummaryExtension extends Extension {
 
     	@Override
 	public String getOverrideContent(final String bodyContent) {
-            return " &nbsp;<a href='module/basicmodule/patientsummarylink.form?patientId=" + patientId + "' target='_blank'>View Summary</a> ";
-            //return "<b>OUTPUT ALERTS HERE FOR PATIENT ID: &nbsp;" + patientId + " <i>&nbsp;&nbsp;      CHECK IN URL FOR PATIENT NUMBER</i> </b>";
-	}
+            DSSRuleService service = DSSRuleService.getRuleService();
+            
+            List<String> rules = 
+                    service.runRules(Integer.parseInt(patientId), "patientDashboard");
+            String alerts = "";
+            for(int i = 0; i < rules.size(); i++)
+                alerts += rules.get(i) + "\n";
+          
+            return " &nbsp;<a href='module/basicmodule/patientsummarylink.form?patientId=" + patientId + "' target='_blank'>View Summary</a> <br/> "
+                    + "<font color = red><b>" + alerts + "</b></font>";
+        }
 
     	@Override
 	public void initialize(final Map<String, String> parameters) {
