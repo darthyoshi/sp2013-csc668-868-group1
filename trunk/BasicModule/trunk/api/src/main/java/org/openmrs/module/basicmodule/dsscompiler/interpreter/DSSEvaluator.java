@@ -65,6 +65,8 @@ public class DSSEvaluator implements Evaluator {
                 Map<String, DSSValue> map = new HashMap<String, DSSValue>();
                 // Todo - DSSValueObject
                 return type.cast(map);
+            } else if (type.isAssignableFrom(Date.class)) {
+                return type.cast(new Date(value.toLong()));
             }
         }
         return null;
