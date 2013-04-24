@@ -10,7 +10,7 @@ import org.openmrs.module.basicmodule.dsscompiler.interpreter.ExecutionContext;
 import org.openmrs.module.basicmodule.dsscompiler.visitor.ASTVisitor;
 
 /**
- *
+ * Handles 'call' nodes in the abstract syntax tree for DSS1
  * @author woeltjen
  */
 public class CallInterpreter implements ASTInterpreter<CallTree> {
@@ -31,10 +31,16 @@ public class CallInterpreter implements ASTInterpreter<CallTree> {
             if (func.passAsIdentifier(i) && kid instanceof IdTree) {
                 args[i] = context.getEvaluator().evaluateLiteral(((IdTree)kid).getSymbol());
             } else {
-                args[i] = (DSSValue) kid.accept(visitor);
+                args[i] = context.getEvaluator().toDSSValue(kid.accept(visitor));
             }
-        }        
-        return func.call(args);        
+        }
+        try {
+            return context.getEvaluator().toDSSValue(func.call(args));        
+        } catch (Exception e) {
+            System.err.println("DSS interpreter calling " + id.getSymbol().toString());
+            e.printStackTrace();
+            return context.getEvaluator().toDSSValue(null);
+        }
     }
     
 }
