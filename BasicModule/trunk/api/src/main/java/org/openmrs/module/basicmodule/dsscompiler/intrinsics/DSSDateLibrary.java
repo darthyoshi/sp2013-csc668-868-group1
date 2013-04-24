@@ -36,13 +36,13 @@ public class DSSDateLibrary implements DSSLibrary{
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
         // Initialize lazily
         if (MAP.isEmpty()) {
-            MAP.put("AddDays", new DSSAddDays());
-            MAP.put("AddMonths", new DSSAddMonths());
-            MAP.put("Before", new DSSBefore());
-            MAP.put("CurrentTime", new DSSCurrentTime());
-            MAP.put("OldestTimeItem", new DSSOldestTimeItem());
-            MAP.put("RecentTimeItem", new DSSRecentTimeItem());
-            MAP.put("Time", new DSSTime());
+            MAP.put("addDays", new DSSAddDays());
+            MAP.put("addMonths", new DSSAddMonths());
+            MAP.put("before", new DSSBefore());
+            MAP.put("currenttime", new DSSCurrentTime());
+            MAP.put("oldestTimeItem", new DSSOldestTimeItem());
+            MAP.put("recentTimeItem", new DSSRecentTimeItem());
+            MAP.put("time", new DSSTime());
             //MAP.put("isObject", new IsFunction(DSSValueObject.class));
             //MAP.put("isNull", new IsFunction(DSSValueNull.class));
         }
