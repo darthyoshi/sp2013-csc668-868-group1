@@ -4,11 +4,8 @@
     Author     : Kay Choi
 --%>
 <%@ include file="/WEB-INF/template/include.jsp"%>
-
 <%@ include file="/WEB-INF/template/header.jsp"%>
-<!--
-<script src="<openmrs:contextPath/>/dwr/interface/DWRPatientService.js"></script>
-<script src="<openmrs:contextPath/>/dwr/interface/DWRVitalsService.js"></script>
+<script src="<openmrs:contextPath/>/dwr/interface/DWRRuleService.js"></script>
 
 <script>
 function $_GET(q,s) {
@@ -17,10 +14,18 @@ function $_GET(q,s) {
     return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
 }
 var patientID = $_GET("patientId");
+DWRRuleService.runRules(patientID, "patientSummary",ruleResults);
 
-//TODO: retrieve patient data
+function ruleResults(alerts) {
+    resultString="";
+    for (var i = 0; i < alerts.length; i++) {
+        console.log("Alert " + i + " was: " + alerts[i]);
+        resultString += alerts[i] + "<br/>\n";
+    }
+    document.getElementById("results").innerHTML=resultString;
+}
 </script>
--->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -109,7 +114,7 @@ var patientID = $_GET("patientId");
     </tr>
 </table>
 
-<font color="red"><b>${alert}</b></font>
+<font color="red" size="6"><b><p id ="results"></p></b></font>
 
 </body>
 </html>
