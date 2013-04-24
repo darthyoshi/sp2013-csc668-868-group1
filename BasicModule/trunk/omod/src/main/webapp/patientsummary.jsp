@@ -14,7 +14,7 @@ function $_GET(q,s) {
     return (s=s.replace(/^\?/,'&amp;').match(re)) ?s=s[1] :s='';
 }
 var patientID = $_GET("patientId");
-DWRRuleService.runRules(patientID, "patientSummary",ruleResults);
+DWRRuleService.runRules(patientID, "summary",ruleResults);
 
 function ruleResults(alerts) {
     resultString="";
