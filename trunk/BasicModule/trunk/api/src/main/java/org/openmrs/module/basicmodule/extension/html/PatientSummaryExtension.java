@@ -22,7 +22,7 @@ public class PatientSummaryExtension extends Extension {
             DSSRuleService service = DSSRuleService.getRuleService();
             
             List<String> rules = 
-                    service.runRules(Integer.parseInt(patientId), "patientDashboard");
+                    service.runRules(Integer.parseInt(patientId), "dashboard");
             String alerts = "";
             for(int i = 0; i < rules.size(); i++)
                 alerts += rules.get(i) + "\n";
