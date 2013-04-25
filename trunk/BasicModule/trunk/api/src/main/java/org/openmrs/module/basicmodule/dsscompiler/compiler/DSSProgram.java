@@ -3,10 +3,7 @@ package org.openmrs.module.basicmodule.dsscompiler.compiler;
 import org.openmrs.module.basicmodule.dsscompiler.ast.*;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.DSSLibrary;
 import org.openmrs.module.basicmodule.dsscompiler.interpreter.Interpreter;
-import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSDateLibrary;
-import org.openmrs.module.basicmodule.dsscompiler.intrinsics.DSSLengthAndWithinLibrary;
-import org.openmrs.module.basicmodule.dsscompiler.intrinsics.IsLibrary;
-import org.openmrs.module.basicmodule.dsscompiler.intrinsics.ReadLibrary;
+import org.openmrs.module.basicmodule.dsscompiler.intrinsics.*;
 import org.openmrs.module.basicmodule.dsscompiler.parser.Parser;
 
 /**
@@ -17,6 +14,9 @@ public class DSSProgram {
     public static final DSSLibrary[] INTRINSICS = {
             new IsLibrary(),
             new ReadLibrary(),
+            new ListLibrary(),
+            //new MiscLibrary(),
+            //new TimeLibrary()
 	    new DSSDateLibrary(),
             new DSSLengthAndWithinLibrary()
             // Other libraries go here!

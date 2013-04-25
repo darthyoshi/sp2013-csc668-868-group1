@@ -7,7 +7,7 @@ import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueList;
 
 
 /**
- * recentTimeItem(list) – return the item with the most recent time
+ * recentTimeItem(list) ï¿½ return the item with the most recent time
  * DSSCurrentTime class extends DSSFunction and return the current time in
  * specific format.DSSCurrentTIme also owns instances of DSSFunction. The
  * display format will match the system format. Default format yyyy-MM-dd
@@ -41,7 +41,7 @@ public class DSSRecentTimeItem extends DSSFunction {
         // otherwise, recentItem doesn't change it
         
         for (i = 1; i < max; i++) {
-            if (recentItem.getTimeStamp().compareTo(dssDateList.get(i).getTimeStamp()) >= 0) {
+            if (recentItem.getTimeStamp().compareTo(dssDateList.get(i).getTimeStamp()) <= 0) {
                 recentItem = dssDateList.get(i);
             } 
         }

@@ -18,7 +18,7 @@ public class DSSLengthAndWithinLibrary implements DSSLibrary{
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
        if(Map.isEmpty()){
            Map.put("length", new DSSLengthAndWithinLibrary.DSSLength());
-           Map.put("within", new DSSLengthAndWithinLibrary.DSSLength());
+           Map.put("within", new DSSLengthAndWithinLibrary.DSSWithin());
        }
        return Map;
     }
