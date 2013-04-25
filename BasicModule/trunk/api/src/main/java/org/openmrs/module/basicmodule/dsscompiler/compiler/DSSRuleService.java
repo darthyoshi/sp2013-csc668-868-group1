@@ -173,6 +173,10 @@ public class DSSRuleService {
         return alerts.results();
     }
     
+    public void delete(String ruleName) {
+        
+    }
+    
     private File getFile(String name) {
         File dataDir = 
                 OpenmrsUtil.getDirectoryInApplicationDataDirectory(RULE_FOLDER);

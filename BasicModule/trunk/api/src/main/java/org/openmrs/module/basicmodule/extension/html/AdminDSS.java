@@ -36,7 +36,6 @@ public class AdminDSS extends AdministrationSectionExt
 		map.put("module/basicmodule/dssRules.form", "Create DSS File");
                 map.put("module/basicmodule/dssUpload.form", "Upload a DSS File");
                 
-                
 		return map;
 	}
     

@@ -11,7 +11,7 @@ import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueDate;
 import org.openmrs.module.basicmodule.dsscompiler.value.DSSValueList;
 
 /**
- * oldestTimeItem(list) – return the item with the oldest time The display
+ * oldestTimeItem(list) ï¿½ return the item with the oldest time The display
  * format I used will match the system format. Default format yyyy-MM-dd
  * hh:mm:ss e.g. Name	Value System Date	2013-04-11 System Time 09:07:32
  *
@@ -45,7 +45,7 @@ public class DSSOldestTimeItem extends DSSFunction {
             // If it is less than and equal to 0, oldestItem is the same as current item 
             // otherwise, it gets assgined to next item
             
-            if (oldestItem.getTimeStamp().compareTo(dssDateList.get(i).getTimeStamp()) <= 0) {
+            if (oldestItem.getTimeStamp().compareTo(dssDateList.get(i).getTimeStamp()) >= 0) {
                 oldestItem = dssDateList.get(i);
             } 
         }
