@@ -66,11 +66,11 @@ public class PatientNotesPortletController implements Controller {
         BufferedReader r;
         try {
             String line = "";
-            r = new BufferedReader(new FileReader(filepath + "openmrs-runtime.properties.txtt"));
+            r = new BufferedReader(new FileReader(filepath + "openmrs-runtime.properties.txt"));
             for (int i = 0; i < 3; i++) {
                 line += r.readLine() + "<br>";
             }
-            System.out.println("Property file: " + filepath + "openmrs-runtime.properties.txtt" + "   Line: " + line);
+            System.out.println("Property file: " + filepath + "openmrs-runtime.properties.txt" + "   Line: " + line);
             model.put("prop", line);
             r.close();
         } catch (Exception ex) {

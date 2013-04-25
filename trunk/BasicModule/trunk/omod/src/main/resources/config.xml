@@ -106,6 +106,9 @@
             <create creator="new" javascript="DWRRuleService">
                 <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRRuleService"/>
                 <include method="runRules"/>
+                <include method="listRules"/>
+                <include method="load"/>
+                <include method="store"/>
             </create>
             
             <create creator="new" javascript="DWRVitalsService">
