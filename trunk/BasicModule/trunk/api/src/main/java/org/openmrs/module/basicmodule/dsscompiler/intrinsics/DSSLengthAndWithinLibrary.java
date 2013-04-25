@@ -17,21 +17,29 @@ public class DSSLengthAndWithinLibrary implements DSSLibrary{
    
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
        if(Map.isEmpty()){
-           Map.put("Within", new DSSLengthAndWithinLibrary.DSSLength());
-           Map.put("Length", new DSSLengthAndWithinLibrary.DSSLength());
+           Map.put("length", new DSSLengthAndWithinLibrary.DSSLength());
+           Map.put("within", new DSSLengthAndWithinLibrary.DSSLength());
        }
        return Map;
     }
     
-    //the length of either list/string
+    // the length of either list/string
     private static class DSSLength extends DSSFunction{
 
         public DSSValue call(DSSValue... args){
-            
             return DSSValueFactory.getDSSValue(args[0].length());
         }
     }
     
-    //private static class DSSWithin extends DSSFunction {}
+    // returns true if v is between a and b e.g., within(3,2,5) is true
+    private class DSSWithin extends DSSFunction {
+    
+            public DSSValue call(DSSValue... args){
+                if(args[0].greaterthanequal(args[1]) && args[0].lessthanequal(args[2])) 
+                    return DSSValueFactory.getDSSValue(true);
+                    
+                return DSSValueFactory.getDSSValue(false);
+            }
     }
+}
 
