@@ -1,0 +1,10 @@
+read(patientId, conceptName)
+readInitialEncounter(patientId, conceptName)
+readLatestEncounter(patientId, conceptName)
+
+-patientId - the ID number of the patient
+-conceptName - the name of the concept to search for
+
+The read functions retrieve a list of observations associated with a patient. The first parameter of the functions, patientId, is a numeric identifier unique to each patient. The second parameter, conceptName, is the word or phrase used by the OpenMRS dictionary to refer to a concept.
+
+The three functions are nearly identical, save for one difference: while read() returns a list containing all observations that match the function parameters, readInitialEncounter() and readLatestEncounter() filter out results based on the timestamp of the observations. Calling readInitialEncounter() retrieves only the observations from the patient's earliest encounter on record, while readLatestEncounter() retrieves only the observations from the patient's most recent encounter on record.
