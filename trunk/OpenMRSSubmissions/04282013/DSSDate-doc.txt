@@ -26,7 +26,7 @@ Actual Function Names and parameters:
 
 - time(v) : return the time conponent of the DSSValue
 
-note: all of param is DSSValue and all of it contains following structure and it is corresponding to the Observation Object coming from openmrs.
+note: all of the param is DSSValue and contains following structure. The structure is corresponding to the Observation Object coming from openmrs.
 
 DSSValue{
   value
@@ -35,7 +35,7 @@ DSSValue{
 }
       
 
-Mapping of DSSDateValue:
+Mapping of DSS Date Functions:
 
 The compiler call on the interpreter install function to install each intransic function into DSSExecutionContext which will remember all of the function name and java class in a hashmap. 
 
