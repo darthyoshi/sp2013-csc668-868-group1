@@ -37,7 +37,7 @@ DSSValue{
 
 Mapping of DSSDateValue:
 
-The compiler will first call on interpreter install function to install each intransic function into DSSExecutionContext which will remember all the function name and java class in a hashmap. 
+The compiler call on interpreter install function to install each intransic function into DSSExecutionContext which will remember all the function name and java class in a hashmap. 
 
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
         // Initialize lazily
