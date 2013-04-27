@@ -1,0 +1,55 @@
+DSS Date intransic functions:
+- DSSCurrentTime.java
+- DSSAddDays.java
+- DSSAddMonths.java
+- DSSBefore.java
+- DSSOldestTimeItem.java
+- DSSRecentTimeItem.java
+- DSSTime.java
+
+General Disscuion: Date is the main conponent of every DSS program. Date program will take all param input as DSSValue to finish any time comparison and return time values.
+
+
+Actual Function Names and parameters: 
+
+- currenttime() : return the current system time
+
+- addDays(time, value) : add second param value to the time field of DSS object(first param)
+
+- addMonths(time, value) : add second param value to the time field of DSS object(first param)
+
+- before(time1, time2) : compare the conponent of two DSSValue's time conponent(timestamp) and return the oldest one
+
+- recentTimeItem(list) : iterate through the list and find the DSSValue that has the lastest time conponent 
+
+- oldestTimeItem(list) : iterate through the list and find the DSSValue that has the oldest time conponent
+
+- time(v) : return the time conponent of the DSSValue
+
+note: all of param is DSSValue and all of it contains following structure and it is corresponding to the Observation Object coming from openmrs.
+
+DSSValue{
+  value
+  value_type
+  time
+}
+      
+
+Mapping of DSSDateValue:
+
+The compiler will first call on interpreter install function to install each intransic function into DSSExecutionContext which will remember all the function name and java class in a hashmap. 
+
+    public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
+        // Initialize lazily
+        if (MAP.isEmpty()) {
+            MAP.put("addDays", new DSSAddDays());
+            MAP.put("addMonths", new DSSAddMonths());
+            MAP.put("before", new DSSBefore());
+            MAP.put("currenttime", new DSSCurrentTime());
+            MAP.put("oldestTimeItem", new DSSOldestTimeItem());
+            MAP.put("recentTimeItem", new DSSRecentTimeItem());
+            MAP.put("time", new DSSTime());
+
+        }
+        return MAP;
+    }
