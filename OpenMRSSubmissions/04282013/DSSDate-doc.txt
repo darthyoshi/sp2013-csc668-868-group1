@@ -7,7 +7,7 @@ DSS Date intransic functions:
 - DSSRecentTimeItem.java
 - DSSTime.java
 
-General Disscuion: Date is the main conponent of every DSS program. Date program will take all param input as DSSValue to finish any time comparison and return time values.
+General Discusion: Date is the main conponent of every DSS program. Date program takes in all param input as DSSValue to finish any time comparison and return time values.
 
 
 Actual Function Names and parameters: 
