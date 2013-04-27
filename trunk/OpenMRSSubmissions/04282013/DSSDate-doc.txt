@@ -18,7 +18,7 @@ Actual Function Names and parameters:
 
 - addMonths(time, value) : add second param value to the time field of DSS object(first param)
 
-- before(time1, time2) : compare the conponent of two DSSValue's time conponent(timestamp) and return the oldest one
+- before(time1, time2) : compare the conponent of two DSSValue's time conponent(timestamp). return true if time1 is before time2;otherwise, return false
 
 - recentTimeItem(list) : iterate through the list and find the DSSValue that has the lastest time conponent 
 
@@ -37,7 +37,7 @@ DSSValue{
 
 Mapping of DSSDateValue:
 
-The compiler call on interpreter install function to install each intransic function into DSSExecutionContext which will remember all the function name and java class in a hashmap. 
+The compiler call on the interpreter install function to install each intransic function into DSSExecutionContext which will remember all of the function name and java class in a hashmap. 
 
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
         // Initialize lazily
