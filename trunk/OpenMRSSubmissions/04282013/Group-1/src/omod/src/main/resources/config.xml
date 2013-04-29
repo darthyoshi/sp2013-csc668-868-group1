@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+	
+	<!-- Base Module Properties -->
+    <id>${project.parent.artifactId}</id>
+    <name>${project.parent.name}</name>
+    <version>${project.parent.version}</version>
+    <package>${project.parent.groupId}.${project.parent.artifactId}</package>
+    <author>Ben Wolfe</author>
+    <description>
+        ${project.parent.description}
+    </description>
+
+    <activator>${project.parent.groupId}.${project.parent.artifactId}.BasicModuleActivator</activator>
+	
+	<!-- <updateURL>https://modules.openmrs.org/modules/download/@MODULE_ID@/update.rdf</updateURL> -->
+	<!-- /Base Module Properties -->
+	
+    <require_version>1.9.*</require_version>
+    <require_database_version>1.0.0</require_database_version>
+	
+	<!-- Extensions -->
+    <extension>
+        <point>org.openmrs.admin.list</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.AdminList</class>
+    </extension>
+        <extension>
+        <point>org.openmrs.admin.list</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.AdminDSS</class>
+    </extension>
+    <extension>
+        <point>org.openmrs.patientDashboardTab</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.ExamplePatientDashboardTab</class>
+    </extension>
+    <extension>
+        <point>org.openmrs.patientDashboardTab</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.VitalsPatientDashboardTab</class>
+    </extension>
+    <extension>
+        <point>org.openmrs.patientDashboardTab</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.RulesPatientDashboardTab</class>
+    </extension>
+    <extension>
+        <point>org.openmrs.patientDashboardTab</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.PatientNotesDashboardTabExt</class>
+    </extension>
+    <extension>
+        <point>org.openmrs.patientDashboard.afterLastEncounter</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.PatientSummaryExtension</class>
+    </extension>                      
+
+        
+    <mappingFiles> <!-- The hibernate mapping file stored in /metadata/Note.hbm.xml and in the omod when packaged -->
+        Note.hbm.xml
+    </mappingFiles>	
+        
+       
+    <globalProperty>
+        <property>basicmodule.testproperty</property>
+        <defaultValue>6</defaultValue>
+        <description>
+            Maximum age of a child (exclusive).
+            Default: 6
+        </description>
+    </globalProperty>
+        
+
+	<!-- AOP
+	<advice>
+		<point>org.openmrs.api.FormService</point>
+		<class>@MODULE_PACKAGE@.advice.DuplicateFormAdvisor</class>
+	</advice>
+	 /AOP -->
+	
+        
+    <privilege>
+        <name>Pharm add prescription</name>
+        <description>Pharm add prescription</description>
+    </privilege>
+    <privilege>
+        <name>Pharm view prescription</name>
+        <description>Pharm add prescription</description>
+    </privilege>
+    <privilege>
+        <name>Pharm return prescription</name>
+        <description>Pharm add prescription</description>
+    </privilege>
+ 
+
+
+	<!-- Required Global Properties 
+	<globalProperty>
+		<property>@MODULE_ID@.someProperty</property>
+		<defaultValue></defaultValue>
+		<description>
+			A description of the global property goes here.  The description
+			should explain enough for administrators to understand the purpose
+			and possible values for the global property.
+		</description>
+	</globalProperty>
+	/Required Global Properties -->
+		
+    <dwr>
+        <allow>
+            <create creator="new" javascript="DWRRuleService">
+                <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRRuleService"/>
+                <include method="runRules"/>
+                <include method="listRules"/>
+                <include method="load"/>
+                <include method="store"/>
+            </create>
+            
+            <create creator="new" javascript="DWRVitalsService">
+                <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRVitalsService"/>
+                <include method="getPatientEncounters"/>
+            </create> 
+
+            
+            <create creator="new" javascript="DWRMyNotesService">
+                <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRMyNotesService"/>
+                <include method="getNotesForPatient"/>
+                                <!-- Can include other methods from class, too -->
+            </create> 
+                        <!-- The following conversion tells spring to generate javascript to be able to
+                        save and retrieve Note objects from the jsp page
+                        See http://directwebremoting.org/dwr/documentation/server/configuration/dwrxml/converters/bean.html
+                        -->
+            <convert converter="bean" match="org.openmrs.module.basicmodule.Note">
+                <param name="exclude" value="patient"/>
+            </convert>
+
+            <convert converter="bean" match="org.openmrs.Encounter" />
+            <convert converter="bean" match="org.openmrs.Obs">
+                <param name="include" value="concept,valueNumeric" />
+            </convert>
+            <convert converter="bean" match="org.openmrs.Concept">
+                <param name="include" value="conceptId,displayString" />
+            </convert>
+           
+                        
+            <create creator="new" javascript="DWRFindPatientBL">
+                <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRFindPatientBL"/>
+                <include method="findPatients"/>
+            </create>
+                        
+            <create creator="new" javascript="DWRSaveNoteBL">
+                <param name="class" value="org.openmrs.module.basicmodule.web.controller.DWRSaveNoteBL"/>
+                <include method="saveNoteForPatient"/>
+            </create>
+        </allow>
+
+        <signatures>
+			<![CDATA[
+			import ${project.parent.groupId}.${project.parent.artifactId}.web.DWRMyNotesService;
+			DWRMyNotesService.getNotesForPatient(String patientName);
+			]]>
+
+			<![CDATA[
+			import ${project.parent.groupId}.${project.parent.artifactId}.web.controller.DWRFindPatientBL;
+			DWRFindPatientBL.findPatients(String searchValue, boolean includeVoided);
+			]]>   
+                        
+			<![CDATA[
+			import ${project.parent.groupId}.${project.parent.artifactId}.web.controller.DWRSaveNoteBL;
+			DWRSaveNoteBL.saveNoteForPatient(String patientId, String title, String text);
+			]]>         
+        </signatures>	
+               
+    </dwr>
+	
+	<!-- Servlets -->
+	<!-- Accessed through the url /pageContext()/moduleServlet/<moduleId>/<servlet-name> 
+	<servlet>
+		<servlet-name>formDownload</servlet-name>
+		<servlet-class>@MODULE_PACKAGE@.web.FormDownloadServlet</servlet-class>
+	</servlet>
+	-->
+	<!-- /Servlets -->
+	
+	
+	<!-- Internationalization -->
+	<!-- All message codes should start with @MODULE_ID@.* -->
+    <messages>
+        <lang>en</lang>
+        <file>messages.properties</file>
+    </messages>
+    <messages>
+        <lang>fr</lang>
+        <file>messages_fr.properties</file>
+    </messages>
+    <messages>
+        <lang>es</lang>
+        <file>messages_es.properties</file>
+    </messages>
+	<!-- /Internationalization -->
+	
+</module>
+

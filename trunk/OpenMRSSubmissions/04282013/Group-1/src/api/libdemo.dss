@@ -1,0 +1,21 @@
+program
+// FIBONACCI SEQUENCE
+function fib(x) {
+    if x<2 then { return x } else { return fib(x-2) + fib(x-1) }
+}
+
+// MAIN BLOCK
+{
+    log(patientSummary,   fib(5))
+    log(patientSummary,   "sin of pi/4 is " + sin(pi/4))
+
+    log(patientSummary,   "sum of 1-4 is " + sum(seq(1,4)))
+    log(patientSummary,   "sum given a non-list returns " + sum("ignored"))
+
+    log(patientDashboard, "max of 1 and 2 is " + max(1,2))
+    log(patientDashboard, "min of 1 and 2 is " + min(1,2))
+
+    sequence := seq(1,4)
+
+    for j in sequence { log (forLoop, j) } 
+}
