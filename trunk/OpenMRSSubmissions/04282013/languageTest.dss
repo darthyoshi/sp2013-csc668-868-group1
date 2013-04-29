@@ -8,6 +8,10 @@ function show(value) {
   alert(patientSummary, value)
 }
 
+function space(){
+  show(" ")
+}
+
 function check (actual, expected) {
   if expected == actual then {
     show("GOOD: " + actual)
@@ -29,45 +33,49 @@ function returnTest(){
   
   bools := true
 
+  space()
   show("If Then Test")
   if ints == 4 then{ 
     show("True")		
   }
+  space()
 
   show("If Then Else Test")		//True if bools != true
   if bools == false then{
    show("False")
   }else{show("True")}
-
+  space()
+  
   show("If Elsif Else Test:expect 1")
   if 5 == 4 then {
     show("0")
   }elsif 4 == 4 then {
     show("1")
   }else{show("2")}
+  space()
 
-  show("+ - < test")
+  show("+ - < Test")
   if 5 + 5 < 12 - 1 then {
     show("True")
   }else{show("False")}
-
-  show("<= / test")
+  space()
+  show("<= / Test")
   if 24 / 2 <= 12 then {
     show("True")
   }else{show("False")}
 
-  show("!= test")
+  show("!= Test")
   if 1 != 2 then {
     show("True")
   }else{show("False")}
 
-  show("list test")
+  show("list Test")
   a := {1,2}
   if  a == {1,2} then {
     show("True")
   }else{show("False")}
 
-  show("** test")
+  show("** Test")
   b := 2
   if 4 == b ** 2 then {
     show("True")
@@ -98,17 +106,17 @@ function returnTest(){
   show("printing..")
 }
   //tests that don't work
-  //show("not test")
+  //show("not Test")
   //if not false then {
     //show("True")
   //}else{show("False")}
   
-  //show("&&  test")
+  //show("&&  Test")
   //if 2 == 2 && 1 == 1 then {
     //show("True")
   //}else{show("False")}
 
-  //show("|  test")
+  //show("|  Test")
   //if 2 == 2 | 1 == 1 then {
     //show("True")
   //}else{show("False")}
