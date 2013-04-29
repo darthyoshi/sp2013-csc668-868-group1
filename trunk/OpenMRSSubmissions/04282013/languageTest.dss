@@ -1,0 +1,126 @@
+//Language testing
+//Not everything works
+//I used DSSProgram to check the syntax
+
+program 		//program keyword
+
+function show(value) {
+  alert(patientSummary, value)
+}
+
+function check (actual, expected) {
+  if expected == actual then {
+    show("GOOD: " + actual)
+  } else {
+    show("BAD: " + actual + "; expected: " + expected)
+  }
+}
+//Comments work
+
+function returnTest(){
+   return "fifteen"
+}
+
+{
+  show("")
+  show("====STARTING TESTS====")	//functions calls work
+  strings := "Hello"	//Assignments work
+  ints := 4		
+  
+  bools := true
+
+  show("If Then Test")
+  if ints == 4 then{ 
+    show("True")		
+  }
+
+  show("If Then Else Test")		//True if bools != true
+  if bools == false then{
+   show("False")
+  }else{show("True")}
+
+  show("If Elsif Else Test:expect 1")
+  if 5 == 4 then {
+    show("0")
+  }elsif 4 == 4 then {
+    show("1")
+  }else{show("2")}
+
+  show("+ - < test")
+  if 5 + 5 < 12 - 1 then {
+    show("True")
+  }else{show("False")}
+
+  show("<= / test")
+  if 24 / 2 <= 12 then {
+    show("True")
+  }else{show("False")}
+
+  show("!= test")
+  if 1 != 2 then {
+    show("True")
+  }else{show("False")}
+
+  show("list test")
+  a := {1,2}
+  if  a == {1,2} then {
+    show("True")
+  }else{show("False")}
+
+  show("** test")
+  b := 2
+  if 4 == b ** 2 then {
+    show("True")
+  }else{show("False")}
+
+  show("Return Test:expect fifteen")		//returns 15
+  show(returnTest())		//tests return
+
+  show("Concatenation Test:expected addingStrings")
+  test := "adding" || "Strings"
+  show(test)
+
+  show("While Test")
+  x := 0
+  while (x <= 2) {
+  show("testing..")
+  x := 3}
+
+  show("While Test")
+  x := 0
+  while (x <= 2) {
+  show("testing..")
+  x := 3}
+
+  show("For Test")
+  b := {1,2}
+  for x in b{
+  show("printing..")
+}
+  //tests that don't work
+  //show("not test")
+  //if not false then {
+    //show("True")
+  //}else{show("False")}
+  
+  //show("&&  test")
+  //if 2 == 2 && 1 == 1 then {
+    //show("True")
+  //}else{show("False")}
+
+  //show("|  test")
+  //if 2 == 2 | 1 == 1 then {
+    //show("True")
+  //}else{show("False")}
+
+  //show("While Test")
+  //x := 0
+  //while (x <= 2) {
+  //show("testing..")
+  //x := 3}
+
+  //id.mod := 5		//id mod test
+
+  show("====ENDING TESTS====")  
+  show("")
+}
