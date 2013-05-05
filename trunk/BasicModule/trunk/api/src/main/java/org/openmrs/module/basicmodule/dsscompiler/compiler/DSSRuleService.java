@@ -134,7 +134,7 @@ public class DSSRuleService {
         
         String line = null;
         while ( (line = reader.readLine()) != null) {
-            sourceCode.append(line);
+            sourceCode.append(line + "\n");
         }
         
         reader.close();
