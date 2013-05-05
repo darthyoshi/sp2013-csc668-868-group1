@@ -9,9 +9,10 @@
 <script src="<openmrs:contextPath/>/dwr/interface/DWRRuleService.js"></script>
 <script type="text/javascript">
         DWRRuleService.listRules(getRuleNames);
-
+        var allRuleNames;
         function getRuleNames(names)
         {
+            allRuleNames = names;
             var list = document.getElementById("ruleNames");
             list.options.add(new Option());
             for(i = 0; i < names.length; i++)
@@ -19,6 +20,7 @@
                 list.options.add(new Option(names[i]));
             }
         }
+        
         function loadRule()
         {
             var form = document.getElementById("ruleNames");
@@ -30,6 +32,19 @@
         function changeCode(str)
         {
             document.getElementById("input_code").value = str;
+        }
+        
+        function confirm_submit()
+        {
+            var name = document.getElementById("input_rulename").value;
+            var exists = false;
+            for(i = 0; i < allRuleNames.length; i++)
+            {
+                if(name === allRuleNames[i]){   exists = true; break; }
+            }
+          
+            if(exists)
+                return confirm("Overwrite \"" + name + "\" rule?");
         }
 </script>    
 
@@ -59,7 +74,7 @@
         <input type="text" id="input_rulename" name="rule_name"/><br/>
         DSS Code: <br/>
         <textarea type ="text" id="input_code" name="dss_code" style="white-space:pre-wrap; height:500px;width:600px"></textarea><br/>
-        <input type="submit" value="Save"/>
+       <input type="submit" onclick="return confirm_submit();" value="Save"/> 
 </form>
 
 <%@ include file="/WEB-INF/template/footer.jsp"%>
