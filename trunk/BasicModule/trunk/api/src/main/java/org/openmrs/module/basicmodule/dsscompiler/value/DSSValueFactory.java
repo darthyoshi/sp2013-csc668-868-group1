@@ -4,6 +4,8 @@
  */
 package org.openmrs.module.basicmodule.dsscompiler.value;
 import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Vector;
 
 
@@ -13,6 +15,8 @@ import java.util.Vector;
  * @author bierman
  */
 public class DSSValueFactory {
+    private static final DSSValue DSS_NULL = new DSSValueNull();
+    
     public static DSSValue getDSSValue (int x) {
         return(new DSSValueInt (x));
     }
@@ -47,7 +51,15 @@ public class DSSValueFactory {
         return(new DSSValueList (x));
     }
     
+    public static DSSValue getDSSValue (Map<String, DSSValue> map) {
+        DSSValueObject value = new DSSValueObject();
+        for (Entry<String, DSSValue> entry : map.entrySet()) {
+            value.set(entry.getKey(), entry.getValue());            
+        }
+        return value;
+    }
+    
     public static DSSValue getDSSValue () {
-        return(new DSSValueNull ());
+        return DSS_NULL;
     }
 }
