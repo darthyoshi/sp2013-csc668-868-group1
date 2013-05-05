@@ -108,12 +108,11 @@ public class DSSEvaluator implements Evaluator {
     }
 
     public DSSValue newAllocation(String... fields) {
-//        Map<String, DSSValue> map = new HashMap<String, DSSValue>();
-//        for (String field : fields) {
-//            map.put(field, DSSValueFactory.getDSSNull());
-//        }
-//        return DSSValueFactory.getDSSValue(map);
-        return DSSValueFactory.getDSSValue();
+        Map<String, DSSValue> map = new HashMap<String, DSSValue>();
+        for (String field : fields) {
+            map.put(field, DSSValueFactory.getDSSValue());
+        }
+        return DSSValueFactory.getDSSValue(map);
     }
 
     public DSSValue toDSSValue(Object javaObject) {
