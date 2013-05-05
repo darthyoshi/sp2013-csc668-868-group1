@@ -87,11 +87,6 @@ public class DSSValueFloat extends DSSValueNumeric {
     }
 
     @Override
-    public DSSValue power(DSSValue b) {
-        return DSSValueFactory.getDSSValue();
-    }
-
-    @Override
     public DSSValue and(DSSValue b) {
         return DSSValueFactory.getDSSValue();
     }

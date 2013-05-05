@@ -18,15 +18,7 @@ public class DSSValueInt extends DSSValueNumeric {
     
     DSSValueInt (long i) {
         value = i;
-    }
-    
-    @Override
-    public DSSValue power (DSSValue b) {
-        if (b.isInt()) {
-            return( DSSValueFactory.getDSSValue( (long) Math.pow(value, b.toInt())));
-        }
-    return null;
-    }
+    }   
     
     @Override
     public boolean isInt() {
