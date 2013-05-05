@@ -23,5 +23,14 @@ abstract class DSSValueNumeric extends DSSValue {
         return (x);
     }
 
-  
+    @Override
+    public DSSValue power (DSSValue b) {
+        if (b.isNumeric()) {
+            // Use integer type if both sides are integers - otherwise, float
+            return isInt() && b.isInt() ?
+                    DSSValueFactory.getDSSValue( (long) Math.pow(toInt(), b.toInt())) :
+                    DSSValueFactory.getDSSValue( Math.pow(toFloat(), b.toFloat()));        
+        }
+        return DSSValueFactory.getDSSValue();
+    }  
 }
