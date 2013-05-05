@@ -22,29 +22,17 @@ public class DSSValueBool extends DSSValue {
 
     @Override
     public DSSValue and(DSSValue b) {
-        if (b.isBoolean()) {
-            return( DSSValueFactory.getDSSValue(value && ((DSSValueBool)b).value));
-        }
-        
-    return null;
+        return value ? b : this;
     }
    
     @Override
     public DSSValue not(DSSValue b) {
-        if(b.isBoolean()){
-            return( DSSValueFactory.getDSSValue( !((DSSValueBool)b).value));
-        }
-        
-    return null;
+        return DSSValueFactory.getDSSValue(!value);
     }
    
     @Override
     public DSSValue or(DSSValue b) {
-        if (b.isBoolean()) {
-            return( DSSValueFactory.getDSSValue(value || ((DSSValueBool)b).value));
-        }
-        
-    return null;
+        return value ? this : b;
     }
 
     @Override
