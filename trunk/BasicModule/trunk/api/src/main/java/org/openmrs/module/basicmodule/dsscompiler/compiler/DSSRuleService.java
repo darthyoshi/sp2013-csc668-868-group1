@@ -93,8 +93,14 @@ public class DSSRuleService {
         w.close();
         
         // Compile the source code
-        Parser p = new Parser(target.getAbsolutePath());
-        AST ast = p.execute();
+        AST ast;
+        try {
+            Parser p = new Parser(target.getAbsolutePath());
+            ast = p.execute();
+        } catch (Exception e) {
+            target.delete(); // Compilation failed, so remove the source
+            throw e;
+        }
         
         // Save the source code for later
         rules.put(ruleName, ast);
