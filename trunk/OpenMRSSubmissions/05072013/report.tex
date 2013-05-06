@@ -125,7 +125,15 @@
 
 \begin{figure}
 \begin{tikzpicture}[node distance=0.25in]
-\node (InterpreterVisitor) [class] { 
+\node (ASTVisitor) [class] { 
+  \emph{ASTVisitor}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+  + visitBlockTree(t : AST) \\
+  + visitIdTree(t : AST)    \\
+  ...
+};
+\node (InterpreterVisitor) [class, below=of ASTVisitor] { 
   \textbf{InterpreterVisitor}
   \nodepart{second}  
   \nodepart[align=justify]{third}
@@ -138,13 +146,13 @@
   + setConstant(name : String,  value : DSSValue) \\
   + setIntrinsic(name : String,  func : DSSFunction)
 };
-\node (ExecutionContext) [class, below=of DSSExecutionContext] { 
+\node (ExecutionContext) [class, above=of DSSExecutionContext] { 
   \textbf{ExecutionContext}
   \nodepart{second}  
   \nodepart[align=justify]{third}
   + beginScope() \\
   + endScope() \\
-  + getEvaluator() \\
+  + getEvaluator() : Evaluator \\
   + getFunction(name : String) : DSSFunction \\
   + getReturnValue() : DSSValue \\
   + setReturnValeu(v : DSSValue) \\
@@ -158,11 +166,30 @@
               context : ExecutionContext, \\
               v : ASTVisitor)
 };
+\node (BlockInterpreter) [class, anchor=west, below=of ASTInterpreter] { 
+  \textbf{BlockInterpreter}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+};
+\node (IdInterpreter) [class, right=of ASTInterpreter] { 
+  \textbf{IdInterpreter}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+};
 
+
+\path [implements] (InterpreterVisitor) -- (ASTVisitor) {};
+\path [implements] (BlockInterpreter) -- (ASTInterpreter) {};
+\path [implements] (IdInterpreter) -- (ASTInterpreter) {};
 \path [implements] (DSSExecutionContext) -- (ExecutionContext) {};
 \path [contains] (InterpreterVisitor) -- (DSSExecutionContext) {};
 \path [contains] (InterpreterVisitor) -- (ASTInterpreter) {};
+\draw (InterpreterVisitor) -- (ASTInterpreter) 
+      node [midway, right] {\small{1..*}};
+\draw (InterpreterVisitor) -- (DSSExecutionContext) 
+      node [midway, above] {\small{1..1}};
 \end{tikzpicture}
+\caption{Interpreter visitor}
 \end{figure}
 
 \newpage 
