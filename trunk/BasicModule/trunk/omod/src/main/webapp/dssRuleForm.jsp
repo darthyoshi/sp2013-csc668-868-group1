@@ -7,6 +7,7 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 <%@ include file="/WEB-INF/template/header.jsp"%>
 <script src="<openmrs:contextPath/>/dwr/interface/DWRRuleService.js"></script>
+
 <script type="text/javascript">
         DWRRuleService.listRules(getRuleNames);
         var allRuleNames;
@@ -46,14 +47,15 @@
             if(exists)
                 return confirm("Overwrite \"" + name + "\" rule?");
         }
-</script>    
+</script>
 
-
-<c:set var="stat" value ="${status}"/>
+    <c:set var="stat" value ="${status}"/>
     <c:set var="error" value="err"/>
     <c:set var="success" value="s"/>
     <c:choose>
         <c:when test="${stat == error}">
+            <c:set var="rules" value="${rule_name}"/>
+            <c:set var="dss" value="${dssCode}"/>
             <table width="100%" style ="border-style:dashed;border-width:1px" bgcolor="#FFADAD">
                 <tr><td><b> ${message}</b></td></tr>
             </table>
@@ -64,17 +66,39 @@
             </table>
         </c:when>
     </c:choose>
-
     
-    <select id="ruleNames"></select>
-    <button onclick="loadRule()">Load Rule</button>
+<table width="100%">
+    <tr >
+        <td style="border-style:dotted;border-width:1px;border-color:#B3CFB3" bgcolor="#DDFFDD">
+            <font color ="#589358"><b> LOAD AN EXISTING RULE</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF">
+            <select id="ruleNames" style="border-style:solid;border-width:1px;border-color:#B3CFB3"></select>
+            <button onclick="loadRule()">Load</button>
+            <br/><br/>
+        </td>
+    </tr>
+    <tr >
+        <td style="border-style:dotted;border-width:1px;border-color:#B3CFB3" bgcolor="#DDFFDD">
+            <font color ="#589358"><b> CREATE/EDIT RULES</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF">
+            <form method="post" action="dssRules.form" enctype="multipart/form-data">
+                Rule Name: 
+                <input type="text" id="input_rulename" name="rule_name" style="border-style:solid;border-width:1px;border-color:#B3CFB3"
+                       value="<c:out value="${initname}"/>"/>
+                <br/>
+                DSS Code: <br/>
+                <textarea type ="text" id="input_code" name="dss_code" 
+                          style="white-space:pre-wrap;height:500px;width:600px;border-style:solid;border-width:1px;border-color:#B3CFB3"><c:out value="${init}"/></textarea><br/>
+                <input type="submit" onclick="return confirm_submit();" value="Save"/> 
+            </form>
+        </td>
+    </tr>
+</table>
     
-<form method="post" action="dssRules.form" enctype="multipart/form-data">
-        Rule Name: 
-        <input type="text" id="input_rulename" name="rule_name"/><br/>
-        DSS Code: <br/>
-        <textarea type ="text" id="input_code" name="dss_code" style="white-space:pre-wrap; height:500px;width:600px"></textarea><br/>
-       <input type="submit" onclick="return confirm_submit();" value="Save"/> 
-</form>
-
 <%@ include file="/WEB-INF/template/footer.jsp"%>

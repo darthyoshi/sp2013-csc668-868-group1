@@ -41,7 +41,8 @@ public class DSSRuleController
     public ModelAndView handleRequest(@RequestParam("rule_name") String ruleName, 
                                 @RequestParam("dss_code") String code) 
     {
-        Map model;
+        HashMap<String, String> model = new HashMap<String, String>();
+        
         
         System.out.println("handleRequest method DSSRuleController*************");
         try
@@ -50,11 +51,17 @@ public class DSSRuleController
             ruleService.store(ruleName, code);
         }
         catch(Exception e) { 
-                model = getModel("err", e.getMessage());
+                //model = getModel("err", e.getMessage());
+                model.put("status", "err");
+                model.put("message", e.getMessage());
+                model.put("initname", ruleName);
+                model.put("init", code);
                 return new ModelAndView(SUCCESS_FORM_VIEW, model);
         }
         
-        model = getModel("s", "Succesfully uploaded file");
+        //model = getModel("s", "Succesfully uploaded file");
+        model.put("status", "s");
+        model.put("message", "Successfully uploaded file.");
         return new ModelAndView(SUCCESS_FORM_VIEW, model);
     }
     
