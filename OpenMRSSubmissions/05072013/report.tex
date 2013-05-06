@@ -1,6 +1,6 @@
 \documentclass[12pt,letterpaper]{article}
 
-\usepackage[left=1.5in,right=1.0in,top=1.0in,bottom=1.0in,
+\usepackage[left=1in,right=1.0in,top=1.0in,bottom=1.0in,
            includehead=true,headsep=1.0in,includefoot=true]{geometry}
 \usepackage{setspace}
 \usepackage{url}
@@ -148,23 +148,24 @@
 };
 \node (ExecutionContext) [class, above=of DSSExecutionContext] { 
   \textbf{ExecutionContext}
-  \nodepart{second}  
+  \nodepart[align=justify]{second}  
+  - evaluator : Evaluator
   \nodepart[align=justify]{third}
   + beginScope() \\
   + endScope() \\
   + getEvaluator() : Evaluator \\
   + getFunction(name : String) : DSSFunction \\
   + getReturnValue() : DSSValue \\
-  + setReturnValeu(v : DSSValue) \\
+  + setReturnValue(v : DSSValue) \\
   + setFunction(name : String, f : DSSFunction)
 };
-\node (ASTInterpreter) [class, below=of InterpreterVisitor] { 
+\node (ASTInterpreter) [class, below=of InterpreterVisitor.south east] { 
   \emph{ASTInterpreter}
   \nodepart{second}  
   \nodepart[align=justify]{third}
-  + interpret(tree : T, \\
-              context : ExecutionContext, \\
-              v : ASTVisitor)
+  + interpret(ast : AST, 
+              c : ExecutionContext, 
+              v : ASTVisitor) \\ \hspace{10pt} : Object
 };
 \node (BlockInterpreter) [class, anchor=west, below=of ASTInterpreter] { 
   \textbf{BlockInterpreter}
@@ -176,8 +177,14 @@
   \nodepart{second}  
   \nodepart[align=justify]{third}
 };
+\node (NamingContext) [class, above=of ExecutionContext] { 
+  \emph{NamingContext}
+  \nodepart[align=justify]{third}
+  +set (name : String, value : DSSValue) \\
+  +get (name : String) : DSSValue
+};
 
-
+\path [implements] (ExecutionContext) -- (NamingContext) {};
 \path [implements] (InterpreterVisitor) -- (ASTVisitor) {};
 \path [implements] (BlockInterpreter) -- (ASTInterpreter) {};
 \path [implements] (IdInterpreter) -- (ASTInterpreter) {};
@@ -190,6 +197,173 @@
       node [midway, above] {\small{1..1}};
 \end{tikzpicture}
 \caption{Interpreter visitor}
+\end{figure}
+
+\begin{figure}
+\begin{tikzpicture}[node distance=0.33in]
+\node (ExecutionContext) [class] { 
+  \textbf{ExecutionContext}
+  \nodepart[align=justify]{second}  
+  - functions : Map\textless String, DSSFunction\textgreater \\
+  - variables : Map\textless String, DSSValue\textgreater \\
+  - evaluator : Evaluator
+  \nodepart[align=justify]{third}
+  + beginScope() \\
+  + endScope() \\
+  + getEvaluator() : Evaluator \\
+  + getFunction(name : String) : DSSFunction \\
+  + getReturnValue() : DSSValue \\
+  + setReturnValue(v : DSSValue) \\
+  + setFunction(name : String, f : DSSFunction)
+};
+\node (DSSValue) [class, right=of ExecutionContext] { 
+  \emph{DSSValue}
+  \nodepart[align=justify]{second}  
+  - timestamp : Date
+  \nodepart[align=justify]{third}
+  + add (v : DSSValue) : DSSValue \\
+  + sub (v : DSSValue) : DSSValue \\
+  + div (v : DSSValue) : DSSValue \\
+  ... \\
+  + getTimeStamp() : Date
+};
+\node (NamingContext) [class, above=of ExecutionContext] { 
+  \emph{NamingContext}
+  \nodepart[align=justify]{third}
+  +set (name : String, value : DSSValue) \\
+  +get (name : String) : DSSValue
+};
+\node (DSSFunction) [class, right=of NamingContext] { 
+  \emph{DSSFunction}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+  + call(args : DSSValue[]) : DSSValue \\
+  + passAsIdentifier(argIndex : int) \\ \hspace{10pt} : boolean
+};
+
+\node (Evaluator) [class, below=of ExecutionContext] { 
+  \emph{Evaluator}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+  + castTo(javaClass : Class, v : DSSValue) : Object \\
+  + evaluate(leftOper : DSSValue, \\ 
+    \hspace{10pt} operator : String, \\
+    \hspace{10pt} rightOper : DSSValue) : DSSValue\\
+  + evaluateLiteral(lit : Symbol) : DSSValue \\
+  + newAllocation(fields : String[]) : DSSValue \\
+  + toDSSValue(javaObject : Object) : DSSValue
+};
+\node (DSSEvaluator) [class, below=of Evaluator] { 
+  \textbf{DSSEvaluator}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+};
+
+
+\path [contains] (ExecutionContext) -- (DSSValue) {};
+\path [contains] (ExecutionContext) -- (DSSFunction) {};
+\path [contains] (ExecutionContext) -- (Evaluator) {};
+\path [implements] (ExecutionContext) -- (NamingContext) {};
+\path [implements] (DSSEvaluator) -- (Evaluator) {};
+\draw (ExecutionContext) -- (DSSValue) 
+      node [midway, above] {\small{1..*}};
+\draw (ExecutionContext) -- (DSSFunction) 
+      node [midway, below] {\small{1..*}};
+
+\end{tikzpicture}
+\caption{Execution context}
+\end{figure}
+
+\begin{figure}
+\begin{tikzpicture}[node distance=0.25in]
+\node (DSSValue) [class] { 
+  \emph{DSSValue}
+  \nodepart[align=justify]{second}  
+  - timestamp : Date
+  \nodepart[align=justify]{third}
+  + add (v : DSSValue) : DSSValue \\
+  + sub (v : DSSValue) : DSSValue \\
+  + div (v : DSSValue) : DSSValue \\
+  + mul (v : DSSValue) : DSSValue \\
+  + power (v : DSSValue) : DSSValue \\
+  + concat (v : DSSValue) : DSSValue \\
+  + and (v : DSSValue) : DSSValue \\
+  + or (v : DSSValue) : DSSValue \\
+  + equal (v : DSSValue) : boolean \\
+  + notequal (v : DSSValue) : boolean \\
+  + lessthan (v : DSSValue) : boolean \\
+  + greaterthan (v : DSSValue) : boolean \\
+  + lessthanequal (v : DSSValue) : boolean \\
+  + greaterthanequal (v : DSSValue) : boolean \\
+  + getTimeStamp() : Date \\
+  + setTimeStamp(date : Date)
+};
+
+\node (DSSValueNumeric) [class, right=of DSSValue.north east] {
+  \emph{DSSValueNumeric}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+\node (DSSValueFloat) [class, above=of DSSValueNumeric] {
+  \textbf{DSSValueFloat}
+  \nodepart[align=justify]{second}  
+  - value : double
+  \nodepart[align=justify]{third}
+};
+\node (DSSValueInt) [class, below=of DSSValueNumeric] {
+  \textbf{DSSValueInt}
+  \nodepart[align=justify]{second}  
+  - value : long
+  \nodepart[align=justify]{third}
+};
+\node (DSSValueBool) [class, below=of DSSValueInt] {
+  \textbf{DSSValueBool}
+  \nodepart[align=justify]{second}  
+  - value : boolean
+  \nodepart[align=justify]{third}
+};
+\node (DSSValueString) [class, below=of DSSValueBool] {
+  \textbf{DSSValueString}
+  \nodepart[align=justify]{second}  
+  - value : String
+  \nodepart[align=justify]{third}
+};
+\node (DSSValueList) [class, below=of DSSValueString] {
+  \textbf{DSSValueList}
+  \nodepart[align=justify]{second}  
+  - value : List
+  \nodepart[align=justify]{third}
+};
+\node (DSSValueObject) [class, below=of DSSValue] {
+  \textbf{DSSValueObject}
+  \nodepart[align=justify]{second}  
+  - fields : Map\textless String, DSSValue\textgreater 
+  \nodepart[align=justify]{third}
+};
+\node (DSSValueNull) [class, right=of DSSValueObject] {
+  \textbf{DSSValueNull}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (NamingContext) [class, below=of DSSValueObject] { 
+  \emph{NamingContext}
+  \nodepart[align=justify]{third}
+  +set (name : String, value : DSSValue) \\
+  +get (name : String) : DSSValue
+};
+
+\path [implements] (DSSValueInt) -- (DSSValueNumeric) {};
+\path [implements] (DSSValueFloat) -- (DSSValueNumeric) {};
+\path [implements] (DSSValueNumeric) -- (DSSValue) {};
+\path [implements] (DSSValueBool) -- (DSSValue) {};
+\path [implements] (DSSValueString) -- (DSSValue) {};
+\path [implements] (DSSValueList) -- (DSSValue) {};
+\path [implements] (DSSValueNull) -- (DSSValue) {};
+\path [implements] (DSSValueObject) -- (DSSValue) {};
+\path [implements] (DSSValueObject) -- (NamingContext) {};
+\end{tikzpicture}
+\caption{Values}
 \end{figure}
 
 \newpage 
