@@ -4,7 +4,8 @@
            includehead=true,headsep=1.0in,includefoot=true]{geometry}
 \usepackage{setspace}
 \usepackage{url}
-
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,arrows}
 
 \title{
   Clinical Decision Support for OpenMRS
@@ -111,6 +112,58 @@
 
 \newpage 
 \section{Class diagrams}
+
+\tikzstyle{class}=[rectangle, 
+                   draw=black, 
+                   rectangle split, 
+                   rectangle split parts=3,
+                   align=center,
+                   anchor=north]
+\tikzstyle{implements}=[draw, ->, >=open triangle 90]
+\tikzstyle{aggregates}=[draw, <-, >=open diamond]
+\tikzstyle{contains}=[draw, <-, >=diamond]
+
+\begin{figure}
+\begin{tikzpicture}[node distance=0.25in]
+\node (InterpreterVisitor) [class] { 
+  \textbf{InterpreterVisitor}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (DSSExecutionContext) [class, right=of InterpreterVisitor] { 
+  \textbf{DSSExecutionContext}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+  + setConstant(name : String,  value : DSSValue) \\
+  + setIntrinsic(name : String,  func : DSSFunction)
+};
+\node (ExecutionContext) [class, below=of DSSExecutionContext] { 
+  \textbf{ExecutionContext}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+  + beginScope() \\
+  + endScope() \\
+  + getEvaluator() \\
+  + getFunction(name : String) : DSSFunction \\
+  + getReturnValue() : DSSValue \\
+  + setReturnValeu(v : DSSValue) \\
+  + setFunction(name : String, f : DSSFunction)
+};
+\node (ASTInterpreter) [class, below=of InterpreterVisitor] { 
+  \emph{ASTInterpreter}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+  + interpret(tree : T, \\
+              context : ExecutionContext, \\
+              v : ASTVisitor)
+};
+
+\path [implements] (DSSExecutionContext) -- (ExecutionContext) {};
+\path [contains] (InterpreterVisitor) -- (DSSExecutionContext) {};
+\path [contains] (InterpreterVisitor) -- (ASTInterpreter) {};
+\end{tikzpicture}
+\end{figure}
 
 \newpage 
 \section{API documentation}
