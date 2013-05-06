@@ -11,8 +11,8 @@
   Clinical Decision Support for OpenMRS
 }
 \author{
-        Bierman, Robert,  \emph{Group Lead}  \\ \texttt{woeltjen@mail.sfsu.edu} \and 
-        Woeltjen, Victor, \emph{Group Lead}  \\ \texttt{bierman@mail.sfsu.edu} \and
+        Bierman, Robert,  \emph{Group Lead}  \\ \texttt{bierman@mail.sfsu.edu} \and 
+        Woeltjen, Victor, \emph{Group Lead}  \\ \texttt{woeltjan@mail.sfsu.edu} \and
         Choi, Kay       \and
         Gimeno, Steven  \and
         Lum, Jason      \and
@@ -260,8 +260,8 @@
 };
 
 
-\path [contains] (ExecutionContext) -- (DSSValue) {};
-\path [contains] (ExecutionContext) -- (DSSFunction) {};
+\path [aggregates] (ExecutionContext) -- (DSSValue) {};
+\path [aggregates] (ExecutionContext) -- (DSSFunction) {};
 \path [contains] (ExecutionContext) -- (Evaluator) {};
 \path [implements] (ExecutionContext) -- (NamingContext) {};
 \path [implements] (DSSEvaluator) -- (Evaluator) {};
