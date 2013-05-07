@@ -79,6 +79,13 @@
 \newpage 
 \section{Use cases}
 
+\begin{figure}\begin{center}
+\includegraphics{use_case_diagram.png}
+\end{center}
+\caption{Use case overview}
+\label{fig:USE_CASE_OVERVIEW}
+\end{figure}
+
 \subsection{Rule administration}
 
 \subsection{Alerts}
@@ -206,6 +213,14 @@ Thereafter, pull all alerts appropriate to the target from the map.
 \end{table}
 
 \subsubsection{Rule storage}
+
+On upload, rules are compiled to an Abstract Syntax Tree (AST) form 
+using the provided Parser class. Once compiled successfully, the rule is stored to the OpenMRS application data directory. 
+
+Each rule is  stored in two formats: Plain text source code, and an XML (Extensible Markup Language) representation of the compiled AST. The 
+source code is subsequently used only to support user interactions (for instance, if an administrator wants to load or modify source for an existing rule). The XML form is used when the DSS Rule Service is first initialized to load any existing rules from the file system. After initialization, rules are stored in memory as AST objects.
+
+The utility class XMLBuilder is used for conversion between AST and XML. Internally, the class maintains a Document Object Model (DOM) representation of the AST. This can be either as loaded from an XML file, or as formed by traversing an AST. Likewise, XMLBuilder provides methods for both producing AST objects or writing XML files.
 
 \subsection{Interpreter}
 
