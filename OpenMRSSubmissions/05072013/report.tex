@@ -156,6 +156,55 @@ Create DSS Rule (\texttt{dssRules.form}) provides a form where DSS source code c
 
 \subsection{Rule service}
 
+The DSSRuleService follows the facade design pattern to expose important functionality to clients. The high-level tasks that are relevant to client code are defined using a few simple methods which hide the details of compiling, interpreting, and managing the storage of rules. Specific functionality is detailed in table ~\ref{tab:RULE_SERVICE}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ l | p{1in} | p{2in} }
+Method & Description & Details \\ \hline
+
+\texttt{store(rule, code)}
+&
+Stores a rule (either as a new rule, or replacing an existing rule) with the given source code.
+&
+Invokes the Parser to convert source code to AST; 
+Invokes the XMLBuilder to convert AST to DOM and save; 
+Saves the original source to file system for subsequent retrieval; 
+Stores the AST in memory for subsequent running.
+\\ \hline
+
+\texttt{load(rule)}
+&
+Load the source code for an existing rule.
+&
+Reads stored source code from the file system.
+\\ \hline
+
+\texttt{listRules()}
+&
+List all existing rules.
+&
+Returns a list of all stored rule names.
+\\ \hline
+
+\texttt{runRules(patientId, target)}
+&
+Get all alerts for the given target (“summary” or “dashboard”) as appropriate to the given patient.
+&
+For each rule:
+Construct interpreter; 
+Install intrinsics, including “alert” function which stores to a map;
+Pre-define “patientId” for DSS1 program;
+Run the interpreter on the rule.
+Thereafter, pull all alerts appropriate to the target from the map.
+\\ \hline
+
+\end{tabular}
+\end{center}
+\caption{Methods exposed by the DSS Rule Service}
+\label{tab:RULE_SERVICE}
+\end{table}
+
 \subsubsection{Rule storage}
 
 \subsection{Views}
