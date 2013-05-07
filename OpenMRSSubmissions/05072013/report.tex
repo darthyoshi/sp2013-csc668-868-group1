@@ -207,15 +207,60 @@ Thereafter, pull all alerts appropriate to the target from the map.
 
 \subsubsection{Rule storage}
 
-\subsection{Views}
-
 \subsection{Interpreter}
+
+The Interpreter is implemented with four distinct sub systems.
+At the top level, \emph{flow control} is provided by the InterpreterVisitor, which is responsible for traversing the Abstract Syntax Tree. An \emph{execution context} is maintained to describe the running state of the system, including defined variables and functions. While tree traversal coordinates complex expressions, the actual \emph{evaluation} of expressions is itself implemented in a distinct set of classes representing the types available under DSS1. Finally, a library of \emph{intrinsic functions} is provided in order to mediate interactions with OpenMRS from running DSS1, as well as to provide certain convenience functions to DSS1 rule programmers.
+
+\tikzstyle{system}=[rectangle,
+                   thick, 
+                   draw=black, 
+                   align=center,
+                   anchor=north]
+\tikzstyle{connects}=[draw, ->, >=triangle 60]
+\tikzstyle{observes}=[draw, ->, dashed, >=triangle 60]
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[node distance=1.5in]
+\node (FlowControl) [system] 
+      {\textbf{Flow control}};
+\node (Middle) [below=of FlowControl] {};
+\node (ExecutionContext) [system, left=of Middle] 
+      {\textbf{Execution context}};
+\node (Evaluation) [system, below=of Middle] 
+      {\textbf{Evaluation}};
+\node (IntrinsicFunction) [system, right=of Middle] 
+      {\textbf{Intrinsic functions}};
+\draw [connects] (FlowControl) -- (ExecutionContext) {}
+      node [midway,above,sloped] {Sets, gets state} ;
+\draw [connects] (ExecutionContext) -- (Evaluation) {}
+      node [midway,below,sloped] {Contains values} ;
+\draw [connects] (ExecutionContext) -- (IntrinsicFunction) {}
+      node [midway,below left,sloped] {Contains functions} ;
+\draw [connects] (FlowControl) -- (IntrinsicFunction) {}
+      node [midway,above,sloped] {Invokes} ;
+\draw [connects] (IntrinsicFunction) -- (Evaluation) {}
+      node [midway,below,sloped] {Yields values} ;
+\draw [connects] (FlowControl) -- (Evaluation) {}
+      node [midway,above,sloped] {Assembles complex expressions} ;
+\end{tikzpicture}
+\end{center}
+\caption{High-level overview of the DSS1 Interpreter.}
+\end{figure}
 
 \subsubsection{Flow control}
 
+	Flow control in the interpreter is implemented using the Visitor design pattern, traversing the Abstract Syntax Tree (AST) produced by the existing Compiler using an implementation of the provided ASTVisitor interface, performing computation as appropriate at every given node in the tree.
+
+	The Visitor design pattern leverages double dispatch to decouple a data structure from the operations which can be performed while traversing this data structure. The Visitor calls an “accept” method on a node within the data structure, which is itself overloaded to call a more specific method on the Visitor itself; “visitBlockTree”, for example. This permits the external object – the Visitor – to implement behavior using the data structure's type hierarchy, without adding that specific behavior to those types directly.
+
+	In the case of the Interpreter, the data structure is the AST, which describes a DSS1 program as a tree of elements – block (BlockTree), if statements (IfTree), et cetera. The Visitor is the IntepreterVisitor, which manages and performs the computation described by this program. This is done with the support of other underlying subsystems to describe variable state and perform type-specific evaluations, as described in the Architecture section.
+
+	The class InterpreterVisitor acts as the center of a subsystem  responsible for high-level interpretation of the program, including flow control, and coordinating complex expressions.
+
 \subsubsection{Execution context}
 
-\subsubsection{Evaluation of expressions}
+\subsubsection{Evaluation}
 
 \subsubsection{Intrinsic functions}
 
