@@ -619,6 +619,84 @@ DateLibrary       & \texttt{currenttime()}        \\
 \label{fig:VALUE_DIAGRAM}
 \end{figure}
 
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[node distance=0.25in]
+\node (DSSLibrary) [class] { 
+  \emph{DSSLibrary}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+  +getFunctions(context : ExecutionContext) : 
+      Map \textless String, DSSFunction\textgreater
+};
+
+\node (ReadLibrary) [class, below=of DSSLibrary] { 
+  \textbf{ReadLibrary}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (DateLibrary) [class, left=of ReadLibrary] { 
+  \textbf{DateLibrary}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (ListLibrary) [class, right=of ReadLibrary] { 
+  \textbf{ListLibrary}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (DSSRead) [class, below=of ReadLibrary] { 
+  \textbf{DSSRead}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (DSSReadInitialEncounter) [class, left=of DSSRead] { 
+  \textbf{DSSReadInitialEncounter}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (DSSReadLatestEncounter) [class, right=of DSSRead] { 
+  \textbf{DSSReadLatestEncounter}
+  \nodepart[align=justify]{second}  
+  \nodepart[align=justify]{third}
+};
+
+\node (DSSFunction) [class, below=of DSSRead] { 
+  \emph{DSSFunction}
+  \nodepart{second}  
+  \nodepart[align=justify]{third}
+  + call(args : DSSValue[]) : DSSValue \\
+  + passAsIdentifier(argIndex : int)  : boolean
+};
+
+\node () [left=of DateLibrary] {...};
+\node () [right=of ListLibrary] {...};
+\node () [left=of DSSReadInitialEncounter] {...};
+\node () [right=of DSSReadLatestEncounter] {...};
+
+
+\path [contains] (ReadLibrary) -- (DSSRead) {};
+\path [contains] (ReadLibrary) -- (DSSReadInitialEncounter) {};
+\path [contains] (ReadLibrary) -- (DSSReadLatestEncounter) {};
+\path [implements] (ReadLibrary) -- (DSSLibrary) {};
+\path [implements] (DateLibrary) -- (DSSLibrary) {};
+\path [implements] (ListLibrary) -- (DSSLibrary) {};
+\path [implements] (DSSRead) -- (DSSFunction) {};
+\path [implements] (DSSReadInitialEncounter) -- (DSSFunction) {};
+\path [implements] (DSSReadLatestEncounter) -- (DSSFunction) {};
+
+
+\end{tikzpicture}
+\end{center}
+\caption{Intrinsic class diagram}
+\label{fig:INTRINSIC_DIAGRAM}
+\end{figure}
+
 \newpage 
 \section{API documentation}
 
