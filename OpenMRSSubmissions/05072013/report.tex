@@ -279,7 +279,55 @@ Finally, a DSSValueFactory class is provided to aid in the instantiation of DSSV
 
 \subsubsection{Intrinsic functions}
 
-DSSLibrary defines an interface for delivering or generating intrinsic functions in related groupings. Each function is returned in a map where the name should be used to call the function from a DSS program, and the function object is used as a Java object that extends the DSSFunction. An ExecutionContext is also available within the interpreter maintaining variables and certain functions.
+DSSLibrary defines an interface for delivering or generating intrinsic functions in related groupings. Each function is returned in a map where the name should be used to call the function from a DSS program, and the function object is used as a Java object that extends the DSSFunction. These functions may then be easily installed into the ExecutionContext used by the Intepreter before running rules. A list of libraries used in this implementation is presented in Table ~\ref{tab:LIBRARIES}.
+
+The ReadLibrary serves as an interesting example case, at it illustrates interaction with the OpenMRS platform without requiring specific knowledge of this platform from other elements of the interpreter. The read functions retrieve a list of observations associated with a patient. The first parameter of the functions, patientId, is a numeric identifier unique to each patient. The second parameter, conceptName, is the word or phrase used by the OpenMRS dictionary to refer to a concept. 
+
+The three functions are nearly identical, save for one difference: while read() returns a list containing all observations that match the function parameters, readInitialEncounter() and readLatestEncounter() filter out results based on the timestamp of the observations. Calling readInitialEncounter() retrieves only the observations from the patient's earliest encounter on record, while readLatestEncounter() retrieves only the observations from the patient's most recent encounter on record. 
+
+When the functions are called, they retrieve a list of all encounters associated with patientId from the OpenMRS database. The functions iterate through these lists, and in the case of readInitialEncounter() and readLatestEncounter(), the timestamp for each encounter is checked. If the timestamp does not meet the criteria, the encounter is discarded. Once an encounter has been verified as valid the function shall retrieve all observations associated with the encounter. Each observation shall have its concept name checked against conceptName, and matches are added to the list of observations that each function shall return. 
+
+Observations consist of three pieces of data: the value of the observation, the data type of the observation value, and the time of the observation. Internally, observations are represented as DSSValue objects, which store the value of the observation and the time of the observation. The data type of the observation value is stored as part of the DSSValue class type itself. Both the time and data type of the observation can be retrieved using the time() and type check intrinsics, respectively. 
+
+Note that the \texttt{alert} intrinsic is treated as a special case. Rather than being contained within a library class, it is installed directly by the DSS Rule Service into the Interpreter before running rules. This facilitates retrieval of results issued via \texttt{alert} calls.
+
+\begin{table}
+\begin{center}
+\begin{tabular} { l | l }
+\textbf{Library}  & \textbf{Functions implemented}\\ \hline
+IsLibrary         & \texttt{isString(var)}        \\
+                  & \texttt{isFloat(var)}         \\
+                  & \texttt{isInt(var)}           \\
+                  & \texttt{isBoolean(var)}       \\
+                  & \texttt{isList(var)}          \\
+                  & \texttt{isObject(var)}        \\
+                  & \texttt{isDate(var)}          \\ \hline
+LengthAndWithinLibrary
+                  & \texttt{length(var)}          \\
+                  & \texttt{within(v,a,b)}        \\ \hline
+ListLibrary       & \texttt{merge(a,b)}           \\
+                  & \texttt{sortTime(list)}       \\
+                  & \texttt{sortData(list)}       \\
+                  & \texttt{first(list)}          \\
+                  & \texttt{last(list)}           \\ \hline
+ReadLibrary       & \texttt{read(patientId,
+                                 concept)}        \\
+                  & \texttt{readInitialEncounter(patientId,
+                                 concept)}        \\
+                  & \texttt{readLatestEncounter(patientId,
+                                 concept)}        \\ \hline
+DateLibrary       & \texttt{currenttime()}        \\
+                  & \texttt{recentTimeItem(list)} \\
+                  & \texttt{oldestTimeItem(list)} \\
+                  & \texttt{before(a,b)}          \\
+                  & \texttt{time(var)}            \\
+                  & \texttt{addDays(v,days)}      \\
+                  & \texttt{addMonths(v,months)}  \\ \hline
+\end{tabular}
+\end{center}
+\caption{Libraries of intrinsic}
+\label{tab:LIBRARIES}
+\end{table}
 
 % \section{External documentation}
 
