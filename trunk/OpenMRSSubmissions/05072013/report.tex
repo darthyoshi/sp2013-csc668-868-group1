@@ -133,6 +133,27 @@
 \caption{Architecture overview}\label{fig:ARCHITECTURE}
 \end{center}\end{figure}
 
+The DSS Rule Service, in turn, utilizing the DSS1 Interpreter subsystem to run rules and report results.
+
+While the DSS Rule Service runs on the server, its interface is exposed to client-side JavaScript code via DWR (Direct Web Remoting).
+
+\subsection{Client pages}
+
+Multiple client web pages interact with the DSS Rule Service.
+
+\subsubsection{Patient summary}
+
+The Patient Summary ({\texttt{patientsummary.jsp}) is  stand-alone page, reachable from a link on the Patient Dashboard. It is used primarily to contain major information about a patient (gender, age, WHO stage, etc.) The Patient Summary invokes the rule service via DWR to retrieve all alerts for the named target  \texttt{summary} and displays them below other patient information. 
+
+\subsubsection{Patient Dashboard} 
+
+The Patient Dashboard is the primary landing point for viewing patient information, and contains multiple tabs for this purpose. This extension inserts a link to the Patient Summary on the Patient Dashboard, and accompanies this with relevant alerts by invoking the rule service for the \texttt{dashboard} target.
+
+See \texttt{org.openmrs.module.basicmodule.extension.html.PatientSummaryExtension}
+
+\subsubsection {DSS Rule Administration}
+Create DSS Rule (\texttt{dssRules.form}) provides a form where DSS source code can be entered and submitted to the rule service with a specific rule name. Consolidates the ability to create new rules, load existing rules, and edit rules in one form. Made accessible through an extension to the Administration menu.
+
 \subsection{Rule service}
 
 \subsubsection{Rule storage}
