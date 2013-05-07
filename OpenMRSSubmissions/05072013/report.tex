@@ -89,6 +89,50 @@
 \newpage 
 \section{Design overview}
 
+	The DSS1 rule subsystem is incorporated into OpenMRS in a simple Client-Server fashion. The target implementation will feature client-side web pages which interact with the DSS1 rule subsystem on the server by way of DSSRuleService. Figure 
+~\ref{fig:ARCHITECTURE} illustrates this interaction.
+
+\tikzstyle{layer}=[rectangle, 
+                   rounded corners,
+                   draw=black, 
+                   align=center,
+                   anchor=north]
+\tikzstyle{communicates}=[draw, ->, >=triangle 60]
+\tikzstyle{boundary}=[draw, -, dashed]
+\begin{figure}\begin{center}
+\begin{tikzpicture}
+\node (Client) [layer] { 
+  \textbf{Client Pages}      \\
+  Patient Summary \\
+  Patient Dashboard \\
+  DSS Rule Administration
+};
+\node (Boundary) [below=of Client, minimum width=3in] {};
+\node [above=of Boundary.east] {\emph{Client}};
+\node [below=of Boundary.east] {\emph{Server}};
+\node (Service) [layer, below=of Boundary] { 
+  \textbf{DSS Rule Service}  \\
+  Run rules  \\
+  List rules \\
+  Add rules  \\
+  Edit rules
+};
+\node (Interpreter) [layer, below=of Service] { 
+  \textbf{DSS1 Interpreter}  \\
+  Intrinsics  \\
+  Evaluations \\
+  Flow control
+};
+\path [communicates] (Client.300     ) -- (Service.65     ) {};
+\path [communicates] (Service.115    ) -- (Client.240     ) {};
+\path [communicates] (Service.295    ) -- (Interpreter.60 ) {};
+\path [communicates] (Interpreter.120) -- (Service.245    ) {};
+\path [boundary] (Boundary.180) -- (Boundary.0    ) {};
+%\path [boundary]     (Boundary.west  ) -- (Boundary.east  ) {};
+\end{tikzpicture}
+\caption{Architecture overview}\label{fig:ARCHITECTURE}
+\end{center}\end{figure}
+
 \subsection{Rule service}
 
 \subsubsection{Rule storage}
