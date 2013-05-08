@@ -15,10 +15,12 @@
         {
             allRuleNames = names;
             var list = document.getElementById("ruleNames");
+            var list2 = document.getElementById("ruleNames2");
             list.options.add(new Option());
             for(i = 0; i < names.length; i++)
             {
                 list.options.add(new Option(names[i]));
+                list2.options.add(new Option(names[i]));
             }
         }
         
@@ -95,8 +97,24 @@
                 DSS Code: <br/>
                 <textarea type ="text" id="input_code" name="dss_code" 
                           style="white-space:pre-wrap;height:500px;width:600px;border-style:solid;border-width:1px;border-color:#B3CFB3"><c:out value="${init}"/></textarea><br/>
-                <input type="submit" onclick="return confirm_submit();" value="Save"/> 
+                <input type="submit" name="save" onclick="return confirm_submit();" value="Save"/> 
             </form>
+        </td>
+    </tr>
+    <tr >
+        <td style="border-style:dotted;border-width:1px;border-color:#B3CFB3" bgcolor="#DDFFDD">
+            <font color ="#589358"><b>SAVE AN EXISTING RULE</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF">
+            
+            <select id="ruleNames2" style="border-style:solid;border-width:1px;border-color:#B3CFB3" form="ruleDownload" name="ruleList"></select>
+            
+            <form action="downloadRule.form" id="ruleDownload" method="post">
+                <input type="submit" value="Save Rule">
+            </form>
+            <br/><br/>
         </td>
     </tr>
 </table>
