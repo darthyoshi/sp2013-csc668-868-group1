@@ -1,0 +1,4 @@
+Kay Choi contributions
+- HTML form entry (viral load, CD4, hemoglobin, patient data entry)
+- patient summary
+- DSS intrinsic read functions
