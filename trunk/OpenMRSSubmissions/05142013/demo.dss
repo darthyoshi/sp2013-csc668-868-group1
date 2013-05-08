@@ -1,0 +1,21 @@
+program
+{
+    alert(dashboard, "Test rule is active")
+
+    obsList := read(3, "WEIGHT (KG)")
+
+    if(length(obsList) == 0) then {
+        alert(summary, "Patient has no weight recorded")
+    }
+
+    else {
+        obs := recentTimeItem(obsList)
+
+        if(100 < obs) then {
+            alert(summary, "Warning: Patient weight exceeds 100kg")
+        }
+        elsif(obs < 20) then {
+            alert(summary, "Warning: Patient weight below 20kg")
+        }
+    }
+}
