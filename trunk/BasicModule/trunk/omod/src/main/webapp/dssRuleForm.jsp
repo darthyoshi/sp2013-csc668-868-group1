@@ -22,6 +22,7 @@
                 list.options.add(new Option(names[i]));
                 list2.options.add(new Option(names[i]));
             }
+            document.getElementById("loading").style.display = "none";
         }
         
         function loadRule()
@@ -50,6 +51,33 @@
                 return confirm("Overwrite \"" + name + "\" rule?");
         }
 </script>
+
+<div id="loading">
+	<img id="loading-image" align="center" src="/openmrs/images/loading.gif" />
+</div>
+
+<style type="text/css">
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: block;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 99;
+  text-align: center;
+}
+
+#loading-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+}
+</style>
+
 
     <c:set var="stat" value ="${status}"/>
     <c:set var="error" value="err"/>

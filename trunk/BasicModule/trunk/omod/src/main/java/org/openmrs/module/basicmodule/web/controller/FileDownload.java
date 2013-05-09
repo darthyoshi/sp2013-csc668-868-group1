@@ -39,6 +39,7 @@ public class FileDownload {
     {
         try {  
             System.out.println("downloadRule method DSSRuleController*************");
+            ruleName = ruleName.replaceAll(" ", "");
             File dir = OpenmrsUtil.getDirectoryInApplicationDataDirectory("dssModule");
             filePath = dir.getAbsolutePath() + File.separator +
                     ruleName + "Source-Dss.txt";
