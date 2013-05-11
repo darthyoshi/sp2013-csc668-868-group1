@@ -1,0 +1,80 @@
+:-------------------------------------------------------------------------------
+: The following should already be ready prior to commencement of presentation: 
+:  - OpenMRS should already be running.
+:  - Folder where the XML and Source-DSS files are located.
+:  - Demo program either in text document or copied to clipboard		
+:    - Patient John should have a few observations enough to satisfy the demo	
+:-------------------------------------------------------------------------------
+
+(Log into OpenMRS)
+(Go to Admin page)
+
+Under DSS Compiler, there are two links. 
+
+(Click on "Upload DSS File")
+
+"Upload DSS File" allows you to load an existing file from your machine onto OpenMRS. If there are any errors within the file, it will report back.
+
+(Return to Admin page)
+(Click on "Create DSS File")
+
+"Create DSS File" allows you to create a rule via OpenMRS, load and modify an existing rule, and save a rule to the local file system. 
+
+(Paste demo in textbox)
+
+To save time, we have created a rule and copied it on the clipboard. 
+
+If there's an error on the file, it will be reported. For example, removing the last curly bracket should get an error.
+
+(Remove curly brackets and save)
+
+It displays the error on top and retains the information that was entered allowing you to keep working on it, if desired.
+
+(Fix the error & save)
+
+We have now create a new rule. You can also see it is now available in the drop down menu.
+All rules are saved in the folder 'dssmodule' under the same location as the openmrs-runtime properties file
+
+(Show dssModule folder)
+
+If it's working correctly, "Test rule is active" should be on the dashboard. 
+And a possible warning on the patient summary, depending on the observation records of the patient.
+
+(Show patient dashboard & summary)
+
+This illustrates the alerts are working.
+As new observations are added, the alerts should run if new information applies to the rule. 
+
+(Add new observation)
+(Change the weight to 10 guarantees an alert to show in patient summary)
+
+A warning should appear on the patient summary.
+
+(Display the patient summary)
+
+The alert is there.
+The user can later modify the rules.
+
+(Go to Create DSS File)
+(Select 'demo' on the drop down menu and load)
+
+Choose the rule they want to modify, in this case we are changing 'demo'.
+We can add another alert.
+
+(Modify the rule)
+
+And we can save it. If you are overwriting a rule, it needs confirmation that you are permanently changing the rule.
+
+(Click yes)
+
+You can also save the rule to your local file system.
+
+(Choose demo to be saved locally)
+(Show the file and that the changes reflected)
+
+Lastly, we can check to make sure the new alert is showing.
+
+
+
+
+
