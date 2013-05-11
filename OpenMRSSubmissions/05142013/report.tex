@@ -445,6 +445,57 @@ DateLibrary       & \texttt{currenttime()}        \\
 \newpage 
 \section{Class diagrams} \label{sec:CLASS_DIAGRAMS}
 
+\subsection{Classes describing flow control}
+
+Figure ~\ref{fig:INTERPRETER_VISITOR_DIAGRAM} shows the relationship 
+of classes directly involved in or utilized during the handling of flow 
+control when interpreting a DSS program.
+
+The InterpreterVisitor is used to initiate program interpretation. It 
+delegates the interpretation of specific node types to corresponding 
+ASTInterpreter types. It also maintains an instance of a DSSExecutionContext 
+to support interactions with the running state of the program.
+
+\subsection{Classes describing execution context}
+
+Figure ~\ref{fig:EXECUTION_CONTEXT_DIAGRAM} describes the 
+composition of the execution context. The active state of the program, 
+including currently-defined functions and variable assignments, is maintained in appropriate data structures.
+
+Each ExecutionContext additionally maintains a reference to an Evaluator 
+object, which exposes necessary methods for the interpreter to interact 
+with values in DSS.
+
+\subsection{Classes describing values}
+
+Figure ~\ref{fig:VALUE_DIAGRAM} shows the classes used to describe values in 
+a running DSS program. The abstract class DSSValue describes the operations 
+available under DSS1 as methods; its concrete subclasses provide 
+implementations for these operations. Note that each DSSValue object also 
+maintains a field for the time stamp of a value, which is populated when 
+observations are read from OpenMRS services. For other values this is null.
+
+Not shown is DSSValueFactory, which exposes methods to create DSSValue 
+objects to wrap their corresponding underlying Java types.
+
+\subsection{Classes describing intrinsics}
+
+Figure ~\ref{fig:INTRINSIC_DIAGRAM} describes the relationship of classes 
+which describe specific intrinsic functions to the classes used to 
+categorize them.
+
+Calls made by a running DSS program are resolved by a named DSSFunction 
+object, as stored in the execution context. The DSSLibrary interface 
+provides a useful way to group related functions along with their names 
+to facilitate their installation into the execution context. 
+
+Also shown is the DeclaredFunction class. A DeclaredFunction is created 
+for user-defined functions in a DSS program, and contains references to 
+appropriate nodes within the AST to support actual interpretation of the 
+function call, as well as the visitor used to perform interpretation, and 
+the execution context, which is used to handle the change in variable 
+scope associated with the function call.
+
 \tikzstyle{class}=[rectangle, 
                    draw=black, 
                    rectangle split, 
@@ -552,6 +603,8 @@ DateLibrary       & \texttt{currenttime()}        \\
   \nodepart[align=justify]{second}  
   - functions : Map\textless String, DSSFunction\textgreater \\
   - variables : Map\textless String, DSSValue\textgreater \\
+  - scope : Stack\textless Map\textless String, DSSValue\textgreater \textgreater \\
+  - returnValue : DSSValue \\
   - evaluator : Evaluator
   \nodepart[align=justify]{third}
   + beginScope() \\
@@ -599,7 +652,7 @@ DateLibrary       & \texttt{currenttime()}        \\
   + newAllocation(fields : String[]) : DSSValue \\
   + toDSSValue(javaObject : Object) : DSSValue
 };
-\node (DSSEvaluator) [class, below=of Evaluator] { 
+\node (DSSEvaluator) [class, right=of Evaluator] { 
   \textbf{DSSEvaluator}
   \nodepart{second}  
   \nodepart[align=justify]{third}
@@ -771,6 +824,16 @@ DateLibrary       & \texttt{currenttime()}        \\
   + passAsIdentifier(argIndex : int)  : boolean
 };
 
+\node (DeclaredFunction) [class, below=of DSSFunction] { 
+  \textbf{DeclaredFunction}
+  \nodepart[align=justify]{second}  
+  formals : FormalsTree \\
+  block : BlockTree \\
+  context : ExecutionContext \\
+  visitor : ASTVisitor
+  \nodepart[align=justify]{third}
+};
+
 \node () [left=of DateLibrary] {...};
 \node () [right=of ListLibrary] {...};
 \node () [left=of DSSReadInitialEncounter] {...};
@@ -786,6 +849,7 @@ DateLibrary       & \texttt{currenttime()}        \\
 \path [implements] (DSSRead) -- (DSSFunction) {};
 \path [implements] (DSSReadInitialEncounter) -- (DSSFunction) {};
 \path [implements] (DSSReadLatestEncounter) -- (DSSFunction) {};
+\path [implements] (DeclaredFunction) -- (DSSFunction) {};
 
 
 \end{tikzpicture}
