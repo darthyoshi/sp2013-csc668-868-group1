@@ -795,7 +795,63 @@ DateLibrary       & \texttt{currenttime()}        \\
 \end{figure}
 
 \newpage \appendix 
-\section{Grammar}
+\section{DSS1 Grammar}
+\begin{verbatim}
+ PROGRAM -> ‘program’ D* BLOCK ==> program
+ BLOCK -> ‘{‘ S* ‘}’  ==> block
+ D -> 'function' NAME FUNHEAD BLOCK      	==> functionDecl
+ FUNHEAD  -> '(' (NAME list ',')? ')'  	==> formals
+ S -> ‘if’ EE ‘then’ BLOCK ('else' BLOCK)? ==> if 
+   -> ‘if’ EE ‘then’ BLOCK Elif ==> if 
+   -> ‘while’ EE BLOCK               		==> while
+   -> 'for' NAME in NLIST BLOCK     		==> FOR
+   -> ‘return’ EE                    		==> return
+   -> BLOCK
+   -> IdMod’:=‘ EE                    		==> assign
+   -> NAME '(' (EE list ',')? ')' 		==> call
+ 
+  Elif -> ‘elsif’ EE 'then' BLOCK Elif			==> elsif
+-> ‘elsif’ EE 'then' BLOCK ('else' BLOCK)?	==> elsif
+  
+  EE 	-> E
+  	-> EE '||' E
+  
+  E 	-> SE
+  	-> SE ‘==‘ SE   	==> =
+  	-> SE ‘!=‘ SE   	==> !=
+  	-> SE ‘<‘  SE   	==> <
+  	-> SE ‘<=‘ SE   	==> <=
+ 
+  SE 	->  T
+  	->  SE ‘+’ T  	==> +
+  	->  SE ‘-’ T  	==> -
+  	->  SE ‘|’ T  	==> or
+ 
+  T  	-> TT
+  	-> T ‘*‘ F  	==> *
+  	-> T ‘/’ F  	==> /
+  	-> T ‘&’ F  	==> and
+ 
+  TT 	-> F
+  	-> TT ** F    	==> **
+ 
+  F  	-> ‘(‘ EE ‘)’
+  	-> IdMod 
+  	-> <literal>
+  	-> NAME '(' (EE list ',')? ')' 		==> call
+  	-> Object '(' (NAME list ',')? ')'    ==> ObjectDecl
+  	-> new NAME          				==> Object
+  	-> LIST
+  IdMod -> NAME
+        -> NAME '.' NAME    			==> fieldRef
+  
+  NLIST	-> NAME
+       	-> LIST
+  
+  LIST	-> '{' (E list ',')? '}'   		==> list
+ 
+  NAME	-> <id>
+\end{verbatim}
 
 \newpage
 \section{Test cases}
