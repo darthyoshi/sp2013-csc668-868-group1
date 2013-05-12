@@ -110,46 +110,200 @@ supported by the Spring framework and DWR (Direct Web Remoting).
 	Patient profile has several tabs – Overview, Regimens, Visits, Demographics, Graphs, Form Entry, Example, Vitals, and Notes.  There is also a patient summary link and underneath are any alerts that a physician may need to be aware about the patient (Figure ~\ref{fig:PATIENT_PROFILE}).
 
 \begin{figure}\begin{center}
-\includegraphics[width=6.5in]{patient_profile.png}
+\includegraphics[width=6.5in]{user_guide/patient_profile.png}
 \end{center}
 \caption{Patient profile}
 \label{fig:PATIENT_PROFILE}
 \end{figure}
 
 \subsubsection{Form entry}
-	There are four different forms available – Vitals, Viral, Hemoglobin, and CD4 (Figure 2.1 – 2.4). Viral, Hemoglobin, and CD4 are for lab results. The encounter details must be filled along with the data entry. The Vitals form is an assessment of the current condition of the patient. Once the form is completed, press “Enter Form” and all information will be saved. 
+	There are four different forms available – Vitals, Viral, Hemoglobin, and CD4 (Figure ~\ref{fig:VITALS_FORM}, 
+	~\ref{fig:VIRAL_FORM}, ~\ref{fig:HEMOGLOBIN_FORM}, 
+	and ~\ref{fig:CD4_FORM}, 
+	). Viral, Hemoglobin, and CD4 are for lab results. The encounter details must be filled along with the data entry. The Vitals form is an assessment of the current condition of the patient. Once the form is completed, press “Enter Form” and all information will be saved. 
 	The forms from the last three encounters are available for viewing; for a more complete listing, check “Visits” tab.
 
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/vitals_form.png}
+\end{center}
+\caption{Vitals form}
+\label{fig:VITALS_FORM}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/viral_form.png}
+\end{center}
+\caption{Viral form}
+\label{fig:VIRAL_FORM}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/hemoglobin_form.png}
+\end{center}
+\caption{Hemoglobin form}
+\label{fig:HEMOGLOBIN_FORM}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/cd4_form.png}
+\end{center}
+\caption{CD4 form}
+\label{fig:CD4_FORM}
+\end{figure}
+
+
 \subsubsection{Vitals tab}
-	Displays the weight, systolic blood pressure, diastolic blood pressure, and temperature of the patient based the latest encounter without having to pull out the form(Figure 3).
+	Displays the weight, systolic blood pressure, diastolic blood pressure, and temperature of the patient based the latest encounter without having to pull out the form (Figure ~\ref{fig:VITALS_TAB}).
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/vitals_tab.png}
+\end{center}
+\caption{Vitals tab, displaying weight, blood pressure, and temperature 
+based on latest encounter.}
+\label{fig:VITALS_TAB}
+\end{figure}
 
 \subsubsection{Patient summary}
-	Includes allergies, all ART regimen drugs, who stage, and TB status; it also includes the vitals of the patient from the first encounter and the last encounter; and all lab results – viral, hemoglobin, and cd4. Any alerts that a physician may need to be aware of are displayed in the bottom of the page in large bold letters (Figure 4). These information are all based on patient encounters.
+	Includes allergies, all ART regimen drugs, who stage, and TB status; it also includes the vitals of the patient from the first encounter and the last encounter; and all lab results – viral, hemoglobin, and cd4. Any alerts that a physician may need to be aware of are displayed in the bottom of the page in large bold letters (Figure ~\ref{fig:PATIENT_SUMMARY}). These information are all based on patient encounters.
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/patient_summary.png}
+\end{center}
+\caption{Patient summary}
+\label{fig:PATIENT_SUMMARY}
+\end{figure}
+
 
 \subsubsection{Alerts}
-	Alerts are generated based on DSS rules on OpenMRS which utilizes information from patient encounters. They can be found in two locations – patient dashboard and patient summary. Figure 3 and 4 shows where the alerts will appear on the patient dashboard and patient summary, they appear in bold red letters.
+	Alerts are generated based on DSS rules on OpenMRS which utilizes information from patient encounters. They can be found in two locations – patient dashboard and patient summary. Figure ~\ref{fig:PATIENT_PROFILE} and ~\ref{fig:PATIENT_SUMMARY} shows where the alerts will appear on the patient dashboard and patient summary, they appear in bold red letters.
 
 \subsection{Administrator}
-	Under “Administration” and under the heading “DSS Compiler” there are two links that provides you a way to create new rules onto OpenMRS (Figure 5). Once rules are loaded onto the system, they cannot be deleted. A loading image may appear while the rules are rendering prohibiting you from using the page, it will disappear once it is done.
+	Under “Administration” and under the heading “DSS Compiler” there are two links that provides you a way to create new rules onto OpenMRS (Figure 
+	~\ref{fig:ADMINISTRATION_PAGE}). Once rules are loaded onto the system, they cannot be deleted. A loading image may appear while the rules are rendering prohibiting you from using the page, it will disappear once it is done.
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/administration_page.png}
+\end{center}
+\caption{Administration page}
+\label{fig:ADMINISTRATION_PAGE}
+\end{figure}
 
 \subsubsection{Upload a DSS rule}
-	You can upload an existing .DSS file onto OpenMRS. Simply click Browse and locate the file you want to upload, select it, and click “upload”. If there are any errors, it will be reported back and the file would not have been saved. Otherwise, the rule will be executing.
+	You can upload an existing .DSS file onto OpenMRS. Simply click Browse and locate the file you want to upload, select it, and click “upload”.
+	(Figure ~\ref{fig:UPLOAD_BROWSE}) If there are any errors, it will be reported back and the file would not have been saved. Otherwise, the rule will be executing. (Figure ~\ref{fig:UPLOAD_SUCCESS})
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/upload_browse.png}
+\end{center}
+\caption{DSS rule upload}
+\label{fig:UPLOAD_BROWSE}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/upload_success.png}
+\end{center}
+\caption{DSS rule upload confirmation}
+\label{fig:UPLOAD_SUCCESS}
+\end{figure}
+
 
 \subsubsection{Load an existing rule}
 
-Select an existing rule from the drop-down menu that you would like to modify then click 'Load'. It will populate the textboxes under the “Create/Edit Rule” section. 
+Select an existing rule from the drop-down menu that you would like to modify then click 'Load'. (Figure ~\ref{fig:LOAD_RULE})
+It will populate the textboxes under the “Create/Edit Rule” section. 
+(Figure ~\ref{fig:LOAD_RULE_SHOWN})
 
 Edit the file. Once complete, click 'Save'. A confirmation message will appear to ensure that you would like to overwrite an existing rule. Click yes to save the changes.
+(Figure ~\ref{fig:MODIFY_CONFIRMATION})
 
-A 'Successfully uploaded file' message will appear if there were no errors in the program. If there are any errors, it will be reported back at the top of the page and it would not have saved the changes. The code will still be available for you to work on it.
+A 'Successfully uploaded file' message will appear if there were no errors in the program. 
+(Figure ~\ref{fig:MODIFY_ERROR})
+If there are any errors, it will be reported back at the top of the page and it would not have saved the changes. 
+(Figure ~\ref{fig:MODIFY_SUCCESS})
+The code will still be available for you to work on it.
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/create_modify.png}
+\end{center}
+\caption{Create/Modify DSS Rule}
+\label{fig:CREATE_MODIFY}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/load_rule.png}
+\end{center}
+\caption{Loading an existing rule using the drop down menu}
+\label{fig:LOAD_RULE}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/load_rule_shown.png}
+\end{center}
+\caption{Loaded rule displayed in text area}
+\label{fig:LOAD_RULE_SHOWN}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/modify_confirmation.png}
+\end{center}
+\caption{Confirmation message, shown before over-writing an existing rule}
+\label{fig:MODIFY_CONFIRMATION}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/modify_error.png}
+\end{center}
+\caption{Error message shown when DSS code cannot be compiled}
+\label{fig:MODIFY_ERROR}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/modify_success.png}
+\end{center}
+\caption{Confirmation message shown when DSS code has compiled successfully}
+\label{fig:MODIFY_SUCCESS}
+\end{figure}
 
 \subsubsection{Create a rule}
-You can create your own rule, it should not match an existing rule. Enter a rule name for the rule and enter the program under the textbox 'DSS Code' Once finished, click 'Save'.
+You can create your own rule, it should not match an existing rule. Enter a rule name for the rule and enter the program under the textbox 'DSS Code' Once finished, click 'Save'.(Figure ~\ref{fig:NEW_RULE})
 
-A 'Successfully uploaded file' message will appear if there were no errors in the program and the rule name will become available in the drop down menu. If there are any errors, it will be reported back at the top of the page and it would not have saved the changes. The code will still be available for you to work on it.
+A 'Successfully uploaded file' message will appear if there were no errors in the program and the rule name will become available in the drop down menu. 
+(Figure ~\ref{fig:NEW_RULE_SUCCESS})
+If there are any errors, it will be reported back at the top of the page and it would not have saved the changes. The code will still be available for you to work on it.
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/new_rule.png}
+\end{center}
+\caption{Creating a new rule}
+\label{fig:NEW_RULE}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/new_rule_success.png}
+\end{center}
+\caption{New rule after submission, shown in drop down menu}
+\label{fig:NEW_RULE_SUCCESS}
+\end{figure}
 
 \subsubsection{Save an existing rule}
-An existing rule can be saved on to your local file system. Choose the rule that you would like to save from the drop-down menu. Click 'Save Rule' and a download attachment window should appear. You can choose to either open the file or save the file. The file will be saved to your designated Downloads folder.
+An existing rule can be saved on to your local file system. Choose the rule that you would like to save from the drop-down menu.
+(Figure ~\ref{fig:SAVE_RULE})
+Click 'Save Rule' and a download attachment window should appear. You can choose to either open the file or save the file. The file will be saved to your designated Downloads folder.
+(Figure ~\ref{fig:SAVE_RULE_DIALOG})
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/save_rule.png}
+\end{center}
+\caption{Choosing a rule to save locally}
+\label{fig:SAVE_RULE}
+\end{figure}
+
+\begin{figure}\begin{center}
+%\includegraphics[width=6.5in]{user_guide/save_rule_dialog.png}
+\end{center}
+\caption{Browser dialog shown when attempting to save rule}
+\label{fig:SAVE_RULE_DIALOG}
+\end{figure}
 
 \newpage 
 \section{Use cases} \label{sec:USE_CASES}
