@@ -1,0 +1,3 @@
+- DSS intrinsic miscellaneous functions (within, length)
+- Documentation of DSS intrinsic classes
+- Use cases/use case diagram
