@@ -54,7 +54,7 @@ functions.
 
 \subsection{Contributions by Steven Gimeno}
 Wrote test cases to demonstrate the correctness of the team's implementation 
-of the DSS1 language, as seen in Appendix ~\ref{sec:TEST_CASES}.
+of the DSS1 language, as seen in Appendix ~\ref{sec:TEST_CASES_LANGUAGE}.
 
 \subsection{Contributions by Jason Lum}
 Implemented DSS intrinsic miscellaneous functions (within, length). 
@@ -69,6 +69,8 @@ shots for user guide, Section ~\ref{sec:USER_GUIDE}.
 Helped integrate compiler onto OpenMRS.
 Authored web pages for creating, modifying and uploading DSS rules.
 Authored text of user guide, Section ~\ref{sec:USER_GUIDE}.
+Wrote test cases to demonstrate the correctness of the team's implementation 
+of the DSS1 intrinsics, as seen in Appendix ~\ref{sec:TEST_CASES_INTRINSICS}.
 
 \subsection{Contributions by Victor Woeltjen}
 Implemented DSS Rule Service, including rule storage and conversion to and from XML (Extensible Markup Language). Implemented flow control, execution 
@@ -88,7 +90,7 @@ DSS allows doctors to create rules to alert them if they prescribe a medication 
 
 To create a DSS, a method must exist to specify these rules, and should be of a nature to allow non-technical individuals to create them.  Once created a system to store and interpret those rules needs to be devised and finally the results of the rules need to be displayed back to the physician in an intuitive and meaningful way.
 
-The task here is given the presented language grammar (see appendix A), create the interpreter that can store and process rules and display the results on the patient summary and dashboards in OpenMRS.
+The task here is given the presented grammar for a simplified decision support language, DSS1 (described in Appendix ~\ref{sec:LANGUAGE}), create the interpreter that can store and process rules and display the results on the patient summary and dashboards in OpenMRS.
 
 \subsection{Software and platform used}
 
@@ -1208,7 +1210,7 @@ scope associated with the function call.
 \end{figure}
 
 \newpage \appendix 
-\section{DSS1 language specification}
+\section{DSS1 language specification} \label{sec:LANGUAGE}
 
 \subsection{Grammar}
 
@@ -1351,7 +1353,7 @@ Returns the length of a list or a string. \\ \hline
 \newpage
 \section{Test cases} \label{sec:TEST_CASES}
 
-\subsection{Language testing}
+\subsection{Language testing} \label{sec:TEST_CASES_LANGUAGE}
 
 \subsubsection{Source code for language test}
 \lstinputlisting{languageTest.dss}
@@ -1361,7 +1363,7 @@ Returns the length of a list or a string. \\ \hline
 \lstinputlisting{languageResults.txt}
 \end{footnotesize}
 
-\subsection{Intrinsic testing}
+\subsection{Intrinsic function testing} \label{sec:TEST_CASES_INTRINSICS}
 
 \subsubsection{Source code for comprehensive intrinsics test}
 \lstinputlisting{basicTest.dss}
