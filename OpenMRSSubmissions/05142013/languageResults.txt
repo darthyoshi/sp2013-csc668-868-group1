@@ -1,0 +1,57 @@
+====STARTING TESTS====
+ 
+PASSED test for 'string assignment'. Expected: Hello, actual: Hello
+PASSED test for 'numeric assignment'. Expected: 4, actual: 4
+PASSED test for 'boolean assignment'. Expected: True, actual: True
+ 
+PASSED test for 'if-then'. Expected: thenBlock, actual: thenBlock
+PASSED test for 'if-then-else'. Expected: elseBlock, actual: elseBlock
+PASSED test for 'if-then-elsif-else'. Expected: elsifBlock, actual: elsifBlock
+ 
+PASSED test for 'addition'. Expected: 10, actual: 10
+PASSED test for 'subtraction'. Expected: 11, actual: 11
+PASSED test for 'multiplication'. Expected: 32, actual: 32
+PASSED test for 'division'. Expected: 0.5, actual: 0.5
+PASSED test for 'exponentiation'. Expected: 4, actual: 4
+PASSED test for 'square root'. Expected: 2, actual: 2.0
+PASSED test for 'multi-part expression'. Expected: 32, actual: 32
+ 
+PASSED test for 'less than'. Expected: True, actual: True
+PASSED test for 'less than'. Expected: False, actual: False
+PASSED test for 'less than'. Expected: False, actual: False
+PASSED test for 'less than or equal'. Expected: True, actual: True
+PASSED test for 'less than or equal'. Expected: False, actual: False
+PASSED test for 'less than or equal'. Expected: True, actual: True
+ 
+PASSED test for 'integer equality'. Expected: True, actual: True
+PASSED test for 'string equality'. Expected: True, actual: True
+PASSED test for 'float equality'. Expected: True, actual: True
+PASSED test for 'list equality'. Expected: True, actual: True
+PASSED test for 'integer equality'. Expected: False, actual: False
+PASSED test for 'string equality'. Expected: False, actual: False
+PASSED test for 'float equality'. Expected: False, actual: False
+PASSED test for 'list equality'. Expected: False, actual: False
+PASSED test for 'integer inequality'. Expected: False, actual: False
+PASSED test for 'string inequality'. Expected: False, actual: False
+PASSED test for 'float inequality'. Expected: False, actual: False
+PASSED test for 'list inequality'. Expected: False, actual: False
+PASSED test for 'integer inequality'. Expected: True, actual: True
+PASSED test for 'string equality'. Expected: True, actual: True
+PASSED test for 'float inequality'. Expected: True, actual: True
+PASSED test for 'list inequality'. Expected: True, actual: True
+ 
+PASSED test for 't-or-f'. Expected: True, actual: True
+PASSED test for 't-or-t'. Expected: True, actual: True
+PASSED test for 'f-or-t'. Expected: True, actual: True
+PASSED test for 'f-or-f'. Expected: False, actual: False
+PASSED test for 't-and-f'. Expected: False, actual: False
+PASSED test for 't-and-t'. Expected: True, actual: True
+PASSED test for 'f-and-t'. Expected: False, actual: False
+PASSED test for 'f-and-f'. Expected: False, actual: False
+PASSED test for 'call/return'. Expected: return value, actual: return value
+PASSED test for 'argument passing'. Expected: a bee, actual: a bee
+ 
+PASSED test for 'while loop'. Expected: 256, actual: 256
+PASSED test for 'for loop'. Expected: 10, actual: 10
+ 
+====ENDING TESTS====

@@ -1,0 +1,123 @@
+program 		//program keyword
+
+function show(value) {
+  // When run from console, "alert" intrinsic uses no target
+  alert(value)
+}
+
+function space(){
+  show(" ")
+}
+
+function expect(testName, expected, actual) {
+  if expected == actual 
+    then { result := "PASSED" } 
+    else { result := "FAILED" }
+  show(""              + result + 
+       " test for '"   + testName + 
+       "'. Expected: " + expected +
+       ", actual: "    + actual)
+}
+
+// Comments work
+
+function returnTest(){
+   return "return value"
+}
+
+function argumentTest(a,b){
+   return b + a
+}
+
+{
+  show("====STARTING TESTS====")
+  space()
+
+  // Assignment tests
+  strings := "Hello"	//Assignments work
+  ints := 4		
+  bools := true
+  expect("string assignment", "Hello", strings)
+  expect("numeric assignment", 4, ints)
+  expect("boolean assignment", true, bools)
+  space()
+
+  // If tests
+  value := ""
+  if ints == 4 then { value := "thenBlock" }
+  expect("if-then", "thenBlock", value)
+
+  if bools == false then { value := "thenBlock" }
+                    else { value := "elseBlock" }
+  expect("if-then-else", "elseBlock", value)
+
+  if bools == false then{ value := "thenBlock"  }
+  elsif ints == 4   then{ value := "elsifBlock" }
+                    else{ value := "elseBlock"  }
+  expect("if-then-elsif-else", "elsifBlock", value) 
+  space() 
+
+  // Arithmetic test
+  expect("addition", 10, 5 + 5)
+  expect("subtraction", 11, 12 - 1)
+  expect("multiplication", 32, 8 * 4)
+  expect("division", 0.5, 1.0 / 2.0)
+  expect("exponentiation", 4, 2 ** 2)
+  expect("square root", 2, 4 ** 0.5)
+  expect("multi-part expression", 32, 6 * 5 + 6 / 3)
+  space()
+
+  // Comparison test
+  expect("less than",          true , 5  < 10)
+  expect("less than",          false, 15 < 10)
+  expect("less than",          false, 5  < 5)
+  expect("less than or equal", true,  5 <= 10)
+  expect("less than or equal", false, 15<= 10)
+  expect("less than or equal", true , 5 <= 5)
+  space()
+
+  // Equality test
+  expect("integer equality",   true, 1 == 1)
+  expect("string equality" ,   true, "a string"=="a string")
+  expect("float equality",     true, 2.0 == 2.0)
+  expect("list equality",      true, {1,2,3} == {1,2,3})
+  expect("integer equality",   false, 1 == 2)
+  expect("string equality",    false, "a string"=="string a")
+  expect("float equality",     false, 2.0 == 2.5)
+  expect("list equality",      false, {1,2,3} == {1,2,8})
+  expect("integer inequality", false, 1 != 1)
+  expect("string inequality",  false, "a string"!="a string")
+  expect("float inequality",   false, 2.0 != 2.0)
+  expect("list inequality",    false, {1,2,3} != {1,2,3})
+  expect("integer inequality", true,  1 != 2)
+  expect("string equality" ,   true, "a string"!="string a")
+  expect("float inequality",   true,  2.0 != 2.5)
+  expect("list inequality",    true,  {1,2,3} != {1,2,8})
+  space()
+
+  // Logic test
+  expect("t-or-f" , true,  true  | false)
+  expect("t-or-t" , true,  true  | true)
+  expect("f-or-t" , true,  false | true)
+  expect("f-or-f" , false, false | false)
+  expect("t-and-f", false, true  & false)
+  expect("t-and-t", true,  true  & true)
+  expect("f-and-t", false, false & true)
+  expect("f-and-f", false, false & false)
+
+  // Function call test
+  expect("call/return", "return value", returnTest() )
+  expect("argument passing", "a bee", argumentTest("bee","a ") )
+  space()
+
+  // Loops
+  power := 1    i := 0
+  while (i < 8) { power := power * 2   i := i + 1 }
+  expect("while loop", 256, power)
+  sum := 0      list := { 1 , 2 , 3 , 4 } 
+  for x in list { sum := sum + x }
+  expect("for loop", 10, sum)
+  space()
+  
+  show("====ENDING TESTS====")  
+}
