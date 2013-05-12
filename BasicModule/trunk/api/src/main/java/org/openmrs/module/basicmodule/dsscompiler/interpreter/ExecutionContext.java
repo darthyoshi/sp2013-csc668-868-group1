@@ -51,7 +51,8 @@ public class ExecutionContext implements NamingContext {
     }
 
     public DSSValue get(String name) {
-        return variables.get(name);
+        return variables.containsKey(name) ? 
+                variables.get(name) : evaluator.toDSSValue(null);
     }
 
     public String[] names() {

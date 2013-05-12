@@ -14,4 +14,18 @@ function fib(x) {
 
     log(patientDashboard, "max of 1 and 2 is " + max(1,2))
     log(patientDashboard, "min of 1 and 2 is " + min(1,2))
+
+    sequence := seq(1,4)
+
+    for j in sequence { log (forLoop, j) } 
+
+    o := Object(a, b, c)
+    o.a := "this is a"
+    o.b := 12
+
+    while (o.b < 15) {
+        o.b := o.b + 1
+        log(whileLoop, o.b)
+    }
+
 }
