@@ -3,19 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>basicmodule</artifactId>
+	<artifactId>dssmodule</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Basic Module</name>
-	<description>Parent project for Basic Module</description>
+	<name>DSS Module</name>
+	<description>Parent project for DSS Module</description>
 
-	<url>http://wiki.openmrs.org/docs/Basic+Module</url>
+	<url>https://code.google.com/p/sp2013-csc668-868-group1/</url>
 
-	<scm>
-		<connection>scm:svn:http://svn.openmrs.org/openmrs-modules/basicmodule/trunk/</connection>
-		<developerConnection>scm:svn:http://svn.openmrs.org/openmrs-modules/basicmodule/trunk/</developerConnection>
-		<url>http://svn.openmrs.org/openmrs-modules/basicmodule/trunk/</url>
-	</scm>
 
 	<modules>
 		<module>omod</module>

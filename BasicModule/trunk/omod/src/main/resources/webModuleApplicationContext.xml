@@ -28,27 +28,15 @@
         <property name="mappings">
            
             <props>
-                		<prop key="**/patientExample.portlet">portletController</prop>
-    
-                                <!-- Following is new change -->
-                                <prop key="**/patientNotes.portlet">MyPatientNotesPortletController</prop>
-                                
-                                <!-- The following property is used to override the regimen tab because the key is
-                                the same as the url mapping for regimen portlet in core -->
-                                <prop key="**/patientRegimen.portlet">myPatientRegimensPortletController</prop>
 			</props>
  		</property>
 	</bean>	 
         
-        <bean id="myPatientRegimensPortletController" class="org.openmrs.module.basicmodule.web.controller.PatientRegimensPortletController" />
-        <!-- I added the following bean -->
-        <bean id="MyPatientNotesPortletController" class="org.openmrs.module.basicmodule.web.controller.PatientNotesPortletController" />
 
- 
 	<!-- Annotation based controllers -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 	
-	<context:component-scan base-package="org.openmrs.module.basicmodule.web.controller" />
+	<context:component-scan base-package="org.openmrs.module.dssmodule.web.controller" />
  
 		
 </beans>
