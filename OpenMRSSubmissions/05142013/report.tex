@@ -89,14 +89,16 @@ The task here is given the presented language grammar (see appendix A), create t
 
 \subsection{Software and platform used}
 
-Most of the programming was done in Java, with client pages in Javascript JSP and HTML, and extensions declared in XML.
+This solution has been implemented as a module for OpenMRS. The DSS Interpreter has been written in Java. Client pages have been written 
+in JavaScript, JSP, and HTML, with OpenMRS extension points indicated using 
+XML. Interactions between the web-based client and server-side rules are 
+supported by the Spring framework and DWR (Direct Web Remoting).
 
 \begin{figure}\begin{center}
 \includegraphics[width=6.5in]{OpenMRS_Architecture.png}
 \end{center}
 \caption{Architecture Diagram} \label{fig:ARCHITECTURE}
 \end{figure}
-
 
 \newpage 
 \section{User guide} \label{sec:USER_GUIDE}
