@@ -1207,7 +1207,10 @@ scope associated with the function call.
 \end{figure}
 
 \newpage \appendix 
-\section{DSS1 Grammar}
+\section{DSS1 language specification}
+
+\subsection{Grammar}
+
 \begin{verbatim}
  PROGRAM -> ‘program’ D* BLOCK ==> program
  BLOCK -> ‘{‘ S* ‘}’  ==> block
@@ -1265,11 +1268,90 @@ scope associated with the function call.
   NAME	-> <id>
 \end{verbatim}
 
+\subsection {Intrinsic functions}
+
+	Several built-in functions may be utilized when writing a DSS program, as listed in Table ~\ref{tab:INTRINSIC_FUNCTION_LIST}. Function names are case sensitive.
+
+\begin{table}\begin{centering}
+\begin{tabular}{ | >{\tt}l | p{3.66in} | }
+\hline
+isString(v) & 
+Check if \texttt{v} is of type string; returns a boolean. \\ \hline
+isInt(v) & 
+Check if \texttt{v} is of type integer; returns a boolean. \\ \hline
+isFloat(v) & 
+Check if \texttt{v} is of type float; returns a boolean. \\ \hline
+isBoolean(v) & 
+Check if \texttt{v} is of type boolean; returns a boolean. \\ \hline
+isDate(v) & 
+Check if \texttt{v} is of type date; returns a boolean. \\ \hline
+isObject(v) & 
+Check if \texttt{v} is of type object; returns a boolean. \\ \hline
+isList(v) & 
+Check if \texttt{v} is of type list; returns a boolean. \\ \hline
+\hline
+currenttime() &
+Returns current system time, as a date. \\ \hline
+recentTimeItem(list) &
+Returns the item in the list with the most recent time. \\ \hline
+oldestTimeItem(list) &
+Returns the item with the oldest time. \\ \hline
+before(t1, t2) &
+Returns true if \texttt{t1} is before \texttt{t2} \\ \hline
+time(v) &
+Returns the time associated with \texttt{v} \\ \hline
+addDays(time, n) &
+Returns a new date, \texttt{n} days after \texttt{time}.
+\\ \hline
+addMonths(time, n) &
+Returns a new date, \texttt{n} months after \texttt{time}.
+\\ \hline \hline
+merge(list1, list2) &
+Returns a new list containing all items from \texttt{list1} and 
+\texttt{list2}, sorted chronologically.  \\ \hline
+sortTime(list) &
+Returns a new list sorted based on time of items 
+\\ \hline
+sortData(list) &
+Returns a new list sorted based on values of items  \\ \hline
+last(list) &
+Returns the last item in the list \\ \hline
+first(list) &
+Returns the first in the list \\ \hline
+\hline
+read(p, c) &
+Returns a list of observations of concept \texttt{c} for the specified patient \texttt{p} from database. \newline
+\texttt{c} should match the name given in the Concept Dictionary. 
+\\ \hline
+readInitialEncounter(p,c) &
+Returns a list of observations for patient \texttt{p} and concept 
+\texttt{c} from database, only from the initial encounter.
+\\ \hline
+readLatestEncounter(p,c) &
+Returns a list of observations for patient \texttt{p} and concept 
+\texttt{c} from database, only from the latest encounter.
+\\ \hline \hline
+alert(target, message) &
+Send an alert to a target;
+\texttt{target} can either be \texttt{summary} (for Patient Summary) or \texttt{dashboard} (for Patient Dashboard)
+\\ \hline
+within(v, a, b) &
+Returns true if \texttt{v} is between \texttt{a} and \texttt{b}, inclusive.
+\\ \hline
+length(v) &
+Returns the length of a list or a string. \\ \hline
+\end{tabular}
+
+
+\end{centering}
+\caption{DSS1 intrinsic functions} \label{tab:INTRINSIC_FUNCTION_LIST}
+\end{table}
+
 \newpage
 \section{Test cases} \label{sec:TEST_CASES}
 
 \newpage
-\section{API Documentation}
+\section{API Documentation} \label{sec:API_DOCS}
 
 
 
