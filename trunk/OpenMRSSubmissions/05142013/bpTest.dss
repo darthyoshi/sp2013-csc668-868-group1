@@ -1,0 +1,40 @@
+program
+
+function bloodpressure()
+{
+	systolic := last(read(patientId, "SYSTOLIC BLOOD PRESSURE"))
+	diastolic := last(read(patientId, "DIASTOLIC BLOOD PRESSURE"))
+	alert(summary, "Systolic: " + systolic)
+	alert(summary, "Diastolic: " + diastolic)
+	check(systolic, diastolic)
+}
+
+function check(sys, dias)
+{
+	if ((sys < 120) | (dias < 80)) then
+	{ 	
+            alert(summary, 
+               "Normal Blood Pressure")	
+      }
+	elsif (within(sys, 120, 139) | 
+              within(dias,    80,89)) then
+	{	
+            alert(summary,
+               "Prehypertension")	
+      }
+	elsif (within(sys, 140,159) | 
+              within(dias, 90, 99)) then
+	{	
+            alert(summary, 
+               "Stage 1 Hypertension.") 
+      }
+	else
+	{	
+            alert(summary, 
+               "Stage 2 Hypertension.") 
+      }
+}
+
+{
+	bloodpressure()
+}

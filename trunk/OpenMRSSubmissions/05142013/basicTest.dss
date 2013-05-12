@@ -1,0 +1,40 @@
+program
+// BASIC TESTING OF INTRINSICS
+{
+	b 	:= true
+	lst 	:= {1,2,3,4,5}
+	time 	:= currenttime()
+	time2 := addDays(time, 7)
+
+	// Utilizing DSSRead functions
+	wt 	:= read(patientId, "WEIGHT (KG)")
+
+	// isLibrary
+	alert(summary, isInt(1234))
+	alert(summary, isString("hello"))
+	alert(summary, isFloat(12.345))
+	alert(summary, isBoolean(b)) 
+	alert(summary, isList(lst))
+	alert(summary, isDate(time))
+
+	// DSSListLibrary
+	alert(summary, merge(wt, wt))
+	alert(summary, sortTime(wt))
+	alert(summary, sortData({1,10,4,15}))
+	alert(summary, last(wt))
+	alert(summary, first(wt))
+
+	// DSSDateLibrary
+	alert(summary, addDays(time, 14))
+	alert(summary, addMonths(time, 2))
+	alert(summary, before(time, time2))
+	alert(summary, recentTimeItem(wt))
+	alert(summary, oldestTimeItem(wt))
+	alert(summary, time(recentTimeItem(wt)))
+	
+	
+	// Misc
+	alert(summary, within(40,20,60))
+	alert(summary, length({10,20,30,40,50}))
+
+}
