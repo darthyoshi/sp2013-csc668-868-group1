@@ -5,6 +5,8 @@
 \usepackage{setspace}
 \usepackage{url}
 \usepackage{tikz}
+\usepackage{array}
+\usepackage{rotating}
 \usetikzlibrary{positioning,shapes,arrows}
 
 \title{
@@ -308,6 +310,19 @@ Click 'Save Rule' and a download attachment window should appear. You can choose
 \newpage 
 \section{Use cases} \label{sec:USE_CASES}
 
+Two main actors may interact directly with behaviors exposed in the 
+DSS rule module: Administrators, who are responsible for maintaining 
+the OpenMRS instance, and physicians, who utilize OpenMRS to 
+support their interactions with patients. Either administrators 
+or physicians may be responsible for authoring and maintaining 
+rules, effectively creating a third category of actors. This 
+distinction is relevant to understanding that physicians who see 
+and respond to the alerts produced by rules may or may not be the 
+same individuals who author those rules. Figure ~\ref{fig:USE_CASE_OVERVIEW} summarizes these interactions.
+
+As a precondition to all use cases, an administrator is assumed to 
+have installed the DSS rule module.
+
 \begin{figure}\begin{center}
 \includegraphics[height=6.5in]{use_case_overview.png}
 \end{center}
@@ -315,19 +330,192 @@ Click 'Save Rule' and a download attachment window should appear. You can choose
 \label{fig:USE_CASE_OVERVIEW}
 \end{figure}
 
-\subsection{Rule administration}
+\subsection{Authoring rules}
+
+As discussed, a rule author may be either a physician or some 
+form of administrator. Rule authorship and maintenance can be 
+summarized by two tasks: Creating rules, described in 
+Table ~\ref{tab:CREATE_RULE_USE_CASE} and 
+Figure ~\ref{fig:CREATE_RULE_SEQUENCE},
+and modifying existing rules, described in 
+Table ~\ref{tab:MODIFY_RULE_USE_CASE} and 
+Figure ~\ref{fig:MODIFY_RULE_SEQUENCE}.
+
+\begin{table}
+\begin{centering}
+\begin{tabular}{ |  >{\bfseries}l | p{5in} |} \hline
+Use case         &
+1                \\ \hline
+Use case name    &
+Create Rule      \\ \hline
+Summary          &
+Administrator or physician can create, load, or edit rules. \\ \hline
+Dependency       &
+Knowledge of source code \\ \hline
+Actor            &
+Any administrator or physician \\ \hline
+Precondition     &
+Default settings \\ \hline
+Description      &
+Rule author navigates to Create/Modify DSS Rule page. \newline
+Rule author enters a rule name and DSS Code. \newline
+Rule is saved.    \newline
+Rule author is able to edit or modify that rule. \\ \hline
+Alternative      & 
+If errors are present, rule author is notified. Rule entry form is 
+not cleared, allowing error to be corrected.
+\\ \hline
+Postcondition    &
+Rule is subsequently executed when navigating to patient 
+summary or patient dashboard. \newline
+Alerts produced by rule are shown where appropriate. \\ \hline
+\end{tabular}
+\end{centering}
+\caption{Rule creation use case} \label{tab:CREATE_RULE_USE_CASE}
+\end{table}
+
+\begin{figure}\begin{center}
+\includegraphics[width=6.5in]{sequence/create_rule.png}
+\end{center}
+\caption{Rule creation sequence diagram} 
+\label{fig:CREATE_RULE_SEQUENCE}
+\end{figure}
+
+
+\begin{table}
+\begin{centering}
+\begin{tabular}{ |  >{\bfseries}l | p{5in} |} \hline
+Use case &
+2 \\ \hline
+Use case name &
+Modify Rule \\ \hline
+Summary &
+Administrator or physician can make changes to a rule. \\ \hline
+Dependency &
+Knowledge of source code \\ \hline
+Actor &
+Any adminstrator or physician \\ \hline
+Precondition &
+An existing rule previously saved \\ \hline
+Description &
+Rule author navigates to Create/Modify DSS Rule page. \newline
+Rule author selects name of rule from drop down and hits "Load." \newline
+Rule author makes necessary changes to a rule within the source code. \newline
+Rule author hits save and confirms the modification when prompted.
+\\ \hline
+Alternative      & 
+If errors are present, rule author is notified. Rule entry form is 
+not cleared, allowing error to be corrected. \\ \hline
+Postcondition &
+Subsequent rule executions and alerts will exhibit the behavior specified in 
+the modified rule.
+ \\ \hline
+\end{tabular}
+\end{centering}
+\caption{Rule modification use case} \label{tab:MODIFY_RULE_USE_CASE}
+\end{table}
+
+\begin{figure}\begin{center}
+\includegraphics[width=6.5in]{sequence/modify_rule.png}
+\end{center}
+\caption{Rule modification sequence diagram} 
+\label{fig:MODIFY_RULE_SEQUENCE}
+\end{figure}
 
 \subsection{Alerts}
 
-\newpage 
-\section{Sequence diagrams}
+The useful product of DSS rules is the alerts which they may generate, 
+which can inform the actions a physician may subsequently take. Alerts 
+are shown in two contexts: On the patient dashboard, as described in 
+Table ~\ref{tab:PATIENT_DASHBOARD_USE_CASE} and 
+Figure ~\ref{fig:PATIENT_DASHBOARD_SEQUENCE},
+and within the patient summary, as described in 
+Table ~\ref{tab:PATIENT_SUMMARY_USE_CASE} and 
+Figure ~\ref{fig:PATIENT_SUMMARY_SEQUENCE}.
+
+\begin{table}
+\begin{centering}
+\begin{tabular}{ |  >{\bfseries}l | p{5in} |} \hline
+Use case &
+3 \\ \hline
+Use case name &
+Patient Dashboard \\ \hline
+Summary & 
+Encounter information and relevant alerts are made available 
+for a specific patient. \\ \hline
+Dependency &
+Log in to OpenMRS. \\ \hline
+Actor &
+Physician \\ \hline
+Precondition &
+An existing patient has been created. \\ \hline
+Description &
+Physician searches for a patient and navigates to patient dashboard. \newline
+Medical information recorded on the patient is accessible through tabs for greater detail. \newline
+Rules for patient are executed and any alerts for the "dashboard" target 
+are displayed near the top of the page. \newline
+A link to the Patient Summary page is provided near the top of the page.
+\\ \hline
+Alternative &
+\\ \hline
+Postcondition &
+Physician may navigate among patient dashboard tabs containing 
+patient information. \newline
+Physician may navigate to patient summary. \newline
+Physician has been notified with relevant alerts produced by defined 
+DSS rules.
+\\ \hline
+\end{tabular}
+\end{centering}
+\caption{Patient dashboard use case} \label{tab:PATIENT_DASHBOARD_USE_CASE}
+\end{table}
 
 \begin{figure}\begin{center}
-\includegraphics[width=6.5in]{readsequence.png}
+\includegraphics[width=6.5in]{sequence/patient_dashboard.png}
 \end{center}
-\caption{Sequence diagram for read operation} 
-\label{fig:SEQUENCE_READ}
+\caption{Patient dashboard sequence diagram} 
+\label{fig:PATIENT_DASHBOARD_SEQUENCE}
 \end{figure}
+
+\begin{table}
+\begin{centering}
+\begin{tabular}{ |  >{\bfseries}l | p{5in} |} \hline
+Use case &
+4 \\ \hline
+Use case name &
+Patient Summary \\ \hline
+Summary & 
+Major information of a patient is displayed. \\ \hline
+Dependency &
+Patient Dashboard \\ \hline
+Actor &
+Physician \\ \hline
+Precondition &
+Relevant encounter data for the patient. \\ \hline
+Description &
+Physician clicks "Patient Summary" link from Patient Dashboard. \newline
+Patient summary displays the main medical information including the WHO stage, TB Status, Allergies, and current drugs. \newline
+Rules are executed, and any alerts for the "summary" target are 
+displayed at the bottom of the page.
+\\ \hline
+Alternative &
+\\ \hline
+Postcondition &
+Physician has summary information about the patient. \newline
+Physician has been notified with relevant alerts produced by defined 
+DSS rules.
+\\ \hline
+\end{tabular}
+\end{centering}
+\caption{Patient summary use case} \label{tab:PATIENT_SUMMARY_USE_CASE}
+\end{table}
+
+\begin{sidewaysfigure}\begin{center}
+\includegraphics[width=8in]{sequence/patient_summary.png}
+\end{center}
+\caption{Patient summary sequence diagram} 
+\label{fig:PATIENT_SUMMARY_SEQUENCE}
+\end{sidewaysfigure}
 
 
 \newpage 
