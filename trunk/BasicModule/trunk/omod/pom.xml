@@ -3,19 +3,19 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>basicmodule</artifactId>
+		<artifactId>dssmodule</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>basicmodule-omod</artifactId>
+	<artifactId>dssmodule-omod</artifactId>
 	<packaging>jar</packaging>
-	<name>Basic Module OMOD</name>
-	<description>OpenMRS module project for Basic Module</description>
+	<name>DSS Module OMOD</name>
+	<description>OpenMRS module project for DSS Module</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
-			<artifactId>basicmodule-api</artifactId>
+			<artifactId>dssmodule-api</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		
