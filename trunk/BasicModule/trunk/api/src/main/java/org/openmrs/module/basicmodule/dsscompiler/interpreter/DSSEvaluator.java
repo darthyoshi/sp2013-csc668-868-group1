@@ -25,6 +25,7 @@ public class DSSEvaluator implements Evaluator {
         operators.put("|",  new MethodLookup("or"));
         operators.put("||", new MethodLookup("concat"));
         operators.put("==", new BooleanMethodLookup("equal"));
+        operators.put("!=", new BooleanMethodLookup("notequal"));
         operators.put("<",  new BooleanMethodLookup("lessthan"));
         operators.put("<=", new BooleanMethodLookup("lessthanequal"));        
     }
@@ -76,7 +77,7 @@ public class DSSEvaluator implements Evaluator {
         DSSOperator op = operators.get(operator);
         
         if (op == null) {
-            return null; //DSSValue.DSS_NULL;
+            return DSSValueFactory.getDSSValue();
         }
         
         return op.apply(leftOperand, rightOperand);
@@ -194,7 +195,8 @@ public class DSSEvaluator implements Evaluator {
                 boolean result = ((Boolean) m.invoke(left, right)).booleanValue();
                 return DSSValueFactory.getDSSValue(result);
             } catch (Exception e) {
-                return null; //DSSValue.DSS_NULL;
+                e.printStackTrace();
+                return DSSValueFactory.getDSSValue();
             }
         }
     }

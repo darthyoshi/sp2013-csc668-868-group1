@@ -11,9 +11,9 @@ import java.util.Vector;
  * @author bierman
  */
 public class DSSValueList extends DSSValue {
-    Vector value;
+    Vector<DSSValue> value;
     
-        DSSValueList (Vector v) {
+    DSSValueList (Vector<DSSValue> v) {
         value = v;
     }
 
@@ -59,12 +59,23 @@ public class DSSValueList extends DSSValue {
 
     @Override
     public boolean notequal(DSSValue b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return !equal(b);
     }
 
     @Override
     public boolean equal(DSSValue b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (b instanceof DSSValueList) {
+            Vector<DSSValue> other = ((DSSValueList)b).value;
+            if (other.size() == value.size()) {
+                for (int i = 0; i < value.size(); i++) {
+                    if (other.get(i).notequal(value.get(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } 
+        return false;
     }
 
     @Override

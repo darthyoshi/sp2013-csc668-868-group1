@@ -93,7 +93,8 @@ public class DemoLibrary extends AnnotatedDSSLibrary {
      */
     public static void main(String[] args) {
         try {
-            Parser p = new Parser("libdemo.dss");
+            Parser p = new Parser("/home/woeltjen/School/csc868/sp2013-csc668-868-group1/OpenMRSSubmissions/05142013/languageTest.dss");
+            
             AST t = p.execute();
             // Just for fun, convert to XML and back
             XMLBuilder b = new XMLBuilder();
