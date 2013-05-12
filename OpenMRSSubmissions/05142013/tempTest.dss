@@ -1,0 +1,33 @@
+program
+{
+	count := 0
+	date  := currenttime()
+	month := currenttime()
+	
+	while(count < 12)
+	{
+		if (count == 10) then
+		{  
+		    alert(summary,
+                   addMonths(date, count))	
+		}
+		count := count + 10
+	}
+
+	list := read(patientId, "TEMPERATURE (C)")
+	wt := readLatestEncounter(patientId, "WEIGHT (KG)")
+	
+	if (before(time(oldestTimeItem(list)),
+             time(first(wt))))then
+	{
+		alert(summary, 
+               "Number of observation of temperature 
+               on record = " + length(list))	
+	}
+	
+	
+	if (isList(wt)) then
+	{ alert(summary, merge(list, wt)) }
+	
+	
+}
