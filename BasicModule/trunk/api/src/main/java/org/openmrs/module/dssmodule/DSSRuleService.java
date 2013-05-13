@@ -25,8 +25,8 @@ public class DSSRuleService {
             new IsLibrary(),
             new ReadLibrary(),
             new ListLibrary(),
-	    new DSSDateLibrary(),
-            new DSSLengthAndWithinLibrary()
+	    new DateLibrary(),
+            new LengthAndWithinLibrary()
     };
     
     // Implemented as a singleton
