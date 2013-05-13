@@ -2,12 +2,12 @@ package org.openmrs.module.dssmodule.intrinsics;
 
 import java.util.Vector;
 import org.openmrs.module.dssmodule.ast.AST;
-import org.openmrs.module.dssmodule.interpreter.Interpreter;
+import org.openmrs.module.dssmodule.DSSInterpreter;
 import org.openmrs.module.dssmodule.parser.Parser;
 import org.openmrs.module.dssmodule.value.DSSValue;
 import org.openmrs.module.dssmodule.value.DSSValueFactory;
 import org.openmrs.module.dssmodule.value.DSSValueList;
-import org.openmrs.module.dssmodule.xml.XMLBuilder;
+import org.openmrs.module.dssmodule.DSSXMLConvertor;
 
 /**
  * Demonstrates the use of AnnotatedDSSLibrary to semi-automatically 
@@ -97,10 +97,10 @@ public class DemoLibrary extends AnnotatedDSSLibrary {
             
             AST t = p.execute();
             // Just for fun, convert to XML and back
-            XMLBuilder b = new XMLBuilder();
+            DSSXMLConvertor b = new DSSXMLConvertor();
             b.addTree(t);            
             //b.write(System.out);
-            Interpreter i = new Interpreter();
+            DSSInterpreter i = new DSSInterpreter();
             i.install(new DemoLibrary());
             i.defineConstant("pi", 3.14159);
             i.interpret(b.getAST().get(0));

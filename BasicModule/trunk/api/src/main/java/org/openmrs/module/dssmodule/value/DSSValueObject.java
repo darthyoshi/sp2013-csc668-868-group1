@@ -3,7 +3,7 @@ package org.openmrs.module.dssmodule.value;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import org.openmrs.module.dssmodule.interpreter.NamingContext;
+import org.openmrs.module.dssmodule.state.NamingContext;
 
 /**
  * Represents the "object" type in DSS1. Essentially operates 

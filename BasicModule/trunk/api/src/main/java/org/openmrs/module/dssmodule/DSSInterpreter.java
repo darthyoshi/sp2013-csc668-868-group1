@@ -1,5 +1,10 @@
-package org.openmrs.module.dssmodule.interpreter;
+package org.openmrs.module.dssmodule;
 
+import org.openmrs.module.dssmodule.flowcontrol.InterpreterVisitor;
+import org.openmrs.module.dssmodule.intrinsics.DSSLibrary;
+import org.openmrs.module.dssmodule.state.DSSExecutionContext;
+import org.openmrs.module.dssmodule.state.DSSEvaluator;
+import org.openmrs.module.dssmodule.state.DSSFunction;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -11,12 +16,12 @@ import org.openmrs.module.dssmodule.parser.Parser;
  * An interpreter is responsible for running parsed DSS1 programs.
  * @author woeltjen
  */
-public class Interpreter {
+public class DSSInterpreter {
     private static final String DEFAULT_DSS_FILE = "/home/woeltjen/School/csc868/sp2013-csc668-868-group1/Compiler/src/fib.dss";
     
     private DSSExecutionContext context = new DSSExecutionContext(new DSSEvaluator());    
 
-    public Interpreter(DSSLibrary... libraries) {        
+    public DSSInterpreter(DSSLibrary... libraries) {        
         this(Collections.<String,Object>emptyMap(), libraries);
     }
 
@@ -30,7 +35,7 @@ public class Interpreter {
      * @param constants a map of variable names to constant values
      * @param libraries a list of libraries of functions to install
      */
-    public Interpreter(Map<String, Object> constants, DSSLibrary... libraries) {
+    public DSSInterpreter(Map<String, Object> constants, DSSLibrary... libraries) {
         context.setFunction("alert", new DSSAlert());
         for (DSSLibrary library : libraries) {
             install(library);
@@ -98,7 +103,7 @@ public class Interpreter {
     public static void main(String[] args) {
         try {
             String dss = args.length > 1 ? args[0] : DEFAULT_DSS_FILE;
-            new Interpreter().interpret(new Parser(dss).execute());
+            new DSSInterpreter().interpret(new Parser(dss).execute());
         } catch (Exception e) {
             e.printStackTrace(); // TODO: Handle exceptions meaningfully
         }

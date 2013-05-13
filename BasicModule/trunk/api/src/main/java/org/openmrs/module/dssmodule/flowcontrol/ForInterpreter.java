@@ -4,8 +4,7 @@ import java.util.List;
 import org.openmrs.module.dssmodule.ast.AST;
 import org.openmrs.module.dssmodule.ast.ForTree;
 import org.openmrs.module.dssmodule.ast.IdTree;
-import org.openmrs.module.dssmodule.interpreter.ASTInterpreter;
-import org.openmrs.module.dssmodule.interpreter.ExecutionContext;
+import org.openmrs.module.dssmodule.state.ExecutionContext;
 import org.openmrs.module.dssmodule.value.DSSValue;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 

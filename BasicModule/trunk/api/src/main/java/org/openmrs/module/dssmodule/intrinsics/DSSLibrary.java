@@ -1,5 +1,7 @@
-package org.openmrs.module.dssmodule.interpreter;
+package org.openmrs.module.dssmodule.intrinsics;
 
+import org.openmrs.module.dssmodule.state.ExecutionContext;
+import org.openmrs.module.dssmodule.state.DSSFunction;
 import java.util.Map;
 
 /**

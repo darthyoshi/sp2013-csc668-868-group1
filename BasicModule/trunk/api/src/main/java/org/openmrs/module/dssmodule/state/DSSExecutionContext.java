@@ -1,4 +1,4 @@
-package org.openmrs.module.dssmodule.interpreter;
+package org.openmrs.module.dssmodule.state;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +39,7 @@ public class DSSExecutionContext extends ExecutionContext {
      * @param name
      * @param value 
      */
-    protected void setConstant(String name, DSSValue value) {
+    public void setConstant(String name, DSSValue value) {
         constants.put(name, value);
     }
     
@@ -49,7 +49,7 @@ public class DSSExecutionContext extends ExecutionContext {
      * @param name
      * @param func 
      */
-    protected void setIntrinsic(String name, DSSFunction func) {
+    public void setIntrinsic(String name, DSSFunction func) {
         intrinsics.put(name, func);
     }
     
