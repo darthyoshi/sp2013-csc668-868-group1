@@ -11,13 +11,13 @@ import org.openmrs.module.dssmodule.value.DSSValueFactory;
  *
  * @author Jason
  */
-public class DSSLengthAndWithinLibrary implements DSSLibrary{
+public class LengthAndWithinLibrary implements DSSLibrary{
    private static final Map<String, DSSFunction> Map  = new HashMap<String, DSSFunction>();;
    
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
        if(Map.isEmpty()){
-           Map.put("length", new DSSLengthAndWithinLibrary.DSSLength());
-           Map.put("within", new DSSLengthAndWithinLibrary.DSSWithin());
+           Map.put("length", new LengthAndWithinLibrary.DSSLength());
+           Map.put("within", new LengthAndWithinLibrary.DSSWithin());
        }
        return Map;
     }

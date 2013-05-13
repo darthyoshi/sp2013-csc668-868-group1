@@ -21,7 +21,7 @@ import org.openmrs.module.dssmodule.value.DSSValueString;
  *
  * @author kent
  */
-public class DSSDateLibrary implements DSSLibrary{
+public class DateLibrary implements DSSLibrary{
         private static final Map<String, DSSFunction> MAP =
             new HashMap<String, DSSFunction>();
 
