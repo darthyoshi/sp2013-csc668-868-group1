@@ -231,7 +231,7 @@ The code will still be available for you to work on it.
 \includegraphics[width=6.5in]{user_guide/create_modify.png}
 \end{center}
 \caption{Create/Modify DSS Rule}
-\label{fig:CREATE_MODIFY}
+\label{fig:CREATE_MODIFY}tikz
 \end{figure}
 
 \begin{figure}\begin{center}
@@ -792,6 +792,149 @@ DateLibrary       & \texttt{currenttime()}        \\
 
 \newpage 
 \section{Package diagrams}
+
+\tikzstyle{tab}=[rectangle, draw, anchor=south west]
+\tikzstyle{package}=[rectangle, 
+                   draw=black, 
+                   anchor=north, align=justify]
+\tikzstyle{utilizes}=[draw, ->, dashed, >=triangle 60]
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[node distance=0.33in]
+
+\node (Module) [package]  { 
+DSSInterpreter \\
+DSSModuleActivator \\
+DSSRuleService \\
+DSSXMLConvertor 
+} ;
+\node [tab] at (Module.north west)
+{ dssmodule } ;
+
+\node (ExtensionHtml) [package, right=of Module]  { 
+AdminDSS \\
+PatientSummaryExtension \\
+VitalsPatientDashboardTab
+} ;
+\node [tab] at (ExtensionHtml.north west)
+{ extension.html } ;
+
+\node (WebController) [package, right=of ExtensionHtml]  { 
+DSSRuleController \\
+DSSUploadController \\
+DWRRuleService \\
+DWRVitalsService \\
+FileDownload \\
+PatientSummaryController
+} ;
+\node [tab] at (WebController.north west)
+{ web.controller } ;
+
+\node (FlowControl) [package, below=of Module]  { 
+AST \\
+ActualArgsTree \\
+AssignTree \\
+BlockTree \\
+CallTree \\
+ElsifTree \\
+...
+} ;
+\node [tab] at (FlowControl.north west)
+{ flowcontrol } ;
+
+\node (Intrinsics) [package, right=of FlowControl]  { 
+DSSLibrary \\
+DateLibrary \\
+IsLibrary \\
+LengthAndWithinLibrary \\
+ListLibrary \\
+ReadLibrary \\
+DSSAddDays \\
+DSSAddMonths \\
+...
+} ;
+\node [tab] at (Intrinsics.north west)
+{ intrinsics } ;
+
+\node (State) [package, right=of Intrinsics]  { 
+DSSEvaluator \\
+DSSExecutionContext \\
+DSSFunction \\
+Evaluator \\
+ExecutionContext \\
+NamingContext
+} ;
+\node [tab] at (State.north west)
+{ state } ;
+
+\node (Value) [package, right=of State]  { 
+DSSValue \\
+DSSValueBool \\
+DSSValueDate \\
+DSSValueFloat \\
+DSSValueInt \\ 
+... \\
+DSSValueFactory
+} ;
+\node [tab] at (Value.north west)
+{ value } ;
+
+
+\node (AST) [package, below=of FlowControl]  { 
+AST \\
+ActualArgsTree \\
+AssignTree \\
+BlockTree \\
+CallTree \\
+ElsifTree \\
+...
+} ;
+\node [tab] at (AST.north west)
+{ ast } ;
+
+\node (Lexer) [package, right=of AST]  { 
+Lexer \\
+SourceReader \\
+Symbol \\
+Token \\
+Tokens \\
+TokenType
+} ;
+\node [tab] at (Lexer.north west)
+{ lexer } ;
+
+\node (Parser) [package, right=of Lexer]  { 
+Parser
+} ;
+\node [tab] at (Parser.north west)
+{ parser } ;
+
+\node (Visitor) [package, right=of Parser]  { 
+ASTVisitor \\
+PrintVisitor
+} ;
+\node [tab] at (Visitor.north west)
+{ visitor } ;
+
+\path [utilizes] (ExtensionHtml) -- (WebController) {};
+\path [utilizes] (WebController) -- (Module) {};
+\path [utilizes] (Module) -- (FlowControl) {};
+\path [utilizes] (Module) -- (Intrinsics) {};
+\path [utilizes] (FlowControl) -- (State) {};
+\path [utilizes] (State) -- (Value) {};
+\path [utilizes] (Intrinsics) -- (Value) {};
+\path [utilizes] (FlowControl) -- (AST) {};
+\path [utilizes] (Parser) -- (Lexer) {};
+\path [utilizes] (Module) -- (Parser) {};
+\path [utilizes] (FlowControl) -- (Visitor) {};
+
+
+\end{tikzpicture}
+\end{center}
+\caption{Package diagram}
+\label{fig:PACKAGE_DIAGRAM}
+\end{figure}
+
 
 \newpage 
 \section{Class diagrams} \label{sec:CLASS_DIAGRAMS}
