@@ -1,7 +1,8 @@
-\subsection*{Class Hierarchy}{
+\sloppy
+\subsection{Class Hierarchy}{
 \thispagestyle{empty}
 \markboth{Class Hierarchy}{Class Hierarchy}
-\addcontentsline{toc}{section}{Class Hierarchy}
+
 \subsubsection*{Classes}
 {\raggedright
 \hspace{0.0cm} $\bullet$ java.lang.Object {\tiny \refdefined{java.lang.Object}} \\
@@ -630,52 +631,7 @@ Associate a constant function with a given name. This is used to set intrinsic f
 \refdefined{org.openmrs.module.dssmodule.state.ExecutionContext}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  beginScope}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  endScope}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  get}(\texttt{java.lang.String} {\bf  name})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Evaluator {\bf  getEvaluator}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSFunction {\bf  getFunction}(\texttt{java.lang.String} {\bf  name})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getReturnValue}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  names}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  set}(\texttt{java.lang.String} {\bf  name},
-\texttt{org.openmrs.module.dssmodule.value.DSSValue} {\bf  value})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setFunction}(\texttt{java.lang.String} {\bf  name},
-\texttt{DSSFunction} {\bf  f})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setReturnValue}(\texttt{org.openmrs.module.dssmodule.value.DSSValue} {\bf  v})
-}%end signature
-}%end item
-\end{itemize}
-}
+beginScope, endScope, get, getEvaluator, getFunction, getReturnValue, names, set, setFunction, setReturnValue}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.state.DSSFunction}Class DSSFunction}{
 \hypertarget{org.openmrs.module.dssmodule.state.DSSFunction}{}\vskip .1in 
@@ -1445,14 +1401,7 @@ Provides an implementation of the "alert" intrinsic which stores alerts to an in
 \refdefined{org.openmrs.module.dssmodule.intrinsics.AnnotatedDSSLibrary}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public Map {\bf  getFunctions}(\texttt{org.openmrs.module.dssmodule.state.ExecutionContext} {\bf  context})
-}%end signature
-}%end item
-\end{itemize}
-}
+getFunctions}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.DSSXMLConvertor}Class DSSXMLConvertor}{
 \hypertarget{org.openmrs.module.dssmodule.DSSXMLConvertor}{}\vskip .1in 
@@ -2791,14 +2740,7 @@ Demonstrates the use of AnnotatedDSSLibrary to semi-automatically create intrins
 \refdefined{org.openmrs.module.dssmodule.intrinsics.AnnotatedDSSLibrary}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public Map {\bf  getFunctions}(\texttt{org.openmrs.module.dssmodule.state.ExecutionContext} {\bf  context})
-}%end signature
-}%end item
-\end{itemize}
-}
+getFunctions}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSAddDays}Class DSSAddDays}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSAddDays}{}\vskip .1in 
@@ -2868,18 +2810,7 @@ the return value of the represented function
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSAddMonths}Class DSSAddMonths}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSAddMonths}{}\vskip .1in 
@@ -2942,18 +2873,7 @@ the return value of the represented function
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSAlert}Class DSSAlert}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSAlert}{}\vskip .1in 
@@ -3048,18 +2968,7 @@ a map of functions defined by this library
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSBefore}Class DSSBefore}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSBefore}{}\vskip .1in 
@@ -3122,18 +3031,7 @@ the return value of the represented function
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSCurrentTime}Class DSSCurrentTime}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSCurrentTime}{}\vskip .1in 
@@ -3203,18 +3101,7 @@ Testing currenttime() function
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSOldestTimeItem}Class DSSOldestTimeItem}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSOldestTimeItem}{}\vskip .1in 
@@ -3277,18 +3164,7 @@ the return value of the represented function
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSRead}Class DSSRead}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSRead}{}\vskip .1in 
@@ -3305,7 +3181,6 @@ the return value of the represented function
 \paragraph{Method summary}{
 \begin{verse}
 \hyperlink{org.openmrs.module.dssmodule.intrinsics.DSSRead.call(org.openmrs.module.dssmodule.value.DSSValue[])}{{\bf call(DSSValue\lbrack \rbrack )}} Call this function.\\
-\hyperlink{org.openmrs.module.dssmodule.intrinsics.DSSRead.getVal(Obs)}{{\bf getVal(Obs)}} Creates a DSSValue from an observation.\\
 \end{verse}
 }
 \paragraph{Constructors}{
@@ -3346,29 +3221,6 @@ DSSNullValue for argument mismatch
 }%end item
 \end{itemize}
 }%end item
-\item{ 
-\index{getVal(Obs)}
-\hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSRead.getVal(Obs)}{{\bf  getVal}\\}
-\texttt{protected org.openmrs.module.dssmodule.value.DSSValue\ {\bf  getVal}(\texttt{Obs} {\bf  ob})
-\label{org.openmrs.module.dssmodule.intrinsics.DSSRead.getVal(Obs)}}%end signature
-\begin{itemize}
-\item{
-{\bf  Description}
-
-Creates a DSSValue from an observation. The value of the DSSValue shall be the value of observation itself, and the DSSValue time stamp shall be the date and time of the observation.
-}
-\item{
-{\bf  Parameters}
-  \begin{itemize}
-   \item{
-\texttt{ob} -- observation to convert}
-  \end{itemize}
-}%end item
-\item{{\bf  Returns} -- 
-DSSValue equivalent of ob 
-}%end item
-\end{itemize}
-}%end item
 \end{itemize}
 }
 \paragraph{Members inherited from class DSSFunction }{
@@ -3376,18 +3228,7 @@ DSSValue equivalent of ob
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSReadInitialEncounter}Class DSSReadInitialEncounter}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSReadInitialEncounter}{}\vskip .1in 
@@ -3450,35 +3291,13 @@ DSSNullValue for argument mismatch
 \refdefined{org.openmrs.module.dssmodule.intrinsics.DSSRead}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected DSSValue {\bf  getVal}(\texttt{Obs} {\bf  ob})
-}%end signature
-}%end item
-\end{itemize}
-}
+call}
 \paragraph{Members inherited from class DSSFunction }{
 \texttt{org.openmrs.module.dssmodule.state.DSSFunction} {\small 
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSReadLatestEncounter}Class DSSReadLatestEncounter}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSReadLatestEncounter}{}\vskip .1in 
@@ -3541,35 +3360,13 @@ DSSNullValue for argument mismatch
 \refdefined{org.openmrs.module.dssmodule.intrinsics.DSSRead}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected DSSValue {\bf  getVal}(\texttt{Obs} {\bf  ob})
-}%end signature
-}%end item
-\end{itemize}
-}
+call}
 \paragraph{Members inherited from class DSSFunction }{
 \texttt{org.openmrs.module.dssmodule.state.DSSFunction} {\small 
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSRecentTimeItem}Class DSSRecentTimeItem}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSRecentTimeItem}{}\vskip .1in 
@@ -3632,18 +3429,7 @@ the return value of the represented function
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.DSSTime}Class DSSTime}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.DSSTime}{}\vskip .1in 
@@ -3706,18 +3492,7 @@ the return value of the represented function
 \refdefined{org.openmrs.module.dssmodule.state.DSSFunction}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract DSSValue {\bf  call}(\texttt{org.openmrs.module.dssmodule.value.DSSValue\lbrack \rbrack } {\bf  args})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  passAsIdentifier}(\texttt{int} {\bf  argumentIndex})
-}%end signature
-}%end item
-\end{itemize}
-}
+call, passAsIdentifier}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.IsLibrary}Class IsLibrary}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.IsLibrary}{}\vskip .1in 
@@ -3934,14 +3709,7 @@ Utility method to get a DSSValue from a list, with bounds checking. Defaults to 
 \refdefined{org.openmrs.module.dssmodule.intrinsics.AnnotatedDSSLibrary}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public Map {\bf  getFunctions}(\texttt{org.openmrs.module.dssmodule.state.ExecutionContext} {\bf  context})
-}%end signature
-}%end item
-\end{itemize}
-}
+getFunctions}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.intrinsics.ReadLibrary}Class ReadLibrary}{
 \hypertarget{org.openmrs.module.dssmodule.intrinsics.ReadLibrary}{}\vskip .1in 
@@ -4663,51 +4431,7 @@ This file is automatically generated\mbox{}\newline - it contains the enumeratio
 \refdefined{java.lang.Enum}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{protected final Object {\bf  clone}() throws CloneNotSupportedException
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public final int {\bf  compareTo}(\texttt{Enum} {\bf  arg0})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public final boolean {\bf  equals}(\texttt{Object} {\bf  arg0})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected final void {\bf  finalize}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public final Class {\bf  getDeclaringClass}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public final int {\bf  hashCode}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public final String {\bf  name}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public final int {\bf  ordinal}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  toString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public static Enum {\bf  valueOf}(\texttt{Class} {\bf  arg0},
-\texttt{String} {\bf  arg1})
-}%end signature
-}%end item
-\end{itemize}
-}
+compareTo, equals, getDeclaringClass, hashCode, name, ordinal, toString, valueOf}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.lexer.TokenType}Class TokenType}{
 \hypertarget{org.openmrs.module.dssmodule.lexer.TokenType}{}\vskip .1in 
@@ -5395,90 +5119,7 @@ Create a new InterpreterVisitor. This will operate using the specified Execution
 \refdefined{org.openmrs.module.dssmodule.visitor.ASTVisitor}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitActualArgsTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitAssignTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitBlockTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitCallTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitElsifTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitFieldRefTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitFormalsTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitForTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitFunctionDeclTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitIdTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitIfTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  visitKids}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitListTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitLiteralTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitObjectDeclTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitObjectTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitOpTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitProgramTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitReturnTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitWhileTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\end{itemize}
-}
+visitActualArgsTree, visitAssignTree, visitBlockTree, visitCallTree, visitElsifTree, visitFieldRefTree, visitFormalsTree, visitForTree, visitFunctionDeclTree, visitIdTree, visitIfTree, visitKids, visitListTree, visitLiteralTree, visitObjectDeclTree, visitObjectTree, visitOpTree, visitProgramTree, visitReturnTree, visitWhileTree}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.flowcontrol.ListInterpreter}Class ListInterpreter}{
 \hypertarget{org.openmrs.module.dssmodule.flowcontrol.ListInterpreter}{}\vskip .1in 
@@ -6212,90 +5853,7 @@ Print the tree
 \refdefined{org.openmrs.module.dssmodule.visitor.ASTVisitor}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitActualArgsTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitAssignTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitBlockTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitCallTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitElsifTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitFieldRefTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitFormalsTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitForTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitFunctionDeclTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitIdTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitIfTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  visitKids}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitListTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitLiteralTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitObjectDeclTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitObjectTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitOpTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitProgramTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitReturnTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  visitWhileTree}(\texttt{org.openmrs.module.dssmodule.ast.AST} {\bf  t})
-}%end signature
-}%end item
-\end{itemize}
-}
+visitActualArgsTree, visitAssignTree, visitBlockTree, visitCallTree, visitElsifTree, visitFieldRefTree, visitFormalsTree, visitForTree, visitFunctionDeclTree, visitIdTree, visitIfTree, visitKids, visitListTree, visitLiteralTree, visitObjectDeclTree, visitObjectTree, visitOpTree, visitProgramTree, visitReturnTree, visitWhileTree}
 }
 }
 \subsection{Package org.openmrs.module.dssmodule.ast}{
@@ -6393,62 +5951,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.AssignTree}Class AssignTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.AssignTree}{}\vskip .1in 
@@ -6510,62 +6013,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.AST}Class AST}{
 \hypertarget{org.openmrs.module.dssmodule.ast.AST}{}\vskip .1in 
@@ -6582,14 +6030,6 @@ The AST is built by the Parser\vskip .1in
 \\ {\bf  extends} java.lang.Object
 \refdefined{java.lang.Object}}
 \paragraph{All known subclasses}{FieldRefTree\small{\refdefined{org.openmrs.module.dssmodule.ast.FieldRefTree}}, BlockTree\small{\refdefined{org.openmrs.module.dssmodule.ast.BlockTree}}, CallTree\small{\refdefined{org.openmrs.module.dssmodule.ast.CallTree}}, ActualArgsTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ActualArgsTree}}, FunctionDeclTree\small{\refdefined{org.openmrs.module.dssmodule.ast.FunctionDeclTree}}, ForTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ForTree}}, WhileTree\small{\refdefined{org.openmrs.module.dssmodule.ast.WhileTree}}, ElsifTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ElsifTree}}, LiteralTree\small{\refdefined{org.openmrs.module.dssmodule.ast.LiteralTree}}, IdTree\small{\refdefined{org.openmrs.module.dssmodule.ast.IdTree}}, ReturnTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ReturnTree}}, IfTree\small{\refdefined{org.openmrs.module.dssmodule.ast.IfTree}}, FormalsTree\small{\refdefined{org.openmrs.module.dssmodule.ast.FormalsTree}}, OpTree\small{\refdefined{org.openmrs.module.dssmodule.ast.OpTree}}, ObjectTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ObjectTree}}, ObjectDeclTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ObjectDeclTree}}, ListTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ListTree}}, ProgramTree\small{\refdefined{org.openmrs.module.dssmodule.ast.ProgramTree}}, AssignTree\small{\refdefined{org.openmrs.module.dssmodule.ast.AssignTree}}}
-\paragraph{Field summary}{
-\begin{verse}
-\hyperlink{org.openmrs.module.dssmodule.ast.AST.decoration}{{\bf decoration}} \\
-\hyperlink{org.openmrs.module.dssmodule.ast.AST.kids}{{\bf kids}} \\
-\hyperlink{org.openmrs.module.dssmodule.ast.AST.label}{{\bf label}} \\
-\hyperlink{org.openmrs.module.dssmodule.ast.AST.nodeNum}{{\bf nodeNum}} \\
-\end{verse}
-}
 \paragraph{Constructor summary}{
 \begin{verse}
 \hyperlink{org.openmrs.module.dssmodule.ast.AST()}{{\bf AST()}} \\
@@ -6608,26 +6048,6 @@ The AST is built by the Parser\vskip .1in
 \hyperlink{org.openmrs.module.dssmodule.ast.AST.setDecoration(org.openmrs.module.dssmodule.ast.AST)}{{\bf setDecoration(AST)}} \\
 \hyperlink{org.openmrs.module.dssmodule.ast.AST.setLabel(java.lang.String)}{{\bf setLabel(String)}} \\
 \end{verse}
-}
-\paragraph{Fields}{
-\begin{itemize}
-\item{
-\index{kids}
-\label{org.openmrs.module.dssmodule.ast.AST.kids}\hypertarget{org.openmrs.module.dssmodule.ast.AST.kids}{protected java.util.ArrayList {\bf  kids}}
-}
-\item{
-\index{nodeNum}
-\label{org.openmrs.module.dssmodule.ast.AST.nodeNum}\hypertarget{org.openmrs.module.dssmodule.ast.AST.nodeNum}{protected int {\bf  nodeNum}}
-}
-\item{
-\index{decoration}
-\label{org.openmrs.module.dssmodule.ast.AST.decoration}\hypertarget{org.openmrs.module.dssmodule.ast.AST.decoration}{protected AST {\bf  decoration}}
-}
-\item{
-\index{label}
-\label{org.openmrs.module.dssmodule.ast.AST.label}\hypertarget{org.openmrs.module.dssmodule.ast.AST.label}{protected java.lang.String {\bf  label}}
-}
-\end{itemize}
 }
 \paragraph{Constructors}{
 \vskip -2em
@@ -6805,62 +6225,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.CallTree}Class CallTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.CallTree}{}\vskip .1in 
@@ -6922,62 +6287,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.ElsifTree}Class ElsifTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.ElsifTree}{}\vskip .1in 
@@ -7039,62 +6349,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.FieldRefTree}Class FieldRefTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.FieldRefTree}{}\vskip .1in 
@@ -7156,62 +6411,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.FormalsTree}Class FormalsTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.FormalsTree}{}\vskip .1in 
@@ -7273,62 +6473,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.ForTree}Class ForTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.ForTree}{}\vskip .1in 
@@ -7390,62 +6535,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.FunctionDeclTree}Class FunctionDeclTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.FunctionDeclTree}{}\vskip .1in 
@@ -7507,62 +6597,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.IdTree}Class IdTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.IdTree}{}\vskip .1in 
@@ -7668,62 +6703,7 @@ the frame offset for this variable - used by codegen
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.IfTree}Class IfTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.IfTree}{}\vskip .1in 
@@ -7785,62 +6765,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.ListTree}Class ListTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.ListTree}{}\vskip .1in 
@@ -7902,62 +6827,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.LiteralTree}Class LiteralTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.LiteralTree}{}\vskip .1in 
@@ -8035,62 +6905,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.ObjectDeclTree}Class ObjectDeclTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.ObjectDeclTree}{}\vskip .1in 
@@ -8152,62 +6967,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.ObjectTree}Class ObjectTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.ObjectTree}{}\vskip .1in 
@@ -8269,62 +7029,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.OpTree}Class OpTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.OpTree}{}\vskip .1in 
@@ -8402,62 +7107,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.ProgramTree}Class ProgramTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.ProgramTree}{}\vskip .1in 
@@ -8519,62 +7169,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.ReturnTree}Class ReturnTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.ReturnTree}{}\vskip .1in 
@@ -8636,62 +7231,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.ast.WhileTree}Class WhileTree}{
 \hypertarget{org.openmrs.module.dssmodule.ast.WhileTree}{}\vskip .1in 
@@ -8753,62 +7293,7 @@ the desired Object, as determined by the visitor
 \refdefined{org.openmrs.module.dssmodule.ast.AST}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public abstract Object {\bf  accept}(\texttt{org.openmrs.module.dssmodule.visitor.ASTVisitor} {\bf  v})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  addKid}(\texttt{AST} {\bf  kid})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  decoration}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getDecoration}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public AST {\bf  getKid}(\texttt{int} {\bf  i})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public ArrayList {\bf  getKids}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public String {\bf  getLabel}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  getNodeNum}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  kidCount}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  kids}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  label}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{protected {\bf  nodeNum}}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setDecoration}(\texttt{AST} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setLabel}(\texttt{java.lang.String} {\bf  label})
-}%end signature
-}%end item
-\end{itemize}
-}
+accept, addKid, getDecoration, getKid, getKids, getLabel, getNodeNum, kidCount, setDecoration, setLabel}
 }
 }
 \subsection{Package org.openmrs.module.dssmodule.value}{
@@ -9235,155 +7720,7 @@ java.util.Comparator, java.lang.Comparable}
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.DSSValueDate}Class DSSValueDate}{
 \hypertarget{org.openmrs.module.dssmodule.value.DSSValueDate}{}\vskip .1in 
@@ -9512,155 +7849,7 @@ java.util.Comparator, java.lang.Comparable}
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.DSSValueFactory}Class DSSValueFactory}{
 \hypertarget{org.openmrs.module.dssmodule.value.DSSValueFactory}{}\vskip .1in 
@@ -9910,176 +8099,13 @@ java.util.Comparator, java.lang.Comparable}
 \refdefined{org.openmrs.module.dssmodule.value.DSSValueNumeric}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\end{itemize}
-}
+concat, isNumeric, power}
 \paragraph{Members inherited from class DSSValue }{
 \texttt{org.openmrs.module.dssmodule.value.DSSValue} {\small 
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.DSSValueInt}Class DSSValueInt}{
 \hypertarget{org.openmrs.module.dssmodule.value.DSSValueInt}{}\vskip .1in 
@@ -10220,176 +8246,13 @@ java.util.Comparator, java.lang.Comparable}
 \refdefined{org.openmrs.module.dssmodule.value.DSSValueNumeric}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\end{itemize}
-}
+concat, isNumeric, power}
 \paragraph{Members inherited from class DSSValue }{
 \texttt{org.openmrs.module.dssmodule.value.DSSValue} {\small 
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.DSSValueList}Class DSSValueList}{
 \hypertarget{org.openmrs.module.dssmodule.value.DSSValueList}{}\vskip .1in 
@@ -10537,155 +8400,7 @@ java.util.Comparator, java.lang.Comparable}
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.DSSValueNull}Class DSSValueNull}{
 \hypertarget{org.openmrs.module.dssmodule.value.DSSValueNull}{}\vskip .1in 
@@ -10800,155 +8515,7 @@ java.util.Comparator, java.lang.Comparable}
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.DSSValueObject}Class DSSValueObject}{
 \hypertarget{org.openmrs.module.dssmodule.value.DSSValueObject}{}\vskip .1in 
@@ -11116,155 +8683,7 @@ Set a name-value association in this context. This may overwrite any previous as
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.DSSValueString}Class DSSValueString}{
 \hypertarget{org.openmrs.module.dssmodule.value.DSSValueString}{}\vskip .1in 
@@ -11426,155 +8845,7 @@ Set a name-value association in this context. This may overwrite any previous as
 \refdefined{org.openmrs.module.dssmodule.value.DSSValue}}
 {\small 
 
-\vskip -2em
-\begin{itemize}
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  add}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  and}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compare}(\texttt{DSSValue} {\bf  t},
-\texttt{DSSValue} {\bf  t1})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  compareTo}(\texttt{DSSValue} {\bf  t})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  concat}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  div}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  equal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  getDSSValueTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public Date {\bf  getTimeStamp}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  greaterthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isBoolean}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isDate}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isList}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNull}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isNumeric}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isObject}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public boolean {\bf  isString}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public int {\bf  length}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthan}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  lessthanequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  mult}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  not}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract boolean {\bf  notequal}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  or}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  power}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.util.Date} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{DSSValueDate} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public void {\bf  setTimeStamp}(\texttt{java.lang.Long} {\bf  d})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sort}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public DSSValue {\bf  sub}(\texttt{DSSValue} {\bf  b})
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract double {\bf  toFloat}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract int {\bf  toInt}()
-}%end signature
-}%end item
-\item{\vskip -1.5ex 
-\texttt{public abstract long {\bf  toLong}()
-}%end signature
-}%end item
-\end{itemize}
-}
+add, and, compare, compareTo, concat, div, equal, getDSSValueTimeStamp, getTimeStamp, greaterthan, greaterthanequal, isBoolean, isDate, isFloat, isInt, isList, isNull, isNumeric, isObject, isString, length, lessthan, lessthanequal, mult, not, notequal, or, power, setTimeStamp, setTimeStamp, setTimeStamp, sort, sub, toFloat, toInt, toLong}
 }
 \subsubsection{\label{org.openmrs.module.dssmodule.value.OpenmrsDSSValue}Class OpenmrsDSSValue}{
 \hypertarget{org.openmrs.module.dssmodule.value.OpenmrsDSSValue}{}\vskip .1in 
