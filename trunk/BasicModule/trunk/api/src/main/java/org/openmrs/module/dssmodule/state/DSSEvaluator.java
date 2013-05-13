@@ -8,7 +8,9 @@ import org.openmrs.module.dssmodule.value.DSSValueFactory;
 import org.openmrs.module.dssmodule.value.DSSValueList;
 
 /**
- *
+ * Handles the evaluation of basic operations in DSS1, and provides related 
+ * functionality to interchange values from their DSS1 forms and their plain 
+ * Java equivalents.
  * @author woeltjen
  */
 public class DSSEvaluator implements Evaluator {
@@ -73,6 +75,13 @@ public class DSSEvaluator implements Evaluator {
         return null;
     }
 
+    /**
+     * Evaluate a simple expression
+     * @param leftOperand
+     * @param operator
+     * @param rightOperand
+     * @return the result of the operation
+     */
     public DSSValue evaluate(DSSValue leftOperand, String operator, DSSValue rightOperand) {
         DSSOperator op = operators.get(operator);
         
@@ -83,6 +92,11 @@ public class DSSEvaluator implements Evaluator {
         return op.apply(leftOperand, rightOperand);
     }
 
+    /**
+     * Evaluate a literal as a DSS value
+     * @param symbol
+     * @return 
+     */
     public DSSValue evaluateLiteral(Symbol symbol) {
         String literal = symbol.toString();
 
@@ -108,6 +122,12 @@ public class DSSEvaluator implements Evaluator {
         return toDSSValue(literal);
     }
 
+    /**
+     * Allocate a new DSS object, with specified fields. All fields will be 
+     * initialized to the DSS version of null.
+     * @param fields the fields to allocate
+     * @return 
+     */
     public DSSValue newAllocation(String... fields) {
         Map<String, DSSValue> map = new HashMap<String, DSSValue>();
         for (String field : fields) {
@@ -116,6 +136,11 @@ public class DSSEvaluator implements Evaluator {
         return DSSValueFactory.getDSSValue(map);
     }
 
+    /**
+     * Convert a plain Java object to an analogous DSS value
+     * @param javaObject
+     * @return 
+     */
     public DSSValue toDSSValue(Object javaObject) {
         if (javaObject == null) {
             return DSSValueFactory.getDSSValue();

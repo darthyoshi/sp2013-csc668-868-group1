@@ -6,7 +6,8 @@ import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 
 /**
- * 
+ * Describes the common interface used to handle interpretation of specific 
+ * node types within a compiled AST.
  * @author woeltjen
  */
 public interface ASTInterpreter<T extends AST> {

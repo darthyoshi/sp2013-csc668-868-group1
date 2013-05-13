@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openmrs.module.dssmodule.intrinsics;
 
 import org.openmrs.module.dssmodule.value.DSSValueFactory;
@@ -24,7 +20,8 @@ import org.openmrs.module.dssmodule.state.ExecutionContext;
 public class IsLibrary implements DSSLibrary {
     private static final Map<String, DSSFunction> MAP = 
             new HashMap<String, DSSFunction>();
-    
+
+    @Override
     public Map<String, DSSFunction> getFunctions(ExecutionContext context) {
         // Initialize lazily
         if (MAP.isEmpty()) {

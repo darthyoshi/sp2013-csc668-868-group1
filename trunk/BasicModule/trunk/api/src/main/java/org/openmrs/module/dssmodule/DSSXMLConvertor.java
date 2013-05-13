@@ -21,7 +21,8 @@ import org.openmrs.module.dssmodule.lexer.Tokens;
 import org.w3c.dom.*;
 
 /**
- *
+ * Supports bi-directional conversion between XML and AST representations 
+ * of DSS1 programs, using DOM as an intermediary.
  * @author woeltjen
  */
 public class DSSXMLConvertor {
@@ -30,20 +31,34 @@ public class DSSXMLConvertor {
     
     private Document document;
     
+    /**
+     * Crate a new Convertor, initialized from an existing XML file.
+     * @param file an XML file containing a compiled DSS1 program
+     * @throws Exception 
+     */
     public DSSXMLConvertor(File file) throws Exception {        
         document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
     }
     
+    /**
+     * Crate a new Convertor, initialized from an existing AST.
+     * @param tree the compiled AST which represents the DSS1 program
+     * @throws ParserConfigurationException 
+     */
     public DSSXMLConvertor(AST tree) throws ParserConfigurationException {
         this();
         addTree(tree);
     }
     
+    /**
+     * Create a convertor with no program.
+     * @throws ParserConfigurationException 
+     */
     public DSSXMLConvertor() throws ParserConfigurationException {
         document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
     }
     
-    public void addTree(AST tree) {
+    private void addTree(AST tree) {
         addTree(tree, document);
     }
     
@@ -69,18 +84,33 @@ public class DSSXMLConvertor {
         }
     }
     
+    /**
+     * Store this program as an XML file
+     * @param outputFile the file to which to store this program
+     * @throws Exception 
+     */
     public void write(File outputFile) throws Exception {
         OutputStream stream = new FileOutputStream(outputFile);
         write(stream);
         stream.close();
     }
     
+    /**
+     * Write this program as an XML file to the specified stream
+     * @param output
+     * @throws Exception 
+     */
     public void write(OutputStream output) throws Exception {
         Transformer t = TransformerFactory.newInstance().newTransformer();
         t.setOutputProperty(OutputKeys.INDENT, "yes");
         t.transform(new DOMSource(document), new StreamResult(output));
     }
     
+    /**
+     * Retrieve the current program in AST form
+     * @return an AST representing the current program
+     * @throws Exception 
+     */
     public List<AST> getAST() throws Exception {
         return getAST(document);
     }

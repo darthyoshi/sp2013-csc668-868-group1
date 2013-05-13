@@ -14,9 +14,7 @@ import org.openmrs.module.dssmodule.visitor.ASTVisitor;
  */
 public class CallInterpreter implements ASTInterpreter<CallTree> {
 
-    public CallInterpreter() {
-    }
-
+    @Override
     public Object interpret(CallTree tree, ExecutionContext context, ASTVisitor visitor) {
         IdTree id = (IdTree) tree.getKid(1);        
         DSSFunction func = context.getFunction(id.getSymbol().toString());

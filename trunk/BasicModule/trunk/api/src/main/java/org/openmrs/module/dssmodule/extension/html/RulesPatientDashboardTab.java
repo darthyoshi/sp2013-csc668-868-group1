@@ -3,6 +3,10 @@ package org.openmrs.module.dssmodule.extension.html;
     import org.openmrs.module.Extension;
     import org.openmrs.module.web.extension.PatientDashboardTabExt;
 
+/**
+ * Provides a "Rules" tab (used only for test purposes)
+ * @author woeltjen
+ */
     public class RulesPatientDashboardTab extends PatientDashboardTabExt {
 
        public Extension.MEDIA_TYPE getMediaType() {

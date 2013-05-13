@@ -11,7 +11,7 @@ import org.openmrs.module.dssmodule.visitor.PrintVisitor;
 import org.openmrs.util.OpenmrsUtil;
 
 /**
- * Provides an interface for loading, saving, and running DSS rules.
+ * Provides a facade for loading, saving, and running DSS rules.
  * @author woeltjen
  */
 public class DSSRuleService {
@@ -184,10 +184,6 @@ public class DSSRuleService {
         return alerts.results();
     }
     
-    public void delete(String ruleName) {
-        
-    }
-    
     private File getFile(String name) {
         File dataDir = 
                 OpenmrsUtil.getDirectoryInApplicationDataDirectory(RULE_FOLDER);
@@ -233,7 +229,12 @@ public class DSSRuleService {
             }
         }
     }    
-    
+
+    /**
+     * Provides an implementation of the "alert" intrinsic which stores 
+     * alerts to an internal map, allowing these to subsequently be 
+     * delivered to appropriate targets.
+     */
     public class DSSAlertMap extends AnnotatedDSSLibrary {
         private Map<String, List<String>> alerts = 
                 new HashMap<String,List<String>>();

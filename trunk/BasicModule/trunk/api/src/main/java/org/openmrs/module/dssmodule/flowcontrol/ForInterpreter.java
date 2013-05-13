@@ -9,10 +9,12 @@ import org.openmrs.module.dssmodule.value.DSSValue;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**
+ * Interprets For loops in a compiled AST.
  * Note that DSS grammar defines this as a "for-each" style loop
  * @author woeltjen
  */
 public class ForInterpreter implements ASTInterpreter<ForTree> {
+    @Override
     public Object interpret(ForTree tree, ExecutionContext context, ASTVisitor visitor) {
         AST leftKid = tree.getKid(1);
         if (leftKid instanceof IdTree) {

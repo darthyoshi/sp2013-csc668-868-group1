@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openmrs.module.dssmodule.extension.html;
 
 import java.util.*;
@@ -9,6 +5,10 @@ import org.openmrs.module.dssmodule.DSSRuleService;
 import java.util.Map;
 import org.openmrs.module.Extension;
 
+/**
+ * 
+ * @author bia
+ */
 public class PatientSummaryExtension extends Extension {
 
     	private String patientId = "";
