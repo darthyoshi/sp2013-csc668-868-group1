@@ -791,7 +791,91 @@ DateLibrary       & \texttt{currenttime()}        \\
 % \section{External documentation}
 
 \newpage 
-\section{Package diagrams}
+\section{Package structure}
+
+Figure ~\ref{fig:PACKAGE_DIAGRAM} illustrates the usage relationships 
+between packages. For brevity, only the last relevant tokens of a 
+package name are used; for instance, 
+\texttt{org.openmrs.module.dssmodule} has been labeled simply 
+\texttt{dssmodule}.
+
+\subsection{OpenMRS integration packages}
+
+Multiple components support interaction with the DSS module from 
+OpenMRS. These are described in Table 
+~\ref{tab:INTEGRATION_PACKAGES}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ >{\tt}l | p{2.5in} }
+org.openmrs.module.dssmodule &
+Contains classes which define core functionality exposed to front-end 
+classes or to OpenMRS directly, such as the DSSRuleService, as well 
+as classes which directly support these. \\ \hline
+org.openmrs.module.dssmodule.extension.html &
+Describes module-introduced behavior at specific extension points 
+within OpenMRS.
+ \\ \hline
+org.openmrs.module.dssmodule.web.controller &
+Provides classes to handle web requests which support maintenance 
+and execution of DSS rules. \\ \hline
+\end{tabular}
+\end{center}
+\caption{Description of packages which support interaction with OpenMRS front-end} 
+\label{tab:INTEGRATION_PACKAGES}
+\end{table}
+
+\subsection{Interpreter packages}
+
+As described in Section ~\ref{sec:INTERPRETER}, the Interpreter is 
+composed of four major sub-systems. These are defined in corresponding 
+packages, as documented in Table ~\ref{tab:INTERPRETER_PACKAGES}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ >{\tt}l | p{2.5in} }
+org.openmrs.module.dssmodule.flowcontrol &
+Classes which handle and implement flow control for the 
+DSS1 language. \\ \hline
+org.openmrs.module.dssmodule.intrinsics &
+Implementations of DSS1 intrinsic functions, and the libraries 
+used to organize them. \\ \hline
+org.openmrs.module.dssmodule.state &
+Describes the execution classes and closely related classes. \\ \hline
+org.openmrs.module.dssmodule.value &
+Defines the specific value types available under DSS1 and 
+implements their behavior. \\ \hline
+\end{tabular}
+\end{center}
+\caption{Description of interpreter packages} \label{tab:INTERPRETER_PACKAGES}
+\end{table}
+
+
+\subsection{Provided packages}
+
+At the start of this project, an existing compiler for the DSS1 language 
+was provided, and has been used without significant modification. The 
+packages which comprise this component are identified in Table 
+~\ref{tab:PROVIDED_PACKAGES}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ >{\tt}l | p{3in} }
+org.openmrs.module.dssmodule.lexer &
+Provides classes which support the conversion of raw DSS1 source code 
+to meaningful lexical units (tokens). \\ \hline
+org.openmrs.module.dssmodule.ast &
+Provides classes to describe the syntactic structure of a compiled 
+DSS1 program. \\ \hline
+org.openmrs.module.dssmodule.parser &
+Supports parsing of DSS1 source code (using the \texttt{lexer} package) into a compiled tree structure (using the \texttt{ast} package). \\ \hline
+org.openmrs.module.dssmodule.visitor &
+Describes an interface for traversing a compiled AST, following the 
+visitor design pattern. \\ \hline
+\end{tabular}
+\end{center}
+\caption{Description of provided packages} \label{tab:PROVIDED_PACKAGES}
+\end{table}
 
 \tikzstyle{tab}=[rectangle, draw, anchor=south west]
 \tikzstyle{package}=[rectangle, 
@@ -849,7 +933,20 @@ DSSAddMonths \\
 \node [tab] at (Intrinsics.north west)
 { intrinsics } ;
 
-\node (FlowControl) [package, below=of Intrinsics.south west]  { 
+
+
+\node (State) [package, below=of Intrinsics.south east]  { 
+DSSEvaluator \\
+DSSExecutionContext \\
+DSSFunction \\
+Evaluator \\
+ExecutionContext \\
+NamingContext
+} ;
+\node [tab] at (State.north west)
+{ state } ;
+
+\node (FlowControl) [package, left=of State.south west]  { 
 AST \\
 ActualArgsTree \\
 AssignTree \\
@@ -860,17 +957,6 @@ ElsifTree \\
 } ;
 \node [tab] at (FlowControl.north west)
 { flowcontrol } ;
-
-\node (State) [package, right=of FlowControl]  { 
-DSSEvaluator \\
-DSSExecutionContext \\
-DSSFunction \\
-Evaluator \\
-ExecutionContext \\
-NamingContext
-} ;
-\node [tab] at (State.north west)
-{ state } ;
 
 \node (Value) [package, right=of Intrinsics]  { 
 DSSValue \\
@@ -933,7 +1019,7 @@ PrintVisitor
 \path [utilizes] (Parser.east) -| (AST.80) {};
 \path [utilizes] (Module.south) -- (Parser.north east) {};
 \path [utilizes] (FlowControl) |- (Visitor) {};
-
+\path [utilizes] (Module.south east) |- (State.north west) {};
 
 \end{tikzpicture}
 \end{center}
