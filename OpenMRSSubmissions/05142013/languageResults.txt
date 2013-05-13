@@ -48,10 +48,15 @@ PASSED test for 't-and-f'. Expected: False, actual: False
 PASSED test for 't-and-t'. Expected: True, actual: True
 PASSED test for 'f-and-t'. Expected: False, actual: False
 PASSED test for 'f-and-f'. Expected: False, actual: False
+ 
 PASSED test for 'call/return'. Expected: return value, actual: return value
 PASSED test for 'argument passing'. Expected: a bee, actual: a bee
  
 PASSED test for 'while loop'. Expected: 256, actual: 256
 PASSED test for 'for loop'. Expected: 10, actual: 10
+ 
+PASSED test for 'field reference'. Expected: 0, actual: 0
+PASSED test for 'field reference'. Expected: a field, actual: a field
+PASSED test for 'new object'. Expected: 1, actual: 1
  
 ====ENDING TESTS====

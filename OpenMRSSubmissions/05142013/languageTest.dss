@@ -104,6 +104,7 @@ function argumentTest(a,b){
   expect("t-and-t", true,  true  & true)
   expect("f-and-t", false, false & true)
   expect("f-and-f", false, false & false)
+  space()
 
   // Function call test
   expect("call/return", "return value", returnTest() )
@@ -118,6 +119,18 @@ function argumentTest(a,b){
   for x in list { sum := sum + x }
   expect("for loop", 10, sum)
   space()
-  
+
+  // Objects
+  obj := Object(x, y, z)
+  obj.x := 0
+  obj.y := "a field"
+  obj.z := 3.0
+  expect("field reference", 0, obj.x)
+  expect("field reference", "a field", obj.y)
+  other := new obj
+  other.x := 1
+  expect("new object", 1, other.x)
+  space()
+
   show("====ENDING TESTS====")  
 }
