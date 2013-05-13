@@ -605,7 +605,7 @@ Static method to retrieve an instance of the rule service.
 &
 Constructs a new DSSRuleService object, if necessary. During 
 constructor call any existing rules are loaded from the file 
-system, using the XMLBuilder to convert from XML to DOM to AST.
+system, using the DSSXMLConvertor to convert from XML to DOM to AST.
 \\ \hline
 
 \texttt{store(rule, code)}
@@ -613,7 +613,7 @@ system, using the XMLBuilder to convert from XML to DOM to AST.
 Stores a rule (either as a new rule, or replacing an existing rule) with the given source code.
 &
 Invokes the Parser to convert source code to AST; 
-Invokes the XMLBuilder to convert AST to DOM and save; 
+Invokes the DSSXMLConvertor to convert AST to DOM and save; 
 Saves the original source to file system for subsequent retrieval; 
 Stores the AST in memory for subsequent running.
 \\ \hline
@@ -658,7 +658,7 @@ using the provided Parser class. Once compiled successfully, the rule is stored 
 Each rule is  stored in two formats: Plain text source code, and an XML (Extensible Markup Language) representation of the compiled AST. The 
 source code is subsequently used only to support user interactions (for instance, if an administrator wants to load or modify source for an existing rule). The XML form is used when the DSS Rule Service is first initialized to load any existing rules from the file system. After initialization, rules are stored in memory as AST objects.
 
-The utility class XMLBuilder is used for conversion between AST and XML. Internally, the class maintains a Document Object Model (DOM) representation of the AST. This can be either as loaded from an XML file, or as formed by traversing an AST. Likewise, XMLBuilder provides methods for both producing AST objects or writing XML files.
+The utility class DSSXMLConvertor is used for conversion between AST and XML. Internally, the class maintains a Document Object Model (DOM) representation of the AST. This can be either as loaded from an XML file, or as formed by traversing an AST. Likewise, DSSXMLConvertor provides methods for both producing AST objects or writing XML files.
 
 \subsection{Interpreter} \label{sec:INTERPRETER}
 
