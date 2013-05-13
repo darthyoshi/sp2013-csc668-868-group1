@@ -3,6 +3,10 @@ package org.openmrs.module.dssmodule.extension.html;
     import org.openmrs.module.Extension;
     import org.openmrs.module.web.extension.PatientDashboardTabExt;
 
+/**
+ * Provides a tab for viewing patient vitals
+ * @author woeltjen
+ */
     public class VitalsPatientDashboardTab extends PatientDashboardTabExt {
 
        public Extension.MEDIA_TYPE getMediaType() {

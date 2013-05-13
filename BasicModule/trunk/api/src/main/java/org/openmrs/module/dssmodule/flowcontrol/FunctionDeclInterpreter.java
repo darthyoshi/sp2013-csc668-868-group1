@@ -12,14 +12,13 @@ import java.util.List;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**
- *
+ * Handles function declaration in a DSS program. After executing, the 
+ * described function should be available within the execution context.
  * @author woeltjen
  */
 public class FunctionDeclInterpreter implements ASTInterpreter<FunctionDeclTree> {
 
-    public FunctionDeclInterpreter() {
-    }
-
+    @Override
     public Object interpret(FunctionDeclTree tree, ExecutionContext context, ASTVisitor visitor) {
         IdTree id = (IdTree) (tree.getKid(1));
         String functionName = id.getSymbol().toString();

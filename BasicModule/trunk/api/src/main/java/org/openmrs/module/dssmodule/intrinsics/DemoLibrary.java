@@ -97,8 +97,8 @@ public class DemoLibrary extends AnnotatedDSSLibrary {
             
             AST t = p.execute();
             // Just for fun, convert to XML and back
-            DSSXMLConvertor b = new DSSXMLConvertor();
-            b.addTree(t);            
+            DSSXMLConvertor b = new DSSXMLConvertor(t);
+
             //b.write(System.out);
             DSSInterpreter i = new DSSInterpreter();
             i.install(new DemoLibrary());

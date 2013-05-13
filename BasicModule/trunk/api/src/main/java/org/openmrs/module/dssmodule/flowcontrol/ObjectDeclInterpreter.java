@@ -8,11 +8,12 @@ import java.util.List;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**
- *
+ * Handles interpretation of object declarations.
  * @author woeltjen
  */
 public class ObjectDeclInterpreter implements ASTInterpreter<ObjectDeclTree> {
 
+    @Override
     public Object interpret(ObjectDeclTree tree, ExecutionContext context, ASTVisitor visitor) {
         List<AST> kids = tree.getKids();
         String[] fields = new String[kids.size() - 1];

@@ -7,11 +7,11 @@ import org.openmrs.module.dssmodule.state.ExecutionContext;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**
- *
+ * Handles interpretation of while loops in a DSS1 program.
  * @author woeltjen
  */
 public class WhileInterpreter implements ASTInterpreter<WhileTree> {
-
+    @Override
     public Object interpret(WhileTree tree, ExecutionContext context, ASTVisitor visitor) {
         while (evaluate(tree.getKid(1), context, visitor)) {
             tree.getKid(2).accept(visitor); // Execute block

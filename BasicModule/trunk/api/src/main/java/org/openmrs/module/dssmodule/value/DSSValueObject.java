@@ -74,16 +74,19 @@ public class DSSValueObject extends DSSValue implements NamingContext {
         return 0;
     }
 
+    @Override
     public DSSValue get(String name) {
         return fields.containsKey(name) ? 
                 fields.get(name) : DSSValueFactory.getDSSValue();
     }
 
+    @Override
     public String[] names() {
         Set<String> names = fields.keySet();
         return names.toArray(new String[names.size()]);
     }
 
+    @Override
     public void set(String name, DSSValue value) {
         fields.put(name, value);
     }

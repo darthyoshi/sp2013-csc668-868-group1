@@ -1,6 +1,5 @@
 package org.openmrs.module.dssmodule.state;
 
-import java.util.List;
 import org.openmrs.module.dssmodule.value.DSSValue;
 import org.openmrs.module.dssmodule.lexer.Symbol;
 
@@ -42,5 +41,10 @@ public interface Evaluator {
      */
     public DSSValue newAllocation(String... fields);    
     
+    /**
+     * Convert a regular Java object to an analogous DSSValue, if possible.
+     * @param javaObject
+     * @return 
+     */
     public DSSValue toDSSValue(Object javaObject);
 }

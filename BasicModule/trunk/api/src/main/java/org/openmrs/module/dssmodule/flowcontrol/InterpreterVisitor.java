@@ -41,7 +41,8 @@ import org.openmrs.module.dssmodule.ast.CallTree;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**
- * 
+ * Handles flow control and interactions with an execution context to 
+ * interpret a DSS1 program. Follows the visitor design pattern.
  * @author woeltjen
  */
 public class InterpreterVisitor extends ASTVisitor {
@@ -68,7 +69,13 @@ public class InterpreterVisitor extends ASTVisitor {
     private ASTInterpreter<ProgramTree> programInterpreter = new ProgramInterpreter();
     private ASTInterpreter<ReturnTree> returnInterpreter = new ReturnInterpreter();
     private ASTInterpreter<WhileTree> whileInterpreter = new WhileInterpreter();
-  
+
+    /**
+     * Create a new InterpreterVisitor. This will operate using the specified 
+     * ExecutionContext to mediate interactions with state or with the 
+     * evaluation subsystem.
+     * @param context 
+     */
     public InterpreterVisitor(ExecutionContext context) {
         this.context = context;
     }

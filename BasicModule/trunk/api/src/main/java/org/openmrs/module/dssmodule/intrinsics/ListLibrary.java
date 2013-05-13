@@ -9,13 +9,22 @@ import org.openmrs.module.dssmodule.value.DSSValue;
 import org.openmrs.module.dssmodule.value.DSSValueFactory;
 
 /**
- *
+ * Implements and organizes list-related intrinsic functions.
  * @author woeltjen
  */
 public class ListLibrary extends AnnotatedDSSLibrary {
 
     // merge, sortTime, sortData, last, first
     
+    /**
+     * Utility method to get a DSSValue from a list, with bounds checking. 
+     * Defaults to DSS null when out of bounds. Note that this is not actual 
+     * public API; however, it cannot be private without blocking access 
+     * to the intrinsic functions that AnnotatedDSSLibrary generates.
+     * @param list
+     * @param index
+     * @return 
+     */
     public DSSValue get(List<DSSValue> list, int index) {
         int sz = list.size();
         return sz > 0 && index <= sz ? 
