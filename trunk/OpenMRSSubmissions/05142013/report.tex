@@ -802,16 +802,8 @@ DateLibrary       & \texttt{currenttime()}        \\
 \begin{center}
 \begin{tikzpicture}[node distance=0.33in]
 
-\node (Module) [package]  { 
-DSSInterpreter \\
-DSSModuleActivator \\
-DSSRuleService \\
-DSSXMLConvertor 
-} ;
-\node [tab] at (Module.north west)
-{ dssmodule } ;
 
-\node (ExtensionHtml) [package, right=of Module]  { 
+\node (ExtensionHtml) [package]  { 
 AdminDSS \\
 PatientSummaryExtension \\
 VitalsPatientDashboardTab
@@ -830,19 +822,20 @@ PatientSummaryController
 \node [tab] at (WebController.north west)
 { web.controller } ;
 
-\node (FlowControl) [package, below=of Module]  { 
-AST \\
-ActualArgsTree \\
-AssignTree \\
-BlockTree \\
-CallTree \\
-ElsifTree \\
-...
+\node (Module) [package, below=of ExtensionHtml]  { 
+DSSInterpreter \\
+DSSModuleActivator \\
+DSSRuleService \\
+DSSXMLConvertor 
 } ;
-\node [tab] at (FlowControl.north west)
-{ flowcontrol } ;
+\node [tab] at (Module.north west)
+{ dssmodule } ;
 
-\node (Intrinsics) [package, right=of FlowControl]  { 
+
+
+
+
+\node (Intrinsics) [package, below=of WebController]  { 
 DSSLibrary \\
 DateLibrary \\
 IsLibrary \\
@@ -856,7 +849,19 @@ DSSAddMonths \\
 \node [tab] at (Intrinsics.north west)
 { intrinsics } ;
 
-\node (State) [package, right=of Intrinsics]  { 
+\node (FlowControl) [package, below=of Intrinsics.south west]  { 
+AST \\
+ActualArgsTree \\
+AssignTree \\
+BlockTree \\
+CallTree \\
+ElsifTree \\
+...
+} ;
+\node [tab] at (FlowControl.north west)
+{ flowcontrol } ;
+
+\node (State) [package, right=of FlowControl]  { 
 DSSEvaluator \\
 DSSExecutionContext \\
 DSSFunction \\
@@ -867,7 +872,7 @@ NamingContext
 \node [tab] at (State.north west)
 { state } ;
 
-\node (Value) [package, right=of State]  { 
+\node (Value) [package, right=of Intrinsics]  { 
 DSSValue \\
 DSSValueBool \\
 DSSValueDate \\
@@ -880,7 +885,24 @@ DSSValueFactory
 { value } ;
 
 
-\node (AST) [package, below=of FlowControl]  { 
+\node (Parser) [package, below=of Module.south west]  { 
+Parser
+} ;
+\node [tab] at (Parser.north west)
+{ parser } ;
+
+\node (Lexer) [package, below=of Parser]  { 
+Lexer \\
+SourceReader \\
+Symbol \\
+Token \\
+Tokens \\
+TokenType
+} ;
+\node [tab] at (Lexer.north west)
+{ lexer } ;
+
+\node (AST) [package, below=of Lexer.south east]  { 
 AST \\
 ActualArgsTree \\
 AssignTree \\
@@ -892,24 +914,7 @@ ElsifTree \\
 \node [tab] at (AST.north west)
 { ast } ;
 
-\node (Lexer) [package, right=of AST]  { 
-Lexer \\
-SourceReader \\
-Symbol \\
-Token \\
-Tokens \\
-TokenType
-} ;
-\node [tab] at (Lexer.north west)
-{ lexer } ;
-
-\node (Parser) [package, right=of Lexer]  { 
-Parser
-} ;
-\node [tab] at (Parser.north west)
-{ parser } ;
-
-\node (Visitor) [package, right=of Parser]  { 
+\node (Visitor) [package, below=of AST]  { 
 ASTVisitor \\
 PrintVisitor
 } ;
@@ -918,15 +923,16 @@ PrintVisitor
 
 \path [utilizes] (ExtensionHtml) -- (WebController) {};
 \path [utilizes] (WebController) -- (Module) {};
-\path [utilizes] (Module) -- (FlowControl) {};
+\path [utilizes] (Module.south) |- (FlowControl.north west) {};
 \path [utilizes] (Module) -- (Intrinsics) {};
 \path [utilizes] (FlowControl) -- (State) {};
 \path [utilizes] (State) -- (Value) {};
 \path [utilizes] (Intrinsics) -- (Value) {};
 \path [utilizes] (FlowControl) -- (AST) {};
 \path [utilizes] (Parser) -- (Lexer) {};
-\path [utilizes] (Module) -- (Parser) {};
-\path [utilizes] (FlowControl) -- (Visitor) {};
+\path [utilizes] (Parser.east) -| (AST.80) {};
+\path [utilizes] (Module.south) -- (Parser.north east) {};
+\path [utilizes] (FlowControl) |- (Visitor) {};
 
 
 \end{tikzpicture}
