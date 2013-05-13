@@ -6,9 +6,8 @@ package org.openmrs.module.dssmodule.intrinsics;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.openmrs.module.dssmodule.interpreter.DSSFunction;
-import org.openmrs.module.dssmodule.interpreter.DSSLibrary;
-import org.openmrs.module.dssmodule.interpreter.ExecutionContext;
+import org.openmrs.module.dssmodule.state.DSSFunction;
+import org.openmrs.module.dssmodule.state.ExecutionContext;
 import org.openmrs.module.dssmodule.value.DSSValue;
 import org.openmrs.module.dssmodule.value.DSSValueBool;
 import org.openmrs.module.dssmodule.value.DSSValueDate;

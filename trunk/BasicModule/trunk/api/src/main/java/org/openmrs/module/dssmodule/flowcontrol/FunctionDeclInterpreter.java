@@ -5,10 +5,9 @@ import org.openmrs.module.dssmodule.ast.IdTree;
 import org.openmrs.module.dssmodule.ast.BlockTree;
 import org.openmrs.module.dssmodule.ast.AST;
 import org.openmrs.module.dssmodule.ast.FunctionDeclTree;
-import org.openmrs.module.dssmodule.interpreter.ASTInterpreter;
-import org.openmrs.module.dssmodule.interpreter.DSSFunction;
+import org.openmrs.module.dssmodule.state.DSSFunction;
 import org.openmrs.module.dssmodule.value.DSSValue;
-import org.openmrs.module.dssmodule.interpreter.ExecutionContext;
+import org.openmrs.module.dssmodule.state.ExecutionContext;
 import java.util.List;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 

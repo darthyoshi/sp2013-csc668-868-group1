@@ -1,4 +1,4 @@
-package org.openmrs.module.dssmodule.xml;
+package org.openmrs.module.dssmodule;
 
 
 import java.io.File;
@@ -24,22 +24,22 @@ import org.w3c.dom.*;
  *
  * @author woeltjen
  */
-public class XMLBuilder {
+public class DSSXMLConvertor {
     public static final String KIND_ATTR = "kind";
     public static final String VALUE_ATTR = "value";
     
     private Document document;
     
-    public XMLBuilder(File file) throws Exception {        
+    public DSSXMLConvertor(File file) throws Exception {        
         document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
     }
     
-    public XMLBuilder(AST tree) throws ParserConfigurationException {
+    public DSSXMLConvertor(AST tree) throws ParserConfigurationException {
         this();
         addTree(tree);
     }
     
-    public XMLBuilder() throws ParserConfigurationException {
+    public DSSXMLConvertor() throws ParserConfigurationException {
         document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
     }
     

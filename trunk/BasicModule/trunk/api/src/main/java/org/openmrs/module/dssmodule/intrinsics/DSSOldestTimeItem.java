@@ -5,7 +5,7 @@
 package org.openmrs.module.dssmodule.intrinsics;
 
 import java.util.Date;
-import org.openmrs.module.dssmodule.interpreter.DSSFunction;
+import org.openmrs.module.dssmodule.state.DSSFunction;
 import org.openmrs.module.dssmodule.value.DSSValue;
 import org.openmrs.module.dssmodule.value.DSSValueDate;
 import org.openmrs.module.dssmodule.value.DSSValueList;

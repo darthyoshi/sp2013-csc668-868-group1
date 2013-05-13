@@ -9,7 +9,7 @@ import org.openmrs.module.dssmodule.value.DSSValue;
 import java.util.*;
 import org.openmrs.*;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.dssmodule.interpreter.DSSFunction;
+import org.openmrs.module.dssmodule.state.DSSFunction;
 
 public class DSSRead extends DSSFunction {
     /**

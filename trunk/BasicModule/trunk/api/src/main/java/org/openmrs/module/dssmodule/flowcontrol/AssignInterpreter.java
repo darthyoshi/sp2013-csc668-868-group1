@@ -4,10 +4,9 @@ import org.openmrs.module.dssmodule.ast.AST;
 import org.openmrs.module.dssmodule.ast.AssignTree;
 import org.openmrs.module.dssmodule.ast.FieldRefTree;
 import org.openmrs.module.dssmodule.ast.IdTree;
-import org.openmrs.module.dssmodule.interpreter.ASTInterpreter;
 import org.openmrs.module.dssmodule.value.DSSValue;
-import org.openmrs.module.dssmodule.interpreter.ExecutionContext;
-import org.openmrs.module.dssmodule.interpreter.NamingContext;
+import org.openmrs.module.dssmodule.state.ExecutionContext;
+import org.openmrs.module.dssmodule.state.NamingContext;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**

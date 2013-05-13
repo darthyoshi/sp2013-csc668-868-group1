@@ -3,13 +3,11 @@ package org.openmrs.module.dssmodule;
 import java.io.*;
 import java.util.*;
 import java.util.Map.Entry;
-import org.openmrs.module.dssmodule.interpreter.DSSLibrary;
+import org.openmrs.module.dssmodule.intrinsics.DSSLibrary;
 import org.openmrs.module.dssmodule.ast.AST;
-import org.openmrs.module.dssmodule.interpreter.Interpreter;
 import org.openmrs.module.dssmodule.intrinsics.*;
 import org.openmrs.module.dssmodule.parser.Parser;
 import org.openmrs.module.dssmodule.visitor.PrintVisitor;
-import org.openmrs.module.dssmodule.xml.XMLBuilder;
 import org.openmrs.util.OpenmrsUtil;
 
 /**
@@ -114,7 +112,7 @@ public class DSSRuleService {
         sourceFiles.put(ruleName, target);
 
         // And, finally, convert to XML and save
-        new XMLBuilder(ast).write(getFile(fileName + XML_SUFFIX));
+        new DSSXMLConvertor(ast).write(getFile(fileName + XML_SUFFIX));
 
         // Store rule name to an index (since rule->filename loses whitespace)
         File indexFile = getFile(INDEX_FILE);
@@ -175,7 +173,7 @@ public class DSSRuleService {
         // Run all rules; alerts go into AlertMap
         for (Entry<String, AST> entry : rules.entrySet()) {//AST rule : rules.values()) {            
             AST rule = entry.getValue();            
-            Interpreter i = new Interpreter(INTRINSICS);
+            DSSInterpreter i = new DSSInterpreter(INTRINSICS);
             i.install(alerts);
             i.defineConstant("patientId", patientId);
             i.interpret(rule);
@@ -226,7 +224,7 @@ public class DSSRuleService {
             File xmlFile = getFile(fileName + XML_SUFFIX);
             try {
                 sourceFiles.put(ruleName, srcFile);                
-                rules.put(ruleName, new XMLBuilder(xmlFile).getAST().get(0));
+                rules.put(ruleName, new DSSXMLConvertor(xmlFile).getAST().get(0));
                 rules.get(ruleName).accept(new PrintVisitor());
             } catch (Exception e) {
                 System.err.println("Expected but did not find source & xml "

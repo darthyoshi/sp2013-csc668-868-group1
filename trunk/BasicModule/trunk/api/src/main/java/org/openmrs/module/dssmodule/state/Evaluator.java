@@ -1,4 +1,4 @@
-package org.openmrs.module.dssmodule.interpreter;
+package org.openmrs.module.dssmodule.state;
 
 import java.util.List;
 import org.openmrs.module.dssmodule.value.DSSValue;

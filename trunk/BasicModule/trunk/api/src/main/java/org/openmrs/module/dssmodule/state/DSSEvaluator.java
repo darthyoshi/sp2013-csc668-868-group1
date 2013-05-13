@@ -1,4 +1,4 @@
-package org.openmrs.module.dssmodule.interpreter;
+package org.openmrs.module.dssmodule.state;
 
 import java.lang.reflect.Method;
 import java.util.*;

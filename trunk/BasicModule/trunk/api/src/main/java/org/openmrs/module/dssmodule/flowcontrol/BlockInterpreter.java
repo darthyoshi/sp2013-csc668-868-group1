@@ -2,8 +2,7 @@ package org.openmrs.module.dssmodule.flowcontrol;
 
 import org.openmrs.module.dssmodule.ast.AST;
 import org.openmrs.module.dssmodule.ast.BlockTree;
-import org.openmrs.module.dssmodule.interpreter.ASTInterpreter;
-import org.openmrs.module.dssmodule.interpreter.ExecutionContext;
+import org.openmrs.module.dssmodule.state.ExecutionContext;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**
