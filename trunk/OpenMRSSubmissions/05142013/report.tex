@@ -24,9 +24,10 @@
         Ng, Ying Kit    \and
         Uy, Bianca      
 } 
+\date{\today}
 
 \begin{document}
-
+\setcounter{tocdepth}{2}
 
 \newpage 
 
@@ -1629,6 +1630,9 @@ Returns the length of a list or a string. \\ \hline
 \newpage
 \section{API Documentation} \label{sec:API_DOCS}
 
+% Import javadoc; temporarily suppress including subsections in TOC
+\setcounter{tocdepth}{1}
 \input{javadoc.tex}
+\setcounter{tocdepth}{2}
 
 \end{document}
