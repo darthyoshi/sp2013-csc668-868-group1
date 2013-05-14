@@ -4,6 +4,7 @@
 :  - Folder where the XML and Source-DSS files are located.
 :  - Demo program either in text document or copied to clipboard		
 :    - Patient John should have a few observations enough to satisfy the demo	
+:    - Latest observation for weight should be 25
 :-------------------------------------------------------------------------------
 
 (Log into OpenMRS)
@@ -33,7 +34,12 @@ It displays the error on top and retains the information that was entered allowi
 (Fix the error & save)
 
 We have now create a new rule. You can also see it is now available in the drop down menu.
+We can also save this rule to our local file system.
+
+(Show drop downs and Save button)
+
 All rules are saved in the folder 'dssmodule' under the same location as the openmrs-runtime properties file
+The source code is saved, and the AST is saved to XML so that it doesn't need to be re-compiled later.
 
 (Show dssModule folder)
 
@@ -45,7 +51,7 @@ And a possible warning on the patient summary, depending on the observation reco
 This illustrates the alerts are working.
 As new observations are added, the alerts should run if new information applies to the rule. 
 
-(Add new observation)
+(Add new observation using the Vitals tab - fill in all text fields and dropdowns)
 (Change the weight to 10 guarantees an alert to show in patient summary)
 
 A warning should appear on the patient summary.
@@ -59,15 +65,11 @@ The user can later modify the rules.
 (Select 'demo' on the drop down menu and load)
 
 Choose the rule they want to modify, in this case we are changing 'demo'.
-We can add another alert.
+We can add another alert - let's say we want to show that same alert to the patient dashboard.
 
-(Modify the rule)
+(Modify the rule - copy and paste <20 alert to go to dashboard)
 
 And we can save it. If you are overwriting a rule, it needs confirmation that you are permanently changing the rule.
-
-(Click yes)
-
-You can also save the rule to your local file system.
 
 (Choose demo to be saved locally)
 (Show the file and that the changes reflected)
