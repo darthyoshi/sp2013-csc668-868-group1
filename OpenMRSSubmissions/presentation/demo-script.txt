@@ -7,6 +7,8 @@
 :    - Latest observation for weight should be 25
 :-------------------------------------------------------------------------------
 
+========== BIANCA STARTS ===========
+
 (Log into OpenMRS)
 (Go to Admin page)
 
@@ -25,6 +27,9 @@ Under DSS Compiler, there are two links.
 
 To save time, we have created a rule and copied it on the clipboard. 
 
+As you can see, this demo program shows a simple alert to the patient dashboard, to verify that it is working, and 
+then has some conditions to check the patient's weight and throw an alert if the patient is over- or under-weight.
+
 If there's an error on the file, it will be reported. For example, removing the last curly bracket should get an error.
 
 (Remove curly brackets and save)
@@ -33,13 +38,18 @@ It displays the error on top and retains the information that was entered allowi
 
 (Fix the error & save)
 
+======= KENT STARTS HERE =======
+
 We have now create a new rule. You can also see it is now available in the drop down menu.
 We can also save this rule to our local file system.
 
-(Show drop downs and Save button)
+(Show drop downs and Save button) 
 
 All rules are saved in the folder 'dssmodule' under the same location as the openmrs-runtime properties file
 The source code is saved, and the AST is saved to XML so that it doesn't need to be re-compiled later.
+
+You can see that the structure of the XML closely matches the structure of the compiled Abstract Syntax Tree. 
+Specific nodes are identified by class name, allowing them to be restored using reflection.
 
 (Show dssModule folder)
 
@@ -49,6 +59,9 @@ And a possible warning on the patient summary, depending on the observation reco
 (Show patient dashboard & summary)
 
 This illustrates the alerts are working.
+
+=========== KAY STARTS HERE ==========
+
 As new observations are added, the alerts should run if new information applies to the rule. 
 
 (Add new observation using the Vitals tab - fill in all text fields and dropdowns)
