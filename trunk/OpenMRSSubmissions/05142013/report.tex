@@ -126,7 +126,7 @@ process.
 	Log onto OpenMRS with your corresponding username and password. Passwords are case-sensitive. Once logged in, you can search or create a patient using the tab 'Find/Create Patient'. Once you have selected the patient, their profile will appear.
 
 \subsection{Patient profile}
-	Patient profile has several tabs – Overview, Regimens, Visits, Demographics, Graphs, Form Entry, Example, Vitals, and Notes.  There is also a patient summary link and underneath are any alerts that a physician may need to be aware about the patient (Figure ~\ref{fig:PATIENT_PROFILE}).
+	Patient profile has several tabs – Overview, Regimens, Visits, Demographics, Graphs, Form Entry, Example, Vitals, and Notes.  There is also a patient summary link and underneath are any alerts that a physician may need to be aware about the patient, as shown in Figure ~\ref{fig:PATIENT_PROFILE}.
 
 \begin{figure}\begin{center}
 \includegraphics[width=6.5in]{user_guide/patient_profile.png}
@@ -136,7 +136,7 @@ process.
 \end{figure}
 
 \subsubsection{Form entry}
-	There are four different forms available – Vitals, Viral, Hemoglobin, and CD4 (Figure ~\ref{fig:VITALS_FORM}, 
+	There are four different forms available – Vitals, Viral, Hemoglobin, and CD4 (shown in Figure ~\ref{fig:VITALS_FORM}, 
 	~\ref{fig:VIRAL_FORM}, ~\ref{fig:HEMOGLOBIN_FORM}, 
 	and ~\ref{fig:CD4_FORM}). Viral, Hemoglobin, and CD4 are for lab results. The encounter details must be filled along with the data entry. The Vitals form is an assessment of the current condition of the patient. Once the form is completed, press “Enter Form” and all information will be saved. 
 	The forms from the last three encounters are available for viewing; for a more complete listing, check “Visits” tab.
@@ -175,7 +175,8 @@ process.
 
 \newpage
 \subsubsection{Vitals tab}
-	Displays the weight, systolic blood pressure, diastolic blood pressure, and temperature of the patient based the latest encounter without having to pull out the form (Figure ~\ref{fig:VITALS_TAB}).
+	Displays the weight, systolic blood pressure, diastolic blood pressure, and temperature of the patient based the latest encounter without having to pull out the form. This tab is 
+shown in Figure ~\ref{fig:VITALS_TAB}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -187,7 +188,7 @@ based on latest encounter.}
 \end{figure}
 
 \subsubsection{Patient summary}
-	Includes allergies, all ART regimen drugs, who stage, and TB status; it also includes the vitals of the patient from the first encounter and the last encounter; and all lab results – viral, hemoglobin, and cd4. Any alerts that a physician may need to be aware of are displayed in the bottom of the page in large bold letters (Figure ~\ref{fig:PATIENT_SUMMARY}). These information are all based on patient encounters.
+	Includes allergies, all ART regimen drugs, who stage, and TB status; it also includes the vitals of the patient from the first encounter and the last encounter; and all lab results – viral, hemoglobin, and cd4. Any alerts that a physician may need to be aware of are displayed in the bottom of the page in large bold letters, as shown in Figure ~\ref{fig:PATIENT_SUMMARY}. These information are all based on patient encounters.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -199,10 +200,10 @@ based on latest encounter.}
 
 
 \subsubsection{Alerts}
-	Alerts are generated based on DSS rules on OpenMRS which utilizes information from patient encounters. They can be found in two locations – patient dashboard and patient summary. Figure ~\ref{fig:PATIENT_PROFILE} and ~\ref{fig:PATIENT_SUMMARY} shows where the alerts will appear on the patient dashboard and patient summary, they appear in bold red letters.
+	Alerts are generated based on DSS rules on OpenMRS which utilizes information from patient encounters. They can be found in two locations – patient dashboard and patient summary. Figure ~\ref{fig:PATIENT_PROFILE} and ~\ref{fig:PATIENT_SUMMARY} show these rules as they appear, in bold red letters.
 
 \subsection{Rule administration}
-	Under “Administration” and under the heading “DSS Compiler” there are two links that provides you a way to create new rules onto OpenMRS (Figure ~\ref{fig:ADMINISTRATION_PAGE}). Once rules are loaded onto the system, they cannot be deleted. A loading image may appear while the rules are rendering prohibiting you from using the page, it will disappear once it is done.
+	Under “Administration” and under the heading “DSS Compiler” there are two links that provides you a way to create new rules onto OpenMRS, shown in Figure ~\ref{fig:ADMINISTRATION_PAGE}. Once rules are loaded onto the system, they cannot be deleted. A loading image may appear while the rules are rendering prohibiting you from using the page, it will disappear once it is done.
 
 There are two options for managing rules: The link "Upload a DSS File" takes you to pages described in Section ~\ref{sec:UPLOAD_DSS}, and "Create DSS File" takes you to the 
 page shown in Figure ~\ref{fig:CREATE_MODIFY} and described in 
@@ -227,8 +228,9 @@ Sections ~\ref{sec:LOAD_RULE}, ~\ref{sec:CREATE_RULE}, and
 
 \newpage
 \subsubsection{Upload a DSS rule} \label{sec:UPLOAD_DSS}
-	You can upload an existing .DSS file onto OpenMRS. Simply click Browse and locate the file you want to upload, select it, and click “upload”.
-	(Figure ~\ref{fig:UPLOAD_BROWSE}) If there are any errors, it will be reported back and the file would not have been saved. Otherwise, the rule will be executing. (Figure ~\ref{fig:UPLOAD_SUCCESS})
+	You can upload an existing .DSS file onto OpenMRS. Simply click Browse and locate the file you want to upload, select it, and click “upload”, as seen in Figure ~\ref{fig:UPLOAD_BROWSE}. 
+	
+	If there are any errors, it will be reported back and the file would not have been saved. Otherwise, the rule will be executing, as indicated in Figure ~\ref{fig:UPLOAD_SUCCESS}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -249,12 +251,9 @@ Sections ~\ref{sec:LOAD_RULE}, ~\ref{sec:CREATE_RULE}, and
 
 \subsubsection{Load or modify an existing rule} \label{sec:LOAD_RULE}
 
-Select an existing rule from the drop-down menu that you would like to modify then click 'Load'. (Figure ~\ref{fig:LOAD_RULE})
-It will populate the textboxes under the “Create/Edit Rule” section. 
-(Figure ~\ref{fig:LOAD_RULE_SHOWN})
-
-
-
+Select an existing rule from the drop-down menu that you would like to modify then click 'Load', as seen 
+in Figure ~\ref{fig:LOAD_RULE}.
+It will populate the textboxes under the “Create/Edit Rule” section, as shown in Figure ~\ref{fig:LOAD_RULE_SHOWN}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -272,8 +271,7 @@ It will populate the textboxes under the “Create/Edit Rule” section.
 \label{fig:LOAD_RULE_SHOWN}
 \end{figure}
 
-Edit the file. Once complete, click 'Save'. A confirmation message will appear to ensure that you would like to overwrite an existing rule. Click yes to save the changes.
-(Figure ~\ref{fig:MODIFY_CONFIRMATION})
+Edit the file. Once complete, click 'Save'. A confirmation message, shown in Figure ~\ref{fig:MODIFY_CONFIRMATION}, will appear to ensure that you would like to overwrite an existing rule. Click yes to save the changes.
 
 
 \begin{figure}[htbp]
@@ -284,10 +282,9 @@ Edit the file. Once complete, click 'Save'. A confirmation message will appear t
 \label{fig:MODIFY_CONFIRMATION}
 \end{figure}
 
-A 'Successfully uploaded file' message will appear if there were no errors in the program. 
-(Figure ~\ref{fig:MODIFY_ERROR})
-If there are any errors, it will be reported back at the top of the page and it would not have saved the changes. 
-(Figure ~\ref{fig:MODIFY_SUCCESS})
+A 'Successfully uploaded file' message, as shown in 
+Figure ~\ref{fig:MODIFY_ERROR}, will appear if there were no errors in the program. 
+If there are any errors, it will be reported back at the top of the page, as in Figure ~\ref{fig:MODIFY_SUCCESS}, and it would not have saved the changes. 
 The code will still be available for you to work on it.
 
 
@@ -309,10 +306,9 @@ The code will still be available for you to work on it.
 
 \newpage
 \subsubsection{Create a rule} \label{sec:CREATE_RULE}
-You can create your own rule, it should not match an existing rule. Enter a rule name for the rule and enter the program under the textbox 'DSS Code' Once finished, click 'Save'. (Figure ~\ref{fig:NEW_RULE})
+You can create your own rule, it should not match an existing rule. Enter a rule name for the rule and enter the program under the textbox 'DSS Code' Once finished, click 'Save', as shown in Figure ~\ref{fig:NEW_RULE}.
 
-A 'Successfully uploaded file' message will appear if there were no errors in the program and the rule name will become available in the drop down menu. 
-(Figure ~\ref{fig:NEW_RULE_SUCCESS})
+A 'Successfully uploaded file' message will appear if there were no errors in the program and the rule name will become available in the drop down menu, as shown in Figure ~\ref{fig:NEW_RULE_SUCCESS}.
 If there are any errors, it will be reported back at the top of the page and it would not have saved the changes. The code will still be available for you to work on it.
 
 \begin{figure}[htbp]
@@ -333,10 +329,10 @@ If there are any errors, it will be reported back at the top of the page and it 
 
 \newpage
 \subsubsection{Save an existing rule} \label{sec:SAVE_RULE}
-An existing rule can be saved on to your local file system. Choose the rule that you would like to save from the drop-down menu.
-(Figure ~\ref{fig:SAVE_RULE})
-Click 'Save Rule' and a download attachment window should appear. You can choose to either open the file or save the file. The file will be saved to your designated Downloads folder.
-(Figure ~\ref{fig:SAVE_RULE_DIALOG})
+An existing rule can be saved on to your local file system. Choose the rule that you would like to save from the drop-down menu,  as shown in Figure ~\ref{fig:SAVE_RULE}.
+Click 'Save Rule' and a download attachment window should appear, 
+as shown in Figure ~\ref{fig:SAVE_RULE_DIALOG}. You can choose to either open the file or save the file. The file will be saved to your designated Downloads folder.
+
 
 \begin{figure}[htbp]
 \begin{center}
