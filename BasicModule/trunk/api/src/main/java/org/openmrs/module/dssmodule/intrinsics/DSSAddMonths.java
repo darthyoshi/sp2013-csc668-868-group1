@@ -47,7 +47,7 @@ public class DSSAddMonths extends DSSFunction{
         
         //Convert it back to Date Ojbect and retunr it as DSSValue
         Date newDate = cal.getTime();
-        System.out.println("Add month "+newDate.toString());
+        //System.out.println("Add month "+newDate.toString());
        return DSSValueFactory.getDSSValue(newDate);
     }
 }

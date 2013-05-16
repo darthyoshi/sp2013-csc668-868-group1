@@ -33,7 +33,7 @@ public class DSSTime extends DSSFunction{
      * @return DSSValue Date cooresponding to the argument v
      */
       public DSSValue call(DSSValue... args){
-          System.out.println(args[0].getDSSValueTimeStamp());
+          //System.out.println(args[0].getDSSValueTimeStamp());
           return args[0].getDSSValueTimeStamp();
       }
 }

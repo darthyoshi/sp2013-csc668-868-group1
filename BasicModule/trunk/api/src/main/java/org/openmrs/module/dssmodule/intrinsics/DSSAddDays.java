@@ -44,7 +44,7 @@ public class DSSAddDays extends DSSFunction{
         cal.add(Calendar.DAY_OF_MONTH, days);
         
         Date newDate = cal.getTime();
-        System.out.println("addDays "+newDate.toString());
+        //System.out.println("addDays "+newDate.toString());
        return DSSValueFactory.getDSSValue(newDate);
     }
 }
