@@ -33,7 +33,7 @@ public class AdminDSS extends AdministrationSectionExt
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		map.put("module/dssmodule/dssRules.form", "Create DSS File");
+		map.put("module/dssmodule/dssRules.form", "Create/Modify DSS Rule");
                 map.put("module/dssmodule/dssUpload.form", "Upload a DSS File");
                 
 		return map;

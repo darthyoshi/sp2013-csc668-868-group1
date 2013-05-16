@@ -54,7 +54,9 @@ public class DSSUploadController
             try{
                 DSSRuleService service = DSSRuleService.getRuleService();
                 FileItem fileItem = file.getFileItem();
-                service.store(fileItem.getName(), fileItem.getString());
+                String fileName = fileItem.getName();
+                fileName = fileName.replace(".dss", "");
+                service.store(fileName, fileItem.getString());
             }
             catch(Exception e)
             {
