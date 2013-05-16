@@ -221,7 +221,7 @@ public class DSSRuleService {
             try {
                 sourceFiles.put(ruleName, srcFile);                
                 rules.put(ruleName, new DSSXMLConvertor(xmlFile).getAST().get(0));
-                rules.get(ruleName).accept(new PrintVisitor());
+                //rules.get(ruleName).accept(new PrintVisitor());
             } catch (Exception e) {
                 System.err.println("Expected but did not find source & xml "
                         + "files for " + ruleName);

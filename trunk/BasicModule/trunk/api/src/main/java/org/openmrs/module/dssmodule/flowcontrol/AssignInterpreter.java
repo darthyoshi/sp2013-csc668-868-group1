@@ -10,7 +10,7 @@ import org.openmrs.module.dssmodule.state.NamingContext;
 import org.openmrs.module.dssmodule.visitor.ASTVisitor;
 
 /**
- * Interprets Assign nodes in a compiled AST
+ * Interprets Assign sub-trees in a compiled AST
  * @author woeltjen
  */
 public class AssignInterpreter implements ASTInterpreter<AssignTree> {
